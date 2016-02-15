@@ -2,8 +2,8 @@
 {
     using System.Web.Mvc;
 
-    using QuizProjectMvc.Common;
-    using QuizProjectMvc.Web.Controllers;
+    using Common;
+    using Web.Controllers;
 
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class AdministrationController : BaseController

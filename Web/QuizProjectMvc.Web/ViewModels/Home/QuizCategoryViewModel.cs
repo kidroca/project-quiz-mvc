@@ -3,10 +3,14 @@
     using QuizProjectMvc.Data.Models;
     using QuizProjectMvc.Web.Infrastructure.Mapping;
 
-    public class JokeCategoryViewModel : IMapFrom<JokeCategory>
+    public class QuizCategoryViewModel : IMapFrom<QuizCategory>
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public string AvatarUrl { get; set; }
+
+        // Perhaps add Count property
     }
 }

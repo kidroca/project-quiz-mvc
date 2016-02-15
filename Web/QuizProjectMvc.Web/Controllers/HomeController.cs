@@ -11,28 +11,29 @@
 
     public class HomeController : BaseController
     {
-        private readonly IJokesService jokes;
+        private readonly IQuizesService quizes;
         private readonly ICategoriesService jokeCategories;
 
         public HomeController(
-            IJokesService jokes,
+            IQuizesService quizes,
             ICategoriesService jokeCategories)
         {
-            this.jokes = jokes;
+            this.quizes = quizes;
             this.jokeCategories = jokeCategories;
         }
 
         public ActionResult Index()
         {
-            var jokes = this.jokes.GetRandomJokes(3).To<JokeViewModel>().ToList();
+            // Todo Map to correct view model
+            var jokes = this.quizes.GetRandomQuizzes(3).To<QuizBasicViewModel>().ToList();
             var categories =
                 this.Cache.Get(
                     "categories",
-                    () => this.jokeCategories.GetAll().To<JokeCategoryViewModel>().ToList(),
+                    () => this.jokeCategories.GetAll().To<QuizCategoryViewModel>().ToList(),
                     30 * 60);
             var viewModel = new IndexViewModel
             {
-                Jokes = jokes,
+                Quizzes = jokes,
                 Categories = categories
             };
 
