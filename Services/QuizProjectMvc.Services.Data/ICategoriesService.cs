@@ -6,8 +6,8 @@
 
     public interface ICategoriesService
     {
-        IQueryable<JokeCategory> GetAll();
+        IQueryable<QuizCategory> GetAll();
 
-        JokeCategory EnsureCategory(string name);
+        QuizCategory EnsureCategory(string name);
     }
 }

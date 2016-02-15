@@ -59,16 +59,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationUser.cs" />
-    <Compile Include="Joke.cs" />
-    <Compile Include="JokeCategory.cs" />
+    <Compile Include="Answer.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Solution.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question.cs" />
+    <Compile Include="Quiz.cs" />
+    <Compile Include="Rating.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\QuizProjectMvc.Common\QuizProjectMvc.Common.csproj">
+      <Project>{701F322F-AA01-4DDC-90B6-6935981C1E73}</Project>
+      <Name>QuizProjectMvc.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuizProjectMvc.Data.Common\QuizProjectMvc.Data.Common.csproj">
       <Project>{edfe3c57-ef5b-4636-9ecc-d0baca6b6379}</Project>
       <Name>QuizProjectMvc.Data.Common</Name>

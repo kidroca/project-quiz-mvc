@@ -10,16 +10,16 @@
 
     using QuizProjectMvc.Data.Models;
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public IDbSet<Joke> Jokes { get; set; }
+        //public IDbSet<Joke> Jokes { get; set; }
 
-        public IDbSet<JokeCategory> JokesCategories { get; set; }
+        //public IDbSet<JokeCategory> JokesCategories { get; set; }
 
         public static ApplicationDbContext Create()
         {

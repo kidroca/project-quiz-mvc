@@ -9,7 +9,7 @@
 
     using QuizProjectMvc.Data.Models;
 
-    public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
+    public class ApplicationSignInManager : SignInManager<User, string>
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
@@ -21,7 +21,7 @@
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(User user)
         {
             return user.GenerateUserIdentityAsync((ApplicationUserManager)this.UserManager);
         }

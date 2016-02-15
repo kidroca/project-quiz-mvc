@@ -60,14 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201602100916387_InitialCreate.cs" />
-    <Compile Include="Migrations\201602100916387_InitialCreate.Designer.cs">
-      <DependentUpon>201602100916387_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602100922285_JokesAndJokesCategories.cs" />
-    <Compile Include="Migrations\201602100922285_JokesAndJokesCategories.Designer.cs">
-      <DependentUpon>201602100922285_JokesAndJokesCategories.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -88,14 +80,6 @@
       <Project>{048df115-fad9-4bd4-9ba0-d99dfd32a2b2}</Project>
       <Name>QuizProjectMvc.Data.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602100916387_InitialCreate.resx">
-      <DependentUpon>201602100916387_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602100922285_JokesAndJokesCategories.resx">
-      <DependentUpon>201602100922285_JokesAndJokesCategories.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
