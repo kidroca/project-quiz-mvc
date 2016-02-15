@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Common.Models;
     using QuizProjectMvc.Common;
-    using QuizProjectMvc.Data.Common.Models;
 
     public class Question : BaseModel<int>
     {

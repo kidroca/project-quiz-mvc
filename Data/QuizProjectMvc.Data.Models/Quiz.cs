@@ -8,15 +8,15 @@
 
     public class Quiz : BaseModel<int>
     {
-        private ICollection<Rating> rattings;
+        private ICollection<QuizRating> rattings;
         private ICollection<Question> questions;
-        private ICollection<Solution> solutions;
+        private ICollection<QuizSolution> solutions;
 
         public Quiz()
         {
-            this.rattings = new HashSet<Rating>();
+            this.rattings = new HashSet<QuizRating>();
             this.questions = new HashSet<Question>();
-            this.solutions = new HashSet<Solution>();
+            this.solutions = new HashSet<QuizSolution>();
         }
 
         [Required]
@@ -27,7 +27,7 @@
 
         public int CategoryId { get; set; }
 
-        public virtual Category Category { get; set; }
+        public virtual QuizCategory Category { get; set; }
 
         [MinLength(ModelConstraints.DescriptionMinLength)]
         [MaxLength(ModelConstraints.DescriptionMaxLength)]
@@ -40,7 +40,7 @@
 
         public bool IsPrivate { get; set; }
 
-        public virtual ICollection<Rating> Ratings
+        public virtual ICollection<QuizRating> Ratings
         {
             get { return this.rattings; }
 
@@ -54,7 +54,7 @@
             set { this.questions = value; }
         }
 
-        public virtual ICollection<Solution> Solutions
+        public virtual ICollection<QuizSolution> Solutions
         {
             get { return this.solutions; }
             set { this.solutions = value; }

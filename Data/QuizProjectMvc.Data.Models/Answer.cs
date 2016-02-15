@@ -1,4 +1,4 @@
-namespace QuizProjectMvc.Data.Models
+﻿namespace QuizProjectMvc.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
     using Common.Models;

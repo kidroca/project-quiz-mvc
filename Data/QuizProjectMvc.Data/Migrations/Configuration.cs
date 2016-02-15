@@ -1,5 +1,6 @@
 ﻿namespace QuizProjectMvc.Data.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -33,7 +34,16 @@
                 // Create admin user
                 var userStore = new UserStore<User>(context);
                 var userManager = new UserManager<User>(userStore);
-                var user = new User { UserName = AdministratorUserName, Email = AdministratorUserName };
+                var user = new User
+                {
+                    UserName = AdministratorUserName,
+                    Email = AdministratorUserName,
+                    FirstName = "Admin",
+                    LastName = "Adminov",
+                    AvatarUrl = "http://cdn.playbuzz.com/cdn/60c3d130-7599-4646-866f-732b67606044/fdac6a96-ea58-4b9a-a8ab-7f6310c0c992.png",
+                    RegisteredOn = DateTime.Now
+                };
+
                 userManager.Create(user, AdministratorPassword);
 
                 // Assign user to admin role

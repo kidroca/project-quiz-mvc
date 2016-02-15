@@ -60,13 +60,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Answer.cs" />
-    <Compile Include="Category.cs" />
-    <Compile Include="Solution.cs" />
+    <Compile Include="QuizCategory.cs" />
+    <Compile Include="QuizSolution.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Quiz.cs" />
-    <Compile Include="Rating.cs" />
+    <Compile Include="QuizRating.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

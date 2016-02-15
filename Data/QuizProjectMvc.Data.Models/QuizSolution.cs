@@ -4,11 +4,11 @@
     using System.ComponentModel.DataAnnotations;
     using Common.Models;
 
-    public class Solution : BaseModel<int>
+    public class QuizSolution : BaseModel<int>
     {
         private ICollection<Answer> selectedAnswers;
 
-        public Solution()
+        public QuizSolution()
         {
             this.selectedAnswers = new HashSet<Answer>();
         }

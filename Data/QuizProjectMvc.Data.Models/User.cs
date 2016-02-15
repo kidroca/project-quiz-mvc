@@ -13,14 +13,14 @@
     public class User : IdentityUser
     {
         private ICollection<Quiz> quizzesCreated;
-        private ICollection<Rating> ratingsGiven;
-        private ICollection<Solution> solutionsSubmited;
+        private ICollection<QuizRating> ratingsGiven;
+        private ICollection<QuizSolution> solutionsSubmited;
 
         public User()
         {
-            this.ratingsGiven = new HashSet<Rating>();
+            this.ratingsGiven = new HashSet<QuizRating>();
             this.quizzesCreated = new HashSet<Quiz>();
-            this.solutionsSubmited = new HashSet<Solution>();
+            this.solutionsSubmited = new HashSet<QuizSolution>();
         }
 
         [MinLength(ModelConstraints.NameMinLength)]
@@ -44,13 +44,13 @@
             set { this.quizzesCreated = value; }
         }
 
-        public virtual ICollection<Solution> SolutionsSubmited
+        public virtual ICollection<QuizSolution> SolutionsSubmited
         {
             get { return this.solutionsSubmited; }
             set { this.solutionsSubmited = value; }
         }
 
-        public virtual ICollection<Rating> RatingsGiven
+        public virtual ICollection<QuizRating> RatingsGiven
         {
             get { return this.ratingsGiven; }
             set { this.ratingsGiven = value; }
@@ -58,8 +58,15 @@
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)
         {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+            return userIdentity;
+        }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+
             // Add custom user claims here
             return userIdentity;
         }

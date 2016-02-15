@@ -17,9 +17,17 @@
         {
         }
 
-        //public IDbSet<Joke> Jokes { get; set; }
+        public IDbSet<Quiz> Quizzes { get; set; }
 
-        //public IDbSet<JokeCategory> JokesCategories { get; set; }
+        public IDbSet<QuizCategory> QuizCategories { get; set; }
+
+        public IDbSet<Question> Questions { get; set; }
+
+        public IDbSet<Answer> Answers { get; set; }
+
+        public IDbSet<QuizRating> QuizRatings { get; set; }
+
+        public IDbSet<QuizSolution> QuizSolutions { get; set; }
 
         public static ApplicationDbContext Create()
         {
@@ -29,7 +37,26 @@
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();
+            this.DeleteOrphanQuestions();
+
             return base.SaveChanges();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<QuizRating>()
+                .HasRequired(rating => rating.Quiz)
+                .WithMany(quiz => quiz.Ratings)
+                .HasForeignKey(rating => rating.QuizId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<QuizSolution>()
+                .HasRequired(solution => solution.ForQuiz)
+                .WithMany(quiz => quiz.Solutions)
+                .HasForeignKey(solution => solution.ForQuizId)
+                .WillCascadeOnDelete(false);
         }
 
         private void ApplyAuditInfoRules()
@@ -51,6 +78,15 @@
                     entity.ModifiedOn = DateTime.Now;
                 }
             }
+        }
+
+        private void DeleteOrphanQuestions()
+        {
+            this.Questions
+                .Local
+                .Where(q => q.Quiz == null)
+                .ToList()
+                .ForEach(q => this.Questions.Remove(q));
         }
     }
 }

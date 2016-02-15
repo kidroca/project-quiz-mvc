@@ -5,11 +5,11 @@
     using Common.Models;
     using QuizProjectMvc.Common;
 
-    public class Category : BaseModel<int>
+    public class QuizCategory : BaseModel<int>
     {
         private ICollection<Quiz> quizzes;
 
-        public Category()
+        public QuizCategory()
         {
             this.quizzes = new HashSet<Quiz>();
         }
