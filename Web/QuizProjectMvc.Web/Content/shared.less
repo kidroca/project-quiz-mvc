@@ -1,0 +1,108 @@
+// ======== Imports =============
+@import "helpers/index";
+
+// ========= Common/Shared =============
+
+.illumination {
+  position: absolute;
+  .radial-grad(
+  @colors:
+    rgba(255, 255, 255, 0.95) 20%,
+    rgba(255, 255, 255, 0.25) 49%,
+    rgba(255, 255, 255, 0.02) 66%,
+    transparent 70%;
+  @pos: top center;
+  @type: circle);
+
+  mix-blend-mode: soft-light;
+}
+
+#main-illumination {
+  width: 100%;
+  height: 50rem;
+  top: 0;
+  left: 0;
+}
+
+.page {
+  color: @pageText;
+  .pageTextShadow();
+
+  a {
+    color: @medium-dark;
+    text-decoration: none;
+
+    &:hover {
+      color: lighten(@medium-dark, 35%);
+    }
+  }
+
+  .content {
+    margin-top: 1rem;
+
+    h2 {
+      margin-top: 0;
+      color: @articleHeading;
+      text-shadow: none;
+    }
+
+    > .wrapper {
+      padding-bottom: 4rem;
+    }
+  }
+
+  .container-fluid {
+    padding: 0;
+  }
+
+  h2, h3, h4 {
+    font-family: @font-thin;
+    color: @pageHeading;
+    .pageTitleShadow();
+  }
+
+  .sub-title {
+    padding: 1rem 0 0;
+    margin-bottom: 0;
+
+    color: @articleHeading;
+    font-weight: normal;
+    .pageTextShadow();
+  }
+
+  .current-route {
+    margin: 2.5rem 0 4rem;
+    font-size: 12px;
+  }
+
+  .page-content {
+    padding: 0;
+  }
+
+  .sidebar {
+    // Todo: remove border
+    color: @sideText;
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (max-width:700px) {
+  .sidebar {
+    display:none;
+  }
+
+  .page-content {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 701px) {
+  .page-content {
+    max-width: 70%;
+    min-width: 60%;
+  }
+
+  .sidebar {
+    max-width: 30%;
+  }
+}

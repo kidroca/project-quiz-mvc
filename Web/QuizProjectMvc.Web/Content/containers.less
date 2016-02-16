@@ -1,0 +1,28 @@
+// ======== Imports =============
+@import "helpers/index";
+
+.content {
+  position: relative;
+
+  padding: 0 1rem;
+  border: 1px solid #fff;
+  border-left: 0;
+  border-right: 0;
+  .box-shadow-double(@blur: 20px);
+  .box-shadow-inset-double(@blur: 15px);
+  .box-shadow-double-inset(@double-shadow, @inset-double);
+
+  background-image: url('../images/content-bg.png');
+  background-repeat: repeat;
+}
+
+.wrapper {
+  max-width: @base-width;
+  margin: 0 auto;
+}
+
+.panel.panel-primary {
+  .panel-heading {
+    .linear-grad(@colors: @panel-gradient-start, @panel-gradient-end; @dir: 180deg);
+  }
+}

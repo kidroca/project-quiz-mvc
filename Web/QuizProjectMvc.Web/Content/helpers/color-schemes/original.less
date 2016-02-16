@@ -1,0 +1,33 @@
+// ================================
+// ====== Original Scheme =========
+// ================================
+
+@background: #11161c; //#31363B;
+@primary-light: #39434c;
+@layout-headings-links: #fff;
+@nav-link-hovered: #8d96a0;
+
+// ======== gradients ============
+// Panel
+@panel-gradient-start: rgb(62, 72, 82);
+@panel-gradient-end: rgb(50, 59, 68);
+
+// Btn
+@btnText: white;
+@btnStartGradient: #323a43;
+@btnEndGradient: darken(@btnStartGradient, 30%);
+@btnDanger: #362e27;
+@btnSuccess: #28382f;
+@btnInfo: #332838;
+
+.btn-grad {
+  background-color: @btnEndGradient;
+  .linear-grad(@colors: @btnStartGradient, @btnEndGradient; @dir: 180deg);
+}
+
+.btn-grad-lighter(@lightenAmount: 15%) {
+  background-color: lighten(@medium-dark, @lightenAmount);
+  .linear-grad(@colors:
+    lighten(@btnStartGradient, @lightenAmount),
+    lighten(@btnEndGradient, @lightenAmount); @dir: 0deg);
+}

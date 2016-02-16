@@ -60,30 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201602152304452_Initial.cs" />
-    <Compile Include="Migrations\201602152304452_Initial.Designer.cs">
-      <DependentUpon>201602152304452_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602161420220_AnswerPorpertyChange.cs" />
-    <Compile Include="Migrations\201602161420220_AnswerPorpertyChange.Designer.cs">
-      <DependentUpon>201602161420220_AnswerPorpertyChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602161438488_AnswerIsDeletableEntity.cs" />
-    <Compile Include="Migrations\201602161438488_AnswerIsDeletableEntity.Designer.cs">
-      <DependentUpon>201602161438488_AnswerIsDeletableEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602161445382_AnswerIsNotDeletableEntity.cs" />
-    <Compile Include="Migrations\201602161445382_AnswerIsNotDeletableEntity.Designer.cs">
-      <DependentUpon>201602161445382_AnswerIsNotDeletableEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602161453139_TemploraryBaseModelDegradation.cs" />
-    <Compile Include="Migrations\201602161453139_TemploraryBaseModelDegradation.Designer.cs">
-      <DependentUpon>201602161453139_TemploraryBaseModelDegradation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602161458142_TemploraryBaseModelDegradation1.cs" />
-    <Compile Include="Migrations\201602161458142_TemploraryBaseModelDegradation1.Designer.cs">
-      <DependentUpon>201602161458142_TemploraryBaseModelDegradation1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201602161524319_ModelsNormalized.cs" />
     <Compile Include="Migrations\201602161524319_ModelsNormalized.Designer.cs">
       <DependentUpon>201602161524319_ModelsNormalized.cs</DependentUpon>
@@ -120,24 +96,6 @@
     </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602152304452_Initial.resx">
-      <DependentUpon>201602152304452_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602161420220_AnswerPorpertyChange.resx">
-      <DependentUpon>201602161420220_AnswerPorpertyChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602161438488_AnswerIsDeletableEntity.resx">
-      <DependentUpon>201602161438488_AnswerIsDeletableEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602161445382_AnswerIsNotDeletableEntity.resx">
-      <DependentUpon>201602161445382_AnswerIsNotDeletableEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602161453139_TemploraryBaseModelDegradation.resx">
-      <DependentUpon>201602161453139_TemploraryBaseModelDegradation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602161458142_TemploraryBaseModelDegradation1.resx">
-      <DependentUpon>201602161458142_TemploraryBaseModelDegradation1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602161524319_ModelsNormalized.resx">
       <DependentUpon>201602161524319_ModelsNormalized.cs</DependentUpon>
     </EmbeddedResource>

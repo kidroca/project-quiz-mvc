@@ -238,10 +238,26 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\index.css">
+      <DependentUpon>index.less</DependentUpon>
+    </Content>
+    <Content Include="Content\index.min.css">
+      <DependentUpon>index.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="images\blackboard.jpg" />
+    <Content Include="images\Carousel-icons.png" />
+    <Content Include="images\chalkboard.jpg" />
+    <Content Include="images\content-bg.png" />
+    <Content Include="images\content-icons.png" />
+    <Content Include="images\default-avatar.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\question-thumb.jpg" />
+    <Content Include="images\quiz-thumb.jpg" />
+    <Content Include="images\quiz-thumb.png" />
+    <Content Include="images\quiz.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -254,6 +270,25 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Content\buttons.less" />
+    <Content Include="Content\containers.less" />
+    <Content Include="Content\forms.less" />
+    <Content Include="Content\home.less" />
+    <Content Include="Content\index.less" />
+    <Content Include="Content\main.less" />
+    <Content Include="Content\quizzes.less" />
+    <Content Include="Content\shared.less" />
+    <Content Include="Content\widgets-blocks.less" />
+    <Content Include="Content\helpers\color-schemes\original.less" />
+    <Content Include="Content\helpers\colors-scheme.less" />
+    <Content Include="Content\helpers\fonts.less" />
+    <Content Include="Content\helpers\index.less" />
+    <Content Include="Content\helpers\mix-ins.less" />
+    <Content Include="Content\helpers\sizes.less" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -297,6 +332,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
     <Content Include="Views\Quizzes\ById.cshtml" />
+    <Content Include="Views\Shared\_HeaderNav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

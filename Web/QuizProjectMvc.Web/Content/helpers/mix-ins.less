@@ -1,0 +1,118 @@
+// gradient mixin
+@default-prefixes: webkit, moz, ms, o;
+
+// generic
+.gradient(@type; @colors; @dir: 0deg; @prefixes: @default-prefixes; @index: length(@prefixes)) when (@index > 0) {
+  .gradient(@type; @colors; @dir; @prefixes; (@index - 1));
+
+  @prefix  : extract(@prefixes, @index);
+  @dir-old : 90 - (@dir);
+
+  background-image: ~"-@{prefix}-@{type}-gradient(@{dir-old}, @{colors})";
+  & when ( @index = length(@prefixes) ) {
+    background-image: ~"@{type}-gradient(@{dir}, @{colors})";
+  }
+}
+
+// linear
+.linear-grad(@colors; @dir: to bottom; @prefixes: @default-prefixes; @index: length(@prefixes)) when (@index > 0) {
+  .linear-grad(@colors; @dir; @prefixes; (@index - 1));
+
+  @prefix: extract(@prefixes, @index);
+
+  background-image: ~"-@{prefix}-linear-gradient(@{dir}, @{colors})";
+  & when (@index = length(@prefixes)) {
+    background-image: ~"linear-gradient(@{dir}, @{colors})";
+  }
+}
+
+// radial
+.radial-grad(@colors; @pos: center; @stretch: farthest-corner; @type: ellipse; @prefixes: @default-prefixes; @index: length(@prefixes)) when (@index > 0) {
+  .radial-grad(@colors; @pos; @stretch; @type; @prefixes; (@index - 1));
+
+  @prefix: extract(@prefixes, @index);
+
+  background-image: ~"-@{prefix}-radial-gradient(@{type} @{stretch} at @{pos}, @{colors})";
+  & when (@index = length(@prefixes)) {
+    background-image: ~"radial-gradient(@{type} @{stretch} at @{pos}, @{colors})";
+  }
+}
+
+.transform(@property: rotate; @value: 5deg) {
+  @transformation: ~"@{property}(@{value})";
+
+  -webkit-transform: @transformation;
+  -moz-transform: @transformation;
+  -o-transform: @transformation;
+  -ms-transform: @transformation;
+  transform: @transformation;
+}
+
+.box-shadow(@x: 0; @y: 0; @blur: 3px; @color: rgba(0, 0, 0, 0.7)) {
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;
+
+  @box-shadow: @arguments;
+}
+
+.box-shadow-inset(@x: 0; @y: 10px; @blur: 10px; @color: rgba(0, 0, 0, 0.25)) {
+  @inset-shadow: inset @arguments;
+
+  -webkit-box-shadow: @inset-shadow;
+  -moz-box-shadow: @inset-shadow;
+  box-shadow: @inset-shadow;
+}
+
+.box-shadow-double(@x: 0; @y: -10px; @blur: 3px; @color: rgba(0, 0, 0, 0.7)) {
+
+  .box-shadow(@x; @y; @blur; @color);
+
+  @x2: -@x;
+  @y2: -@y;
+
+  @double-shadow: @box-shadow, @x2 @y2 @blur @color;
+
+  -webkit-box-shadow: @double-shadow;
+  -moz-box-shadow: @double-shadow;
+  box-shadow: @double-shadow;
+}
+
+.box-shadow-inset-double(@x: 0; @y: 10px; @blur: 10px; @color: rgba(0, 0, 0, 0.25)) {
+
+  @x2: -@x;
+  @y2: -@y;
+
+  @inset-double: inset @arguments, inset @x2 @y2 @blur @color;
+
+  -webkit-box-shadow: @inset-double;
+  -moz-box-shadow: @inset-double;
+  box-shadow: @inset-double;
+}
+
+.box-shadow-double-inset(@outShadow; @inShadow) {
+
+  @double-inset-shadow: @outShadow, @inShadow;
+
+  -webkit-box-shadow: @double-inset-shadow;
+  -moz-box-shadow: @double-inset-shadow;
+  box-shadow: @double-inset-shadow;
+}
+
+.border-gradient(@dir: top; @colors: #000, transparent) {
+  -webkit-border-image:
+          -webkit-linear-gradient(@dir, @colors) 1 100%;
+  -moz-border-image:
+          -moz-linear-gradient(@dir, @colors) 1 100%;
+  -o-border-image:
+          -o-linear-gradient(@dir, @colors) 1 100%;
+  border-image:
+          linear-gradient(@dir, @colors) 1 100%;
+}
+
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
