@@ -1,0 +1,23 @@
+﻿<footer class="footer-base container-fluid">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li>
+                <li>
+                    @Html.ActionLink(
+                        "Home", "Index", "Home",
+                        new {area = string.Empty},
+                        new {@class = "home-link"})
+                </li>
+                <li>
+                    @Html.ActionLink("Quizzes", "All", "Quizzes")
+                </li>
+                @*<li><a href="#/users">Users</a></li>*@
+            </ul>
+
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+
+</footer>
