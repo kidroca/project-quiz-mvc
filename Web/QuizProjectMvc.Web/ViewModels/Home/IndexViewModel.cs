@@ -1,6 +1,7 @@
 ﻿namespace QuizProjectMvc.Web.ViewModels.Home
 {
     using System.Collections.Generic;
+    using Quiz;
 
     public class IndexViewModel
     {

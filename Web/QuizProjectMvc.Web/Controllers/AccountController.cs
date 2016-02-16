@@ -12,6 +12,7 @@
     using QuizProjectMvc.Data.Models;
     using QuizProjectMvc.Web.ViewModels.Account;
 
+    // Todo: Allowanonymous on class and authorize on actions
     [Authorize]
     public class AccountController : BaseController
     {
