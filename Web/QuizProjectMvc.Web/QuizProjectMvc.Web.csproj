@@ -208,6 +208,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Account\AccountDetailsViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
@@ -238,6 +239,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\index.css">
       <DependentUpon>index.less</DependentUpon>
     </Content>
@@ -245,29 +248,22 @@
       <DependentUpon>index.css</DependentUpon>
     </Content>
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\LICENSE.txt" />
+    <Content Include="fonts\Ralph Oliver du Carrois License.txt" />
     <Content Include="Global.asax" />
-    <Content Include="images\blackboard.jpg" />
-    <Content Include="images\Carousel-icons.png" />
-    <Content Include="images\chalkboard.jpg" />
-    <Content Include="images\content-bg.png" />
-    <Content Include="images\content-icons.png" />
-    <Content Include="images\default-avatar.png" />
-    <Content Include="images\logo.png" />
-    <Content Include="images\question-thumb.jpg" />
-    <Content Include="images\quiz-thumb.jpg" />
-    <Content Include="images\quiz-thumb.png" />
-    <Content Include="images\quiz.jpg" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\images\blackboard.jpg" />
+    <Content Include="Content\images\Carousel-icons.png" />
+    <Content Include="Content\images\chalkboard.jpg" />
+    <Content Include="Content\images\content-bg.png" />
+    <Content Include="Content\images\content-icons.png" />
+    <Content Include="Content\images\default-avatar.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\question-thumb.jpg" />
+    <Content Include="Content\images\quiz-thumb.jpg" />
+    <Content Include="Content\images\quiz-thumb.png" />
+    <Content Include="Content\images\quiz.jpg" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Content\buttons.less" />
@@ -289,7 +285,30 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="fonts\ColabBol.otf" />
+    <Content Include="fonts\ColabLig.otf" />
+    <Content Include="fonts\ColabMed.otf" />
+    <Content Include="fonts\ColabReg.otf" />
+    <Content Include="fonts\ColabThi.otf" />
+    <Content Include="fonts\DJB.ttf" />
+    <Content Include="fonts\DroidSans-Bold.ttf" />
+    <Content Include="fonts\DroidSans.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -329,16 +348,22 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
     <Content Include="Views\Quizzes\ById.cshtml" />
     <Content Include="Views\Shared\_HeaderNav.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_ControllerPageTemplate.cshtml" />
+    <Content Include="Views\Home\DisplayTemplates\QuizBasicViewModel.cshtml" />
+    <Content Include="Views\Shared\_UsersForm.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AccountDetailsViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

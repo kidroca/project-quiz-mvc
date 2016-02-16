@@ -1,13 +1,14 @@
 ﻿namespace QuizProjectMvc.Web.ViewModels.Account
 {
     using System.ComponentModel.DataAnnotations;
+    using Common;
 
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [MinLength(ModelConstraints.UsernameMinLength, ErrorMessage = StatusMessages.MinimumLength)]
+        [MaxLength(ModelConstraints.UsernameMaxLength, ErrorMessage = StatusMessages.MaximumLength)]
+        public string Username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
