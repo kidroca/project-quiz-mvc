@@ -6,9 +6,9 @@
 
     public class Answer : BaseModel<int>
     {
-        public int QuestionId { get; set; }
+        public int ForQuestionId { get; set; }
 
-        public virtual Question Question { get; set; }
+        public virtual Question ForQuestion { get; set; }
 
         [Required]
         [MinLength(ModelConstraints.TitleMinLength)]
