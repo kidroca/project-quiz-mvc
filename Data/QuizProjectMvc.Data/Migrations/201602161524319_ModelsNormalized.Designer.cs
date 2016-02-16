@@ -7,13 +7,13 @@ namespace QuizProjectMvc.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class ModelsNormalized : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ModelsNormalized));
         
         string IMigrationMetadata.Id
         {
-            get { return "201602152304452_Initial"; }
+            get { return "201602161524319_ModelsNormalized"; }
         }
         
         string IMigrationMetadata.Source

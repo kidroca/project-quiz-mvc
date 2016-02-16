@@ -1,9 +1,6 @@
 ﻿namespace QuizProjectMvc.Web.Controllers
 {
     using System.Web.Mvc;
-    using Data.Models;
-    using Infrastructure.SharedModels;
-    using Infrastructure.SharedModels.Evaluation;
     using QuizProjectMvc.Services.Data;
     using ViewModels.Quiz;
 
@@ -25,24 +22,24 @@
         }
 
         // Todo: Solve Action HttpGet
-        [HttpPost]
-        public ActionResult Solve(SolutionForEvaluationModel quizSolution)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                // Todo Retry!
-            }
+        //[HttpPost]
+        //public ActionResult Solve(SolutionForEvaluationModel quizSolution)
+        //{
+        //    if (!this.ModelState.IsValid)
+        //    {
+        //        // Todo Retry!
+        //    }
 
-            var quiz = this.quizzes.GetById(quizSolution.ForQuizId);
-            if (quizSolution.Questions.Count != quiz.Questions.Count)
-            {
-                // return this.BadRequest("Invalid Solution: Questions count mismatch");
-            }
+        //    var quiz = this.quizzes.GetById(quizSolution.ForQuizId);
+        //    if (quizSolution.Questions.Count != quiz.Questions.Count)
+        //    {
+        //        // return this.BadRequest("Invalid Solution: Questions count mismatch");
+        //    }
 
-            QuizSolution solution = this.quizzes.SaveSolution(quizSolution, quiz, this.UserId);
-            QuizEvaluationResult result = this.quizzes.EvaluateSolution(solution);
+        //    QuizSolution solution = this.quizzes.SaveSolution(quizSolution, quiz, this.UserId);
+        //    QuizEvaluationResult result = this.quizzes.EvaluateSolution(solution);
 
-            // Todo: Redirect with result
-        }
+        //    // Todo: Redirect with result
+        //}
     }
 }

@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public abstract class BaseModel<TKey> : IAuditInfo, IDeletableEntity
+    public abstract class BaseModel<TKey> // : IAuditInfo, IDeletableEntity
     {
         [Key]
         public TKey Id { get; set; }

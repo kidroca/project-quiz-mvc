@@ -3,7 +3,7 @@
     using System.Linq;
 
     using QuizProjectMvc.Data.Models;
-    using QuizProjectMvc.Web.Infrastructure.SharedModels;
+    using QuizProjectMvc.Web.Infrastructure.SharedModels.Evaluation;
 
     public interface IQuizesService
     {

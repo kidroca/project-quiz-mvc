@@ -6,7 +6,7 @@
 
     using QuizProjectMvc.Data.Common;
     using QuizProjectMvc.Data.Models;
-    using QuizProjectMvc.Web.Infrastructure.SharedModels;
+    using QuizProjectMvc.Web.Infrastructure.SharedModels.Evaluation;
     using Web;
 
     public class QuizesService : IQuizesService

@@ -220,8 +220,6 @@
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizBasicViewModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizCategoryViewModel.cs" />
-    <Compile Include="ViewModels\Quiz\QuizQueryModel.cs" />
-    <Compile Include="ViewModels\Quiz\ResultOrder.cs" />
     <Compile Include="ViewModels\User\UserBasicInfoViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />

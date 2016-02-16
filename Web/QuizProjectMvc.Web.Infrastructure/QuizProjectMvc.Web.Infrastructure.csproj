@@ -53,10 +53,12 @@
     <Compile Include="Mapping\IMapTo{T}.cs" />
     <Compile Include="Mapping\QueryableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SharedModels\SelectedAnswerModel.cs" />
-    <Compile Include="SharedModels\QuizEvaluationResult.cs" />
-    <Compile Include="SharedModels\SolutionForEvaluationModel.cs" />
-    <Compile Include="SharedModels\QuestionResultModel.cs" />
+    <Compile Include="SharedModels\Evaluation\QuestionResultModel.cs" />
+    <Compile Include="SharedModels\Evaluation\QuizEvaluationResult.cs" />
+    <Compile Include="SharedModels\Evaluation\SelectedAnswerModel.cs" />
+    <Compile Include="SharedModels\Evaluation\SolutionForEvaluationModel.cs" />
+    <Compile Include="SharedModels\Search\QuizSearchModel.cs" />
+    <Compile Include="SharedModels\Search\ResultOrder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -75,6 +77,10 @@
     <ProjectReference Include="..\..\Data\QuizProjectMvc.Data.Models\QuizProjectMvc.Data.Models.csproj">
       <Project>{048df115-fad9-4bd4-9ba0-d99dfd32a2b2}</Project>
       <Name>QuizProjectMvc.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\QuizProjectMvc.Common\QuizProjectMvc.Common.csproj">
+      <Project>{701f322f-aa01-4ddc-90b6-6935981c1e73}</Project>
+      <Name>QuizProjectMvc.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
