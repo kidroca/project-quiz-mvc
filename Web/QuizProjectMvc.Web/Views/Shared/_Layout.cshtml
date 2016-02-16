@@ -20,12 +20,35 @@
         </header>
 
         <div id="content-wrapper" class="container-fluid body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - QuizProjectMvc</p>
-            </footer>
+
+            <div class="page">
+                <div class="wrapper">
+                    <h2>@ViewBag.Title</h2>
+                </div>
+
+                <div class="content">
+                    <div class="wrapper">
+
+                        @*Todo Page Rout*@
+                        <div class="current-route"><span>Current » <strong class="sub-title">Rout</strong></span></div>
+                        <div class="container-fluid clearfix">
+                            @RenderBody()
+                            @*<!-- Main Content-->
+                                <div class="page-content pull-left">
+                                    <section ng-include="ctrl.mainContentTemplate"></section>
+                                </div>
+                                <!-- Side Content-->
+                                <div class="sidebar pull-right">
+                                    <aside ng-include="ctrl.sidebarTemplate"></aside>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+        @Html.Partial("_Footer")
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
