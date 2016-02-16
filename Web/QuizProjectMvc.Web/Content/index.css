@@ -299,7 +299,7 @@ a.home-link {
   -webkit-box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.7), 0 10px 20px rgba(0, 0, 0, 0.7), inset 0 10px 15px rgba(0, 0, 0, 0.25), inset 0 -10px 15px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.7), 0 10px 20px rgba(0, 0, 0, 0.7), inset 0 10px 15px rgba(0, 0, 0, 0.25), inset 0 -10px 15px rgba(0, 0, 0, 0.25);
   box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.7), 0 10px 20px rgba(0, 0, 0, 0.7), inset 0 10px 15px rgba(0, 0, 0, 0.25), inset 0 -10px 15px rgba(0, 0, 0, 0.25);
-  background-image: url('../images/content-bg.png');
+  background-image: url('images/content-bg.png');
   background-repeat: repeat;
 }
 .wrapper {
@@ -423,6 +423,9 @@ form legend {
 }
 .single-article .article-body .article-image img {
   border: 5px solid white;
+}
+.quiz-item a.btn {
+  color: white;
 }
 .quiz-tooltip {
   color: #838383;

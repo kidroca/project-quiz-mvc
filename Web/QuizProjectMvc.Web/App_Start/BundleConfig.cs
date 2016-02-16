@@ -20,7 +20,10 @@
 
         private static void RegisterStyles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.css", "~/Content/index.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                "~/Content/bootstrap.css",
+                "~/Content/index.css",
+                "~/Content/font-awesome.css"));
         }
     }
 }

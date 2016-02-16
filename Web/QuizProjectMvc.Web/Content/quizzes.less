@@ -1,59 +1,65 @@
 @import "helpers/index";
 
+.quiz-item {
+    a {
+        &.btn {
+            color: white;
+        }
+    }
+}
+
 .quiz-tooltip {
-  color: @contentArticleColor;
+    color: @contentArticleColor;
 }
 
 .quiz-details {
-  p {
-
-  }
-
-  .basic-info {
-
-    .text-left, .text-right {
-      width: 50%;
+    p {
     }
-  }
 
-  .additional-info {
+    .basic-info {
 
-  }
+        .text-left, .text-right {
+            width: 50%;
+        }
+    }
 
-  .quiz-rating {
-    color: @btnStartGradient;
-  }
+    .additional-info {
+    }
+
+    .quiz-rating {
+        color: @btnStartGradient;
+    }
 }
 
 .answer-mark {
-  color: @articleHeading;
+    color: @articleHeading;
 }
 
 .form-group {
-  label.correct {
-    .fa-check {
-      position: absolute;
-      font-size: 30px;
-      color: #0B9900;
-      left: 21px;
-      top: 3px;
+    label.correct {
+        .fa-check {
+            position: absolute;
+            font-size: 30px;
+            color: #0B9900;
+            left: 21px;
+            top: 3px;
+        }
     }
-  }
 }
 
 .questions-paging {
 
-  .pagination-page {
-    text-shadow: none;
-    margin: 0 0.25rem;
-    display: inline-block;
+    .pagination-page {
+        text-shadow: none;
+        margin: 0 0.25rem;
+        display: inline-block;
 
-    &.active a {
-      background: @btnEndGradient;
-    }
+        &.active a {
+            background: @btnEndGradient;
+        }
 
-    a {
-      border-radius: 5px;
+        a {
+            border-radius: 5px;
+        }
     }
-  }
 }
