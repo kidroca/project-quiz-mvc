@@ -16,5 +16,8 @@
 
         public const int UsernameMinLength = 4;
         public const int UsernameMaxLength = 80;
+
+        public const int MinRating = 1;
+        public const int MaxRating = 10;
     }
 }
