@@ -1,8 +1,9 @@
-﻿namespace QuizProjectMvc.Web.ViewModels.Home
+﻿namespace QuizProjectMvc.Web.ViewModels.Quiz
 {
-    using QuizProjectMvc.Data.Models;
-    using QuizProjectMvc.Web.Infrastructure.Mapping;
+    using Data.Models;
+    using Infrastructure.Mapping;
 
+    // Todo: Add Constraints
     public class QuizCategoryViewModel : IMapFrom<QuizCategory>
     {
         public int Id { get; set; }

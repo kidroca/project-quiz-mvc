@@ -218,9 +218,11 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
-    <Compile Include="ViewModels\Home\QuizCategoryViewModel.cs" />
-    <Compile Include="ViewModels\Home\QuizBasicViewModel.cs" />
-    <Compile Include="ViewModels\Home\UserBasicInfoViewModel.cs" />
+    <Compile Include="ViewModels\Quiz\QuizBasicViewModel.cs" />
+    <Compile Include="ViewModels\Quiz\QuizCategoryViewModel.cs" />
+    <Compile Include="ViewModels\Quiz\QuizQueryModel.cs" />
+    <Compile Include="ViewModels\Quiz\ResultOrder.cs" />
+    <Compile Include="ViewModels\User\UserBasicInfoViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\FactorViewModel.cs" />
@@ -231,6 +233,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\User\UserDetailedInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

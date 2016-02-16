@@ -57,6 +57,10 @@
       <Project>{048df115-fad9-4bd4-9ba0-d99dfd32a2b2}</Project>
       <Name>QuizProjectMvc.Data.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Web\QuizProjectMvc.Web.Infrastructure\QuizProjectMvc.Web.Infrastructure.csproj">
+      <Project>{6813dc53-5eee-4507-8604-5301ee51a0d3}</Project>
+      <Name>QuizProjectMvc.Web.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuizProjectMvc.Services.Web\QuizProjectMvc.Services.Web.csproj">
       <Project>{deab17a2-58c1-448c-8a66-d49c3af7fc6c}</Project>
       <Name>QuizProjectMvc.Services.Web</Name>
@@ -75,6 +79,7 @@
       <Link>stylecop.json</Link>
     </AdditionalFiles>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

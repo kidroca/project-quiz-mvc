@@ -1,4 +1,4 @@
-﻿namespace QuizProjectMvc.Web.ViewModels.Home
+﻿namespace QuizProjectMvc.Web.ViewModels.User
 {
     using Data.Models;
     using Infrastructure.Mapping;
