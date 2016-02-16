@@ -1,4 +1,4 @@
-﻿namespace QuizProjectMvc.Web.Infrastructure.SharedModels
+﻿namespace QuizProjectMvc.Web.Infrastructure.SharedModels.Evaluation
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

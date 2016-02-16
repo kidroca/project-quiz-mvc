@@ -1,4 +1,4 @@
-﻿namespace QuizProjectMvc.Web.Infrastructure.SharedModels
+﻿namespace QuizProjectMvc.Web.Infrastructure.SharedModels.Evaluation
 {
     public class QuestionResultModel
     {
