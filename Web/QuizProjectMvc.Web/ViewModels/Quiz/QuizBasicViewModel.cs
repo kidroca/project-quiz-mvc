@@ -12,6 +12,8 @@
     {
         public int Id { get; set; }
 
+        public string Title { get; set; }
+
         public QuizCategoryViewModel Category { get; set; }
 
         public string Description { get; set; }
@@ -21,6 +23,12 @@
 
         [Display(Name = "Created On")]
         public DateTime CreatedOn { get; set; }
+
+        [Display(Name = "Questions")]
+        public virtual int QuestionsCount { get; set; }
+
+        [Display(Name = "Times Completed")]
+        public virtual int TimesCompleted { get; set; }
 
         public bool IsPrivate { get; set; }
 
@@ -32,7 +40,11 @@
                 .ForMember(
                     self => self.Rating,
                     opt => opt.MapFrom(
-                        db => db.Ratings.Count > 0 ? db.Ratings.Average(r => r.Value) : 0));
+                        dest => dest.Ratings.Count > 0 ? dest.Ratings.Average(r => r.Value) : 0))
+                .ForMember(
+                    self => self.QuestionsCount,
+                    opt => opt.MapFrom(
+                        dest => dest.Questions.Count));
         }
     }
 }
