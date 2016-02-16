@@ -13,7 +13,7 @@
         <header class="wrapper">
 
             <div id="logo">
-                <img src="~/images/logo.png" alt="logo">
+                <img src="~/Content/images/logo.png" alt="logo">
             </div>
 
             @Html.Partial("_HeaderNav")
@@ -30,7 +30,9 @@
                     <div class="wrapper">
 
                         @*Todo Page Rout*@
-                        <div class="current-route"><span>Current » <strong class="sub-title">Rout</strong></span></div>
+                        <div class="current-route">
+                            <span>Current » <strong class="sub-title">Rout</strong></span>
+                        </div>
                         <div class="container-fluid clearfix">
                             @RenderBody()
                             @*<!-- Main Content-->

@@ -2,24 +2,28 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<h1>Вицове</h1>
-<div class="row">
-    @foreach (var quiz in Model.Quizzes)
-    {
-        <div class="col-md-4">
-            <p>
-                @quiz.Description
-            </p>
-            <div>@quiz.Category</div>
-        </div>
-    }
+
+<!-- Main Content-->
+<div class="page-content pull-left">
+    <section>
+        @foreach (var quiz in Model.Quizzes)
+        {
+            @Html.DisplayFor(m => quiz)
+        }
+    </section>
 </div>
-<h1>Категории</h1>
-<div class="row">
-    @foreach (var category in Model.Categories)
-    {
-        <div class="col-md-2">
-            @category.Name
+
+<!-- Side Content-->
+<div class="sidebar pull-right">
+    <aside>
+        <h1>Categories</h1>
+        <div class="row">
+            @foreach (var category in Model.Categories)
+            {
+                <div class="col-md-2">
+                    @category.Name
+                </div>
+            }
         </div>
-    }
+    </aside>
 </div>

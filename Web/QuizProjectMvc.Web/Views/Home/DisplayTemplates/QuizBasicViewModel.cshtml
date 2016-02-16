@@ -1,0 +1,73 @@
+﻿@using QuizProjectMvc.Common
+@model QuizProjectMvc.Web.ViewModels.Quiz.QuizBasicViewModel
+
+<div class="quiz-item">
+
+    <h2>@Model.Title</h2>
+
+    <article class="single-article">
+
+        <div class="article-header">
+            <h4 class="sub-title">
+                Created by @Model.CreatedBy.FirstName @Model.CreatedBy.LastName on
+                <span class="article-date">@Model.CreatedOn.ToShortDateString()</span>
+            </h4>
+        </div>
+
+        <div class="article-body clearfix">
+
+            <div class="article-image pull-left">
+                @{
+                    string imageUrl = string.IsNullOrEmpty(Model.Category.AvatarUrl)
+                        ? "~/Content/images/quiz-thumb.png"
+                        :  Model.Category.AvatarUrl;
+                }
+                
+                <img src="@Url.Content(imageUrl)" alt="article image" class="img-responsive">
+            </div>
+
+            <div class="article-content pull-left">
+                <div class="quiz-details">
+                    <div class="basic-info">
+                        <p>
+                            <label>Category:</label> <span>@Model.Category.Name</span>
+                        </p>
+                        <p>
+                            @*Todo: AJAX Rating*@
+                            <label>Rating:</label>
+                            @for (int i = ModelConstraints.MinRating; i <= ModelConstraints.MaxRating; i++)
+                            {
+                                string icon = Model.Rating >= i
+                                    ? "glyphicon-ok-sign"
+                                    : "glyphicon-ok-circle";
+
+                                 @*Todo: Wrap in ancor ? *@
+                                <i title="@i" class="glyphicon @icon"></i>
+                            }
+                        </p>
+                        <p>
+                            <label>Question:</label > <span>@Model.QuestionsCount</span>
+                        </p>
+                        <p>
+                            <label>Times Completed:</label> <span>@Model.QuestionsCount</span>
+                        </p>
+                    </div>
+                    <div class="description">
+                        <label>Description:</label>
+                        <p class="hide-overflow">
+                            @Model.Description
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <div>
+        @Html.ActionLink("Check It Out", "Details", "Quizzes", new
+        {
+            @class = "btn btn-primary btn-round col-md-offset-9"
+        })
+    </div>
+</div>
+
