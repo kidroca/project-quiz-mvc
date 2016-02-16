@@ -1,23 +1,52 @@
 ﻿namespace QuizProjectMvc.Web.ViewModels.Account
 {
     using System.ComponentModel.DataAnnotations;
+    using Common;
 
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
         [Display(Name = "Email")]
+        [EmailAddress]
+        [MinLength(ModelConstraints.UsernameMinLength)]
+        [MaxLength(ModelConstraints.UsernameMaxLength)]
         public string Email { get; set; }
 
+        [Display(Name = "Username")]
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
+        [MinLength(ModelConstraints.UsernameMinLength, ErrorMessage = StatusMessages.MinimumLength)]
+        [MaxLength(ModelConstraints.UsernameMaxLength, ErrorMessage = StatusMessages.MaximumLength)]
+        public string UserName { get; set; }
+
         [Display(Name = "Password")]
+        [Required]
+        [DataType(DataType.Password)]
+        [MinLength(ModelConstraints.UsernameMinLength, ErrorMessage = StatusMessages.MinimumLength)]
+        [MaxLength(ModelConstraints.UsernameMaxLength, ErrorMessage = StatusMessages.MaximumLength)]
         public string Password { get; set; }
 
-        [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Required]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = StatusMessages.PasswordMismatch)]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "First Name")]
+        [Required]
+        [MinLength(ModelConstraints.NameMinLength, ErrorMessage = StatusMessages.MinimumLength)]
+        [MaxLength(ModelConstraints.NameMaxLength, ErrorMessage = StatusMessages.MaximumLength)]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        [Required]
+        [MinLength(ModelConstraints.NameMinLength, ErrorMessage = StatusMessages.MinimumLength)]
+        [MaxLength(ModelConstraints.NameMaxLength, ErrorMessage = StatusMessages.MaximumLength)]
+        public string LastName { get; set; }
+
+        // Todo chage for file upload
+        [Display(Name = "Avatar Url")]
+        [Url]
+        [MinLength(ModelConstraints.UrlMinLength, ErrorMessage = StatusMessages.MinimumLength)]
+        [MaxLength(ModelConstraints.UrlMaxLength, ErrorMessage = StatusMessages.MaximumLength)]
+        public string AvatarUrl { get; set; }
     }
 }
