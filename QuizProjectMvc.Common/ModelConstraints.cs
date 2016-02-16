@@ -13,5 +13,8 @@
 
         public const int UrlMinLength = 10;
         public const int UrlMaxLength = 500;
+
+        public const int UsernameMinLength = 4;
+        public const int UsernameMaxLength = 80;
     }
 }

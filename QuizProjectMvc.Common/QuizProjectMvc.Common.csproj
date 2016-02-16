@@ -45,6 +45,7 @@
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="ModelConstraints.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatusMessages.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
