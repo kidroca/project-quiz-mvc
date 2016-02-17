@@ -313,7 +313,7 @@ a.home-link {
   background-image: -o-linear-gradient(180deg, #3e4852, #323b44);
   background-image: linear-gradient(180deg, #3e4852, #323b44);
 }
-form legend {
+.form-horizontal legend {
   font-weight: normal;
 }
 .form-group .toggle-switch,

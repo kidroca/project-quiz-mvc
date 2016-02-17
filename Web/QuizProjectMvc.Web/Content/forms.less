@@ -1,38 +1,38 @@
 // ======== Imports =============
 @import "helpers/index";
 
-form {
-  legend {
-    font-weight: normal;
-  }
+.form-horizontal {
+    legend {
+        font-weight: normal;
+    }
 }
 
 .form-group {
 
-  .toggle-switch, a {
-    text-shadow: none;
-  }
-
-  .toggle-switch {
-    .switch-left {
-      background-color: @btnEndGradient;
+    .toggle-switch, a {
+        text-shadow: none;
     }
-  }
 
-  .dropdown .dropdown-menu li a {
-    background: @btnStartGradient;
-    color: darken(@btnText, 35%);
-
-    &:hover, &:focus {
-      color: darken(@btnText, 20%);
-      .btn-grad-lighter();
+    .toggle-switch {
+        .switch-left {
+            background-color: @btnEndGradient;
+        }
     }
-  }
 
-  &.required .control-label {
-    &:after {
-      content:"*";
-      color: #ff4d00;
+    .dropdown .dropdown-menu li a {
+        background: @btnStartGradient;
+        color: darken(@btnText, 35%);
+
+        &:hover, &:focus {
+            color: darken(@btnText, 20%);
+            .btn-grad-lighter();
+        }
     }
-  }
+
+    &.required .control-label {
+        &:after {
+            content: "*";
+            color: #ff4d00;
+        }
+    }
 }
