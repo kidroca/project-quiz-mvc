@@ -9,6 +9,9 @@
         {
             RegisterScripts(bundles);
             RegisterStyles(bundles);
+
+            // Enable for minification
+            // BundleTable.EnableOptimizations = true;
         }
 
         private static void RegisterScripts(BundleCollection bundles)

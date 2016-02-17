@@ -10,14 +10,10 @@
 <body>
     <div id="main-illumination" class="illumination"></div>
     <div id="main-wrapper">
-        <header class="wrapper">
 
-            <div id="logo">
-                <img src="~/Content/images/logo.png" alt="logo">
-            </div>
+        @Html.Partial("_HeaderPartial")
 
-            @Html.Partial("_HeaderNav")
-        </header>
+        @RenderSection("notification", required: false);
 
         <div id="content-wrapper" class="container-fluid body-content">
 
@@ -35,14 +31,6 @@
                         </div>
                         <div class="container-fluid clearfix">
                             @RenderBody()
-                            @*<!-- Main Content-->
-                                <div class="page-content pull-left">
-                                    <section ng-include="ctrl.mainContentTemplate"></section>
-                                </div>
-                                <!-- Side Content-->
-                                <div class="sidebar pull-right">
-                                    <aside ng-include="ctrl.sidebarTemplate"></aside>
-                                </div>*@
                         </div>
                     </div>
                 </div>
@@ -50,7 +38,7 @@
 
         </div>
 
-        @Html.Partial("_Footer")
+        @Html.Partial("_FooterPartial")
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")

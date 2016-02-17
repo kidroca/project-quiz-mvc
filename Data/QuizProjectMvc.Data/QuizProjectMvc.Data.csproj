@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201602161524319_ModelsNormalized.Designer.cs">
       <DependentUpon>201602161524319_ModelsNormalized.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602171525385_IHavePrimaryKey.cs" />
+    <Compile Include="Migrations\201602171525385_IHavePrimaryKey.Designer.cs">
+      <DependentUpon>201602171525385_IHavePrimaryKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,6 +102,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201602161524319_ModelsNormalized.resx">
       <DependentUpon>201602161524319_ModelsNormalized.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602171525385_IHavePrimaryKey.resx">
+      <DependentUpon>201602171525385_IHavePrimaryKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

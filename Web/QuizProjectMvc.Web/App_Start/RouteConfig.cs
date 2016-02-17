@@ -8,10 +8,12 @@
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute(
-                name: "JokePage",
-                url: "Joke/{id}",
-                defaults: new { controller = "Quizzes", action = "ById" });
+
+            //routes.MapRoute(
+            //    name: "QuizPage",
+            //    url: "Quiz/{id}",
+            //    defaults: new { controller = "Quizzes", action = "ById" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

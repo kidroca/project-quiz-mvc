@@ -100,6 +100,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Mvc.Expressions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Web.Mvc.Expressions.1.0.1\lib\System.Web.Mvc.Expressions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -350,12 +354,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
     <Content Include="Views\Quizzes\ById.cshtml" />
-    <Content Include="Views\Shared\_HeaderNav.cshtml" />
-    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_HeaderPartial.cshtml" />
+    <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_ControllerPageTemplate.cshtml" />
     <Content Include="Views\Home\DisplayTemplates\QuizBasicViewModel.cshtml" />
-    <Content Include="Views\Shared\_UsersForm.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AccountDetailsViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
