@@ -4,6 +4,7 @@
 
     using QuizProjectMvc.Data.Models;
     using QuizProjectMvc.Web.Infrastructure.SharedModels.Evaluation;
+    using QuizProjectMvc.Web.Infrastructure.SharedModels.Search;
 
     public interface IQuizesService
     {
@@ -14,5 +15,7 @@
         QuizSolution SaveSolution(SolutionForEvaluationModel quizSolution, Quiz quiz, string userId);
 
         Quiz GetById(string id);
+
+        IQueryable<Quiz> SearchQuizzes(QuizSearchModel queryParameters);
     }
 }

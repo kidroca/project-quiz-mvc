@@ -3,21 +3,27 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
+    using Microsoft.AspNet.Identity;
     using QuizProjectMvc.Data.Common;
     using QuizProjectMvc.Data.Models;
     using QuizProjectMvc.Web.Infrastructure.SharedModels.Evaluation;
+    using QuizProjectMvc.Web.Infrastructure.SharedModels.Search;
     using Web;
 
     public class QuizesService : IQuizesService
     {
         private readonly IDbRepository<Quiz> quizzes;
+        private readonly UserManager<User> manager;
         private readonly IIdentifierProvider identifierProvider;
 
-        public QuizesService(IDbRepository<Quiz> quizzes, IIdentifierProvider identifierProvider)
+        public QuizesService(
+            IDbRepository<Quiz> quizzes,
+            IIdentifierProvider identifierProviders,
+            UserManager<User> manager)
         {
             this.quizzes = quizzes;
-            this.identifierProvider = identifierProvider;
+            this.identifierProvider = identifierProviders;
+            this.manager = manager;
         }
 
         public QuizEvaluationResult EvaluateSolution(QuizSolution quizSolution)
@@ -89,6 +95,93 @@
         public IQueryable<Quiz> GetRandomQuizzes(int count)
         {
             return this.quizzes.All().OrderBy(x => Guid.NewGuid()).Take(count);
+        }
+
+        public IQueryable<Quiz> SearchQuizzes(QuizSearchModel queryParameters)
+        {
+            var result = this.quizzes.All();
+            this.ApplyFiltering(result, queryParameters);
+            this.ApplyOrdering(result, queryParameters);
+
+            return result;
+        }
+
+        private void ApplyFiltering(IQueryable<Quiz> result, QuizSearchModel queryParameters)
+        {
+            if (queryParameters.Category != null)
+            {
+                result = result.Where(q => q.Category.Name.Equals(queryParameters.Category, StringComparison.OrdinalIgnoreCase));
+            }
+
+            if (queryParameters.KeyPhrase != null)
+            {
+                string phrase = queryParameters.KeyPhrase.ToLower();
+
+                result = result.Where(q => q.Title.ToLower().Contains(phrase)
+                                             || q.Description.ToLower().Contains(phrase));
+            }
+
+            if (queryParameters.FromDate != null)
+            {
+                result = result.Where(q => q.CreatedOn >= queryParameters.FromDate);
+            }
+
+            if (queryParameters.ToDate != null)
+            {
+                result = result.Where(q => q.CreatedOn <= queryParameters.ToDate);
+            }
+
+            if (queryParameters.MinQuestions != null)
+            {
+                result = result.Where(q => q.Questions.Count >= queryParameters.MinQuestions);
+            }
+
+            if (queryParameters.MaxQuestions != null)
+            {
+                result = result.Where(q => q.Questions.Count <= queryParameters.MaxQuestions);
+            }
+
+            if (queryParameters.MinRating != null)
+            {
+                result = result.Where(q => q.Ratings.Average(r => r.Value) >= queryParameters.MinRating);
+            }
+
+            if (queryParameters.MaxRating != null)
+            {
+                result = result.Where(q => q.Ratings.Average(r => r.Value) <= queryParameters.MaxRating);
+            }
+        }
+
+        private void ApplyOrdering(IQueryable<Quiz> result, QuizSearchModel queryParameters)
+        {
+            if (queryParameters.OrderBy == null)
+            {
+                result = result.OrderByDescending(q => q.CreatedOn);
+            }
+
+            switch (queryParameters.OrderBy)
+            {
+                case ResultOrder.ByDate:
+                    result = queryParameters.OrderDescending
+                        ? result.OrderByDescending(q => q.CreatedOn)
+                        : result.OrderBy(q => q.CreatedOn);
+                    break;
+                case ResultOrder.ByRating:
+                    result = queryParameters.OrderDescending
+                        ? result.OrderByDescending(q => q.Ratings.Average(r => r.Value))
+                        : result.OrderBy(q => q.Ratings.Average(r => r.Value));
+                    break;
+                case ResultOrder.ByNumberOfQuestions:
+                    result = queryParameters.OrderDescending
+                        ? result.OrderByDescending(q => q.Questions.Count)
+                        : result.OrderBy(q => q.Questions.Count);
+                    break;
+                case ResultOrder.ByTimesTaken:
+                    result = queryParameters.OrderDescending
+                        ? result.OrderByDescending(q => q.Solutions.Count)
+                        : result.OrderBy(q => q.Solutions.Count);
+                    break;
+            }
         }
     }
 }
