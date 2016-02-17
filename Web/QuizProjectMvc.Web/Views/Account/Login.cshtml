@@ -2,9 +2,9 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
-    string labelClass = "col-md-3 control-label";
-    string inputClass = "form-control";
-    string validationClass = "text-danger";
+    var labelAttributes = new { @class = "col-md-3 control-label" };
+    var inputAttributes = new { @class = "form-control" };
+    var validationAttributes = new { @class = "text-danger" };
 }
 
 <div>
@@ -18,18 +18,18 @@
                     @Html.AntiForgeryToken()
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Username, new {@class = labelClass})
+                        @Html.LabelFor(m => m.Username, labelAttributes)
                         <div class="col-md-9">
-                            @Html.TextBoxFor(m => m.Username, new {@class = inputClass})
-                            @Html.ValidationMessageFor(m => m.Username, string.Empty, new {@class = validationClass})
+                            @Html.TextBoxFor(m => m.Username, inputAttributes)
+                            @Html.ValidationMessageFor(m => m.Username, string.Empty, validationAttributes)
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new {@class = labelClass})
+                        @Html.LabelFor(m => m.Password, labelAttributes)
                         <div class="col-md-9">
-                            @Html.PasswordFor(m => m.Password, new {@class = inputClass})
-                            @Html.ValidationMessageFor(m => m.Password, "", new {@class = validationClass})
+                            @Html.PasswordFor(m => m.Password, inputAttributes)
+                            @Html.ValidationMessageFor(m => m.Password, "", validationAttributes)
 
                             <div class="checkbox">
                                 <label>

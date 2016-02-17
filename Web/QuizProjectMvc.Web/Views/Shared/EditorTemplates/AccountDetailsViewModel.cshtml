@@ -1,43 +1,43 @@
 ﻿@model QuizProjectMvc.Web.ViewModels.Account.AccountDetailsViewModel
 
 @{
-    string labelClass = "col-lg-3 control-label";
-    string inputClass = "form-control";
-    string validationClass = "text-danger";
+    var labelAttributes = new {@class = "col-lg-3 control-label"};
+    var inputAttributes = new { @class = "form-control" };
+    var validationAttributes = new { @class = "text-danger" };
 }
 
 <!-- First Name-->
 <div class="form-group required">
-    @Html.LabelFor(m => m.FirstName, new {@class = labelClass})
+    @Html.LabelFor(m => m.FirstName, labelAttributes)
     <div class="col-lg-9">
-        @Html.TextBoxFor(m => m.FirstName, new {@class = inputClass})
-        @Html.ValidationMessageFor(m => m.FirstName, String.Empty, new { @class = validationClass })
+        @Html.TextBoxFor(m => m.FirstName, inputAttributes)
+        @Html.ValidationMessageFor(m => m.FirstName, String.Empty, validationAttributes)
     </div>   
 </div>
 
 <!-- Last Name-->
 <div class="form-group required">
-    @Html.LabelFor(m => m.LastName, new {@class = labelClass})
+    @Html.LabelFor(m => m.LastName, labelAttributes)
     <div class="col-lg-9">
-        @Html.TextBoxFor(m => m.LastName, new {@class = inputClass})
-        @Html.ValidationMessageFor(m => m.LastName, String.Empty, new {@class = validationClass})
+        @Html.TextBoxFor(m => m.LastName, inputAttributes)
+        @Html.ValidationMessageFor(m => m.LastName, String.Empty, validationAttributes)
     </div>
 </div>
 
 <!-- Email-->
 <div class="form-group">
-    @Html.LabelFor(m => m.Email, new { @class = labelClass })
+    @Html.LabelFor(m => m.Email, labelAttributes)
     <div class="col-lg-9">
-        @Html.TextBoxFor(m => m.Email, new {@class = inputClass, type = "email"})
-        @Html.ValidationMessageFor(m => m.Email, String.Empty, new {@class = validationClass})
+        @Html.TextBoxFor(m => m.Email, inputAttributes)
+        @Html.ValidationMessageFor(m => m.Email, String.Empty, validationAttributes)
     </div>
 </div>
 
 <!-- Profile Picture-->
 <div class="form-group">
-    @Html.LabelFor(m => m.AvatarUrl, new { @class = labelClass, type = "url" })
+    @Html.LabelFor(m => m.AvatarUrl, new { @class = labelAttributes, type = "url" })
     <div class="col-lg-9">
-        @Html.TextBoxFor(m => m.AvatarUrl, new { @class = inputClass })
-        @Html.ValidationMessageFor(m => m.AvatarUrl, String.Empty, new { @class = validationClass })
+        @Html.TextBoxFor(m => m.AvatarUrl, inputAttributes)
+        @Html.ValidationMessageFor(m => m.AvatarUrl, String.Empty, validationAttributes)
     </div>
 </div>

@@ -1,9 +1,9 @@
 ﻿@model QuizProjectMvc.Web.ViewModels.Account.RegisterViewModel
 @{
     ViewBag.Title = "Register";
-    string labelClass = "col-lg-3 control-label";
-    string inputClass = "form-control";
-    string validationClass = "text-danger";
+    var labelAttributes = new { @class = "col-lg-3 control-label" };
+    var inputAttributes = new { @class = "form-control" };
+    var validationAttributes = new { @class = "text-danger" };
 }
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -15,26 +15,26 @@
 
 
         <div class="form-group required">
-            @Html.LabelFor(m => m.UserName, new {@class = labelClass})
+            @Html.LabelFor(m => m.UserName, labelAttributes)
             <div class="col-lg-9">
-                @Html.TextBoxFor(m => m.UserName, new {@class = inputClass})
-                @Html.ValidationMessageFor(m => m.UserName, String.Empty, new {@class = validationClass})
+                @Html.TextBoxFor(m => m.UserName, inputAttributes)
+                @Html.ValidationMessageFor(m => m.UserName, String.Empty, validationAttributes)
             </div>
         </div>
 
         <div class="form-group required">
-            @Html.LabelFor(m => m.Password, new { @class = labelClass })
+            @Html.LabelFor(m => m.Password, labelAttributes)
             <div class="col-lg-9">
-                @Html.TextBoxFor(m => m.Password, new { @class = inputClass })
-                @Html.ValidationMessageFor(m => m.Password, String.Empty, new { @class = validationClass })
+                @Html.TextBoxFor(m => m.Password, inputAttributes)
+                @Html.ValidationMessageFor(m => m.Password, String.Empty, validationAttributes)
             </div>
         </div>
 
         <div class="form-group required">
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = labelClass })
+            @Html.LabelFor(m => m.ConfirmPassword, labelAttributes)
             <div class="col-lg-9">
-                @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = inputClass })
-                @Html.ValidationMessageFor(m => m.ConfirmPassword, String.Empty, new { @class = validationClass })
+                @Html.TextBoxFor(m => m.ConfirmPassword, inputAttributes)
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, String.Empty, validationAttributes)
             </div>
         </div>
 
