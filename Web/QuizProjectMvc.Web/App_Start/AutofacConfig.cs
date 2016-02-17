@@ -11,7 +11,9 @@
 
     using Data;
     using Data.Common;
-
+    using Data.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Services.Data;
     using Services.Web;
 
@@ -57,8 +59,13 @@
                 .As<IIdentifierProvider>()
                 .InstancePerRequest();
 
+            builder.RegisterType<UserStore<User>>()
+                    .As<IUserStore<User>>();
+            builder.RegisterType<UserManager<User>>();
+
             var servicesAssembly = Assembly.GetAssembly(typeof(IQuizesService));
-            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(servicesAssembly)
+                .AsImplementedInterfaces();
 
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))

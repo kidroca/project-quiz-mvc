@@ -1,9 +1,13 @@
 ﻿@using QuizProjectMvc.Common
+@using QuizProjectMvc.Web.Controllers
 @model QuizProjectMvc.Web.ViewModels.Quiz.QuizBasicViewModel
 
 <div class="quiz-item">
 
-    <h2>@Model.Title</h2>
+    <h2>
+        @*Todo fix the Id*@
+        @(Html.ActionLink<QuizzesController>(Model.Title, c => c.ById(Model.Id.ToString())))
+    </h2>
 
     <article class="single-article">
 
@@ -64,10 +68,14 @@
     </article>
 
     <div>
-        @Html.ActionLink("Check It Out", "Details", "Quizzes", new
+        @(Html.ActionLink<QuizzesController>("Check It Out", c => c.ById(Model.Id.ToString()), null, new
         {
             @class = "btn btn-primary btn-round col-md-offset-9"
-        })
+        }))
+        @*@Html.ActionLink("Check It Out", "Details", "Quizzes", new
+        {
+            @class = "btn btn-primary btn-round col-md-offset-9"
+        })*@
     </div>
 </div>
 

@@ -5,12 +5,12 @@
     using System.ComponentModel.DataAnnotations;
     using System.Security.Claims;
     using System.Threading.Tasks;
-
+    using Common.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using QuizProjectMvc.Common;
 
-    public class User : IdentityUser
+    public class User : IdentityUser, IHavePrimaryKey<string>, IAuditInfo, IDeletableEntity
     {
         private ICollection<Quiz> quizzesCreated;
         private ICollection<QuizRating> ratingsGiven;
@@ -36,8 +36,6 @@
         [MaxLength(ModelConstraints.UrlMaxLength)]
         public string AvatarUrl { get; set; }
 
-        public DateTime RegisteredOn { get; set; }
-
         public virtual ICollection<Quiz> QuizzesCreated
         {
             get { return this.quizzesCreated; }
@@ -55,6 +53,14 @@
             get { return this.ratingsGiven; }
             set { this.ratingsGiven = value; }
         }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)
         {
