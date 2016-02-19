@@ -1,4 +1,4 @@
-﻿namespace QuizProjectMvc.Web.Infrastructure.SharedModels.Search
+﻿namespace QuizProjectMvc.Services.Data.SharedModels.Search
 {
     using System;
 

@@ -15,12 +15,14 @@
         private ICollection<Quiz> quizzesCreated;
         private ICollection<QuizRating> ratingsGiven;
         private ICollection<QuizSolution> solutionsSubmited;
+        private ICollection<Comment> comments;
 
         public User()
         {
             this.ratingsGiven = new HashSet<QuizRating>();
             this.quizzesCreated = new HashSet<Quiz>();
             this.solutionsSubmited = new HashSet<QuizSolution>();
+            this.comments = new HashSet<Comment>();
         }
 
         [MinLength(ModelConstraints.NameMinLength)]
@@ -35,6 +37,12 @@
         [MinLength(ModelConstraints.UrlMinLength)]
         [MaxLength(ModelConstraints.UrlMaxLength)]
         public string AvatarUrl { get; set; }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
+        }
 
         public virtual ICollection<Quiz> QuizzesCreated
         {

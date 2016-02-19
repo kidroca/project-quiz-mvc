@@ -3,8 +3,8 @@
     using System.Linq;
 
     using QuizProjectMvc.Data.Models;
-    using QuizProjectMvc.Web.Infrastructure.SharedModels.Evaluation;
-    using QuizProjectMvc.Web.Infrastructure.SharedModels.Search;
+    using SharedModels.Evaluation;
+    using SharedModels.Search;
 
     public interface IQuizesService
     {

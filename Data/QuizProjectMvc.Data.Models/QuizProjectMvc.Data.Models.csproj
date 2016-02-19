@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Answer.cs" />
+    <Compile Include="Comment.cs" />
     <Compile Include="QuizCategory.cs" />
     <Compile Include="QuizSolution.cs" />
     <Compile Include="User.cs" />

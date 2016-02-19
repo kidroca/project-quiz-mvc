@@ -1,8 +1,7 @@
 namespace QuizProjectMvc.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class ModelsNormalized : DbMigration
     {
         public override void Up()
@@ -29,7 +28,7 @@ namespace QuizProjectMvc.Data.Migrations
             CreateIndex("dbo.QuizCategories", "IsDeleted");
             CreateIndex("dbo.QuizSolutions", "IsDeleted");
         }
-        
+
         public override void Down()
         {
             DropIndex("dbo.QuizSolutions", new[] { "IsDeleted" });

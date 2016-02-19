@@ -6,8 +6,8 @@
     using Microsoft.AspNet.Identity;
     using QuizProjectMvc.Data.Common;
     using QuizProjectMvc.Data.Models;
-    using QuizProjectMvc.Web.Infrastructure.SharedModels.Evaluation;
-    using QuizProjectMvc.Web.Infrastructure.SharedModels.Search;
+    using SharedModels.Evaluation;
+    using SharedModels.Search;
     using Web;
 
     public class QuizesService : IQuizesService

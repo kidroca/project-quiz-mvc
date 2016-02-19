@@ -11,12 +11,14 @@
         private ICollection<QuizRating> rattings;
         private ICollection<Question> questions;
         private ICollection<QuizSolution> solutions;
+        private ICollection<Comment> comments;
 
         public Quiz()
         {
             this.rattings = new HashSet<QuizRating>();
             this.questions = new HashSet<Question>();
             this.solutions = new HashSet<QuizSolution>();
+            this.comments = new HashSet<Comment>();
         }
 
         [Required]
@@ -58,6 +60,12 @@
         {
             get { return this.solutions; }
             set { this.solutions = value; }
+        }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
         }
     }
 }

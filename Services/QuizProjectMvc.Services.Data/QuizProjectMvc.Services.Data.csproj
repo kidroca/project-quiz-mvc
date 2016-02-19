@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,6 +53,12 @@
     <Compile Include="IQuizesService.cs" />
     <Compile Include="QuizesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedModels\Evaluation\QuestionResultModel.cs" />
+    <Compile Include="SharedModels\Evaluation\QuizEvaluationResult.cs" />
+    <Compile Include="SharedModels\Evaluation\SelectedAnswerModel.cs" />
+    <Compile Include="SharedModels\Evaluation\SolutionForEvaluationModel.cs" />
+    <Compile Include="SharedModels\Search\QuizSearchModel.cs" />
+    <Compile Include="SharedModels\Search\ResultOrder.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\QuizProjectMvc.Data.Common\QuizProjectMvc.Data.Common.csproj">
@@ -84,7 +91,9 @@
       <Link>stylecop.json</Link>
     </AdditionalFiles>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

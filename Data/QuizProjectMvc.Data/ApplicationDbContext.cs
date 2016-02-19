@@ -2,6 +2,7 @@
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
     using System.Linq;
 
     using Common.Models;
@@ -29,6 +30,8 @@
 
         public IDbSet<QuizSolution> QuizSolutions { get; set; }
 
+        public IDbSet<Comment> Comments { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
@@ -46,17 +49,25 @@
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<QuizRating>()
-                .HasRequired(rating => rating.Quiz)
-                .WithMany(quiz => quiz.Ratings)
-                .HasForeignKey(rating => rating.QuizId)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
-            modelBuilder.Entity<QuizSolution>()
-                .HasRequired(solution => solution.ForQuiz)
-                .WithMany(quiz => quiz.Solutions)
-                .HasForeignKey(solution => solution.ForQuizId)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<QuizRating>()
+            //    .HasRequired(rating => rating.Quiz)
+            //    .WithMany(quiz => quiz.Ratings)
+            //    .HasForeignKey(rating => rating.QuizId)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<QuizSolution>()
+            //    .HasRequired(solution => solution.ForQuiz)
+            //    .WithMany(quiz => quiz.Solutions)
+            //    .HasForeignKey(solution => solution.ForQuizId)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Comment>()
+            //    .HasRequired(comment => comment.Quiz)
+            //    .WithMany(quiz => quiz.Comments)
+            //    .HasForeignKey(comment => comment.QuizId)
+            //    .WillCascadeOnDelete(false);
         }
 
         private void ApplyAuditInfoRules()
