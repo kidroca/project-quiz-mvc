@@ -53,12 +53,12 @@
     <Compile Include="IQuizesService.cs" />
     <Compile Include="QuizesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SharedModels\Evaluation\QuestionResultModel.cs" />
-    <Compile Include="SharedModels\Evaluation\QuizEvaluationResult.cs" />
-    <Compile Include="SharedModels\Evaluation\SelectedAnswerModel.cs" />
-    <Compile Include="SharedModels\Evaluation\SolutionForEvaluationModel.cs" />
-    <Compile Include="SharedModels\Search\QuizSearchModel.cs" />
-    <Compile Include="SharedModels\Search\ResultOrder.cs" />
+    <Compile Include="Models\Evaluation\QuestionResultModel.cs" />
+    <Compile Include="Models\Evaluation\QuizEvaluationResult.cs" />
+    <Compile Include="Models\Evaluation\SelectedAnswerModel.cs" />
+    <Compile Include="Models\Evaluation\SolutionForEvaluationModel.cs" />
+    <Compile Include="Models\Search\QuizSearchModel.cs" />
+    <Compile Include="Models\Search\ResultOrder.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\QuizProjectMvc.Data.Common\QuizProjectMvc.Data.Common.csproj">
@@ -91,9 +91,7 @@
       <Link>stylecop.json</Link>
     </AdditionalFiles>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

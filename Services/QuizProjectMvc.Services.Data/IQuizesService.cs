@@ -1,10 +1,9 @@
 ﻿namespace QuizProjectMvc.Services.Data
 {
     using System.Linq;
-
+    using Models.Evaluation;
+    using Models.Search;
     using QuizProjectMvc.Data.Models;
-    using SharedModels.Evaluation;
-    using SharedModels.Search;
 
     public interface IQuizesService
     {

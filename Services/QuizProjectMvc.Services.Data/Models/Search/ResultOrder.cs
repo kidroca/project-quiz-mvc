@@ -1,4 +1,4 @@
-﻿namespace QuizProjectMvc.Services.Data.SharedModels.Search
+﻿namespace QuizProjectMvc.Services.Data.Models.Search
 {
     public enum ResultOrder
     {

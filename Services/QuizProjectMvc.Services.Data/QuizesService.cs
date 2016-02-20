@@ -4,10 +4,10 @@
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.AspNet.Identity;
+    using Models.Evaluation;
+    using Models.Search;
     using QuizProjectMvc.Data.Common;
     using QuizProjectMvc.Data.Models;
-    using SharedModels.Evaluation;
-    using SharedModels.Search;
     using Web;
 
     public class QuizesService : IQuizesService
