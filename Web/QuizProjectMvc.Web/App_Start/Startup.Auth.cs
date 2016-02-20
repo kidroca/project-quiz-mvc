@@ -1,6 +1,7 @@
 ﻿namespace QuizProjectMvc.Web
 {
     using System;
+    using System.Configuration;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin;
@@ -45,9 +46,9 @@
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
-            // app.UseFacebookAuthentication(
-            // appId: "",
-            // appSecret: "");
+            app.UseGoogleAuthentication(
+                clientId: ConfigurationManager.AppSettings["GoogClientID"],
+                clientSecret: ConfigurationManager.AppSettings["GoogClientSecret"]);
         }
     }
 }
