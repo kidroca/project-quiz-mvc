@@ -23,6 +23,8 @@
             this.quizzesCreated = new HashSet<Quiz>();
             this.solutionsSubmited = new HashSet<QuizSolution>();
             this.comments = new HashSet<Comment>();
+
+            this.CreatedOn = DateTime.Now;
         }
 
         [MinLength(ModelConstraints.NameMinLength)]
