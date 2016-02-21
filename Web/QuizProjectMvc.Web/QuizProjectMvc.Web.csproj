@@ -261,6 +261,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\google-btn.jpg" />
     <Content Include="Content\index.css">
       <DependentUpon>index.less</DependentUpon>
     </Content>

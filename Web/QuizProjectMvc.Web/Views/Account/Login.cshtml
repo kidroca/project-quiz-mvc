@@ -8,9 +8,9 @@
 }
 
 <div>
-    <div class="col-md-8">
+    <div class="col-md-7">
         <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new {ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+            @using (Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 <fieldset>
                     <legend>Use a local account to log in.</legend>
@@ -42,7 +42,7 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-10 col-md-2">
-                            <input type="submit" value="Log in" class="btn btn-primary"/>
+                            <input type="submit" value="Log in" class="btn btn-primary" />
                         </div>
                     </div>
 
@@ -53,17 +53,17 @@
                 </fieldset>
             }
 
-            <hr/>
+            <hr />
             <p class="text-right">
-                Need an account? 
+                Need an account?
                 @Html.ActionLink("Signup", "Register")
             </p>
 
         </section>
     </div>
 
-    <div class="col-md-4">
-        <section id="socialLoginForm">
+    <div class="col-md-offset-1 col-md-4">
+        <section id="socialLoginForm" class="widget">
             @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>

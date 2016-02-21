@@ -171,7 +171,7 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.UserName, Email = model.Email };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -368,7 +368,7 @@
                     this.ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return this.View(
                         "ExternalLoginConfirmation",
-                        new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                        new ExternalLoginConfirmationViewModel { Username = loginInfo.Email });
             }
         }
 
@@ -394,7 +394,7 @@
                     return this.View("ExternalLoginFailure");
                 }
 
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Username, Email = model.Username };
                 var result = await this.UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
