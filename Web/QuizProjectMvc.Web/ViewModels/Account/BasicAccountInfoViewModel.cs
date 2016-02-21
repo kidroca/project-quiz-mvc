@@ -1,9 +1,11 @@
-namespace QuizProjectMvc.Web.ViewModels.Account
+﻿namespace QuizProjectMvc.Web.ViewModels.Account
 {
     using System.ComponentModel.DataAnnotations;
     using Common;
+    using Data.Models;
+    using Infrastructure.Mapping;
 
-    public class AccountDetailsViewModel
+    public class BasicAccountInfoViewModel : IMapFrom<User>
     {
         [Display(Name = "Email")]
         [EmailAddress]
@@ -11,19 +13,6 @@ namespace QuizProjectMvc.Web.ViewModels.Account
         [MinLength(ModelConstraints.UsernameMinLength)]
         [MaxLength(ModelConstraints.UsernameMaxLength)]
         public string Email { get; set; }
-
-        [Display(Name = "Password")]
-        [Required]
-        [DataType(DataType.Password)]
-        [MinLength(ModelConstraints.UsernameMinLength, ErrorMessage = StatusMessages.MinimumLength)]
-        [MaxLength(ModelConstraints.UsernameMaxLength, ErrorMessage = StatusMessages.MaximumLength)]
-        public string Password { get; set; }
-
-        [Display(Name = "Confirm password")]
-        [Required]
-        [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = StatusMessages.PasswordMismatch)]
-        public string ConfirmPassword { get; set; }
 
         [Display(Name = "First Name")]
         [Required]

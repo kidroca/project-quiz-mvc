@@ -2,8 +2,10 @@
 {
     using System.ComponentModel.DataAnnotations;
     using Common;
+    using Data.Models;
+    using Infrastructure.Mapping;
 
-    public class RegisterViewModel : AccountDetailsViewModel
+    public class RegisterViewModel : AccountEditableDetailsViewModel, IMapTo<User>
     {
         [Display(Name = "Username")]
         [Required]
