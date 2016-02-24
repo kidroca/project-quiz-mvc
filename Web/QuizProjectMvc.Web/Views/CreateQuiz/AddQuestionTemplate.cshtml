@@ -1,0 +1,78 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="ctrl.cancel()" aria-hidden="true">×</button>
+    <h3 class="modal-title">Enter question details</h3>
+</div>
+
+<div class="modal-body">
+    <form name="questionForm" class="form-horizontal" novalidate>
+        <fieldset>
+            <div class="form-group">
+                <label for="title" class="col-lg-2 control-label">Question</label>
+                <div class="col-lg-10">
+                    <textarea ng-model="ctrl.question.title" id="title"
+                              class="form-control" name="title" placeholder="Enter the question"
+                              required ng-minlength="5"
+                              ng-focus="titleFocus=true" ng-blur="titleFocus=false"></textarea>
+                    <div ng-show="questionForm.title.$invalid && (questionForm.title.$dirty
+                        || titleFocus)"
+                         class="alert alert-info">
+                        <p>Enter a question of at least 5 characters.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-repeat="answer in ctrl.question.answers" class="form-group">
+                <label for="answerText"
+                       class="col-lg-2 control-label" ng-class="{correct: answer.isCorrect}">
+                    <i class="fa fa-check" ng-if="answer.isCorrect"></i>
+                    <a href="#"
+                       ng-click="$event.preventDefault(); ctrl.markCorrect($index)"
+                       ng-bind="ctrl.letters[$index]" class="answer-mark">
+                    </a>
+                </label>
+                <div ng-form name="answerForm" class="col-lg-10">
+                    <div class="input-group">
+                        <input type="text" ng-model="answer.text" id="answerText"
+                               class="form-control" name="answerText" placeholder="Answer"
+                               required ng-minlength="2"
+                               ng-focus="answer.focus=true" ng-blur="answer.focus=false">
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" ng-click="ctrl.removeAnswer($index)"
+                                    arial-label="Remove">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <div ng-show="answerForm.answerText.$invalid && (answerForm.answerText.$dirty
+                            || answer.focus)"
+                         class="alert alert-info">
+                        <p>Enter an answer of at least 2 characters</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button class="btn btn-info"
+                            ng-disabled="questionForm.$invalid"
+                            ng-click="ctrl.addAnswer()">
+                        Add Answer
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div class="modal-footer">
+
+    <button class="btn btn-danger" ng-click="ctrl.cancel()">Close</button>
+
+    <span uib-popover="Please, assign at least 2 answers and mark the correct answer!" 
+          popover-trigger="mouseenter" 
+          popover-enable="!ctrl.hasCorrect()"
+          popover-placement="bottom">
+        <button class="btn btn-success"
+                ng-click="ctrl.ok()"
+                ng-disabled="questionForm.$invalid || !ctrl.hasCorrect() || ctrl.question.answers.length < 2">Save Question</button>
+    </span>
+</div>

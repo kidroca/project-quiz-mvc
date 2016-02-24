@@ -1,0 +1,146 @@
+﻿@using QuizProjectMvc.Web.Controllers
+
+@{
+    ViewBag.Title = $"Create New Quiz";
+}
+
+<section ng-app="createQuiz" ng-controller="CreateQuizController as ctrl">
+    @if (TempData["error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["error"];
+        </div>
+    }
+
+    <div class="col-md-10 col-md-offset-1">
+        
+        @using (Html.BeginForm(
+            "Create", "CreateQuiz", FormMethod.Post, new
+            {
+                @class = "form-horizontal",
+                novalidate = "novalidate",
+                autocomplete = "off",
+                ng_submit = "ctrl.addQuiz(quiz, quizForm)"
+            }))
+        {
+            <fieldset>
+                <legend>Add Quiz</legend>
+
+                <!-- Title -->
+                <div class="form-group">
+                    <label for="quizTitle" class="col-lg-2 control-label">Title</label>
+                    <div class="col-lg-10">
+                        <input type="text" ng-model="quiz.title" id="quizTitle"
+                               class="form-control" name="title" placeholder="Quiz Title"
+                               required ng-minlength="3"
+                               ng-focus="titleFocus=true" ng-blur="titleFocus=false">
+                        <div ng-show="quizForm.title.$invalid && (quizForm.title.$dirty || titleFocus)"
+                             class="alert alert-info">
+                            <p>Enter a quiz title of at least 3 characters.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category -->
+                <div class="form-group">
+                    <label for="quizCategory" class="col-lg-2 control-label">Category</label>
+                    <div class="col-lg-10">
+                        <input type="text" ng-model="quiz.category" id="quizCategory"
+                               uib-typeahead="category for category in ctrl.getCategories($viewValue)"
+                               typeahead-loading="loadingCategories"
+                               class="form-control" name="category" placeholder="Quiz Category"
+                               required ng-minlength="3"
+                               ng-focus="categoryFocus=true" ng-blur="categoryFocus=false">
+                        <i ng-show="loadingCategories" class="glyphicon glyphicon-refresh"></i>
+                        <div ng-show="quizForm.category.$invalid && (quizForm.category.$dirty || categoryFocus)"
+                             class="alert alert-info">
+                            <p>Enter a quiz category of at least 3 characters.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="form-group">
+                    <label for="description" class="col-lg-2 control-label">Description</label>
+                    <div class="col-lg-10">
+                        <textarea ng-model="quiz.description" class="form-control"
+                                  id="description" rows="3" name="description"
+                                  ng-minlength="5"
+                                  ng-focus="descFocus=true" ng-blur="descFocus=false"></textarea>
+                        <div ng-show="(quizForm.description.$invalid && quizForm.description.$dirty) ||
+              (descFocus && !quiz.description)"
+                             class="alert alert-info">
+                            <p>Write a short description for the quiz.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Private/Public -->
+                <div class="form-group">
+                    <label for="access" class="col-lg-2 control-label">Quiz Access</label>
+                    <div class="col-lg-10">
+                        <toggle-switch name="access" id="access"
+                                       ng-model="quiz.isPrivate"
+                                       on-label="private"
+                                       off-label="public"></toggle-switch>
+                    </div>
+                </div>
+
+                <!-- Add Question -->
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button class="btn btn-success"
+                                ng-click="ctrl.openQuesitonMenu()">
+                            Add New Question
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Questions -->
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Questions</label>
+                    <div class="col-lg-10">
+                        <ul class="list-group question-list" name="questions">
+                            <li class="list-group-item clearfix" ng-repeat="question in quiz.questions">
+                                <em class="text-info hide-overflow" ng-bind="question.title"
+                                    ng-click="ctrl.openQuesitonMenu(question)"
+                                    uib-popover="This question has {{question.answers.length}} answers available"
+                                    popover-placement="left" tooltip-class="info-tip" popover-trigger="mouseenter"></em>
+                                <span class="pull-right button-group">
+                                        <button class="btn btn-xs btn-primary"
+                                                ng-click="ctrl.openQuesitonMenu(question)">
+                                            <span class="glyphicon glyphicon-edit"></span> Edit
+                                        </button>
+                                        <button type="button" ng-click="ctrl.removeQuestion($index)"
+                                                class="btn btn-xs btn-danger">
+                                            <span class="glyphicon glyphicon-remove"></span> Delete
+                                        </button>
+                                    </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <input type="submit" class="btn btn-primary"
+                               ng--disabled="quizForm.$invalid || !quiz.questions.length"
+                               value="Save Quiz">
+                        <button ng-click="resetForm(quizForm)" class="btn btn-danger">Reset</button>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</section>
+
+@section styles {
+    @Styles.Render("~/Content/toggle-switch");
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/create-quiz")
+}
