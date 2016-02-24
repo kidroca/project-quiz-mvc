@@ -9,11 +9,6 @@
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //routes.MapRoute(
-            //    name: "QuizPage",
-            //    url: "Quiz/{id}",
-            //    defaults: new { controller = "Quizzes", action = "ById" });
-
             routes.MapRoute(
                name: "SubmitSolution",
                url: "Quizzes/Solve",
@@ -22,7 +17,7 @@
 
             routes.MapRoute(
                 name: "SolveQuiz",
-                url: "Quizzes/Solve/{id}/{title}",
+                url: "Quizzes/Solve/{id}",
                 defaults: new { controller = "SolveQuiz", action = "Solve" },
                 namespaces: new[] { "QuizProjectMvc.Web.Controllers" });
 

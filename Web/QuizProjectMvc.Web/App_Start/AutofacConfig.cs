@@ -2,11 +2,12 @@
 {
     using System.Data.Entity;
     using System.Reflection;
+    using System.Web.Http;
     using System.Web.Mvc;
 
     using Autofac;
     using Autofac.Integration.Mvc;
-
+    using Autofac.Integration.WebApi;
     using Controllers;
 
     using Data;
@@ -23,8 +24,9 @@
         {
             var builder = new ContainerBuilder();
 
-            // Register your MVC controllers.
+            // Register MVC and WebApi controllers.
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
 
             // OPTIONAL: Register model binders that require DI.
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
@@ -45,6 +47,8 @@
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver =
+                new AutofacWebApiDependencyResolver((IContainer)container);
         }
 
         private static void RegisterServices(ContainerBuilder builder)

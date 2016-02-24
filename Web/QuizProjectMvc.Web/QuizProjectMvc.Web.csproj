@@ -58,6 +58,10 @@
       <HintPath>..\..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
@@ -236,11 +240,13 @@
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\AccountController.cs" />
     <Compile Include="Areas\Api\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Api\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Api\Helpers\ExternalLoginData.cs" />
     <Compile Include="Areas\Api\Models\UserInfoViewModel.cs" />
     <Compile Include="Areas\Api\Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CreateQuizController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuizzesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -249,6 +255,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Filters\AjaxOnlyAction.cs" />
     <Compile Include="ViewModels\Account\AccountEditableDetailsViewModel.cs" />
     <Compile Include="ViewModels\Account\BasicAccountInfoViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
@@ -262,6 +269,9 @@
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\Quiz\AnswerModel.cs" />
+    <Compile Include="ViewModels\Quiz\Create\CreateAnswerModel.cs" />
+    <Compile Include="ViewModels\Quiz\Create\CreateQuestionModel.cs" />
+    <Compile Include="ViewModels\Quiz\Create\CreateQuizModel.cs" />
     <Compile Include="ViewModels\Quiz\QuestionModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizBasicViewModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizCategoryViewModel.cs" />
@@ -280,6 +290,8 @@
     <Compile Include="ViewModels\User\UserDetailedInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\angular-toggle-switch-bootstrap.css" />
+    <Content Include="Content\angular-toggle-switch.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -355,6 +367,8 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-toggle-switch.js" />
+    <Content Include="Scripts\angular-toggle-switch.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
@@ -363,6 +377,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\app\create-quiz.js" />
     <Content Include="Scripts\app\filters\paging-filter.js" />
     <Content Include="Scripts\app\solve-quiz.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -417,6 +432,8 @@
     <Content Include="Views\Home\DisplayTemplates\QuizBasicViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AccountDetailsViewModel.cshtml" />
     <Content Include="Views\SolveQuiz\Solve.cshtml" />
+    <Content Include="Views\CreateQuiz\Create.cshtml" />
+    <Content Include="Views\CreateQuiz\AddQuestionTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
