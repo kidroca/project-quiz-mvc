@@ -28,6 +28,10 @@
 
             bundles.Add(new ScriptBundle("~/bundles/solve-quiz")
                 .Include("~/Scripts/app/solve-quiz.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/create-quiz").Include(
+                "~/Scripts/angular-toggle-switch.js",
+                "~/Scripts/app/create-quiz.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)
@@ -36,6 +40,10 @@
                 "~/Content/bootstrap.css",
                 "~/Content/index.css",
                 "~/Content/font-awesome.css"));
+
+            bundles.Add(new StyleBundle("~/Content/toggle-switch").Include(
+                "~/Content/angular-toggle-switch-bootstrap.css",
+                "~/Content/angular-toggle-switch.css"));
         }
     }
 }
