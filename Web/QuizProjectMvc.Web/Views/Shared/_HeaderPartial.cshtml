@@ -1,4 +1,5 @@
-﻿<header class="wrapper">
+﻿@using QuizProjectMvc.Web.Controllers
+<header class="wrapper">
 
     <div id="logo">
         <img src="~/Content/images/logo.png" alt="logo">
@@ -29,19 +30,13 @@
                             <li>
                                 @Html.ActionLink("Home", "Index", "Home", null, new { @class = "home-link" })
                             </li>
-                            <li>
-                                @Html.ActionLink("Quizzes", "All", "Quizzes")
-                            </li>
                             @if (Request.IsAuthenticated)
                             {
                                 <li>
-                                    @Html.ActionLink("Create Quiz", "Create", "Quizzes")
+                                    @(Html.ActionLink<CreateQuizController>("Create New Quiz", c => c.Create()))
                                 </li>
                             }
                         </ul>
-                    </li>
-                    <li>
-                        @Html.ActionLink("Quizzes", "All", "Quizzes")
                     </li>
                     @*<li><a href="#/users">Users</a></li>*@
                 </ul>

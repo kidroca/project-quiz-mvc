@@ -16,14 +16,18 @@
 <!-- Side Content-->
 <div class="sidebar pull-right">
     <aside>
-        <h1>Categories</h1>
-        <div class="row">
-            @foreach (var category in Model.Categories)
-            {
-                <div class="col-md-2">
-                    @category.Name
-                </div>
-            }
+        <div class="widget">
+            <h1>Categories</h1>
+            <div class="well">
+                <ul>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <li>
+                            @category.Name
+                        </li>
+                    }
+                </ul>
+            </div>
         </div>
     </aside>
 </div>
