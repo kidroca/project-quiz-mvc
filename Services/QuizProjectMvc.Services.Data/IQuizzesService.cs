@@ -21,5 +21,7 @@
         IQueryable<Quiz> SearchQuizzes(QuizSearchModel queryParameters);
 
         IQueryable<Quiz> GetPage(Pager pager);
+
+        void Add(Quiz quiz);
     }
 }

@@ -123,6 +123,12 @@
             return result;
         }
 
+        public void Add(Quiz quiz)
+        {
+            this.quizzes.Add(quiz);
+            this.quizzes.Save();
+        }
+
         private void ApplyFiltering(IQueryable<Quiz> result, QuizSearchModel queryParameters)
         {
             if (queryParameters.Category != null)

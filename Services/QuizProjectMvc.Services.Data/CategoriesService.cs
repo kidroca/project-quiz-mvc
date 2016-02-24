@@ -36,6 +36,18 @@
                 .Take(10);
         }
 
+        public IQueryable<QuizCategory> FilterByPattern(string pattern, int count)
+        {
+            if (string.IsNullOrEmpty(pattern))
+            {
+                return this.GetAll().Take(count);
+            }
+
+            return this.GetAll()
+                .Where(c => c.Name.ToLower().Contains(pattern.ToLower()))
+                .Take(count);
+        }
+
         public IQueryable<QuizCategory> GetAll()
         {
             return this.categories.All().OrderBy(x => x.Name);
