@@ -1,11 +1,12 @@
 ﻿namespace QuizProjectMvc.Services.Data
 {
     using System.Linq;
+    using Models;
     using Models.Evaluation;
     using Models.Search;
     using QuizProjectMvc.Data.Models;
 
-    public interface IQuizesService
+    public interface IQuizzesService
     {
         IQueryable<Quiz> GetRandomQuizzes(int count);
 
@@ -15,6 +16,10 @@
 
         Quiz GetById(string id);
 
+        Quiz GetById(int id);
+
         IQueryable<Quiz> SearchQuizzes(QuizSearchModel queryParameters);
+
+        IQueryable<Quiz> GetPage(Pager pager);
     }
 }

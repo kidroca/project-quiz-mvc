@@ -9,5 +9,7 @@
         IQueryable<QuizCategory> GetAll();
 
         QuizCategory EnsureCategory(string name);
+
+        IQueryable<QuizCategory> GetTop(int count);
     }
 }

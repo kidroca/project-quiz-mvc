@@ -50,8 +50,9 @@
   <ItemGroup>
     <Compile Include="CategoriesService.cs" />
     <Compile Include="ICategoriesService.cs" />
-    <Compile Include="IQuizesService.cs" />
-    <Compile Include="QuizesService.cs" />
+    <Compile Include="IQuizzesService.cs" />
+    <Compile Include="Models\Pager.cs" />
+    <Compile Include="QuizzesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Evaluation\QuestionResultModel.cs" />
     <Compile Include="Models\Evaluation\QuizEvaluationResult.cs" />

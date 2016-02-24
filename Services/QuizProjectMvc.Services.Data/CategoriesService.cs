@@ -29,6 +29,13 @@
             return category;
         }
 
+        public IQueryable<QuizCategory> GetTop(int count)
+        {
+            return this.categories.All()
+                .OrderByDescending(c => c.Quizzes.Count)
+                .Take(10);
+        }
+
         public IQueryable<QuizCategory> GetAll()
         {
             return this.categories.All().OrderBy(x => x.Name);
