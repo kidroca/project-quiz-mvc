@@ -9,7 +9,7 @@
      ng-controller="SolveQuizController as ctrl">
 
     <div class="progress progress-striped">
-        <div class="progress-bar" style="width: '{{ctrl.progress()+'%'}}'"></div>
+        <div class="progress-bar" style="{{'width:' + ctrl.progress()+'%'}}"></div>
     </div>
 
     <div class="questions-container">
@@ -22,7 +22,7 @@
                 <a href ng-repeat="answer in question.Answers"
                    ng-click="question.selected=$index"
                    ng-class="{selected: question.selected === $index}"
-                   class="list-group-item">
+                   class="list-group-item answer">
                     <span>{{answer.Text}}</span>
                 </a>
             </div>
