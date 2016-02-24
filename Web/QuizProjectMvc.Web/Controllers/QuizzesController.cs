@@ -6,10 +6,10 @@
 
     public class QuizzesController : BaseController
     {
-        private readonly IQuizesService quizzes;
+        private readonly IQuizzesService quizzes;
 
         public QuizzesController(
-            IQuizesService quizzes)
+            IQuizzesService quizzes)
         {
             this.quizzes = quizzes;
         }

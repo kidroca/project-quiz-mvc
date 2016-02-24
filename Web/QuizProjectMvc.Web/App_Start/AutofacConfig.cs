@@ -63,7 +63,7 @@
                     .As<IUserStore<User>>();
             builder.RegisterType<UserManager<User>>();
 
-            var servicesAssembly = Assembly.GetAssembly(typeof(IQuizesService));
+            var servicesAssembly = Assembly.GetAssembly(typeof(IQuizzesService));
             builder.RegisterAssemblyTypes(servicesAssembly)
                 .AsImplementedInterfaces();
 

@@ -7,8 +7,8 @@
     public class SolutionForEvaluationModel
     {
         [Required]
-        public string ForQuizId { get; set; }
+        public int ForQuizId { get; set; }
 
-        public IList<SelectedAnswerModel> Questions { get; set; }
+        public IList<int> SelectedAnswerIds { get; set; }
     }
 }

@@ -2,40 +2,50 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-
     using Infrastructure.Mapping;
 
     using Services.Data;
-
+    using Services.Data.Models;
     using ViewModels.Home;
     using ViewModels.Quiz;
 
     public class HomeController : BaseController
     {
-        private readonly IQuizesService quizes;
-        private readonly ICategoriesService jokeCategories;
+        private readonly IQuizzesService quizzes;
+        private readonly ICategoriesService quizCategories;
 
         public HomeController(
-            IQuizesService quizes,
-            ICategoriesService jokeCategories)
+            IQuizzesService quizzes,
+            ICategoriesService quizCategories)
         {
-            this.quizes = quizes;
-            this.jokeCategories = jokeCategories;
+            this.quizzes = quizzes;
+            this.quizCategories = quizCategories;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(Pager pager)
         {
-            // Todo Map to correct view model
-            var jokes = this.quizes.GetRandomQuizzes(3).To<QuizBasicViewModel>().ToList();
+            if (pager == null || !this.ModelState.IsValid)
+            {
+                pager = new Pager();
+            }
+
+            var quizzes = this.quizzes.GetPage(pager)
+                .To<QuizBasicViewModel>()
+                .ToList();
+
             var categories =
                 this.Cache.Get(
                     "categories",
-                    () => this.jokeCategories.GetAll().To<QuizCategoryViewModel>().ToList(),
-                    30 * 60);
+                    () => this.quizCategories.GetTop(10)
+                        .To<QuizCategoryViewModel>()
+                        .ToList(),
+                    durationInSeconds: 30 * 60);
+
             var viewModel = new IndexViewModel
             {
-                Quizzes = jokes,
-                Categories = categories
+                Quizzes = quizzes,
+                Categories = categories,
+                Pager = pager
             };
 
             return this.View(viewModel);

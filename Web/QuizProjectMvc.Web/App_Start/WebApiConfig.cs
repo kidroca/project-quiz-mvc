@@ -2,6 +2,7 @@
 {
     using System.Web.Http;
     using Microsoft.Owin.Security.OAuth;
+    using Newtonsoft.Json.Serialization;
 
     public static class WebApiConfig
     {
@@ -12,6 +13,9 @@
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            var jsonFormatter = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }

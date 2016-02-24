@@ -245,6 +245,7 @@
     <Compile Include="Controllers\QuizzesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
+    <Compile Include="Controllers\SolveQuizController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -260,8 +261,11 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
+    <Compile Include="ViewModels\Quiz\AnswerModel.cs" />
+    <Compile Include="ViewModels\Quiz\QuestionModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizBasicViewModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizCategoryViewModel.cs" />
+    <Compile Include="ViewModels\Quiz\QuizForSolvingModel.cs" />
     <Compile Include="ViewModels\User\UserBasicInfoViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
@@ -289,6 +293,7 @@
     <Content Include="Content\index.min.css">
       <DependentUpon>index.css</DependentUpon>
     </Content>
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -349,7 +354,17 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\app\filters\paging-filter.js" />
+    <Content Include="Scripts\app\solve-quiz.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
@@ -359,6 +374,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ngStorage.js" />
+    <Content Include="Scripts\ngStorage.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -399,6 +416,7 @@
     <Content Include="Views\Shared\_ControllerPageTemplate.cshtml" />
     <Content Include="Views\Home\DisplayTemplates\QuizBasicViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AccountDetailsViewModel.cshtml" />
+    <Content Include="Views\SolveQuiz\Solve.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

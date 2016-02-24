@@ -4,19 +4,20 @@
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.AspNet.Identity;
+    using Models;
     using Models.Evaluation;
     using Models.Search;
     using QuizProjectMvc.Data.Common;
     using QuizProjectMvc.Data.Models;
     using Web;
 
-    public class QuizesService : IQuizesService
+    public class QuizzesService : IQuizzesService
     {
         private readonly IDbRepository<Quiz> quizzes;
         private readonly UserManager<User> manager;
         private readonly IIdentifierProvider identifierProvider;
 
-        public QuizesService(
+        public QuizzesService(
             IDbRepository<Quiz> quizzes,
             IIdentifierProvider identifierProviders,
             UserManager<User> manager)
@@ -64,11 +65,11 @@
         public QuizSolution SaveSolution(SolutionForEvaluationModel quizSolution, Quiz quiz, string userId)
         {
             var selectedAnswers = new List<Answer>();
-            foreach (var answeredQuestion in quizSolution.Questions)
+            foreach (var answerId in quizSolution.SelectedAnswerIds)
             {
                 selectedAnswers.Add(new Answer
                 {
-                    Id = answeredQuestion.SelectedAnswerId
+                    Id = answerId
                 });
             }
 
@@ -92,6 +93,12 @@
             return quiz;
         }
 
+        public Quiz GetById(int id)
+        {
+            var quiz = this.quizzes.GetById(id);
+            return quiz;
+        }
+
         public IQueryable<Quiz> GetRandomQuizzes(int count)
         {
             return this.quizzes.All().OrderBy(x => Guid.NewGuid()).Take(count);
@@ -102,6 +109,16 @@
             var result = this.quizzes.All();
             this.ApplyFiltering(result, queryParameters);
             this.ApplyOrdering(result, queryParameters);
+
+            return result;
+        }
+
+        public IQueryable<Quiz> GetPage(Pager pager)
+        {
+            var result = this.quizzes.All()
+                .OrderByDescending(q => q.CreatedOn)
+                .Skip(this.GetSkipCount(pager))
+                .Take(pager.PageSize);
 
             return result;
         }
@@ -182,6 +199,11 @@
                         : result.OrderBy(q => q.Solutions.Count);
                     break;
             }
+        }
+
+        private int GetSkipCount(Pager pager)
+        {
+            return (pager.Page - 1) * pager.PageSize;
         }
     }
 }
