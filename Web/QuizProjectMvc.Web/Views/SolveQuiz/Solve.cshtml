@@ -1,0 +1,62 @@
+﻿@using Newtonsoft.Json
+@model QuizProjectMvc.Web.ViewModels.Quiz.QuizForSolvingModel
+
+@*@using (Html.BeginForm("Solve", "SolveQuiz", FormMethod.Post, new {@class = "form-horizontal"}))
+{
+    @Html.AntiForgeryToken()*@
+
+    <div ng-app="solveQuiz"
+         ng-controller="SolveQuizController as ctrl">
+
+        <div class="progress progress-striped">
+            <div class="progress-bar" style="width: { {ctrl.progress()+'%'}}"></div>
+        </div>
+
+        <div class="questions-container">
+            <div ng-repeat="question in ctrl.quiz.Questions | paging:ctrl.currentPage:ctrl.questionsPerPage"
+                 class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">{{question.Title}}</h3>
+                </div>
+                <div class="panel-body list-group">
+                    <a href ng-repeat="answer in question.Answers"
+                       ng-click="question.selected=$index"
+                       ng-class="{selected: question.selected === $index}"
+                       class="list-group-item">
+                        <span>{{answer.Text}}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bar text-center clearfix">
+
+            <uib-pagination total-items="ctrl.quiz.Questions.length"
+                            items-per-page="ctrl.questionsPerPage"
+                            direction-links="false"
+                            class="questions-paging"
+                            ng-model="ctrl.currentPage">
+            </uib-pagination>
+
+            <button ng-disabled="ctrl.progress() < 100"
+                    ng-click="ctrl.submit(ctrl.quiz)"
+                    class="btn btn-lg btn-info pull-right">
+                Ready
+            </button>
+        </div>
+    </div>
+@*}*@
+
+@section scripts
+{
+    @{
+        var quizJson = JsonConvert.SerializeObject(Model);
+    }
+
+    <script>
+        var quiz = @Html.Raw(quizJson);
+    </script>
+
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/solve-quiz")
+}
