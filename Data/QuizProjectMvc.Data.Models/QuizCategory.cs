@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using Common.Models;
     using QuizProjectMvc.Common;
 
@@ -15,6 +16,7 @@
         }
 
         [Required]
+        [Index(IsUnique = true)]
         [MinLength(ModelConstraints.NameMinLength)]
         [MaxLength(ModelConstraints.NameMaxLength)]
         public string Name { get; set; }

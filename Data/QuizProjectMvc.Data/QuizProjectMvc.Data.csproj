@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201602191752574_RemovedCascadeDeletes.Designer.cs">
       <DependentUpon>201602191752574_RemovedCascadeDeletes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602241452520_UniqueCategory.cs" />
+    <Compile Include="Migrations\201602241452520_UniqueCategory.Designer.cs">
+      <DependentUpon>201602241452520_UniqueCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602191752574_RemovedCascadeDeletes.resx">
       <DependentUpon>201602191752574_RemovedCascadeDeletes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602241452520_UniqueCategory.resx">
+      <DependentUpon>201602241452520_UniqueCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
