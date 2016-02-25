@@ -24,7 +24,8 @@
                 "~/Scripts/angular.js",
                 "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
                 "~/Scripts/ngStorage.js",
-                "~/Scripts/app/filters/paging-filter.js"));
+                "~/Scripts/app/filters/paging-filter.js",
+                "~/Scripts/app/services/error-handler.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/solve-quiz")
                 .Include("~/Scripts/app/solve-quiz.js"));

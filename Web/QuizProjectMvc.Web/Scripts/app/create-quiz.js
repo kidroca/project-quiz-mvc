@@ -8,21 +8,32 @@
 		questions: []
 	};
 
-	function CreateQuizController($scope, $http, $localStorage, $uibModal) {
+	function CreateQuizController($scope, $http,$location, $localStorage, $uibModal, errorHandler) {
 		var self = this;
 
 		console.log('Hello from CreateQuizController');
 
-		$localStorage.quiz = $localStorage.quiz || angular.copy(DEFAULT_STORAGE);
+		$localStorage.quiz = $localStorage.quiz || {};
 		$scope.quiz = $localStorage.quiz;
 
 		self.addQuiz = function addQuiz(quiz, form) {
 			console.log('adding quiz...');
 			console.log(quiz);
-			// $scope.resetForm(form);
+
+		    $http.post('/api/Quizzes/Create', quiz)
+		    .then(function(response) {
+		    		// $scope.resetForm(form);
+		            window.location = '/'; // Todo: $location.path('/') is not working for some reason, try to fix.
+		        }, errorHandler.handleCreateQuizError);
 		};
 
 		$scope.resetForm = function resetForm(form) {
+			var check = confirm("Are you sure you want to reset, all fields and questions will be reset.");
+
+			if (!check) {
+				return;
+			}
+
 			form.$setPristine();
 			form.$setUntouched();
 
@@ -36,7 +47,7 @@
 
 		self.getCategories = function getCategories(pattern) {
 			return $http.get('/api/categories/getByPattern?pattern=' + pattern)
-				.then(function(res) {
+				.then(function (res) {
 					return res.data;
 				});
 		};
@@ -140,12 +151,26 @@
 		}
 	}
 
-	angular.module('createQuiz', ['ui.bootstrap', 'ngStorage', 'paging', 'toggle-switch'])
+	function extractModelStateErrors(modelState) {
+		var message = "";
+
+		for (var prop in modelState) {
+			if (modelState.hasOwnProperty(prop)) {
+				message += modelState[prop] + '\n';
+			}
+		}
+
+		return message.trim();
+	}
+
+	angular.module('createQuiz', ['ui.bootstrap', 'ngStorage', 'paging', 'toggle-switch', 'errorHandler'])
 		.controller('CreateQuizController', [
 			'$scope',
 			'$http',
+			'$location',
 			'$localStorage',
 			'$uibModal',
+			'errorHandler',
 			CreateQuizController
 		])
 		.controller('AddQuestionController', [
