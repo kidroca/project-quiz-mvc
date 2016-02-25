@@ -1,7 +1,7 @@
-﻿(function() {
+﻿(function () {
 	'use strict';
 
-	function SolveQuizController($http) {
+	function SolveQuizController($http, errorHandler) {
 		var self = this;
 		console.log('Hello from Solve Quiz Controller');
 		console.log(quiz);
@@ -25,17 +25,23 @@
 			var data = {
 				forQuizId: quiz.Id,
 				selectedAnswerIds: quiz.Questions.map(function (question) {
-				    console.log(question.Answers[question.selected].Id);
-				    var id = question.Answers[question.selected].Id;
-				    return id;
+					console.log(question.Answers[question.selected].Id);
+					var id = question.Answers[question.selected].Id;
+					return id;
 				})
 			};
 
 			console.log("posting data....", data);
-		    $http.post('/quizzes/solve', JSON.stringify(data));
+			$http.post('/SolveQuiz/solve', data)
+				.then(function (response) {
+				    console.log(response);
+			        document.open();
+				    document.write(response.data);
+				    document.close();
+				}, errorHandler.handleSoveQuizError);
 		}
 	}
 
-	angular.module('solveQuiz', ['ui.bootstrap', 'paging'])
-		.controller('SolveQuizController', ['$http', SolveQuizController]);
+	angular.module('solveQuiz', ['ui.bootstrap', 'paging', 'errorHandler'])
+		.controller('SolveQuizController', ['$http', 'errorHandler', SolveQuizController]);
 })()
