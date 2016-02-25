@@ -7,7 +7,7 @@
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class CreateQuizModel : IMapTo<Quiz>, IHaveCustomMappings
+    public class CreateQuizModel : IMapTo<Quiz>, IHaveCustomMappings, IValidatableObject
     {
         [Required]
         [MinLength(ModelConstraints.TitleMinLength)]
@@ -19,6 +19,7 @@
         [MaxLength(ModelConstraints.DescriptionMaxLength)]
         public string Description { get; set; }
 
+        [Required]
         public ICollection<CreateQuestionModel> Questions { get; set; }
 
         public bool IsPrivate { get; set; }
@@ -31,9 +32,19 @@
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<CreateQuizModel, Quiz>()
-                .ForMember(
-                    dest => dest.Category,
-                    opt => opt.MapFrom(self => new QuizCategory { Name = self.Category }));
+                .ForMember(self => self.Category, opt => opt.Ignore());
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (this.Questions == null ||
+                this.Questions.Count < ModelConstraints.MinQuestionsCount)
+            {
+                yield return new ValidationResult(
+                    string.Format(
+                        "Question count must be at least {0}",
+                        ModelConstraints.MinQuestionsCount));
+            }
         }
     }
 }
