@@ -241,6 +241,7 @@
     <Compile Include="Areas\Api\Controllers\AccountController.cs" />
     <Compile Include="Areas\Api\Controllers\BaseController.cs" />
     <Compile Include="Areas\Api\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Api\Controllers\QuizzesController.cs" />
     <Compile Include="Areas\Api\Helpers\ExternalLoginData.cs" />
     <Compile Include="Areas\Api\Models\UserInfoViewModel.cs" />
     <Compile Include="Areas\Api\Providers\ApplicationOAuthProvider.cs" />
@@ -275,7 +276,7 @@
     <Compile Include="ViewModels\Quiz\QuestionModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizBasicViewModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizCategoryViewModel.cs" />
-    <Compile Include="ViewModels\Quiz\QuizForSolvingModel.cs" />
+    <Compile Include="ViewModels\Quiz\Solve\QuizForSolvingModel.cs" />
     <Compile Include="ViewModels\User\UserBasicInfoViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
@@ -379,6 +380,7 @@
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\app\create-quiz.js" />
     <Content Include="Scripts\app\filters\paging-filter.js" />
+    <Content Include="Scripts\app\services\error-handler.js" />
     <Content Include="Scripts\app\solve-quiz.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -434,6 +436,7 @@
     <Content Include="Views\SolveQuiz\Solve.cshtml" />
     <Content Include="Views\CreateQuiz\Create.cshtml" />
     <Content Include="Views\CreateQuiz\AddQuestionTemplate.cshtml" />
+    <Content Include="Views\SolveQuiz\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

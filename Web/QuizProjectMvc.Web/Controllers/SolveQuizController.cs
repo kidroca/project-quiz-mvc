@@ -2,8 +2,9 @@
 {
     using System.Web.Mvc;
     using Services.Data;
+    using Services.Data.Exceptions;
     using Services.Data.Models.Evaluation;
-    using ViewModels.Quiz;
+    using ViewModels.Quiz.Solve;
 
     public class SolveQuizController : BaseController
     {
@@ -25,29 +26,34 @@
         [HttpPost]
         public ActionResult Solve(SolutionForEvaluationModel solution)
         {
-            return this.View();
+            if (!this.ModelState.IsValid)
+            {
+                this.TempData["error"] = "Invalid Solution Data";
+                this.RedirectToAction("Solve");
+            }
+
+            try
+            {
+                var result = this.quizzes.SaveSolution(solution, this.UserId);
+                return this.RedirectToAction("Result", new { solutionId = result.Id });
+            }
+            catch (QuizEvaluationException ex)
+            {
+                this.TempData["error"] = ex.Message;
+                return this.RedirectToAction("Solve");
+            }
         }
 
+        public ActionResult Result(int solutionId)
+        {
+            var solution = this.quizzes.EvaluateSolution(solutionId);
+            if (solution == null)
+            {
+                // Todo: Redirect To Not Found
+                return this.RedirectToRoute("Default");
+            }
 
-        // Todo: Solve Action HttpGet
-        //[HttpPost]
-        //public ActionResult Solve(SolutionForEvaluationModel quizSolution)
-        //{
-        //    if (!this.ModelState.IsValid)
-        //    {
-        //        // Todo Retry!
-        //    }
-
-        //    var quiz = this.quizzes.GetById(quizSolution.ForQuizId);
-        //    if (quizSolution.Questions.Count != quiz.Questions.Count)
-        //    {
-        //        // return this.BadRequest("Invalid Solution: Questions count mismatch");
-        //    }
-
-        //    QuizSolution solution = this.quizzes.SaveSolution(quizSolution, quiz, this.UserId);
-        //    QuizEvaluationResult result = this.quizzes.EvaluateSolution(solution);
-
-        //    // Todo: Redirect with result
-        //}
+            return this.View(solution);
+        }
     }
 }

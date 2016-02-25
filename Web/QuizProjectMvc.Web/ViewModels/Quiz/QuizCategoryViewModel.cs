@@ -12,6 +12,6 @@
 
         public string AvatarUrl { get; set; }
 
-        // Perhaps add Count property
+        // Perhaps add Count of quizzes property
     }
 }

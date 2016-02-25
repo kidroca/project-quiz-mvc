@@ -1,4 +1,4 @@
-﻿namespace QuizProjectMvc.Web.ViewModels.Quiz
+﻿namespace QuizProjectMvc.Web.ViewModels.Quiz.Solve
 {
     using System.Collections.Generic;
     using Data.Models;
