@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.AspNet.Identity;
+    using Exceptions;
     using Models;
     using Models.Evaluation;
     using Models.Search;
@@ -11,20 +11,22 @@
     using QuizProjectMvc.Data.Models;
     using Web;
 
+    // Todo: use quizzes creation exception with save quiz
+
     public class QuizzesService : IQuizzesService
     {
         private readonly IDbRepository<Quiz> quizzes;
-        private readonly UserManager<User> manager;
+        private readonly IDbRepository<QuizSolution> solutions;
         private readonly IIdentifierProvider identifierProvider;
 
         public QuizzesService(
             IDbRepository<Quiz> quizzes,
             IIdentifierProvider identifierProviders,
-            UserManager<User> manager)
+            IDbRepository<QuizSolution> solutions)
         {
             this.quizzes = quizzes;
             this.identifierProvider = identifierProviders;
-            this.manager = manager;
+            this.solutions = solutions;
         }
 
         public QuizEvaluationResult EvaluateSolution(QuizSolution quizSolution)
@@ -62,26 +64,45 @@
             return result;
         }
 
-        public QuizSolution SaveSolution(SolutionForEvaluationModel quizSolution, Quiz quiz, string userId)
+        public QuizEvaluationResult EvaluateSolution(int solutionId)
         {
-            var selectedAnswers = new List<Answer>();
-            foreach (var answerId in quizSolution.SelectedAnswerIds)
+            var solution = this.solutions.GetById(solutionId);
+            if (solution == null)
             {
-                selectedAnswers.Add(new Answer
-                {
-                    Id = answerId
-                });
+                return null;
             }
+
+            return this.EvaluateSolution(solution);
+        }
+
+        public QuizSolution SaveSolution(SolutionForEvaluationModel quizSolution, string userId)
+        {
+            var quiz = this.quizzes.GetById(quizSolution.ForQuizId);
+
+            if (quizSolution.SelectedAnswerIds.Count != quiz.Questions.Count)
+            {
+                throw new QuizEvaluationException("Invalid Solution: Questions count mismatch");
+            }
+
+            List<Answer> selectedAnswers = this.ExtractSelectedAnswers(quiz, quizSolution);
 
             var newSolution = new QuizSolution
             {
                 ByUserId = userId,
-                CreatedOn = DateTime.Now,
-                SelectedAnswers = selectedAnswers,
+                ForQuiz = quiz,
+                SelectedAnswers = selectedAnswers
             };
 
-            quiz.Solutions.Add(newSolution);
-            this.quizzes.Save();
+            try
+            {
+                this.solutions.Add(newSolution);
+                this.solutions.Save();
+            }
+            catch (Exception ex)
+            {
+                // Todo: Implement concrete exception cases
+                throw new QuizEvaluationException("Something went wrong while saving your solution.", ex);
+            }
 
             return newSolution;
         }
@@ -210,6 +231,16 @@
         private int GetSkipCount(Pager pager)
         {
             return (pager.Page - 1) * pager.PageSize;
+        }
+
+        private List<Answer> ExtractSelectedAnswers(Quiz quiz, SolutionForEvaluationModel quizSolution)
+        {
+            var result = quiz.Questions
+                .SelectMany(q => q.Answers)
+                .Where(a => quizSolution.SelectedAnswerIds.Any(id => id == a.Id))
+                .ToList();
+
+            return result;
         }
     }
 }

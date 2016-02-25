@@ -12,7 +12,9 @@
 
         QuizEvaluationResult EvaluateSolution(QuizSolution quizSolution);
 
-        QuizSolution SaveSolution(SolutionForEvaluationModel quizSolution, Quiz quiz, string userId);
+        QuizEvaluationResult EvaluateSolution(int solutionId);
+
+        QuizSolution SaveSolution(SolutionForEvaluationModel quizSolution, string userId);
 
         Quiz GetById(string id);
 
