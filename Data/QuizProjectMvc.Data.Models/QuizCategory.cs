@@ -13,6 +13,7 @@
         public QuizCategory()
         {
             this.quizzes = new HashSet<Quiz>();
+            this.AvatarUrl = GlobalConstants.DefaultCategoryAvatarUrl;
         }
 
         [Required]
@@ -21,7 +22,6 @@
         [MaxLength(ModelConstraints.NameMaxLength)]
         public string Name { get; set; }
 
-        [Url]
         [MinLength(ModelConstraints.UrlMinLength)]
         [MaxLength(ModelConstraints.UrlMaxLength)]
         public string AvatarUrl { get; set; }
