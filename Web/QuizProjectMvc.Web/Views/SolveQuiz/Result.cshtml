@@ -1,0 +1,58 @@
+﻿@model QuizProjectMvc.Services.Data.Models.Evaluation.QuizEvaluationResult
+
+@{
+    ViewBag.Title = string.Format("Solution Of {0}", Model.Title);
+}
+
+<div class="container-fluid">
+
+    <h2>Overall: @string.Format("{0}%", Model.GetSuccessPercentage())</h2>
+
+    <h2>You Answered Correctly:</h2>
+    @foreach (var question in Model.CorrectlyAnswered)
+    {
+        <div class="questions-container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">@question.Question</h3>
+                </div>
+                <div class="panel-body list-group">
+                    <a href class="list-group-item answer">
+                        <span>@question.CorrectAnswer</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+
+    <h2>You Answered Incorrectly:</h2>
+    @foreach (var question in Model.IncorrectlyAnswered)
+    {
+        <div class="questions-container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">@question.Question</h3>
+                </div>
+                <div class="panel-body list-group">
+                    <a href class="list-group-item answer">
+                        <label>You Selected:</label>
+                        <span>@question.SelectedAnswer</span>
+                    </a>
+
+                    <a href class="list-group-item answer">
+                        <label>Correct Answer Is:</label>
+                        <span>@question.CorrectAnswer</span>
+                    </a>
+
+                    @if (!string.IsNullOrEmpty(question.ResultDescription))
+                    {
+                        <p class="list-group-item description">
+                            @question.ResultDescription
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
