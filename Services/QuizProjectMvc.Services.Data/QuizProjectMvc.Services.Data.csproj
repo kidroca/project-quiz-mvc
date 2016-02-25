@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriesService.cs" />
+    <Compile Include="Exceptions\QuizCreationException.cs" />
+    <Compile Include="Exceptions\QuizEvaluationException.cs" />
     <Compile Include="ICategoriesService.cs" />
     <Compile Include="IQuizzesService.cs" />
     <Compile Include="Models\Pager.cs" />
