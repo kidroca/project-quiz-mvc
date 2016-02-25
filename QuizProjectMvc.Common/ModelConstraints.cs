@@ -19,5 +19,7 @@
 
         public const int MinRating = 1;
         public const int MaxRating = 10;
+
+        public const int MinQuestionsCount = 3;
     }
 }
