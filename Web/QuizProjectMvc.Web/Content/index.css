@@ -362,6 +362,10 @@ a.home-link {
   background-image: -o-linear-gradient(white 75%, #f7f7f7);
   background-image: linear-gradient(white 75%, #f7f7f7);
 }
+.widget .well .user-avatar {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
 .widget .well > ul {
   padding-left: 1rem;
 }
