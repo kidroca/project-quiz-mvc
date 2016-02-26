@@ -1,4 +1,4 @@
-﻿namespace QuizProjectMvc.Web.ViewModels.User
+﻿namespace QuizProjectMvc.Web.ViewModels.ProfileInformation
 {
     using Data.Models;
     using Infrastructure.Mapping;

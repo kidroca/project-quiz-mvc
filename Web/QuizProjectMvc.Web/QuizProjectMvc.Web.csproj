@@ -249,6 +249,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CreateQuizController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\QuizzesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
@@ -269,6 +270,11 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
+    <Compile Include="ViewModels\ProfileInformation\ProfilePageViewModel.cs" />
+    <Compile Include="ViewModels\ProfileInformation\PublicProfileInformation.cs" />
+    <Compile Include="ViewModels\ProfileInformation\CreatedQuizInfo.cs" />
+    <Compile Include="ViewModels\ProfileInformation\TakenQuizInfo.cs" />
+    <Compile Include="ViewModels\ProfileInformation\UserBasicInfoViewModel.cs" />
     <Compile Include="ViewModels\Quiz\AnswerModel.cs" />
     <Compile Include="ViewModels\Quiz\Create\CreateAnswerModel.cs" />
     <Compile Include="ViewModels\Quiz\Create\CreateQuestionModel.cs" />
@@ -277,7 +283,6 @@
     <Compile Include="ViewModels\Quiz\QuizBasicViewModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizCategoryViewModel.cs" />
     <Compile Include="ViewModels\Quiz\Solve\QuizForSolvingModel.cs" />
-    <Compile Include="ViewModels\User\UserBasicInfoViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\FactorViewModel.cs" />
@@ -288,7 +293,6 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
-    <Compile Include="ViewModels\User\UserDetailedInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\angular-toggle-switch-bootstrap.css" />
@@ -437,13 +441,16 @@
     <Content Include="Views\CreateQuiz\Create.cshtml" />
     <Content Include="Views\CreateQuiz\AddQuestionTemplate.cshtml" />
     <Content Include="Views\SolveQuiz\Result.cshtml" />
+    <None Include="Views\Profile\My.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PublicProfileInformation.cshtml" />
+    <Content Include="Views\Profile\_ProfilePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="ViewModels\User\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

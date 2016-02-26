@@ -6,7 +6,7 @@
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
-    using User;
+    using ProfileInformation;
 
     public class QuizBasicViewModel : IMapFrom<Quiz>, IHaveCustomMappings
     {
