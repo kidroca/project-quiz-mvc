@@ -1,75 +1,19 @@
 ﻿@using Microsoft.AspNet.Identity
 @using QuizProjectMvc.Common
-@using QuizProjectMvc.Web.Controllers
 @model QuizProjectMvc.Web.ViewModels.ProfileInformation.ProfilePageViewModel
 
-<!-- Main Content -->
 <!-- Profile Information And Edit -->
-<div class="page-content pull-left">
-    <section>
-        @Html.DisplayFor(m => m.PublicProfile)
+@Html.DisplayFor(m => m.PublicProfile)
 
-        @if (User.Identity.GetUserId() == Model.PublicProfile.Id || User.IsInRole(GlobalConstants.AdministratorRoleName))
-        {
-            @*Todo Proper Management Page*@
-            <div>
-                @Html.ActionLink(
+@if (User.Identity.GetUserId() == Model.PublicProfile.Id || User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    @*Todo Proper Management Page*@
+    <div>
+        @Html.ActionLink(
                "Edit Profile Information", "Index", "Manage", routeValues: new { area = string.Empty }, htmlAttributes: new
                {
                    title = "Manage",
                    @class = "btn btn-primary btn-round col-md-offset-9"
                })
-            </div>
-        }
-
-    </section>
-</div>
-
-<!-- Side Content -->
-<!-- Last quizes created, taken, comments -->
-<div class="sidebar pull-right">
-    <aside>
-        <div class="widget">
-            <h3>Last @Model.QuizzesCreated.Count Quizzes Created</h3>
-            <div class="well">
-                @if (Model.QuizzesCreated.Count > 0)
-                {
-                    <ul>
-                        @foreach (var quiz in Model.QuizzesCreated)
-                        {
-                            <li>
-                                @(Html.ActionLink<SolveQuizController>(quiz.Title, c => c.Solve(quiz.Id)))
-                            </li>
-                        }
-                    </ul>
-                }
-                else
-                {
-                    <p>None so far...</p>
-                }
-            </div>
-        </div>
-
-        <div class="widget">
-            <h3>Last @Model.QuizzesTaken.Count Quizzes Created</h3>
-            <div class="well">
-                @if (Model.QuizzesTaken.Count > 0)
-                {
-                    <ul>
-                        @foreach (var solution in Model.QuizzesTaken)
-                        {
-                            <li>
-                                @(Html.ActionLink<SolveQuizController>(
-                                    solution.Title, c => c.Result(solution.Id)))
-                            </li>
-                        }
-                    </ul>
-                }
-                else
-                {
-                    <p>So far none...</p>
-                }
-            </div>
-        </div>
-    </aside>
-</div>
+    </div>
+}

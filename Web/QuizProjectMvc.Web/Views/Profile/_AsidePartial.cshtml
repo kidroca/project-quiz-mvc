@@ -1,0 +1,47 @@
+﻿@using QuizProjectMvc.Web.Controllers
+@model QuizProjectMvc.Web.ViewModels.ProfileInformation.ProfilePageViewModel
+
+<!-- Last quizes created, taken, comments -->
+<div class="widget">
+    <h3>Last Quizzes Created</h3>
+    <div class="well">
+        @if (Model.QuizzesCreated.Count > 0)
+        {
+            <ul>
+                @foreach (var quiz in Model.QuizzesCreated)
+                {
+                    <li>
+                        @(Html.ActionLink<SolveQuizController>(quiz.Title, c => c.Solve(quiz.Id)))
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>None so far...</p>
+        }
+    </div>
+</div>
+
+<div class="widget">
+    <h3>Last Quizzes Solved</h3>
+    <div class="well">
+        @if (Model.QuizzesTaken.Count > 0)
+        {
+            <ul>
+                @foreach (var solution in Model.QuizzesTaken)
+                {
+                    <li>
+                        @(Html.ActionLink<SolveQuizController>(
+                                    solution.Title, c => c.Result(solution.Id)))
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>So far none...</p>
+        }
+    </div>
+</div>
+

@@ -4,4 +4,8 @@
     ViewBag.Title = "Your Profile";
 }
 
-@Html.Partial("_ProfilePartial", Model);
+@Html.Partial("_ProfilePartial", Model)
+
+@section aside {
+    @Html.Partial("_AsidePartial", Model)
+}
