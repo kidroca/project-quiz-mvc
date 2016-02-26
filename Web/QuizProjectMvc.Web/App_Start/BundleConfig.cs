@@ -33,6 +33,9 @@
             bundles.Add(new ScriptBundle("~/bundles/create-quiz").Include(
                 "~/Scripts/angular-toggle-switch.js",
                 "~/Scripts/app/create-quiz.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/select-avatar").Include(
+               "~/Scripts/app/select-avatar.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)

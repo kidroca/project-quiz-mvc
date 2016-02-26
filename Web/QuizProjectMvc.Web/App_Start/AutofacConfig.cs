@@ -15,7 +15,7 @@
     using Data.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using Services.Data;
+    using Services.Data.Protocols;
     using Services.Web;
 
     public static class AutofacConfig

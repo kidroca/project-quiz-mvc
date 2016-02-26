@@ -1,7 +1,7 @@
 ﻿namespace QuizProjectMvc.Services.Data
 {
     using System.Linq;
-
+    using Protocols;
     using QuizProjectMvc.Data.Common;
     using QuizProjectMvc.Data.Models;
 
@@ -22,7 +22,7 @@
                 return category;
             }
 
-            // Todo: Proper category creation with all properties (maybe only by admin)
+            // Todo: Proper category creation with all properties (maybe only by admin or certain trusted users)
             category = new QuizCategory { Name = name };
             this.categories.Add(category);
             this.categories.Save();

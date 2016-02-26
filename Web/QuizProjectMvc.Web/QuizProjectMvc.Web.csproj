@@ -303,6 +303,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\avatars\EricCartman.png" />
+    <Content Include="Content\images\avatars\Homer.png" />
+    <Content Include="Content\images\avatars\Lisa.png" />
+    <Content Include="Content\images\avatars\Marge.png" />
+    <Content Include="Content\images\avatars\MrBurns.png" />
+    <Content Include="Content\images\avatars\VaultBoy.png" />
     <Content Include="Content\images\google-btn.jpg" />
     <Content Include="Content\index.css">
       <DependentUpon>index.less</DependentUpon>
@@ -317,17 +323,13 @@
     <Content Include="fonts\LICENSE.txt" />
     <Content Include="fonts\Ralph Oliver du Carrois License.txt" />
     <Content Include="Global.asax" />
-    <Content Include="Content\images\blackboard.jpg" />
     <Content Include="Content\images\Carousel-icons.png" />
-    <Content Include="Content\images\chalkboard.jpg" />
     <Content Include="Content\images\content-bg.png" />
     <Content Include="Content\images\content-icons.png" />
     <Content Include="Content\images\default-avatar.png" />
     <Content Include="Content\images\logo.png" />
-    <Content Include="Content\images\question-thumb.jpg" />
     <Content Include="Content\images\quiz-thumb.jpg" />
     <Content Include="Content\images\quiz-thumb.png" />
-    <Content Include="Content\images\quiz.jpg" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Content\buttons.less" />
@@ -384,6 +386,7 @@
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\app\create-quiz.js" />
     <Content Include="Scripts\app\filters\paging-filter.js" />
+    <Content Include="Scripts\app\select-avatar.js" />
     <Content Include="Scripts\app\services\error-handler.js" />
     <Content Include="Scripts\app\solve-quiz.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -441,9 +444,12 @@
     <Content Include="Views\CreateQuiz\Create.cshtml" />
     <Content Include="Views\CreateQuiz\AddQuestionTemplate.cshtml" />
     <Content Include="Views\SolveQuiz\Result.cshtml" />
+    <Content Include="Views\Account\_RegisterFormPartial.cshtml" />
     <None Include="Views\Profile\My.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\PublicProfileInformation.cshtml" />
     <Content Include="Views\Profile\_ProfilePartial.cshtml" />
+    <Content Include="Views\Profile\_AsidePartial.cshtml" />
+    <Content Include="Views\Shared\_MainWithSideLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

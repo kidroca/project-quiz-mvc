@@ -6,6 +6,7 @@
 /// <reference path="angular-ui/ui-bootstrap-tpls.min.js" />
 /// <reference path="app/create-quiz.js" />
 /// <reference path="app/filters/paging-filter.js" />
+/// <reference path="app/select-avatar.js" />
 /// <reference path="app/services/error-handler.js" />
 /// <reference path="app/solve-quiz.js" />
 /// <reference path="bootstrap.min.js" />

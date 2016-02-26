@@ -7,12 +7,12 @@
     using Models;
     using Models.Evaluation;
     using Models.Search;
+    using Protocols;
     using QuizProjectMvc.Data.Common;
     using QuizProjectMvc.Data.Models;
     using Web;
 
     // Todo: use quizzes creation exception with save quiz
-
     public class QuizzesService : IQuizzesService
     {
         private readonly IDbRepository<Quiz> quizzes;
