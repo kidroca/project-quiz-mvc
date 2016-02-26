@@ -1,4 +1,4 @@
-﻿namespace QuizProjectMvc.Services.Data
+﻿namespace QuizProjectMvc.Services.Data.Protocols
 {
     using System.Linq;
     using Models;
