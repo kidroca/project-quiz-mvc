@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+}
+<!-- Main Content-->
+<div class="page-content col-sm-9">
+    <section>
+        @RenderBody()
+    </section>
+</div>
+
+@if (IsSectionDefined("aside"))
+{
+    <!-- Side Content-->
+    <div class="sidebar col-sm-3">
+        <aside>
+            @RenderSection("aside", required: false)
+        </aside>
+    </div>
+}
+
+@section notification {
+    @RenderSection("notification", required: false)
+}
+
+@section styles {
+    @RenderSection("styles", required: false)
+}
+
+@section Scripts {
+    @RenderSection("Scripts", false)
+}
