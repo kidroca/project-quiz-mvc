@@ -35,7 +35,7 @@
         [MaxLength(ModelConstraints.NameMaxLength)]
         public string LastName { get; set; }
 
-        [Url]
+        [RegularExpression(ModelConstraints.AvatarPathPattern)]
         [MinLength(ModelConstraints.UrlMinLength)]
         [MaxLength(ModelConstraints.UrlMaxLength)]
         public string AvatarUrl { get; set; }
