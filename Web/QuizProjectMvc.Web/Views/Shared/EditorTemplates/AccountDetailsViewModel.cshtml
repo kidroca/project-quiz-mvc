@@ -34,10 +34,4 @@
 </div>
 
 <!-- Profile Picture-->
-<div class="form-group">
-    @Html.LabelFor(m => m.AvatarUrl, new { @class = labelAttributes, type = "url" })
-    <div class="col-lg-9">
-        @Html.TextBoxFor(m => m.AvatarUrl, inputAttributes)
-        @Html.ValidationMessageFor(m => m.AvatarUrl, String.Empty, validationAttributes)
-    </div>
-</div>
+@Html.HiddenFor(m => m.AvatarUrl)
