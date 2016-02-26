@@ -1,0 +1,27 @@
+﻿@{
+    string[] defaultAvatars = { "EricCartman", "Homer", "Lisa", "Marge", "MrBurns", "VaultBoy" };
+}
+
+<!-- Select Avatar -->
+<div class="widget">
+    <h3 class="text-center">Select An Avatar</h3>
+    <div class="well">
+        <div class="clearfix" data-id="avatars">
+            @foreach (var name in defaultAvatars)
+            {
+                var src = string.Format("/Content/images/avatars/{0}.png", name);
+                <div class="col-sm-4 user-avatar" data-avatar="@name">
+                    <img src="@src" class="img-responsive" alt="avatar image" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="widget">
+    <div class="well">
+        <img id="selected-avatar" src="~/Content/images/default-avatar.png"
+             class="img-responsive"
+             alt="selected avatar" title="Is this you?" />
+    </div>
+</div>
