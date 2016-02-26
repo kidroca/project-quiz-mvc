@@ -3,31 +3,25 @@
     ViewBag.Title = "Home Page";
 }
 
-<!-- Main Content-->
-<div class="page-content pull-left">
-    <section>
-        @foreach (var quiz in Model.Quizzes)
-        {
-            @Html.DisplayFor(m => quiz)
-        }
-    </section>
-</div>
+@*Main Content*@
+@foreach (var quiz in Model.Quizzes)
+{
+    @Html.DisplayFor(m => quiz)
+}
 
-<!-- Side Content-->
-<div class="sidebar pull-right">
-    <aside>
-        <div class="widget">
-            <h1>Categories</h1>
-            <div class="well">
-                <ul>
-                    @foreach (var category in Model.Categories)
-                    {
-                        <li>
-                            @category.Name
-                        </li>
-                    }
-                </ul>
-            </div>
+@*Side Content*@
+@section aside {
+    <div class="widget">
+        <h1>Categories</h1>
+        <div class="well">
+            <ul>
+                @foreach (var category in Model.Categories)
+                {
+                    <li>
+                        @category.Name
+                    </li>
+                }
+            </ul>
         </div>
-    </aside>
-</div>
+    </div>
+}

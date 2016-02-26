@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@using QuizProjectMvc.Web.Controllers
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", new { area = string.Empty }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -7,7 +8,11 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: new {area = string.Empty}, htmlAttributes: new {title = "Manage"})
+            @(Html.ActionLink<ProfileController>(
+            User.Identity.GetUserName(), 
+            c => c.My(), 
+            routeValues: new {area = string.Empty}, 
+            htmlAttributes: new {title = "Your Profile Information"}))
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
