@@ -171,7 +171,7 @@
         {
             if (this.ModelState.IsValid)
             {
-                var user = new User { UserName = model.UserName, Email = model.Email };
+                var user = this.Mapper.Map<User>(model);
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
