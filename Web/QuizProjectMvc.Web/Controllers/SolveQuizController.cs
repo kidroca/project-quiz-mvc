@@ -1,9 +1,9 @@
 ﻿namespace QuizProjectMvc.Web.Controllers
 {
     using System.Web.Mvc;
-    using Services.Data;
     using Services.Data.Exceptions;
     using Services.Data.Models.Evaluation;
+    using Services.Data.Protocols;
     using ViewModels.Quiz.Solve;
 
     public class SolveQuizController : BaseController

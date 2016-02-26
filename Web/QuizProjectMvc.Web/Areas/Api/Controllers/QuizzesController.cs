@@ -4,9 +4,9 @@
     using System.Net.Http;
     using System.Web.Http;
     using Data.Models;
-    using Services.Data;
     using Services.Data.Exceptions;
     using Services.Data.Models.Evaluation;
+    using Services.Data.Protocols;
     using ViewModels.Quiz.Create;
 
     public class QuizzesController : BaseController

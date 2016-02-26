@@ -1,7 +1,7 @@
 ﻿namespace QuizProjectMvc.Web.Controllers
 {
     using System.Web.Mvc;
-    using QuizProjectMvc.Services.Data;
+    using Services.Data.Protocols;
     using ViewModels.Quiz;
 
     public class QuizzesController : BaseController

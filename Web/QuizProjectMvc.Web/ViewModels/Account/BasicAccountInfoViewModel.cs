@@ -28,8 +28,8 @@
 
         // Todo chage for file upload
         [Display(Name = "Avatar Url")]
-        [Url]
         [DataType(DataType.ImageUrl)]
+        [RegularExpression(ModelConstraints.AvatarPathPattern)]
         [MinLength(ModelConstraints.UrlMinLength, ErrorMessage = StatusMessages.MinimumLength)]
         [MaxLength(ModelConstraints.UrlMaxLength, ErrorMessage = StatusMessages.MaximumLength)]
         public string AvatarUrl { get; set; }

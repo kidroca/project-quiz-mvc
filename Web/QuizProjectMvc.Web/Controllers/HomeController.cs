@@ -3,9 +3,8 @@
     using System.Linq;
     using System.Web.Mvc;
     using Infrastructure.Mapping;
-
-    using Services.Data;
     using Services.Data.Models;
+    using Services.Data.Protocols;
     using ViewModels.Home;
     using ViewModels.Quiz;
 

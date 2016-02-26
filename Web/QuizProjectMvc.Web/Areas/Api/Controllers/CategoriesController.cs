@@ -3,7 +3,7 @@
     using System.Linq;
     using System.Web.Http;
     using System.Web.Mvc;
-    using Services.Data;
+    using Services.Data.Protocols;
 
     public class CategoriesController : BaseController
     {
