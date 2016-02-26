@@ -16,7 +16,7 @@
             @{
                 // Fix Avatar Name to be user-thumb
                 string imageUrl = string.IsNullOrEmpty(Model.AvatarUrl)
-                    ? "~/Content/images/quiz-thumb.png"
+                    ? "~/Content/images/default-avatar.png"
                     : Model.AvatarUrl;
             }
 
@@ -27,13 +27,31 @@
             <div class="quiz-details">
                 <div class="basic-info">
                     <p>
-                        @Html.DisplayFor(m => m.FirstName);
+                        <label>First Name:</label>
+                        @if (string.IsNullOrEmpty(Model.FirstName))
+                        {
+                            <text>No Information</text>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(m => m.FirstName)
+                        }
                     </p>
                     <p>
-                        @Html.DisplayFor(m => m.LastName);
+                        <label>Last Name:</label>
+                        @if (string.IsNullOrEmpty(Model.LastName))
+                        {
+                            <text>No Information</text>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(m => m.LastName)
+                        }
                     </p>
                     <p>
-                        @Html.DisplayFor(m => m.QuizzesCreated);
+                        @*Todo on click display all user quizzes*@
+                        <label>Quizzes Create:</label>
+                        @Html.DisplayFor(m => m.QuizzesCreated)
                     </p>
                     <p>
                         <label>Rating:</label>
