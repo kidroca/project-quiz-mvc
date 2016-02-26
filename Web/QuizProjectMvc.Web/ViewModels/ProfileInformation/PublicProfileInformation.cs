@@ -15,10 +15,14 @@
         {
             configuration.CreateMap<User, PublicProfileInformation>()
                 .ForMember(
+                    self => self.QuizzesCreated,
+                    opt => opt.MapFrom(model => model.QuizzesCreated.Count))
+                .ForMember(
                     self => self.Rating,
                     opt => opt.MapFrom(
-                        model => model.QuizzesCreated.SelectMany(q => q.Ratings)
-                            .Average(r => r.Value)));
+                        model => model.QuizzesCreated.SelectMany(q => q.Ratings).Any()
+                            ? model.QuizzesCreated.SelectMany(q => q.Ratings).Average(r => r.Value)
+                            : 0));
         }
     }
 }
