@@ -33,7 +33,10 @@
                             @if (Request.IsAuthenticated)
                             {
                                 <li>
-                                    @(Html.ActionLink<CreateQuizController>("Create New Quiz", c => c.Create()))
+                                    @(Html.ActionLink<ManageQuizController>("Create New Quiz", c => c.Create()))
+                                </li>
+                                <li>
+                                    @(Html.ActionLink<ProfileController>("Profile", c => c.My()));
                                 </li>
                             }
                         </ul>

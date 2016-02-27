@@ -1,4 +1,4 @@
-﻿@model QuizProjectMvc.Web.ViewModels.Account.AccountEditableDetailsViewModel
+﻿@model QuizProjectMvc.Services.Data.Models.Account.BasicAccountInfoViewModel
 
 @{
     var labelAttributes = new {@class = "col-lg-3 control-label"};
@@ -21,6 +21,15 @@
     <div class="col-lg-9">
         @Html.TextBoxFor(m => m.LastName, inputAttributes)
         @Html.ValidationMessageFor(m => m.LastName, String.Empty, validationAttributes)
+    </div>
+</div>
+
+<!-- Bio -->
+<div class="form-group">
+    @Html.LabelFor(m => m.Bio, labelAttributes)
+    <div class="col-lg-9">
+        @Html.TextAreaFor(m => m.Bio, inputAttributes)
+        @Html.ValidationMessageFor(m => m.Bio, String.Empty, validationAttributes)
     </div>
 </div>
 

@@ -2,6 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
     using Common;
+    using Services.Data.Models.Account;
 
     public class AccountEditableDetailsViewModel : BasicAccountInfoViewModel
     {

@@ -1,0 +1,28 @@
+﻿@using QuizProjectMvc.Common
+
+<div class="modal fade in" id="select-avatar">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content" id="avatars-container">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>Select Your Avatar</h3>
+            </div>
+
+            <div class="modal-body modal-avatar-container clearfix" data-id="avatars">
+                @foreach (var name in GlobalConstants.DefaultAvatars)
+                {
+                    var src = string.Format("/Content/images/avatars/{0}.png", name);
+
+                    <div class="user-avatar" data-avatar="@name">
+                        <img src="@src" alt="avatar image"/>
+                    </div>
+                }
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
+            </div>
+        </div>        
+    </div>
+</div>

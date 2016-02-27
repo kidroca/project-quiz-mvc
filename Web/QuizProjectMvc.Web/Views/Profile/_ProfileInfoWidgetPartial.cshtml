@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNet.Identity
+@using QuizProjectMvc.Common
+@using QuizProjectMvc.Web.Controllers
+@model QuizProjectMvc.Web.ViewModels.ProfileInformation.PublicProfileDetailed
+
+@{
+    bool enableEdit = User.Identity.GetUserId() == Model.Id ||
+                      User.IsInRole(GlobalConstants.AdministratorRoleName);
+}
+
+<article class="single-article">
+
+    <div class="article-header">
+        <h4 class="sub-title">
+            <label>Username:</label>
+            <span class="article-username">@Model.UserName</span>
+        </h4>
+    </div>
+
+    <div class="article-body clearfix">
+
+        <div class="article-image pull-left">
+            @{
+                // Fix Avatar Name to be user-thumb
+                string imageUrl = string.IsNullOrEmpty(Model.AvatarUrl)
+                    ? "~/Content/images/default-avatar.png"
+                    : Model.AvatarUrl;
+            }
+
+            <img id="selected-avatar" src="@Url.Content(imageUrl)" alt="article image" class="img-responsive">
+
+            @if (enableEdit)
+            {
+                @*Todo: add modal*@
+                <button type="button"
+                        data-toggle="modal" data-target="#select-avatar"
+                        class="btn btn-block btn-primary toggle-control"
+                        style="position: absolute; display: none">
+                    Change
+                </button>
+
+                @Html.Partial("_EditAvatarModalPartial")
+            }
+        </div>
+
+        <div class="article-content pull-left">
+            <div class="quiz-details">
+                <div class="basic-info">
+                    <!-- Editable Content -->
+                    <div id="editable-info" class="toggle-control">
+                        @Html.DisplayForModel()
+                    </div>
+
+                    @if (enableEdit)
+                    {
+                        <div class="toggle-control form-horizontal" style="display: none">
+                            @using (Ajax.BeginForm("Edit", new AjaxOptions
+                            {
+                                HttpMethod = "POST",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "editable-info",
+                                OnSuccess = "onSuccessCallback"
+
+                            }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.EditorForModel()
+                                <button class="btn btn-success pull-right" type="submit">Save</button>
+                            }
+                        </div>
+                    }
+
+                    <p>
+                        @*Todo on click display all user quizzes*@
+                        <label>Quizzes Create:</label>
+                        @Html.DisplayFor(m => m.QuizzesCreated)
+                    </p>
+                    <p>
+                        <label>Rating:</label>
+                        @for (int i = ModelConstraints.MinRating; i <= ModelConstraints.MaxRating; i++)
+                        {
+                            string icon = Model.Rating >= i
+                                ? "glyphicon-ok-sign"
+                                : "glyphicon-ok-circle";
+
+                            <i title="@i" class="glyphicon @icon"></i>
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+@if (enableEdit)
+{
+    <div>
+        <button class="btn btn-primary btn-round col-md-offset-9" title="Edit" onclick="onEditButtonClick()">
+            Edit Profile
+        </button>
+    </div>
+}

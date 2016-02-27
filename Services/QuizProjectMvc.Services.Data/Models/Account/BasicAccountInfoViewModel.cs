@@ -1,12 +1,14 @@
-﻿namespace QuizProjectMvc.Web.ViewModels.Account
+﻿namespace QuizProjectMvc.Services.Data.Models.Account
 {
     using System.ComponentModel.DataAnnotations;
     using Common;
-    using Data.Models;
-    using Infrastructure.Mapping;
+    using QuizProjectMvc.Data.Models;
+    using QuizProjectMvc.Web.Infrastructure.Mapping;
 
-    public class BasicAccountInfoViewModel : IMapFrom<User>
+    public class BasicAccountInfoViewModel : IMapFrom<User>, IMapTo<User>
     {
+        public string Id { get; set; }
+
         [Display(Name = "Email")]
         [EmailAddress]
         [DataType(DataType.EmailAddress)]
@@ -25,6 +27,10 @@
         [MinLength(ModelConstraints.NameMinLength, ErrorMessage = StatusMessages.MinimumLength)]
         [MaxLength(ModelConstraints.NameMaxLength, ErrorMessage = StatusMessages.MaximumLength)]
         public string LastName { get; set; }
+
+        [MinLength(ModelConstraints.DescriptionMinLength, ErrorMessage = StatusMessages.MinimumLength)]
+        [MaxLength(ModelConstraints.DescriptionMaxLength, ErrorMessage = StatusMessages.MaximumLength)]
+        public string Bio { get; set; }
 
         // Todo chage for file upload
         [Display(Name = "Avatar Url")]

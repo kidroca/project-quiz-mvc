@@ -3,9 +3,11 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
+    using Services.Data.Models.Account;
     using Services.Data.Protocols;
     using ViewModels.ProfileInformation;
 
+    [Authorize]
     public class ProfileController : BaseController
     {
         private readonly IUsersService users;
@@ -15,13 +17,12 @@
             this.users = users;
         }
 
-        [Authorize]
         public ActionResult My()
         {
             var user = this.users.ById(this.UserId);
-            var profileInfo = this.Mapper.Map<PublicProfileInformation>(user);
-            var lastQuizzes = this.Mapper.Map<List<CreatedQuizInfo>>(user.QuizzesCreated.Take(10));
-            var lastSolutions = this.Mapper.Map<List<TakenQuizInfo>>(user.SolutionsSubmited.Take(10));
+            var profileInfo = this.Mapper.Map<PublicProfileDetailed>(user);
+            var lastQuizzes = this.Mapper.Map<List<CreatedQuizInfo>>(user.QuizzesCreated.Take(5));
+            var lastSolutions = this.Mapper.Map<List<TakenQuizInfo>>(user.SolutionsSubmited.Take(5));
 
             var pageModel = new ProfilePageViewModel
             {
@@ -31,6 +32,22 @@
             };
 
             return this.View(pageModel);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(BasicAccountInfoViewModel model)
+        {
+            // Todo check if model.Id and current userId match or if admin
+            if (!this.ModelState.IsValid)
+            {
+                this.TempData["error"] = "Invalid profile data, the profile wasn't updated";
+            }
+            else
+            {
+                var result = this.users.Update(model, this.UserId);
+            }
+
+            return this.PartialView("DisplayTemplates/BasicAccountInfoViewModel", model);
         }
     }
 }

@@ -1,13 +1,11 @@
-﻿@{
-    string[] defaultAvatars = { "EricCartman", "Homer", "Lisa", "Marge", "MrBurns", "VaultBoy" };
-}
+﻿@using QuizProjectMvc.Common
 
 <!-- Select Avatar -->
-<div class="widget">
+<div class="widget @ViewBag.AvatarsContainerClass">
     <h3 class="text-center">Select An Avatar</h3>
     <div class="well">
         <div class="clearfix" data-id="avatars">
-            @foreach (var name in defaultAvatars)
+            @foreach (var name in GlobalConstants.DefaultAvatars)
             {
                 var src = string.Format("/Content/images/avatars/{0}.png", name);
                 <div class="col-sm-4 user-avatar" data-avatar="@name">
@@ -18,10 +16,13 @@
     </div>
 </div>
 
-<div class="widget">
+<div class="widget @ViewBag.AvatarPlaceholderClass">
     <div class="well">
-        <img id="selected-avatar" src="~/Content/images/default-avatar.png"
+        @{
+            var url = ViewBag.InitialImage ?? "/Content/images/default-avatar.png";
+        }
+        <img id="selected-avatar" src="@url"
              class="img-responsive"
-             alt="selected avatar" title="Is this you?" />
+             alt="selected avatar" title="Is this you?"/>
     </div>
 </div>

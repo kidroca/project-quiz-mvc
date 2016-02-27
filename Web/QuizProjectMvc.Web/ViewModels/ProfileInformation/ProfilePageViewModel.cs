@@ -10,7 +10,7 @@
             this.QuizzesTaken = new HashSet<TakenQuizInfo>();
         }
 
-        public PublicProfileInformation PublicProfile { get; set; }
+        public PublicProfileDetailed PublicProfile { get; set; }
 
         public ICollection<CreatedQuizInfo> QuizzesCreated { get; set; }
 

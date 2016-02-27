@@ -11,10 +11,10 @@
         @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
     </div>
 
-    @Html.Partial("_AvatarSelectionPartial");
+    @Html.Partial("_AvatarSelectionPartial")
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/select-avatar");
+    @Scripts.Render("~/bundles/select-avatar")
 }

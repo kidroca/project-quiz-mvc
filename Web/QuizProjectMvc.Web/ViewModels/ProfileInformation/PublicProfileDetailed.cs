@@ -5,7 +5,7 @@
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class PublicProfileInformation : UserBasicInfoViewModel, IMapFrom<User>, IHaveCustomMappings
+    public class PublicProfileDetailed : PublicProfile, IMapFrom<User>, IHaveCustomMappings
     {
         public int QuizzesCreated { get; set; }
 
@@ -13,7 +13,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<User, PublicProfileInformation>()
+            configuration.CreateMap<User, PublicProfileDetailed>()
                 .ForMember(
                     self => self.QuizzesCreated,
                     opt => opt.MapFrom(model => model.QuizzesCreated.Count))

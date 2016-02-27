@@ -4,8 +4,31 @@
     ViewBag.Title = "Your Profile";
 }
 
-@Html.Partial("_ProfilePartial", Model)
+@Html.Partial("_ProfileInfoWidgetPartial", Model.PublicProfile)
 
 @section aside {
     @Html.Partial("_AsidePartial", Model)
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery-ajax")
+    @Scripts.Render("~/bundles/select-avatar")
+
+<script>
+        // Todo extract in a .js file
+        var toggleable;
+        $(document).ready(function() {
+            toggleable = $('.toggle-control');
+        });
+
+        function onEditButtonClick() {
+            toggleable.toggle();
+        }
+
+        function onSuccessCallback() {
+            console.log('stana!');
+        }
+</script>
 }
