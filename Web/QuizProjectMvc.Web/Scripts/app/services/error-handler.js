@@ -6,6 +6,9 @@
 		CREATE_QUIZ: 'Something went wrong creating your qiuz... ' +
 		'Please check that everithing is filled out and try againg',
 
+		EDIT_QUIZ: 'Something went wroung updating the quiz...' +
+		'Please try agian after you make sure everithing is ok',
+
 		SOLVE_QUIZ: 'Something is wrong with the received data, please try again'
 	}
 
@@ -20,15 +23,22 @@
 		alert(message);
 	};
 
-	errorHandler.prototype.handleSoveQuizError = function (response) {
-	    var message = extractModelStateErrors(response.data.modelState) || response.data.message || DEFFAULT_ERRORS.SOLVE_QUIZ;
+	errorHandler.prototype.handleEditQuizError = function (resonse) {
+	    var message = extractModelStateErrors(resonse.data.modelState) || DEFFAULT_ERRORS.EDIT_QUIZ;
 
 	    // Todo: beautify this notification
 	    alert(message);
 	};
 
+	errorHandler.prototype.handleSoveQuizError = function (response) {
+		var message = extractModelStateErrors(response.data.modelState) || response.data.message || DEFFAULT_ERRORS.SOLVE_QUIZ;
+
+		// Todo: beautify this notification
+		alert(message);
+	};
+
 	function extractModelStateErrors(modelState) {
-	    if (!modelState) return null;
+		if (!modelState) return null;
 
 		var message = "";
 
