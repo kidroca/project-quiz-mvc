@@ -3,6 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Linq.Expressions;
+    using System.Reflection;
     using Exceptions;
     using Models;
     using Models.Evaluation;
@@ -148,6 +150,30 @@
         {
             this.quizzes.Add(quiz);
             this.quizzes.Save();
+        }
+
+        public void Save()
+        {
+            this.quizzes.Save();
+        }
+
+        /// <summary>
+        /// Returns QuizzesService to be fluent and chain expressions
+        /// </summary>
+        /// <returns>Returns Class instance to support chaining</returns>
+        private QuizzesService UpdatePropertyValue<T>(T target, Expression<Func<T, object>> expression, object value)
+        {
+            var memberSelectorExpression = expression.Body as MemberExpression;
+            if (memberSelectorExpression != null)
+            {
+                var property = memberSelectorExpression.Member as PropertyInfo;
+                if (property != null)
+                {
+                    property.SetValue(target, value, null);
+                }
+            }
+
+            return this;
         }
 
         private void ApplyFiltering(IQueryable<Quiz> result, QuizSearchModel queryParameters)

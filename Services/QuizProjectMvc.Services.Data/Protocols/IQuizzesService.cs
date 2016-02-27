@@ -25,5 +25,7 @@
         IQueryable<Quiz> GetPage(Pager pager);
 
         void Add(Quiz quiz);
+
+        void Save();
     }
 }
