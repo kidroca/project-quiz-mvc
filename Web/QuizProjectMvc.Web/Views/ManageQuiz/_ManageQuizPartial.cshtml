@@ -1,28 +1,21 @@
-﻿@using QuizProjectMvc.Web.Controllers
-
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = $"Create New Quiz";
-}
-
-<section ng-app="createQuiz" ng-controller="CreateQuizController as ctrl">
+﻿<section ng-app="manageQuiz" ng-controller="@ViewBag.NgController as ctrl">
     @if (TempData["error"] != null)
     {
         <div class="alert alert-danger">
             @TempData["error"]
-        </div>  
+        </div>
     }
 
     <div class="col-md-10 col-md-offset-1">
-        
+
         @using (Html.BeginForm(
-            "Create", "CreateQuiz", FormMethod.Post, new
-            {
-                name = "quizForm",
-                @class = "form-horizontal",
-                novalidate = "novalidate",
-                autocomplete = "off"
-            }))
+                "Create", "ManageQuiz", FormMethod.Post, new
+                {
+                    name = "quizForm",
+                    @class = "form-horizontal",
+                    novalidate = "novalidate",
+                    autocomplete = "off"
+                }))
         {
             <fieldset>
                 <legend>Add Quiz</legend>
@@ -108,17 +101,17 @@
                                     uib-popover="This question has {{question.answers.length}} answers available"
                                     popover-placement="left" tooltip-class="info-tip" popover-trigger="mouseenter"></em>
                                 <span class="pull-right button-group">
-                                        <button type="button"
-                                                class="btn btn-xs btn-primary"
-                                                ng-click="ctrl.openQuesitonMenu(question)">
-                                            <span class="glyphicon glyphicon-edit"></span> Edit
-                                        </button>
-                                        <button type="button" 
-                                                class="btn btn-xs btn-danger"
-                                                ng-click="ctrl.removeQuestion($index)">
-                                            <span class="glyphicon glyphicon-remove"></span> Delete
-                                        </button>
-                                    </span>
+                                    <button type="button"
+                                            class="btn btn-xs btn-primary"
+                                            ng-click="ctrl.openQuesitonMenu(question)">
+                                        <span class="glyphicon glyphicon-edit"></span> Edit
+                                    </button>
+                                    <button type="button"
+                                            class="btn btn-xs btn-danger"
+                                            ng-click="ctrl.removeQuestion($index)">
+                                        <span class="glyphicon glyphicon-remove"></span> Delete
+                                    </button>
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -128,8 +121,10 @@
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                         <button type="button" class="btn btn-primary"
-                               ng-disabled="quizForm.$invalid || !quiz.questions.length"
-                               ng-click="ctrl.addQuiz(quiz, quizForm)">Save Quiz</button>
+                                ng-disabled="quizForm.$invalid || !quiz.questions.length"
+                                ng-click="ctrl.addQuiz(quiz, quizForm)">
+                            Save Quiz
+                        </button>
                         <button type="button" ng-click="resetForm(quizForm)" class="btn btn-danger">Reset</button>
                     </div>
                 </div>
@@ -137,13 +132,3 @@
         }
     </div>
 </section>
-
-@section styles {
-    @Styles.Render("~/Content/toggle-switch");
-}
-
-@section scripts
-{
-    @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/create-quiz")
-}

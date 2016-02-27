@@ -1,0 +1,20 @@
+﻿@using QuizProjectMvc.Web.Controllers
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = $"Create New Quiz";
+    ViewBag.NgController = "CreateQuizController";
+}
+
+@Html.Partial("_ManageQuizPartial");
+
+@section styles {
+    @Styles.Render("~/Content/toggle-switch");
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/manage-quiz")
+    @Scripts.Render("~/bundles/create-quiz")
+}
