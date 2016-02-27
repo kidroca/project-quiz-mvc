@@ -4,7 +4,7 @@
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
-    using ViewModels.Account;
+    using Services.Data.Models.Account;
 
     public class UserInfoViewModel : BasicAccountInfoViewModel, IHaveCustomMappings
     {

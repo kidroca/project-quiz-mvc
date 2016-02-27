@@ -18,6 +18,7 @@
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.js"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery-ajax").Include("~/Scripts/jquery.unobtrusive-ajax.js"));
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
@@ -28,11 +29,18 @@
                 "~/Scripts/app/services/error-handler.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/solve-quiz")
-                .Include("~/Scripts/app/solve-quiz.js"));
+                .Include("~/Scripts/app/controllers/solve-quiz.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/create-quiz").Include(
+            bundles.Add(new ScriptBundle("~/bundles/manage-quiz").Include(
                 "~/Scripts/angular-toggle-switch.js",
-                "~/Scripts/app/create-quiz.js"));
+                "~/Scripts/app/controllers/manage-quiz/add-question.js",
+                "~/Scripts/app/controllers/manage-quiz/base-controller.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/create-quiz")
+                .Include("~/Scripts/app/controllers/manage-quiz/create-quiz.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/edit-quiz")
+                .Include("~/Scripts/app/controllers/manage-quiz/edit-quiz.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/select-avatar").Include(
                "~/Scripts/app/select-avatar.js"));

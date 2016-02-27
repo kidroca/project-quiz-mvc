@@ -95,8 +95,30 @@
                 .box-shadow-inset(@x: 3px; @y: 3px; @blur: 5px; @color: rgba(0, 0, 0, 0.43));
             }
 
-            img {
+            > img {
                 border: 5px solid white;
+            }
+        }
+    }
+}
+
+.modal-avatar-container {
+    margin: 0 auto;
+
+    .user-avatar {
+        position: relative;
+        cursor: pointer;
+        width: 33%;
+        min-height: 200px;
+        float: left;
+        box-sizing: border-box;
+
+        > img {
+            width: 100%;
+            .absolute-center();
+
+            &.selected {
+                background: rgba(0, 0, 0, 0.05);
             }
         }
     }

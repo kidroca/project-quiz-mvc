@@ -433,8 +433,31 @@ a.home-link {
   -moz-box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.43);
   box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.43);
 }
-.single-article .article-body .article-image img {
+.single-article .article-body .article-image > img {
   border: 5px solid white;
+}
+.modal-avatar-container {
+  margin: 0 auto;
+}
+.modal-avatar-container .user-avatar {
+  position: relative;
+  cursor: pointer;
+  width: 33%;
+  min-height: 200px;
+  float: left;
+  box-sizing: border-box;
+}
+.modal-avatar-container .user-avatar > img {
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.modal-avatar-container .user-avatar > img.selected {
+  background: rgba(0, 0, 0, 0.05);
 }
 .quiz-item a.btn {
   color: white;
