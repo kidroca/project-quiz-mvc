@@ -88,6 +88,10 @@
     <Compile Include="Migrations\201602242014048_CategoryAvatarUrl.Designer.cs">
       <DependentUpon>201602242014048_CategoryAvatarUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602271302025_UserBio.cs" />
+    <Compile Include="Migrations\201602271302025_UserBio.Designer.cs">
+      <DependentUpon>201602271302025_UserBio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -140,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602242014048_CategoryAvatarUrl.resx">
       <DependentUpon>201602242014048_CategoryAvatarUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602271302025_UserBio.resx">
+      <DependentUpon>201602271302025_UserBio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

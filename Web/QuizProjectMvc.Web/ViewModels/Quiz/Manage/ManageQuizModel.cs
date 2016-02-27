@@ -1,4 +1,4 @@
-﻿namespace QuizProjectMvc.Web.ViewModels.Quiz.Create
+namespace QuizProjectMvc.Web.ViewModels.Quiz.Manage
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,8 +7,10 @@
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class CreateQuizModel : IMapTo<Quiz>, IHaveCustomMappings, IValidatableObject
+    public class ManageQuizModel : IMapFrom<Quiz>, IMapTo<Quiz>, IHaveCustomMappings, IValidatableObject
     {
+        public int Id { get; set; }
+
         [Required]
         [MinLength(ModelConstraints.TitleMinLength)]
         [MaxLength(ModelConstraints.TitleMaxLength)]
@@ -19,9 +21,6 @@
         [MaxLength(ModelConstraints.DescriptionMaxLength)]
         public string Description { get; set; }
 
-        [Required]
-        public ICollection<CreateQuestionModel> Questions { get; set; }
-
         public bool IsPrivate { get; set; }
 
         [Required]
@@ -29,10 +28,18 @@
         [MaxLength(ModelConstraints.NameMaxLength)]
         public string Category { get; set; }
 
+        [Required]
+        public ICollection<ManageQuestionModel> Questions { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<CreateQuizModel, Quiz>()
+            configuration.CreateMap<ManageQuizModel, Quiz>()
                 .ForMember(self => self.Category, opt => opt.Ignore());
+
+            configuration.CreateMap<Quiz, ManageQuizModel>()
+                .ForMember(
+                    self => self.Category,
+                    opt => opt.MapFrom(model => model.Category.Name));
         }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

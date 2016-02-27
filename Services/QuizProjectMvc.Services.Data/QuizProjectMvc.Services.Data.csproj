@@ -32,6 +32,10 @@
     <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -51,6 +55,7 @@
     <Compile Include="CategoriesService.cs" />
     <Compile Include="Exceptions\QuizCreationException.cs" />
     <Compile Include="Exceptions\QuizEvaluationException.cs" />
+    <Compile Include="Models\Account\BasicAccountInfoViewModel.cs" />
     <Compile Include="Models\Pager.cs" />
     <Compile Include="Protocols\ICategoriesService.cs" />
     <Compile Include="Protocols\IQuizzesService.cs" />
@@ -73,6 +78,10 @@
     <ProjectReference Include="..\..\Data\QuizProjectMvc.Data.Models\QuizProjectMvc.Data.Models.csproj">
       <Project>{048df115-fad9-4bd4-9ba0-d99dfd32a2b2}</Project>
       <Name>QuizProjectMvc.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\QuizProjectMvc.Common\QuizProjectMvc.Common.csproj">
+      <Project>{701f322f-aa01-4ddc-90b6-6935981c1e73}</Project>
+      <Name>QuizProjectMvc.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Web\QuizProjectMvc.Web.Infrastructure\QuizProjectMvc.Web.Infrastructure.csproj">
       <Project>{6813dc53-5eee-4507-8604-5301ee51a0d3}</Project>

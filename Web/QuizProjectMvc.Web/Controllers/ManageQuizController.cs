@@ -1,8 +1,8 @@
 ﻿namespace QuizProjectMvc.Web.Controllers
 {
     using System.Web.Mvc;
-    using Services.Data.Models.Crud.Create;
     using Services.Data.Protocols;
+    using ViewModels.Quiz.Create;
 
     public class ManageQuizController : BaseController
     {
