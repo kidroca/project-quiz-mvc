@@ -19,7 +19,7 @@
         public string Description { get; set; }
 
         [Display(Name = "Created By")]
-        public UserBasicInfoViewModel CreatedBy { get; set; }
+        public PublicProfile CreatedBy { get; set; }
 
         [Display(Name = "Created On")]
         public DateTime CreatedOn { get; set; }

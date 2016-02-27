@@ -1,0 +1,32 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@model QuizProjectMvc.Web.ViewModels.Quiz.Manage.ManageQuizModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = string.Format("Editing {0}", Model.Title);
+    ViewBag.NgController = "EditQuizController";
+}
+
+@Html.Partial("_ManageQuizPartial");
+
+@section styles {
+    @Styles.Render("~/Content/toggle-switch");
+}
+
+@section scripts
+{
+@{
+    var quizJson = JsonConvert.SerializeObject(Model, Formatting.None, new JsonSerializerSettings
+    {
+       ContractResolver = new CamelCasePropertyNamesContractResolver()
+    });
+}
+
+    <script>
+        window.__editQuiz__ = @Html.Raw(quizJson);
+    </script>
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/manage-quiz")
+    @Scripts.Render("~/bundles/edit-quiz")
+}

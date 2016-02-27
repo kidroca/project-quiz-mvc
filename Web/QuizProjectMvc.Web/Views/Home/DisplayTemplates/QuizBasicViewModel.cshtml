@@ -6,7 +6,7 @@
 
     <h2>
         @*Todo fix the Id*@
-        @(Html.ActionLink<QuizzesController>(Model.Title, c => c.ById(Model.Id)))
+        @(Html.ActionLink<SolveQuizController>(Model.Title, c => c.Solve(Model.Id)))
     </h2>
 
     <article class="single-article">
@@ -31,9 +31,9 @@
                     // Fix quiz-thumb.png to be a quiz avatar (currently a user is showing)
                     string imageUrl = string.IsNullOrEmpty(Model.Category.AvatarUrl)
                                         ? "~/Content/images/quiz-thumb.png"
-                                        :  Model.Category.AvatarUrl;
+                                        : Model.Category.AvatarUrl;
                 }
-                
+
                 <img src="@Url.Content(imageUrl)" alt="article image" class="img-responsive">
             </div>
 
@@ -52,12 +52,12 @@
                                     ? "glyphicon-ok-sign"
                                     : "glyphicon-ok-circle";
 
-                                 @*Todo: Wrap in ancor ? *@
+                                @*Todo: Wrap in ancor ? *@
                                 <i title="@i" class="glyphicon @icon"></i>
                             }
                         </p>
                         <p>
-                            <label>Question:</label > <span>@Model.QuestionsCount</span>
+                            <label>Question:</label> <span>@Model.QuestionsCount</span>
                         </p>
                         <p>
                             <label>Times Completed:</label> <span>@Model.TimesCompleted</span>
@@ -75,10 +75,14 @@
     </article>
 
     <div>
+        @(Html.ActionLink<ManageQuizController>("Edit", c => c.Edit(Model.Id), null, new
+    {
+        @class = "btn btn-info btn-round col-md-offset-7"
+    }))
         @(Html.ActionLink<SolveQuizController>("Check It Out", c => c.Solve(Model.Id), null, new
-        {
-            @class = "btn btn-primary btn-round col-md-offset-9"
-        }))
+    {
+        @class = "btn btn-primary btn-round"
+    }))
     </div>
 </div>
 

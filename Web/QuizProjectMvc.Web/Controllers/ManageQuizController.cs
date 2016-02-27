@@ -2,7 +2,7 @@
 {
     using System.Web.Mvc;
     using Services.Data.Protocols;
-    using ViewModels.Quiz.Create;
+    using ViewModels.Quiz.Manage;
 
     public class ManageQuizController : BaseController
     {
@@ -30,7 +30,7 @@
                 return this.HttpNotFound("The specified quiz has disappeared without a trace");
             }
 
-            var model = this.Mapper.Map<CreateQuizModel>(quiz);
+            var model = this.Mapper.Map<ManageQuizModel>(quiz);
 
             return this.View(model);
         }
