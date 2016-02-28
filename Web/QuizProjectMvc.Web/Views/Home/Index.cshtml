@@ -1,4 +1,5 @@
-﻿@model QuizProjectMvc.Web.ViewModels.Home.IndexViewModel
+﻿@using QuizProjectMvc.Web.Controllers
+@model QuizProjectMvc.Web.ViewModels.Home.IndexViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -8,6 +9,11 @@
 {
     @Html.DisplayFor(m => quiz)
 }
+
+@Html.ActionLink("Test Btn", "Index", Model.Pager, new
+{
+    @class = "btn btn-primary"
+})
 
 @*Side Content*@
 @section aside {
