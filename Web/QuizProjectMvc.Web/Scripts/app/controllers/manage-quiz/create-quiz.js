@@ -1,5 +1,12 @@
 ﻿(function () {
-	'use strict';
+    'use strict';
+
+    var EMPTY_QUIZ = {
+    	title: '',
+    	description: '',
+    	category: '',
+    	questions: []
+    };
 
 	function CreateQuizController($scope, $controller,$http, $location, $localStorage, errorHandler) {
 		var self = this;
@@ -8,7 +15,7 @@
 
 		console.log('Hello from CreateQuizController');
 
-		$localStorage.quiz = $localStorage.quiz || {};
+		$localStorage.quiz = $localStorage.quiz || angular.copy(EMPTY_QUIZ);
 	    parent.setQuiz($localStorage.quiz);
 
 		self.addQuiz = function addQuiz(quiz, form) {
@@ -22,10 +29,12 @@
 		        }, errorHandler.handleCreateQuizError);
 		};
 
-		self.clearQuizCallback = function clearQuizCallback() {
-		    delete $localStorage.quiz;
-		    $localStorage.quiz = {}; //angular.copy(DEFAULT_STORAGE);
-		    // parent.setQuiz($localStorage.quiz);
+		$scope.resetForm = function resetForm(form) {
+		    if (parent.resetForm(form)) {
+		        console.log('after parent delete');
+		        $localStorage.quiz = angular.copy(EMPTY_QUIZ);
+		        parent.setQuiz($localStorage.quiz);
+		    }
 		}
 	}
 

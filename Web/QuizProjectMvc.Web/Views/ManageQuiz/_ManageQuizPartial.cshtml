@@ -1,4 +1,4 @@
-﻿<section ng-app="manageQuiz" ng-controller="@ViewBag.NgController as ctrl">
+﻿<section id="manage-quiz" ng-app="manageQuiz" ng-controller="@ViewBag.NgController as ctrl">
     @if (TempData["error"] != null)
     {
         <div class="alert alert-danger">
@@ -9,13 +9,13 @@
     <div class="col-md-10 col-md-offset-1">
 
         @using (Html.BeginForm(
-                "Create", "ManageQuiz", FormMethod.Post, new
-                {
-                    name = "quizForm",
-                    @class = "form-horizontal",
-                    novalidate = "novalidate",
-                    autocomplete = "off"
-                }))
+                    "Create", "ManageQuiz", FormMethod.Post, new
+                    {
+                        name = "quizForm",
+                        @class = "form-horizontal",
+                        novalidate = "novalidate",
+                        autocomplete = "off"
+                    }))
         {
             <fieldset>
                 <legend>Add Quiz</legend>

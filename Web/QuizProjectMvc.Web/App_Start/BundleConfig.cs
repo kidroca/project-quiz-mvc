@@ -33,8 +33,8 @@
 
             bundles.Add(new ScriptBundle("~/bundles/manage-quiz").Include(
                 "~/Scripts/angular-toggle-switch.js",
-                "~/Scripts/app/controllers/manage-quiz/add-question.js",
-                "~/Scripts/app/controllers/manage-quiz/base-controller.js"));
+                "~/Scripts/app/controllers/manage-quiz/base-controller.js",
+                "~/Scripts/app/controllers/manage-quiz/add-question.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/create-quiz")
                 .Include("~/Scripts/app/controllers/manage-quiz/create-quiz.js"));
@@ -50,8 +50,9 @@
         {
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
-                "~/Content/index.css",
-                "~/Content/font-awesome.css"));
+                "~/Content/ui-bootstrap-csp.css",
+                "~/Content/font-awesome.css",
+                "~/Content/index.css"));
 
             bundles.Add(new StyleBundle("~/Content/toggle-switch").Include(
                 "~/Content/angular-toggle-switch-bootstrap.css",

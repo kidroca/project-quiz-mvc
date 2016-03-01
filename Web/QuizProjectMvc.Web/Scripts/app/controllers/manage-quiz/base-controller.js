@@ -1,36 +1,27 @@
 ﻿(function () {
 	'use strict';
 
-	//var DEFAULT_STORAGE = {
-	//	title: '',
-	//	description: '',
-	//	category: '',
-	//	questions: []
-	//};
-
-	function ManageQuizController($scope, $localStorage, $uibModal) {
+	function ManageQuizController($scope, $http, $localStorage, $uibModal) {
 		var self = this;
 
 		console.log('Hello from BaseController');
 
 		self.setQuiz = function setQuiz(quiz) {
+		    console.log('setting quiz --> ', quiz);
 			$scope.quiz = quiz;
 		}
 
-		$scope.resetForm = function resetForm(form) {
+		self.resetForm = function resetForm(form) {
 			var check = confirm('Are you sure you want to reset, all fields and questions will be reset.');
 
 			if (!check) {
-				return;
+				return false;
 			}
 
 			form.$setPristine();
 			form.$setUntouched();
 
-			self.clearQuizCallback();
-
-			//$localStorage.quiz = {} //angular.copy(DEFAULT_STORAGE);
-			//$scope.quiz = $localStorage.quiz;
+		    return true;
 		};
 
 		self.removeQuestion = function removeQuestion(index) {
@@ -46,8 +37,9 @@
 
 		self.openQuesitonMenu = function openQuesitonMenu(question) {
 			var modalInstance = $uibModal.open({
-				animation: true,
-				templateUrl: '/ManageQuiz/AddQuestionTemplate',
+			    animation: true,
+			    appendTo: $('#manage-quiz'),
+			    templateUrl: '/Content/templates/add-question-template.html',
 				controller: 'AddQuestionController',
 				controllerAs: 'ctrl',
 				resolve: {
@@ -66,9 +58,10 @@
 	}
 
 	angular.module('manageQuiz', [
-		'ui.bootstrap', 'ngStorage', 'paging', 'toggle-switch', 'errorHandler', 'addQuestion'])
+		'ngStorage', 'paging', 'toggle-switch', 'errorHandler', 'ui.bootstrap'])
 		.controller('ManageQuizController', [
 			'$scope',
+			'$http',
 			'$localStorage',
 			'$uibModal',
 			ManageQuizController

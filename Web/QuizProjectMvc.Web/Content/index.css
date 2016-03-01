@@ -513,6 +513,9 @@ a.home-link {
 .questions-paging .pagination-page a {
   border-radius: 5px;
 }
+.question-list .text-info {
+  cursor: pointer;
+}
 .carousel-container {
   font-family: "Colaborate Thin", monospace;
 }

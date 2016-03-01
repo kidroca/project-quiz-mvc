@@ -1,5 +1,13 @@
 ﻿(function () {
-	'use strict';
+    'use strict';
+
+    var EMPTY_QUIZ = {
+        id: 0,
+        title: '',
+        description: '',
+        category: '',
+        questions: []
+    };
 
 	function EditQuizController($scope, $controller, $http, $location, $localStorage, errorHandler) {
 	    var self = this;
@@ -21,8 +29,14 @@
 		        }, errorHandler.handleEditQuizError);
 		};
 
-		self.clearQuizCallback = function clearQuizCallback() {
-		    parent.setQuiz({ id: window.__editQuiz__.id });
+		$scope.resetForm = function resetForm(form) {
+		    if (parent.resetForm(form)) {
+		        var id = quiz.id;
+		        quiz = angular.copy(EMPTY_QUIZ);
+		        quiz.id = id;
+
+		        parent.setQuiz(quiz);
+            }
 		}
 	}
 
