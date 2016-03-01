@@ -268,6 +268,7 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
+    <Compile Include="ViewModels\Notification.cs" />
     <Compile Include="ViewModels\ProfileInformation\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\ProfileInformation\PublicProfile.cs" />
     <Compile Include="ViewModels\ProfileInformation\PublicProfileDetailed.cs" />
@@ -448,7 +449,6 @@
     <Content Include="Views\Shared\EditorTemplates\BasicAccountInfoViewModel.cshtml" />
     <Content Include="Views\SolveQuiz\Solve.cshtml" />
     <Content Include="Views\ManageQuiz\Create.cshtml" />
-    <Content Include="Views\ManageQuiz\AddQuestionTemplate.cshtml" />
     <Content Include="Views\SolveQuiz\Result.cshtml" />
     <Content Include="Views\Account\_RegisterFormPartial.cshtml" />
     <Content Include="Views\ManageQuiz\Edit.cshtml" />
@@ -460,6 +460,7 @@
     <Content Include="Views\Shared\_AvatarSelectionPartial.cshtml" />
     <Content Include="Views\Profile\_EditAvatarModalPartial.cshtml" />
     <Content Include="Views\Profile\_ProfileInfoWidgetPartial.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Notification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,4 +1,5 @@
-﻿@using QuizProjectMvc.Web.ViewModels.Account
+﻿@using QuizProjectMvc.Web.ViewModels
+@using QuizProjectMvc.Web.ViewModels.Account
 @model LoginViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,6 +8,18 @@
     var inputAttributes = new { @class = "form-control" };
     var validationAttributes = new { @class = "text-danger" };
 }
+
+@if (ViewBag.Error != null)
+{
+    @section notification {
+        @{
+            var notification = new Notification { Message = ViewBag.Error, CssClass = "alert-danger" };
+        }
+
+        @Html.Partial("_NotificationPartial", notification);
+    }
+}
+
 
 <div>
     <div class="col-md-7">

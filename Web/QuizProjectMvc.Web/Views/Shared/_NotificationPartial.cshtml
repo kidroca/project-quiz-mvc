@@ -1,0 +1,13 @@
+﻿@model QuizProjectMvc.Web.ViewModels.Notification
+
+<div class="alert @Model.CssClass alert-dismissible fade in action-notification" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    @if (!string.IsNullOrWhiteSpace(Model.Lead))
+    {
+        <strong>Model.Lead</strong>
+    }
+
+    @Model.Message
+</div>

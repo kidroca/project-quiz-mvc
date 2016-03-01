@@ -101,7 +101,7 @@
                         new { ReturnUrl = returnUrl, model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    this.ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    this.ViewBag.Error = "Invalid login attempt.";
                     return this.View(model);
             }
         }
