@@ -4,6 +4,7 @@
     using Services.Data.Protocols;
     using ViewModels.Quiz.Manage;
 
+    [Authorize]
     public class ManageQuizController : BaseController
     {
         private readonly IQuizzesService quizzes;
@@ -28,6 +29,12 @@
             if (quiz == null)
             {
                 return this.HttpNotFound("The specified quiz has disappeared without a trace");
+            }
+
+            if (this.UserId != quiz.CreatedById)
+            {
+                this.TempData["error"] = "You are not allowed to modify this quiz as you are not it's creator";
+                return this.RedirectToAction("Index", "Home");
             }
 
             var model = this.Mapper.Map<ManageQuizModel>(quiz);

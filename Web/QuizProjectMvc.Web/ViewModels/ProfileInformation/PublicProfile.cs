@@ -8,6 +8,8 @@
 
     public class PublicProfile : BasicAccountInfoViewModel, IMapFrom<User>, IMapTo<User>
     {
+        public string Id { get; set; }
+
         [Display(Name = "Username")]
         [Required]
         [MinLength(ModelConstraints.UsernameMinLength, ErrorMessage = StatusMessages.MinimumLength)]

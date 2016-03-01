@@ -1,9 +1,9 @@
-﻿<section id="manage-quiz" ng-app="manageQuiz" ng-controller="@ViewBag.NgController as ctrl">
+﻿@using QuizProjectMvc.Web.ViewModels
+<section id="manage-quiz" ng-app="manageQuiz" ng-controller="@ViewBag.NgController as ctrl">
     @if (TempData["error"] != null)
     {
-        <div class="alert alert-danger">
-            @TempData["error"]
-        </div>
+        var notification = new Notification {Message = (string) TempData["error"], CssClass = "alert-danger"};
+        @Html.Partial("_NotificationPartial", notification)
     }
 
     <div class="col-md-10 col-md-offset-1">
@@ -18,7 +18,7 @@
                     }))
         {
             <fieldset>
-                <legend>Add Quiz</legend>
+                <legend>@ViewBag.Action Quiz</legend>
 
                 <!-- Title -->
                 <div class="form-group">
