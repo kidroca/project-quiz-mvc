@@ -55,6 +55,11 @@
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+            modelBuilder.Entity<Question>()
+                .HasMany(q => q.Answers)
+                .WithRequired(a => a.ForQuestion)
+                .WillCascadeOnDelete(true);
         }
 
         private void ApplyAuditInfoRules()

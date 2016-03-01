@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201602291552016_InitialCreate.Designer.cs">
       <DependentUpon>201602291552016_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603012017426_QuestionsCascadeDeleteAnswers.cs" />
+    <Compile Include="Migrations\201603012017426_QuestionsCascadeDeleteAnswers.Designer.cs">
+      <DependentUpon>201603012017426_QuestionsCascadeDeleteAnswers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,6 +102,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201602291552016_InitialCreate.resx">
       <DependentUpon>201602291552016_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603012017426_QuestionsCascadeDeleteAnswers.resx">
+      <DependentUpon>201603012017426_QuestionsCascadeDeleteAnswers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

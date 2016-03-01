@@ -1,7 +1,14 @@
 ﻿@using QuizProjectMvc.Web.Controllers
+@using QuizProjectMvc.Web.ViewModels
 @model QuizProjectMvc.Web.ViewModels.Home.IndexViewModel
 @{
     ViewBag.Title = "Home Page";
+
+    if (TempData["error"] != null)
+    {
+        var notification = new Notification { Message = (string)TempData["error"], CssClass = "alert-danger" };
+        Html.RenderPartial("_NotificationPartial", notification);
+    }
 }
 
 @*Main Content*@
