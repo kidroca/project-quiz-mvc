@@ -34,10 +34,5 @@
 
             return this.View(model);
         }
-
-        public ActionResult AddQuestionTemplate()
-        {
-            return this.PartialView();
-        }
     }
 }

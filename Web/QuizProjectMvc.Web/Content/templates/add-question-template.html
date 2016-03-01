@@ -67,12 +67,14 @@
 
     <button class="btn btn-danger" ng-click="ctrl.cancel()">Close</button>
 
-    <span uib-popover="Please, assign at least 2 answers and mark the correct answer!" 
-          popover-trigger="mouseenter" 
+    <span uib-popover="Please, assign at least 2 answers and mark the correct answer!"
+          popover-trigger="mouseenter"
           popover-enable="!ctrl.hasCorrect()"
           popover-placement="bottom">
         <button class="btn btn-success"
                 ng-click="ctrl.ok()"
-                ng-disabled="questionForm.$invalid || !ctrl.hasCorrect() || ctrl.question.answers.length < 2">Save Question</button>
+                ng-disabled="!ctrl.saveIsAvailable(questionForm)">
+            Save Question
+        </button>
     </span>
 </div>
