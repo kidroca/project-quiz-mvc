@@ -467,6 +467,9 @@ a.home-link {
 .modal-avatar-container .user-avatar > img.selected {
   background: rgba(0, 0, 0, 0.05);
 }
+.quiz-item {
+  margin-bottom: 4rem;
+}
 .quiz-item a.btn {
   color: white;
 }
