@@ -395,6 +395,7 @@
     <Content Include="Scripts\app\filters\paging-filter.js" />
     <Content Include="Scripts\app\select-avatar.js" />
     <Content Include="Scripts\app\services\error-handler.js" />
+    <Content Include="Scripts\app\toggle-profile-edit.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />

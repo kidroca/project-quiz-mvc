@@ -44,6 +44,9 @@
 
             bundles.Add(new ScriptBundle("~/bundles/select-avatar").Include(
                "~/Scripts/app/select-avatar.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/toggle-profile-update")
+                .Include("~/Scripts/app/toggle-profile-edit.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)

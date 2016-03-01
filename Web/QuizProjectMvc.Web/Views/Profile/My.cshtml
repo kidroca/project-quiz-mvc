@@ -15,20 +15,5 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jquery-ajax")
     @Scripts.Render("~/bundles/select-avatar")
-
-<script>
-        // Todo extract in a .js file
-        var toggleable;
-        $(document).ready(function() {
-            toggleable = $('.toggle-control');
-        });
-
-        function onEditButtonClick() {
-            toggleable.toggle();
-        }
-
-        function onSuccessCallback() {
-            console.log('stana!');
-        }
-</script>
+    @Scripts.Render("~/bundles/toggle-profile-update")
 }

@@ -13,6 +13,7 @@
 /// <reference path="app/filters/paging-filter.js" />
 /// <reference path="app/select-avatar.js" />
 /// <reference path="app/services/error-handler.js" />
+/// <reference path="app/toggle-profile-edit.js" />
 /// <reference path="bootstrap.min.js" />
 /// <reference path="jquery.unobtrusive-ajax.min.js" />
 /// <reference path="jquery.validate.min.js" />
