@@ -314,6 +314,7 @@
     <Content Include="Content\index.min.css">
       <DependentUpon>index.css</DependentUpon>
     </Content>
+    <Content Include="Content\templates\add-question-template.html" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -381,6 +382,9 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Properties\PublishProfiles\ProjectQuiz - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ProjectQuiz - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\QuizProjectMvc - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\app\controllers\manage-quiz\add-question.js" />
     <Content Include="Scripts\app\controllers\manage-quiz\base-controller.js" />
