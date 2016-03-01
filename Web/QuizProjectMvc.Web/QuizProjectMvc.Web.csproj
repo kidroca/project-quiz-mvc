@@ -453,14 +453,14 @@
     <Content Include="Views\Account\_RegisterFormPartial.cshtml" />
     <Content Include="Views\ManageQuiz\Edit.cshtml" />
     <Content Include="Views\ManageQuiz\_ManageQuizPartial.cshtml" />
-    <None Include="Views\Profile\My.cshtml" />
+    <Content Include="Views\Profile\My.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\BasicAccountInfoViewModel.cshtml" />
     <Content Include="Views\Profile\_AsidePartial.cshtml" />
     <Content Include="Views\Shared\_MainWithSideLayout.cshtml" />
     <Content Include="Views\Shared\_AvatarSelectionPartial.cshtml" />
     <Content Include="Views\Profile\_EditAvatarModalPartial.cshtml" />
     <Content Include="Views\Profile\_ProfileInfoWidgetPartial.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\Notification.cshtml" />
+    <Content Include="Views\Shared\_NotificationPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
