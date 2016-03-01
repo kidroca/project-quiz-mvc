@@ -173,6 +173,7 @@
             {
                 var user = this.Mapper.Map<User>(model);
                 var result = await this.UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
                     await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);

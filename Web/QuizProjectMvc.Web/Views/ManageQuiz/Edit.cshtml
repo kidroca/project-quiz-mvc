@@ -8,10 +8,10 @@
     ViewBag.NgController = "EditQuizController";
 }
 
-@Html.Partial("_ManageQuizPartial");
+@Html.Partial("_ManageQuizPartial")
 
 @section styles {
-    @Styles.Render("~/Content/toggle-switch");
+    @Styles.Render("~/Content/toggle-switch")
 }
 
 @section scripts
@@ -24,7 +24,7 @@
 }
 
     <script>
-        window.__editQuiz__ = @Html.Raw(quizJson);
+        window.__editQuiz__ = @Html.Raw(quizJson)
     </script>
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/manage-quiz")

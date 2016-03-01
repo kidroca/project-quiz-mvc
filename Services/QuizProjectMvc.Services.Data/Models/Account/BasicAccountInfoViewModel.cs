@@ -7,8 +7,6 @@
 
     public class BasicAccountInfoViewModel : IMapFrom<User>, IMapTo<User>
     {
-        public string Id { get; set; }
-
         [Display(Name = "Email")]
         [EmailAddress]
         [DataType(DataType.EmailAddress)]

@@ -7,6 +7,8 @@
 
     public class PublicProfileDetailed : PublicProfile, IMapFrom<User>, IHaveCustomMappings
     {
+        public string Id { get; set; }
+
         public int QuizzesCreated { get; set; }
 
         public double Rating { get; set; }
