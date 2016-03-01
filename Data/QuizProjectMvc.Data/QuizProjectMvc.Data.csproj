@@ -60,37 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201602161524319_ModelsNormalized.cs" />
-    <Compile Include="Migrations\201602161524319_ModelsNormalized.Designer.cs">
-      <DependentUpon>201602161524319_ModelsNormalized.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602171525385_IHavePrimaryKey.cs" />
-    <Compile Include="Migrations\201602171525385_IHavePrimaryKey.Designer.cs">
-      <DependentUpon>201602171525385_IHavePrimaryKey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602191752574_RemovedCascadeDeletes.cs" />
-    <Compile Include="Migrations\201602191752574_RemovedCascadeDeletes.Designer.cs">
-      <DependentUpon>201602191752574_RemovedCascadeDeletes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602241452520_UniqueCategory.cs" />
-    <Compile Include="Migrations\201602241452520_UniqueCategory.Designer.cs">
-      <DependentUpon>201602241452520_UniqueCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602241534407_MinQuestions.cs" />
-    <Compile Include="Migrations\201602241534407_MinQuestions.Designer.cs">
-      <DependentUpon>201602241534407_MinQuestions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602241539090_RequiredQuestions.cs" />
-    <Compile Include="Migrations\201602241539090_RequiredQuestions.Designer.cs">
-      <DependentUpon>201602241539090_RequiredQuestions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602242014048_CategoryAvatarUrl.cs" />
-    <Compile Include="Migrations\201602242014048_CategoryAvatarUrl.Designer.cs">
-      <DependentUpon>201602242014048_CategoryAvatarUrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602271302025_UserBio.cs" />
-    <Compile Include="Migrations\201602271302025_UserBio.Designer.cs">
-      <DependentUpon>201602271302025_UserBio.cs</DependentUpon>
+    <Compile Include="Migrations\201602291552016_InitialCreate.cs" />
+    <Compile Include="Migrations\201602291552016_InitialCreate.Designer.cs">
+      <DependentUpon>201602291552016_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,29 +96,8 @@
     </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602161524319_ModelsNormalized.resx">
-      <DependentUpon>201602161524319_ModelsNormalized.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602171525385_IHavePrimaryKey.resx">
-      <DependentUpon>201602171525385_IHavePrimaryKey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602191752574_RemovedCascadeDeletes.resx">
-      <DependentUpon>201602191752574_RemovedCascadeDeletes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602241452520_UniqueCategory.resx">
-      <DependentUpon>201602241452520_UniqueCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602241534407_MinQuestions.resx">
-      <DependentUpon>201602241534407_MinQuestions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602241539090_RequiredQuestions.resx">
-      <DependentUpon>201602241539090_RequiredQuestions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602242014048_CategoryAvatarUrl.resx">
-      <DependentUpon>201602242014048_CategoryAvatarUrl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602271302025_UserBio.resx">
-      <DependentUpon>201602271302025_UserBio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602291552016_InitialCreate.resx">
+      <DependentUpon>201602291552016_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

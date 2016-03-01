@@ -1,9 +1,7 @@
 ﻿namespace QuizProjectMvc.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -39,9 +37,7 @@
                     UserName = AdministratorUserName,
                     Email = AdministratorUserName,
                     FirstName = "Admin",
-                    LastName = "Adminov",
-                    AvatarUrl = "http://cdn.playbuzz.com/cdn/60c3d130-7599-4646-866f-732b67606044/fdac6a96-ea58-4b9a-a8ab-7f6310c0c992.png",
-                    CreatedOn = DateTime.Now
+                    LastName = "Adminov"
                 };
 
                 userManager.Create(user, AdministratorPassword);

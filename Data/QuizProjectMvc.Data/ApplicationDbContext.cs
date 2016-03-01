@@ -15,7 +15,7 @@
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("ApplicationDbContext", throwIfV1Schema: false)
         {
         }
 
@@ -55,24 +55,6 @@
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
-            //modelBuilder.Entity<QuizRating>()
-            //    .HasRequired(rating => rating.Quiz)
-            //    .WithMany(quiz => quiz.Ratings)
-            //    .HasForeignKey(rating => rating.QuizId)
-            //    .WillCascadeOnDelete(false);
-
-            //modelBuilder.Entity<QuizSolution>()
-            //    .HasRequired(solution => solution.ForQuiz)
-            //    .WithMany(quiz => quiz.Solutions)
-            //    .HasForeignKey(solution => solution.ForQuizId)
-            //    .WillCascadeOnDelete(false);
-
-            //modelBuilder.Entity<Comment>()
-            //    .HasRequired(comment => comment.Quiz)
-            //    .WithMany(quiz => quiz.Comments)
-            //    .HasForeignKey(comment => comment.QuizId)
-            //    .WillCascadeOnDelete(false);
         }
 
         private void ApplyAuditInfoRules()
