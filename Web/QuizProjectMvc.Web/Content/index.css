@@ -486,6 +486,9 @@ a.home-link {
   color: #323a43;
 }
 .answer-mark {
+  cursor: pointer;
+}
+.answer-mark a {
   color: #1f262d;
 }
 .form-group label.correct .fa-check {

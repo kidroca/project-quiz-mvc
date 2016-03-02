@@ -22,18 +22,18 @@
             </div>
 
             <div ng-repeat="answer in ctrl.question.answers" class="form-group">
-                <label for="answerText"
-                       class="col-lg-2 control-label" ng-class="{correct: answer.isCorrect}">
+                <label for="answerText{{$index}}"
+                       ng-click="ctrl.markCorrect($index)"
+                       class="col-lg-2 control-label answer-mark"
+                       ng-class="{correct: answer.isCorrect}">
                     <i class="fa fa-check" ng-if="answer.isCorrect"></i>
-                    <a href="#"
-                       ng-click="$event.preventDefault(); ctrl.markCorrect($index)"
-                       ng-bind="ctrl.letters[$index]" class="answer-mark">
+                    <a href ng-bind="ctrl.letters[$index]">
                     </a>
                 </label>
                 <div ng-form name="answerForm" class="col-lg-10">
                     <div class="input-group">
-                        <input type="text" ng-model="answer.text" id="answerText"
-                               class="form-control" name="answerText" placeholder="Answer"
+                        <input type="text" ng-model="answer.text" id="answerText{{$index}}"
+                               class="form-control" name="answerText{{$index}}" placeholder="Answer"
                                required ng-minlength="2"
                                ng-focus="answer.focus=true" ng-blur="answer.focus=false">
                         <span class="input-group-btn">
