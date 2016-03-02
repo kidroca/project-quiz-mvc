@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="page">
+    <div class="wrapper">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <div class="content">
+        <div class="wrapper">
+
+            @*Todo Page Rout*@
+            <div class="current-route">
+                <span>Current » <strong class="sub-title">Rout</strong></span>
+            </div>
+            <div class="container-fluid clearfix">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
+
+@section notification {
+    @RenderSection("notification", required: false)
+}
+
+@section styles {
+    @RenderSection("styles", required: false)
+}
+
+@section Scripts {
+    @RenderSection("Scripts", false)
+}

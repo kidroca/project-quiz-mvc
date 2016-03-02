@@ -17,25 +17,7 @@
         @RenderSection("notification", required: false)
 
         <div id="content-wrapper" class="container-fluid body-content">
-
-            <div class="page">
-                <div class="wrapper">
-                    <h2>@ViewBag.Title</h2>
-                </div>
-
-                <div class="content">
-                    <div class="wrapper">
-
-                        @*Todo Page Rout*@
-                        <div class="current-route">
-                            <span>Current » <strong class="sub-title">Rout</strong></span>
-                        </div>
-                        <div class="container-fluid clearfix">
-                            @RenderBody()
-                        </div>
-                    </div>
-                </div>
-            </div>
+             @RenderBody()
         </div>
 
         @Html.Partial("_FooterPartial")
