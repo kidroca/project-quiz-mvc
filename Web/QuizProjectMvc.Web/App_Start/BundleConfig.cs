@@ -28,25 +28,29 @@
                 "~/Scripts/app/filters/paging-filter.js",
                 "~/Scripts/app/services/error-handler.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/solve-quiz")
-                .Include("~/Scripts/app/controllers/solve-quiz.js"));
+            bundles.Add(new ScriptBundle("~/bundles/solve-quiz").Include(
+                "~/Scripts/app/controllers/solve-quiz.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/manage-quiz").Include(
                 "~/Scripts/angular-toggle-switch.js",
                 "~/Scripts/app/controllers/manage-quiz/base-controller.js",
                 "~/Scripts/app/controllers/manage-quiz/add-question.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/create-quiz")
-                .Include("~/Scripts/app/controllers/manage-quiz/create-quiz.js"));
+            bundles.Add(new ScriptBundle("~/bundles/create-quiz").Include(
+                "~/Scripts/app/controllers/manage-quiz/create-quiz.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/edit-quiz")
-                .Include("~/Scripts/app/controllers/manage-quiz/edit-quiz.js"));
+            bundles.Add(new ScriptBundle("~/bundles/edit-quiz").Include(
+                "~/Scripts/app/controllers/manage-quiz/edit-quiz.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/select-avatar").Include(
                "~/Scripts/app/select-avatar.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/toggle-profile-update")
-                .Include("~/Scripts/app/toggle-profile-edit.js"));
+            bundles.Add(new ScriptBundle("~/bundles/toggle-profile-update").Include(
+                "~/Scripts/app/toggle-profile-edit.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/slick-carousel").Include(
+                "~/Scripts/Slick/slick.js",
+                "~/Scripts/Slick/angular-slick.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)
@@ -60,6 +64,13 @@
             bundles.Add(new StyleBundle("~/Content/toggle-switch").Include(
                 "~/Content/angular-toggle-switch-bootstrap.css",
                 "~/Content/angular-toggle-switch.css"));
+
+            bundles.Add(new StyleBundle("~/Content/slick-carousel").Include(
+                "~/Content/Slick/slick.css",
+                "~/Content/Slick/slick-theme.css"));
+
+            bundles.Add(new StyleBundle("~/Content/solve").Include(
+               "~/Content/solve.css"));
         }
     }
 }

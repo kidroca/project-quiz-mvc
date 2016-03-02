@@ -6,6 +6,7 @@
 		console.log('Hello from Solve Quiz Controller');
 		console.log(quiz);
 
+	    self.questionTemplate = "/Content/templates/solve-question-template.html";
 		self.quiz = quiz;
 		self.currentPage = 1;
 		self.questionsPerPage = 2;
@@ -20,6 +21,17 @@
 
 			return completedInPercent;
 		};
+
+	    self.slickConfig = {
+	        infinite: false,
+	        arrows: true,
+	        appendArrows: '.slide-controls',
+	        prevArrow: '.control-left',
+	        nextArrow: '.control-right',
+	        centerMode: true,
+	        centerPadding: '250px 35px',
+            method: {}
+	    }
 
 		self.submit = function submit() {
 			var data = {
@@ -42,6 +54,6 @@
 		}
 	}
 
-	angular.module('solveQuiz', ['ui.bootstrap', 'paging', 'errorHandler'])
+	angular.module('solveQuiz', ['ui.bootstrap', 'slickCarousel', 'paging', 'errorHandler'])
 		.controller('SolveQuizController', ['$http', 'errorHandler', SolveQuizController]);
 })()

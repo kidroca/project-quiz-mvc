@@ -21,3 +21,5 @@
 /// <reference path="jquery-2.2.0.js" />
 /// <reference path="jquery-2.2.0.min.js" />
 /// <reference path="ngstorage.min.js" />
+/// <reference path="slick/angular-slick.js" />
+/// <reference path="slick/slick.min.js" />

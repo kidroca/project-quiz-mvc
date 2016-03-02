@@ -498,26 +498,6 @@ a.home-link {
   left: 21px;
   top: 3px;
 }
-.progress-bar {
-  background-color: #323a43;
-}
-.questions-container .answer.selected {
-  text-decoration: underline;
-  background-color: #ffffff;
-  background-image: -webkit-linear-gradient(0deg, #ffffff, #f2f2f2);
-  background-image: -moz-linear-gradient(0deg, #ffffff, #f2f2f2);
-  background-image: -ms-linear-gradient(0deg, #ffffff, #f2f2f2);
-  background-image: -o-linear-gradient(0deg, #ffffff, #f2f2f2);
-  background-image: linear-gradient(0deg, #ffffff, #f2f2f2);
-}
-.questions-container .answer.selected:before {
-  font: normal normal normal 24px/1 FontAwesome;
-  color: #0B9900;
-  content: "\f00c ";
-  position: absolute;
-  left: -10px;
-  top: 5px;
-}
 .questions-paging .pagination-page {
   text-shadow: none;
   margin: 0 0.25rem;
@@ -531,141 +511,6 @@ a.home-link {
 }
 .question-list .text-info {
   cursor: pointer;
-}
-.carousel-container {
-  font-family: "Colaborate Thin", monospace;
-}
-.carousel-container .background-slides {
-  position: absolute;
-}
-.carousel-container .background-slides .slide {
-  height: 168px;
-  width: 19%;
-}
-.carousel-container .current-slide {
-  position: relative;
-  background-color: #25575e;
-  -webkit-box-shadow: 0 0px 8px rgba(0, 0, 0, 0.62);
-  -moz-box-shadow: 0 0px 8px rgba(0, 0, 0, 0.62);
-  box-shadow: 0 0px 8px rgba(0, 0, 0, 0.62);
-  width: 35%;
-  height: 333px;
-  margin: 0 auto;
-}
-.carousel-container .current-slide::before,
-.carousel-container .current-slide::after {
-  z-index: -1;
-  position: absolute;
-  content: "";
-  bottom: 12px;
-  left: 8px;
-  width: 55%;
-  top: 85%;
-  max-width: 300px;
-  background: rgba(0, 0, 0, 0.62);
-  -webkit-box-shadow: 0 22px 9px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0 22px 9px rgba(0, 0, 0, 0.7);
-  box-shadow: 0 22px 9px rgba(0, 0, 0, 0.7);
-  -webkit-transform: skewY(175deg);
-  -moz-transform: skewY(175deg);
-  -o-transform: skewY(175deg);
-  -ms-transform: skewY(175deg);
-  transform: skewY(175deg);
-}
-.carousel-container .current-slide::after {
-  -webkit-transform: skewY(5deg);
-  -moz-transform: skewY(5deg);
-  -o-transform: skewY(5deg);
-  -ms-transform: skewY(5deg);
-  transform: skewY(5deg);
-  right: 8px;
-  left: auto;
-}
-.carousel-container .current-slide .slide-title {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  margin: 0;
-  color: #fff;
-  border-left: 1px solid #fff;
-  padding: 1.5rem 1rem;
-  background-image: -webkit-linear-gradient(90deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.1) 90%);
-  background-image: -moz-linear-gradient(90deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.1) 90%);
-  background-image: -ms-linear-gradient(90deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.1) 90%);
-  background-image: -o-linear-gradient(90deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.1) 90%);
-  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.1) 90%);
-}
-.carousel-container .current-slide .slide-title::before,
-.carousel-container .current-slide .slide-title::after {
-  z-index: 5;
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 1px;
-  background-image: -webkit-linear-gradient(right, transparent, rgba(255, 255, 255, 0.5));
-  background-image: -moz-linear-gradient(right, transparent, rgba(255, 255, 255, 0.5));
-  background-image: -ms-linear-gradient(right, transparent, rgba(255, 255, 255, 0.5));
-  background-image: -o-linear-gradient(right, transparent, rgba(255, 255, 255, 0.5));
-  background-image: linear-gradient(right, transparent, rgba(255, 255, 255, 0.5));
-}
-.carousel-container .current-slide .slide-title::before {
-  top: 0;
-  width: 100%;
-  background-image: -webkit-linear-gradient(right, transparent, rgba(255, 255, 255, 0.5));
-  background-image: -moz-linear-gradient(right, transparent, rgba(255, 255, 255, 0.5));
-  background-image: -ms-linear-gradient(right, transparent, rgba(255, 255, 255, 0.5));
-  background-image: -o-linear-gradient(right, transparent, rgba(255, 255, 255, 0.5));
-  background-image: linear-gradient(right, transparent, rgba(255, 255, 255, 0.5));
-}
-.carousel-container .current-slide .slide-title::after {
-  right: 0;
-}
-.carousel-container .current-slide .slide-controls {
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 90%;
-  height: 10%;
-}
-.carousel-container .current-slide .slide-controls .details {
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 80%;
-  text-align: center;
-}
-.carousel-container .current-slide .slide-controls .details a {
-  margin-left: 1rem;
-}
-.carousel-container .current-slide .slide-controls a {
-  display: inline-block;
-  height: 41px;
-  width: 41px;
-  color: transparent;
-}
-.carousel-container .current-slide .slide-controls .control-left {
-  background: url('../images/Carousel-icons.png') 0 0;
-}
-.carousel-container .current-slide .slide-controls .control-right {
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
-  background: url('../images/Carousel-icons.png') 0 0;
-}
-.carousel-container .current-slide .slide-controls .control-search {
-  background: url('../images/Carousel-icons.png') 0 81px;
-}
-.carousel-container .current-slide .slide-controls .control-open {
-  background: url('../images/Carousel-icons.png') 0 40px;
 }
 .read-more-state {
   display: none;
@@ -747,13 +592,13 @@ a.home-link {
   height: 39px;
 }
 .content .description .offer::before {
-  background: url("../images/content-icons.png") 0 0;
+  background: url("/Content/images/content-icons.png") 0 0;
 }
 .content .description .we-are::before {
-  background: url("../images/content-icons.png") 0 116px;
+  background: url("/Content/images/content-icons.png") 0 116px;
 }
 .content .description .mission::before {
-  background: url("../images/content-icons.png") 0 76px;
+  background: url("/Content/images/content-icons.png") 0 76px;
 }
 .content .quote {
   font-family: "Colaborate Thin", monospace;
@@ -785,7 +630,7 @@ a.home-link {
   height: 36px;
   margin: auto;
   content: "";
-  background: url("../images/content-icons.png") -3px 196px;
+  background: url("/Content/images/content-icons.png") -3px 196px;
 }
 .content .quote .read-more-trigger {
   float: none;
