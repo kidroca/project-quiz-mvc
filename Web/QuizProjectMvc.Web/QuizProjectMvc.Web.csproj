@@ -445,7 +445,6 @@
     <Content Include="Views\Shared\_HeaderPartial.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_ControllerPageTemplate.cshtml" />
     <Content Include="Views\Home\DisplayTemplates\QuizBasicViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\BasicAccountInfoViewModel.cshtml" />
     <Content Include="Views\SolveQuiz\Solve.cshtml" />
