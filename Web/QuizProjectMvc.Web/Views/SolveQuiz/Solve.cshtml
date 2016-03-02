@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = $"Solve {Model.Title}";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div ng-app="solveQuiz"
@@ -12,19 +13,21 @@
         <div class="progress-bar" style="{{'width:' + ctrl.progress()+'%'}}"></div>
     </div>
 
-    <div class="questions-container">
-        <div ng-repeat="question in ctrl.quiz.Questions | paging:ctrl.currentPage:ctrl.questionsPerPage"
-             class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title text-center">{{question.Title}}</h3>
-            </div>
-            <div class="panel-body list-group">
-                <a href ng-repeat="answer in question.Answers"
-                   ng-click="question.selected=$index"
-                   ng-class="{selected: question.selected === $index}"
-                   class="list-group-item answer">
-                    <span>{{answer.Text}}</span>
-                </a>
+    <div class="questions-container col-md-12">
+        <div class="col-md-6"
+              ng-repeat="question in ctrl.quiz.Questions | paging:ctrl.currentPage:ctrl.questionsPerPage">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">{{question.Title}}</h3>
+                </div>
+                <div class="panel-body list-group">
+                    <a href ng-repeat="answer in question.Answers"
+                       ng-click="question.selected=$index"
+                       ng-class="{selected: question.selected === $index}"
+                       class="list-group-item answer">
+                        <span>{{answer.Text}}</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
