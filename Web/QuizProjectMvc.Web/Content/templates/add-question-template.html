@@ -52,11 +52,16 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
-                    <button class="btn btn-info"
-                            ng-disabled="questionForm.$invalid"
-                            ng-click="ctrl.addAnswer()">
-                        Add Answer
-                    </button>
+                    <span uib-popover="Please, assign at least 2 answers and mark the correct answer!"
+                          popover-trigger="none"
+                          popover-is-open="!ctrl.saveIsAvailable(questionForm)"
+                          popover-placement="right">
+                        <button class="btn btn-info"
+                                ng-disabled="questionForm.$invalid"
+                                ng-click="ctrl.addAnswer()">
+                            Add Answer
+                        </button>
+                    </span>
                 </div>
             </div>
         </fieldset>
@@ -67,14 +72,9 @@
 
     <button class="btn btn-danger" ng-click="ctrl.cancel()">Close</button>
 
-    <span uib-popover="Please, assign at least 2 answers and mark the correct answer!"
-          popover-trigger="mouseenter"
-          popover-enable="!ctrl.hasCorrect()"
-          popover-placement="bottom">
-        <button class="btn btn-success"
-                ng-click="ctrl.ok()"
-                ng-disabled="!ctrl.saveIsAvailable(questionForm)">
-            Save Question
-        </button>
-    </span>
+    <button class="btn btn-success"
+            ng-click="ctrl.ok()"
+            ng-disabled="!ctrl.saveIsAvailable(questionForm)">
+        Save Question
+    </button>
 </div>

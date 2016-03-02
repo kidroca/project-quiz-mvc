@@ -2,20 +2,20 @@
 <section id="manage-quiz" ng-app="manageQuiz" ng-controller="@ViewBag.NgController as ctrl">
     @if (TempData["error"] != null)
     {
-        var notification = new Notification {Message = (string) TempData["error"], CssClass = "alert-danger"};
+        var notification = new Notification { Message = (string)TempData["error"], CssClass = "alert-danger" };
         @Html.Partial("_NotificationPartial", notification)
     }
 
     <div class="col-md-10 col-md-offset-1">
 
         @using (Html.BeginForm(
-                    "Create", "ManageQuiz", FormMethod.Post, new
-                    {
-                        name = "quizForm",
-                        @class = "form-horizontal",
-                        novalidate = "novalidate",
-                        autocomplete = "off"
-                    }))
+                                "Create", "ManageQuiz", FormMethod.Post, new
+                                {
+                                    name = "quizForm",
+                                    @class = "form-horizontal",
+                                    novalidate = "novalidate",
+                                    autocomplete = "off"
+                                }))
         {
             <fieldset>
                 <legend>@ViewBag.Action Quiz</legend>
@@ -83,10 +83,15 @@
                 <!-- Add Question -->
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button class="btn btn-success" type="button"
-                                ng-click="ctrl.openQuesitonMenu()">
-                            Add New Question
-                        </button>
+                        <span uib-popover="Please add at least 3 questions!"
+                              popover-trigger="none"
+                              popover-is-open="!ctrl.saveIsAvailable(quiz, quizForm) && !modalIsOpen"
+                              popover-placement="right">
+                            <button class="btn btn-success" type="button"
+                                    ng-click="ctrl.openQuesitonMenu()">
+                                Add New Question
+                            </button>
+                        </span>
                     </div>
                 </div>
 
@@ -120,11 +125,10 @@
                 <!-- Submit -->
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button type="button" class="btn btn-primary"
-                                ng-disabled="quizForm.$invalid || !quiz.questions.length"
-                                ng-click="ctrl.addQuiz(quiz, quizForm)">
-                            Save Quiz
-                        </button>
+                        <input type="button" class="btn btn-primary"
+                               ng-disabled="!ctrl.saveIsAvailable(quiz, quizForm)"
+                               ng-click="ctrl.addQuiz(quiz, quizForm)" value="Save Quiz" />
+
                         <button type="button" ng-click="resetForm(quizForm)" class="btn btn-danger">Reset</button>
                     </div>
                 </div>

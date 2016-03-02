@@ -35,7 +35,11 @@
 				});
 		};
 
-		self.openQuesitonMenu = function openQuesitonMenu(question) {
+	    $scope.modalIsOpen = false;
+
+	    self.openQuesitonMenu = function openQuesitonMenu(question) {
+	        $scope.modalIsOpen = true;
+
 			var modalInstance = $uibModal.open({
 			    animation: true,
 			    appendTo: $('#manage-quiz'),
@@ -54,7 +58,19 @@
 			}, function () {
 				console.log('Modal dismissed at: ' + new Date());
 			});
-		};
+
+			modalInstance.closed.then(function () {
+                console.log('close');
+                $scope.modalIsOpen = false;
+	        });
+	    };
+
+        self.saveIsAvailable = function saveIsAvailable(quiz, form) {
+            var result = form.$valid &&
+                quiz.questions.length >= 3;
+
+            return result;
+        }
 	}
 
 	angular.module('manageQuiz', [

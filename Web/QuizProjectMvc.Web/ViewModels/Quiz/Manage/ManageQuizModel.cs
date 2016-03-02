@@ -48,9 +48,7 @@ namespace QuizProjectMvc.Web.ViewModels.Quiz.Manage
                 this.Questions.Count < ModelConstraints.MinQuestionsCount)
             {
                 yield return new ValidationResult(
-                    string.Format(
-                        "Question count must be at least {0}",
-                        ModelConstraints.MinQuestionsCount));
+                    $"Question count must be at least {ModelConstraints.MinQuestionsCount}");
             }
         }
     }
