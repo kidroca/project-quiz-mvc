@@ -26,5 +26,5 @@ Live demo at azure: https://projectquiz.azurewebsites.net/
 
 * Picture upload and review window
 * Customized notifications
-* Acriviry indicators
+* Activity indicators
 * Facebook external login
