@@ -2,7 +2,7 @@
     Layout = "_Layout.cshtml";
 }
 <!-- Main Content-->
-<div class="page-content col-sm-9">
+<div class="main-content">
     <section>
         @RenderBody()
     </section>
@@ -11,7 +11,7 @@
 @if (IsSectionDefined("aside"))
 {
     <!-- Side Content-->
-    <div class="sidebar col-sm-3">
+    <div class="sidebar side-content">
         <aside>
             @RenderSection("aside", required: false)
         </aside>

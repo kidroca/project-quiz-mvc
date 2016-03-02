@@ -186,28 +186,30 @@ a.home-link {
   margin: 2.5rem 0 4rem;
   font-size: 12px;
 }
-.page .page-content {
-  padding: 0;
+.page .main-content {
+  float: left;
+  padding: 0 1rem 1rem 0;
 }
-.page .sidebar {
+.page .side-content {
+  float: left;
+  padding: 0 0 1rem 1rem;
   color: #5e5e5e;
   font-size: 1.2rem;
 }
 @media only screen and (max-width: 700px) {
-  .sidebar {
+  .side-content {
     display: none;
   }
-  .page-content {
+  .main-content {
     width: 100%;
   }
 }
 @media only screen and (min-width: 701px) {
-  .page-content {
-    max-width: 70%;
-    min-width: 60%;
+  .main-content {
+    width: 70%;
   }
-  .sidebar {
-    max-width: 30%;
+  .side-content {
+    width: 30%;
   }
 }
 .btn {
