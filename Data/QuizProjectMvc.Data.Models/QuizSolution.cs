@@ -1,7 +1,6 @@
 ﻿namespace QuizProjectMvc.Data.Models
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using Common.Models;
 
     public class QuizSolution : BaseModel<int>
@@ -17,7 +16,6 @@
 
         public virtual Quiz ForQuiz { get; set; }
 
-        [Required]
         public string ByUserId { get; set; }
 
         public virtual User ByUser { get; set; }

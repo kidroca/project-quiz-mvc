@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201603012017426_QuestionsCascadeDeleteAnswers.Designer.cs">
       <DependentUpon>201603012017426_QuestionsCascadeDeleteAnswers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603021246487_QuizSolutionAnonimous.cs" />
+    <Compile Include="Migrations\201603021246487_QuizSolutionAnonimous.Designer.cs">
+      <DependentUpon>201603021246487_QuizSolutionAnonimous.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -105,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603012017426_QuestionsCascadeDeleteAnswers.resx">
       <DependentUpon>201603012017426_QuestionsCascadeDeleteAnswers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603021246487_QuizSolutionAnonimous.resx">
+      <DependentUpon>201603021246487_QuizSolutionAnonimous.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
