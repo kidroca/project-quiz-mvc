@@ -17,15 +17,19 @@
         @RenderSection("notification", required: false)
 
         <div id="content-wrapper" class="container-fluid body-content">
-             @RenderBody()
+            @RenderBody()
         </div>
 
-        @Html.Partial("_FooterPartial")
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
     </div>
+
+    @Html.Partial("_FooterPartial")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/google")
+    @RenderSection("scripts", required: false)
+
 </body>
 
 </html>
