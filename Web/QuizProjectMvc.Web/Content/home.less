@@ -41,7 +41,7 @@
 }
 
 .content {
-    margin-top: 6rem;
+    margin: 6rem 0;
 
     .illumination {
         .transform(@property: rotate; @value: 180deg;);
@@ -87,7 +87,7 @@
 
         .offer {
             &::before {
-                background: url("/Content/images/content-icons.png") 0 0;
+                background: url("/Content/images/content-icons.png") 0 76px;
             }
         }
 
@@ -98,8 +98,20 @@
         }
 
         .mission {
+            span {
+                text-shadow: none;
+            }
+
+            a {
+                color: @medium-dark;
+
+                &:hover {
+                    color:@background;
+                    font-weight: bold;
+                }
+            }
             &::before {
-                background: url("/Content/images/content-icons.png") 0 76px;
+                background: url("/Content/images/content-icons.png") 0 0;
             }
         }
     }
@@ -113,6 +125,17 @@
         border-left: 0;
         border-right: 0;
         background-color: #fff;
+        margin-bottom: 4rem;
+
+        .linear-grad(@colors: #fff 5%, #f4f4f4 95%; @dir: 180deg);
+        .box-shadow-double(@y: -1px; @blur: 1rem; @color: lighten(@shadow, 80%));
+
+        p {
+            max-width: @base-width;
+            margin: 4rem auto;
+            font-size: 1.5em;
+            line-height: 1.25;
+        }
 
         &::before {
             position: absolute;
@@ -144,33 +167,7 @@
         .read-more-state:checked ~ .read-more-trigger:before {
             content: 'Less Info';
         }
-
-        .linear-grad(@colors: #fff 5%, #f4f4f4 95%; @dir: 180deg);
-        .box-shadow-double(@y: -1px; @blur: 1rem; @color: lighten(@shadow, 80%));
-
-        h3 {
-            max-width: @base-width;
-            margin: 4rem auto;
-        }
     }
 
-    .items {
-        margin: 60px auto;
-        max-width: @base-width;
-        height: 400px;
-
-        .item {
-            background-color: @carousel-container-bg;
-            height: 100px;
-            width: 150px;
-            //margin: 20px;
-            //&:first-child {
-            //  margin-left: 0;
-            //}
-            //
-            //&:last-child {
-            //  margin-right: 0;
-            //}
-        }
-    }
+    
 }

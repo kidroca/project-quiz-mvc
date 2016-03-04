@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "About";
+}
+
+<div class="content">
+    <div class="illumination"></div>
+    <section class="description row">
+        <article class="col-md-4 offer">
+            <h3>About this site</h3>
+            <input type="checkbox" id="cb-offer" class="read-more-state"/>
+            <p class="read-more-wrap">This site is for everybody who likes to crate quizzes and test. Everybody is free to solve quizzes.
+            <span class="read-more-target">If you want to also create quizzes you can quickly create an account or use your existing google+ accont</span></p>
+            <label for="cb-offer" class="read-more-trigger"></label>
+        </article>
+        <article class="col-md-4 we-are">
+            <h3>Who am I</h3>
+            <input type="checkbox" id="cb-we-are" class="read-more-state"/>
+            <p class="read-more-wrap">My name is Peter Velkov. I'm always striving to put something unique in my work that shows this isn't just a regular project.
+            <span class="read-more-target">I've been a student at Telerik Academy, where I took a complete series of courses in several tracks: Front-end, Web and Mobile Applications. I think I learn a lot from this journey and look forward to continue building on this foundation</span></p>
+            <label for="cb-we-are" class="read-more-trigger"></label>
+        </article>
+        <article class="col-md-4 mission">
+            <h3>Technical</h3>
+            <input type="checkbox" id="cb-mission" class="read-more-state"/>
+            <p class="read-more-wrap">If you are interested in the source code of this app you can check it out on
+            <a href="https://github.com/kidroca/project-quiz-mvc">github</a>
+                <span class="read-more-target">Technologies used: 
+                    <span class="label label-danger">ASP.NET MVC</span>
+                    <span class="label label-danger">ASP.NET Web API</span>
+                    <span class="label label-danger">AngularJS</span>
+                    <span class="label label-danger">jQuery</span>
+                    <span class="label label-success">JavaScript</span>
+                    <span class="label label-success">C#</span>
+                </span></p>
+            <label for="cb-mission" class="read-more-trigger"></label>
+        </article>
+    </section>
+    <section class="quote row">
+        <input type="checkbox" id="cb-quote" class="read-more-state"/>
+        <p class="read-more-wrap">
+            “A star falls from the sky and into your hands. Then it seeps through your veins and swims inside your blood and becomes every part of you. And then you have to put it back into the sky.
+            <span class="read-more-target">And it's the most painful thing you'll ever have to do and that you've ever done. But what's yours is yours. Whether it’s up in the sky or here in your hands. And one day, it'll fall from the sky and hit you in the head real hard and that time, you won't have to put it back in the sky again.” 
+            <span class="pull-right">― C. JoyBell C.</span>
+            </span>     
+        </p>
+        <label for="cb-quote" class="read-more-trigger btn-default"></label>
+    </section>
+</div>

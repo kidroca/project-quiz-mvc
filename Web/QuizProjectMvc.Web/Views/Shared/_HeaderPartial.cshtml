@@ -28,7 +28,7 @@
                         <a href="" class="dropdown-toggle">Features</a>
                         <ul role="menu" class="dropdown-menu drop-shadow">
                             <li>
-                                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "home-link" })
+                                @Html.ActionLink("Home", "Index", "Home", null, new {@class = "home-link"})
                             </li>
                             @if (Request.IsAuthenticated)
                             {
@@ -36,10 +36,13 @@
                                     @(Html.ActionLink<ManageQuizController>("Create New Quiz", c => c.Create()))
                                 </li>
                                 <li>
-                                    @(Html.ActionLink<ProfileController>("Profile", c => c.My()));
+                                    @(Html.ActionLink<ProfileController>("Profile", c => c.My()))
                                 </li>
                             }
                         </ul>
+                    </li>
+                    <li>
+                        @(Html.ActionLink<AboutController>("About", c => c.Index()))
                     </li>
                     @*<li><a href="#/users">Users</a></li>*@
                 </ul>
