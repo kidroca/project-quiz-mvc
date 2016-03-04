@@ -295,6 +295,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Users\IndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\angular-toggle-switch-bootstrap.css" />
@@ -408,6 +409,7 @@
     <None Include="Properties\PublishProfiles\ProjectQuiz - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\QuizProjectMvc - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\app\confirm-submit.js" />
     <Content Include="Scripts\app\controllers\manage-quiz\add-question.js" />
     <Content Include="Scripts\app\controllers\manage-quiz\base-controller.js" />
     <Content Include="Scripts\app\controllers\manage-quiz\create-quiz.js" />
@@ -483,21 +485,21 @@
     <Content Include="Views\Profile\_AsidePartial.cshtml" />
     <Content Include="Views\Shared\_MainWithSideLayout.cshtml" />
     <Content Include="Views\Shared\_AvatarSelectionPartial.cshtml" />
-    <Content Include="Views\Profile\_EditAvatarModalPartial.cshtml" />
-    <Content Include="Views\Profile\_ProfileInfoWidgetPartial.cshtml" />
+    <Content Include="Views\Shared\_ProfileInfoWidgetPartial.cshtml" />
     <Content Include="Views\Shared\_NotificationPartial.cshtml" />
     <Content Include="Content\templates\solve-question-template.html" />
     <Content Include="Views\Shared\_StandardLayout.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Shared\_PagerPartial.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Profile\_EditAvatarModalPartial.cshtml" />
+    <Content Include="Views\Profile\_ProfileInfoWidgetPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="ViewModels\User\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

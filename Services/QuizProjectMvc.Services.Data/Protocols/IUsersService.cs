@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using Microsoft.AspNet.Identity;
+    using Models;
     using Models.Account;
     using QuizProjectMvc.Data.Models;
 
@@ -12,5 +13,9 @@
         IQueryable<User> AllUsers();
 
         IdentityResult Update(BasicAccountInfoViewModel model, string userId);
+
+        int GetTotalPages(int pageSize);
+
+        IQueryable<User> GetPage(Pager pager);
     }
 }

@@ -1,0 +1,24 @@
+﻿@using QuizProjectMvc.Web.Helpers
+@model QuizProjectMvc.Web.ViewModels.Users.IndexViewModel
+
+@{
+    ViewBag.Title = "Our Users";
+    Layout = "~/Views/Shared/_StandardLayout.cshtml";
+}
+
+@foreach (var profile in Model.Profiles)
+{
+    <div class="col-md-6">
+        @Html.Partial("_ProfileInfoWidgetPartial", profile)
+    </div>
+}
+
+<div class="pager">
+
+    @Html.Partial("_PagerPartial", Model.Pager, new ViewDataDictionary
+    {
+        {"Controller", Html.ControllerName()},
+        {"Action", Html.ActionName()}
+    })
+
+</div>
