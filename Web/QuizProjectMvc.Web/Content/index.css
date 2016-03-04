@@ -199,7 +199,7 @@ a.home-link {
   background-image: url("/Content/images/border-right-shadow-lighter.png");
   background-repeat: no-repeat;
   background-size: contain;
-  background-position-x: 85px;
+  background-position-x: 100%;
 }
 .pager li {
   display: inline-block;
@@ -539,6 +539,10 @@ a.home-link {
 }
 .question-list .text-info {
   cursor: pointer;
+}
+.quiz-controls a,
+.quiz-controls input {
+  margin-left: 1rem;
 }
 .read-more-state {
   display: none;

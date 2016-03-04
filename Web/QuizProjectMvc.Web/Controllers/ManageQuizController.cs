@@ -1,6 +1,7 @@
 ﻿namespace QuizProjectMvc.Web.Controllers
 {
     using System.Web.Mvc;
+    using Data.Models;
     using Services.Data.Protocols;
     using ViewModels.Quiz.Manage;
 
@@ -26,6 +27,36 @@
         public ActionResult Edit(int id)
         {
             var quiz = this.quizzes.GetById(id);
+            var result = this.EnsureQuiz(quiz);
+
+            if (result == null)
+            {
+                var model = this.Mapper.Map<ManageQuizModel>(quiz);
+
+                result = this.View(model);
+            }
+
+            return result;
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            var quiz = this.quizzes.GetById(id);
+            var result = this.EnsureQuiz(quiz);
+
+            if (result == null)
+            {
+                this.quizzes.Delete(quiz);
+                this.TempData["notification"] = "Quiz successfully deleted";
+                result = this.RedirectToAction("Index", "Home");
+            }
+
+            return result;
+        }
+
+        private ActionResult EnsureQuiz(Quiz quiz)
+        {
             if (quiz == null)
             {
                 return this.HttpNotFound("The specified quiz has disappeared without a trace");
@@ -37,9 +68,7 @@
                 return this.RedirectToAction("Index", "Home");
             }
 
-            var model = this.Mapper.Map<ManageQuizModel>(quiz);
-
-            return this.View(model);
+            return null;
         }
     }
 }

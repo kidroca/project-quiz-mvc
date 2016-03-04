@@ -1,7 +1,5 @@
 ﻿namespace QuizProjectMvc.Web.Areas.Api.Controllers
 {
-    using System.Net;
-    using System.Net.Http;
     using System.Web.Http;
     using Common;
     using Data.Models;
@@ -27,7 +25,6 @@
         {
             if (!this.ModelState.IsValid)
             {
-                this.ResponseMessage(new HttpResponseMessage(HttpStatusCode.BadRequest));
                 return this.BadRequest(this.ModelState);
             }
 
@@ -43,7 +40,6 @@
             }
             catch (QuizCreationException ex)
             {
-                this.ResponseMessage(new HttpResponseMessage(HttpStatusCode.BadRequest));
                 return this.BadRequest(ex.Message);
             }
         }
@@ -54,7 +50,6 @@
         {
             if (!this.ModelState.IsValid)
             {
-                this.ResponseMessage(new HttpResponseMessage(HttpStatusCode.BadRequest));
                 return this.BadRequest(this.ModelState);
             }
 
@@ -63,7 +58,6 @@
 
             if (dataQuiz == null || (this.UserId != dataQuiz.CreatedById && !userIsAdmin))
             {
-                this.ResponseMessage(new HttpResponseMessage(HttpStatusCode.NotFound));
                 return this.NotFound();
             }
 
@@ -77,7 +71,6 @@
             }
             catch (QuizCreationException ex)
             {
-                this.ResponseMessage(new HttpResponseMessage(HttpStatusCode.BadRequest));
                 return this.BadRequest(ex.Message);
             }
 
@@ -88,7 +81,6 @@
         {
             if (!this.ModelState.IsValid)
             {
-                this.ResponseMessage(new HttpResponseMessage(HttpStatusCode.BadRequest));
                 return this.BadRequest(this.ModelState);
             }
 
@@ -99,7 +91,6 @@
             }
             catch (QuizEvaluationException ex)
             {
-                this.ResponseMessage(new HttpResponseMessage(HttpStatusCode.BadRequest));
                 return this.BadRequest(ex.Message);
             }
         }

@@ -5,6 +5,7 @@
 /// <reference path="angular-toggle-switch.min.js" />
 /// <reference path="angular-ui/ui-bootstrap.min.js" />
 /// <reference path="angular-ui/ui-bootstrap-tpls.min.js" />
+/// <reference path="app/confirm-submit.js" />
 /// <reference path="app/controllers/manage-quiz/add-question.js" />
 /// <reference path="app/controllers/manage-quiz/base-controller.js" />
 /// <reference path="app/controllers/manage-quiz/create-quiz.js" />

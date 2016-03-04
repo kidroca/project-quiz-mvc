@@ -17,21 +17,27 @@
 	}
 
 	errorHandler.prototype.handleCreateQuizError = function(resonse) {
-		var message = extractModelStateErrors(resonse.data.modelState) || DEFFAULT_ERRORS.CREATE_QUIZ;
+	    var message = extractModelStateErrors(resonse.data.modelState) ||
+                                                    resonse.data.message ||
+                                                    DEFFAULT_ERRORS.CREATE_QUIZ;
 
 		// Todo: beautify this notification
 		alert(message);
 	};
 
 	errorHandler.prototype.handleEditQuizError = function (resonse) {
-	    var message = extractModelStateErrors(resonse.data.modelState) || DEFFAULT_ERRORS.EDIT_QUIZ;
+	    var message = extractModelStateErrors(resonse.data.modelState) ||
+                                                    resonse.data.message ||
+                                                    DEFFAULT_ERRORS.EDIT_QUIZ;
 
 	    // Todo: beautify this notification
 	    alert(message);
 	};
 
 	errorHandler.prototype.handleSoveQuizError = function (response) {
-		var message = extractModelStateErrors(response.data.modelState) || response.data.message || DEFFAULT_ERRORS.SOLVE_QUIZ;
+	    var message = extractModelStateErrors(response.data.modelState) ||
+                                                    response.data.message ||
+                                                    DEFFAULT_ERRORS.SOLVE_QUIZ;
 
 		// Todo: beautify this notification
 		alert(message);

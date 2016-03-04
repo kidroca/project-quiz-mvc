@@ -4,10 +4,18 @@
 @model QuizProjectMvc.Web.ViewModels.Home.IndexViewModel
 @{
     ViewBag.Title = "Home Page";
+    Notification notification = null;
 
     if (TempData["error"] != null)
     {
-        var notification = new Notification { Message = (string)TempData["error"], CssClass = "alert-danger" };
+        notification = new Notification { Message = (string)TempData["error"], CssClass = "alert-danger" };
+    } else if (TempData["notification"] != null)
+    {
+        notification = new Notification { Message = (string)TempData["notification"], CssClass = "alert-info" };
+    }
+
+    if (notification != null)
+    {
         Html.RenderPartial("_NotificationPartial", notification);
     }
 }
@@ -42,4 +50,8 @@
             </ul>
         </div>
     </div>
+}
+
+@section scripts {
+    <script src="~/Scripts/app/confirm-submit.js"></script>
 }

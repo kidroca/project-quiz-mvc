@@ -42,9 +42,11 @@
                         </ul>
                     </li>
                     <li>
+                        @(Html.ActionLink<UsersController>("Users", c => c.Index(null)))
+                    </li>
+                    <li>
                         @(Html.ActionLink<AboutController>("About", c => c.Index()))
                     </li>
-                    @*<li><a href="#/users">Users</a></li>*@
                 </ul>
 
                 @Html.Partial("_LoginPartial")
