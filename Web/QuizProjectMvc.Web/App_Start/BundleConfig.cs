@@ -51,6 +51,9 @@
             bundles.Add(new ScriptBundle("~/bundles/slick-carousel").Include(
                 "~/Scripts/Slick/slick.js",
                 "~/Scripts/Slick/angular-slick.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/google").Include(
+                "~/Scripts/google-analytics.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)
