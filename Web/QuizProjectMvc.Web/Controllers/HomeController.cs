@@ -10,6 +10,8 @@
 
     public class HomeController : BaseController
     {
+        public const int QuizzesPerPage = 3;
+
         private readonly IQuizzesService quizzes;
         private readonly ICategoriesService quizCategories;
 
@@ -27,9 +29,10 @@
             {
                 pager = new Pager
                 {
+                    PageSize = QuizzesPerPage,
                     TotalPages = this.Cache.Get(
-                        "totalPages",
-                        () => this.quizzes.GetTotalPages(Pager.DefaultPageSize),
+                        "quizPages",
+                        () => this.quizzes.GetTotalPages(QuizzesPerPage),
                         durationInSeconds: 5 * 60)
                 };
             }

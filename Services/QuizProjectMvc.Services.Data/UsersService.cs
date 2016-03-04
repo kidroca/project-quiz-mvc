@@ -1,7 +1,9 @@
 ﻿namespace QuizProjectMvc.Services.Data
 {
+    using System;
     using System.Linq;
     using Microsoft.AspNet.Identity;
+    using Models;
     using Models.Account;
     using Protocols;
     using QuizProjectMvc.Data.Models;
@@ -30,6 +32,24 @@
             var user = this.ById(userId);
             this.UpdateUserCommonProperties(user, model);
             var result = this.manager.Update(user);
+
+            return result;
+        }
+
+        public int GetTotalPages(int pageSize)
+        {
+            int usersCount = this.AllUsers().Count();
+            int result = (int)Math.Ceiling(usersCount / (double)pageSize);
+
+            return result;
+        }
+
+        public IQueryable<User> GetPage(Pager pager)
+        {
+            var result = this.AllUsers()
+                .OrderBy(u => u.CreatedOn)
+                .Skip(pager.GetSkipCount())
+                .Take(pager.PageSize);
 
             return result;
         }

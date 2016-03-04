@@ -140,7 +140,7 @@
         {
             var result = this.quizzes.All()
                 .OrderByDescending(q => q.CreatedOn)
-                .Skip(this.GetSkipCount(pager))
+                .Skip(pager.GetSkipCount())
                 .Take(pager.PageSize);
 
             return result;
@@ -148,6 +148,13 @@
 
         public void Add(Quiz quiz)
         {
+            bool alreadyExists = this.quizzes.AllWithDeleted()
+                .Any(q => q.Title.Equals(quiz.Title, StringComparison.CurrentCultureIgnoreCase));
+            if (alreadyExists)
+            {
+                throw new QuizCreationException("Sorry there is already a quiz by that name in our database");
+            }
+
             this.quizzes.Add(quiz);
             this.quizzes.Save();
         }
@@ -163,6 +170,12 @@
             int result = (int)Math.Ceiling(quizzesCount / (double)pageSize);
 
             return result;
+        }
+
+        public void Delete(Quiz quiz)
+        {
+            this.quizzes.Delete(quiz);
+            this.Save();
         }
 
         /// <summary>
@@ -260,11 +273,6 @@
                         : result.OrderBy(q => q.Solutions.Count);
                     break;
             }
-        }
-
-        private int GetSkipCount(Pager pager)
-        {
-            return (pager.Page - 1) * pager.PageSize;
         }
 
         private List<Answer> ExtractSelectedAnswers(Quiz quiz, SolutionForEvaluationModel quizSolution)

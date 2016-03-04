@@ -43,5 +43,10 @@
 
             return last;
         }
+
+        public int GetSkipCount()
+        {
+            return (this.Page - 1) * this.PageSize;
+        }
     }
 }
