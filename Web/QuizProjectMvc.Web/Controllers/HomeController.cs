@@ -25,10 +25,16 @@
         {
             if (pager == null || !this.ModelState.IsValid)
             {
-                pager = new Pager();
+                pager = new Pager
+                {
+                    TotalPages = this.Cache.Get(
+                        "totalPages",
+                        () => this.quizzes.GetTotalPages(Pager.DefaultPageSize),
+                        durationInSeconds: 5 * 60)
+                };
             }
 
-            var quizzes = this.quizzes.GetPage(pager)
+            var models = this.quizzes.GetPage(pager)
                 .To<QuizBasicViewModel>()
                 .ToList();
 
@@ -42,7 +48,7 @@
 
             var viewModel = new IndexViewModel
             {
-                Quizzes = quizzes,
+                Quizzes = models,
                 Categories = categories,
                 Pager = pager
             };

@@ -1,4 +1,5 @@
-﻿@using QuizProjectMvc.Web.Controllers
+﻿@using QuizProjectMvc.Services.Data.Models
+@using QuizProjectMvc.Web.Controllers
 @using QuizProjectMvc.Web.ViewModels
 @model QuizProjectMvc.Web.ViewModels.Home.IndexViewModel
 @{
@@ -17,10 +18,32 @@
     @Html.DisplayFor(m => quiz)
 }
 
-@Html.ActionLink("Test Btn", "Index", Model.Pager, new
-{
-    @class = "btn btn-primary"
-})
+<div class="pager">
+    @{
+        var pager = Model.Pager;
+    }
+
+    
+
+    <ul class="pagination pull-right">
+
+        <li class="counter"><label>Page @pager.Page of @pager.TotalPages</label></li>
+
+        @for (int i = 1; i <= pager.TotalPages; i++)
+        {
+            bool active = i == pager.Page;
+
+            <li class="pagination-page @(active ? "active" : string.Empty)">
+                @Html.ActionLink(i.ToString(), "Index", new Pager
+           {
+               Page = i,
+               TotalPages = pager.TotalPages,
+               PageSize = pager.PageSize
+           })
+            </li>
+        }
+    </ul>
+</div>
 
 @*Side Content*@
 @section aside {

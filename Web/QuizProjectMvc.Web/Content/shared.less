@@ -81,10 +81,51 @@
     }
 
     .side-content {
-        float: left;    
+        float: left;
         padding: 0 0 1rem 1rem;
         color: @sideText;
         font-size: 1.2rem;
+    }
+}
+
+.pager {
+    &::before {
+        content: "";
+        width: 100%;
+        height: 20px;
+        background-image: url("/Content/images/border-right-shadow-lighter.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position-x: 85px;
+    }
+
+    li {
+        display: inline-block;
+        text-shadow: none;
+        vertical-align: bottom;
+    }
+
+    .counter {
+        margin-right: 2rem;
+
+        label {
+            font-family: @font-thin;
+            font-weight: normal;
+            color: @contentArticleColor;
+            text-shadow: 1px 1px 0 #fff;
+        }
+    }
+
+    .pagination-page {
+
+
+        &.active a {
+            background: @btnEndGradient;
+        }
+
+        a {
+            border-radius: 5px;
+        }
     }
 }
 

@@ -245,6 +245,7 @@
     <Compile Include="Areas\Api\Helpers\ExternalLoginData.cs" />
     <Compile Include="Areas\Api\Models\UserInfoViewModel.cs" />
     <Compile Include="Areas\Api\Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ManageQuizController.cs" />
@@ -308,6 +309,8 @@
     <Content Include="Content\images\avatars\Marge.png" />
     <Content Include="Content\images\avatars\MrBurns.png" />
     <Content Include="Content\images\avatars\VaultBoy.png" />
+    <Content Include="Content\images\border-right-shadow-lighter.png" />
+    <Content Include="Content\images\border-right-shadow.png" />
     <Content Include="Content\images\google-btn.jpg" />
     <Content Include="Content\index.css">
       <DependentUpon>index.less</DependentUpon>
@@ -414,6 +417,7 @@
     <Content Include="Scripts\app\toggle-profile-edit.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\google-analytics.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -482,6 +486,7 @@
     <Content Include="Views\Shared\_NotificationPartial.cshtml" />
     <Content Include="Content\templates\solve-question-template.html" />
     <Content Include="Views\Shared\_StandardLayout.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

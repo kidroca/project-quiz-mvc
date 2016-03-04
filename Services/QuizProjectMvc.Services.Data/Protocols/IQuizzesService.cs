@@ -27,5 +27,7 @@
         void Add(Quiz quiz);
 
         void Save();
+
+        int GetTotalPages(int pageSize);
     }
 }

@@ -4,7 +4,8 @@
 
     public class Pager
     {
-        public const int DefaultPageSize = 5;
+        public const int DefaultPageSize = 3;
+        public const int PaginationNumberOfDisplayedPages = 5;
 
         public Pager()
         {
@@ -12,7 +13,7 @@
             this.PageSize = DefaultPageSize;
         }
 
-        [Range(0, int.MaxValue)]
+        [Range(1, int.MaxValue)]
         public int TotalPages { get; set; }
 
         [Range(1, int.MaxValue)]
@@ -20,5 +21,27 @@
 
         [Range(1, int.MaxValue)]
         public int PageSize { get; set; }
+
+        public int FirstVisiblePage()
+        {
+            int first = this.Page - (PaginationNumberOfDisplayedPages / 2);
+            if (first < 1)
+            {
+                first = 1;
+            }
+
+            return first;
+        }
+
+        public int LastVisiblePage()
+        {
+            int last = this.FirstVisiblePage() + PaginationNumberOfDisplayedPages;
+            if (last > this.TotalPages)
+            {
+                last = this.TotalPages;
+            }
+
+            return last;
+        }
     }
 }

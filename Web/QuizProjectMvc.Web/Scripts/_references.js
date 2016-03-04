@@ -15,6 +15,7 @@
 /// <reference path="app/services/error-handler.js" />
 /// <reference path="app/toggle-profile-edit.js" />
 /// <reference path="bootstrap.min.js" />
+/// <reference path="google-analytics.js" />
 /// <reference path="jquery.unobtrusive-ajax.min.js" />
 /// <reference path="jquery.validate.min.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />

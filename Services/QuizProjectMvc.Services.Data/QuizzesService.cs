@@ -157,6 +157,14 @@
             this.quizzes.Save();
         }
 
+        public int GetTotalPages(int pageSize)
+        {
+            int quizzesCount = this.quizzes.All().Count();
+            int result = (int)Math.Ceiling(quizzesCount / (double)pageSize);
+
+            return result;
+        }
+
         /// <summary>
         /// Returns QuizzesService to be fluent and chain expressions
         /// </summary>
