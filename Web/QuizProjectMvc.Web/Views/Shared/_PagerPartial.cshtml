@@ -1,0 +1,27 @@
+﻿@using QuizProjectMvc.Services.Data.Models
+@model QuizProjectMvc.Services.Data.Models.Pager
+
+@{
+    string action = (string) ViewData["Action"];
+    string controller = (string) ViewData["Controller"];
+}
+
+<ul class="pagination">
+
+    <li class="counter"><label>Page @Model.Page of @Model.TotalPages</label></li>
+
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        bool active = i == Model.Page;
+
+        <li class="pagination-page @(active ? "active" : string.Empty)">
+            @Html.ActionLink(linkText: i.ToString(), actionName: action, controllerName: controller, routeValues: new Pager
+            {
+                Page = i,
+                TotalPages = Model.TotalPages,
+                PageSize = Model.PageSize
+            }, htmlAttributes: null)
+        </li>
+    }
+</ul>
+

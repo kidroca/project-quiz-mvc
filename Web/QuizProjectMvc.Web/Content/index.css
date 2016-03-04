@@ -215,6 +215,9 @@ a.home-link {
   color: #838383;
   text-shadow: 1px 1px 0 #fff;
 }
+.pager .pagination {
+  float: right;
+}
 .pager .pagination-page.active a {
   background: #000000;
 }

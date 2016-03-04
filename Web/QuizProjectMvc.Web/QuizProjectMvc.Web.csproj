@@ -254,10 +254,12 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Controllers\SolveQuizController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Filters\AjaxOnlyAction.cs" />
+    <Compile Include="Helpers\HtmlExtensions.cs" />
     <Compile Include="ViewModels\Account\AccountEditableDetailsViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
@@ -487,6 +489,7 @@
     <Content Include="Content\templates\solve-question-template.html" />
     <Content Include="Views\Shared\_StandardLayout.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Shared\_PagerPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -494,6 +497,7 @@
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="ViewModels\User\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

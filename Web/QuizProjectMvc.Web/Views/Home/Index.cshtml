@@ -1,5 +1,5 @@
-﻿@using QuizProjectMvc.Services.Data.Models
-@using QuizProjectMvc.Web.Controllers
+﻿@using QuizProjectMvc.Web.Controllers
+@using QuizProjectMvc.Web.Helpers
 @using QuizProjectMvc.Web.ViewModels
 @model QuizProjectMvc.Web.ViewModels.Home.IndexViewModel
 @{
@@ -19,30 +19,12 @@
 }
 
 <div class="pager">
-    @{
-        var pager = Model.Pager;
-    }
 
-    
+    @Html.Partial("_PagerPartial", Model.Pager, new ViewDataDictionary {
+    { "Controller", Html.ControllerName()},
+    { "Action", Html.ActionName()}
+    })
 
-    <ul class="pagination pull-right">
-
-        <li class="counter"><label>Page @pager.Page of @pager.TotalPages</label></li>
-
-        @for (int i = 1; i <= pager.TotalPages; i++)
-        {
-            bool active = i == pager.Page;
-
-            <li class="pagination-page @(active ? "active" : string.Empty)">
-                @Html.ActionLink(i.ToString(), "Index", new Pager
-           {
-               Page = i,
-               TotalPages = pager.TotalPages,
-               PageSize = pager.PageSize
-           })
-            </li>
-        }
-    </ul>
 </div>
 
 @*Side Content*@
