@@ -8,6 +8,7 @@
     using System.Web.Optimization;
     using System.Web.Routing;
     using Data;
+    using Helpers;
     using Infrastructure.Mapping;
     using Configuration = Data.Migrations.Configuration;
 
@@ -18,7 +19,7 @@
         protected void Application_Start()
         {
             ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new RazorViewEngine());
+            ViewEngines.Engines.Add(new RazorEngineExtension());
 
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
 

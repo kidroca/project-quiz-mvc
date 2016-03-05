@@ -260,6 +260,7 @@
     </Compile>
     <Compile Include="Helpers\Filters\AjaxOnlyAction.cs" />
     <Compile Include="Helpers\HtmlExtensions.cs" />
+    <Compile Include="Helpers\RazorEngineExtension.cs" />
     <Compile Include="ViewModels\Account\AccountEditableDetailsViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
@@ -418,6 +419,7 @@
     <Content Include="Scripts\app\filters\paging-filter.js" />
     <Content Include="Scripts\app\select-avatar.js" />
     <Content Include="Scripts\app\services\error-handler.js" />
+    <Content Include="Scripts\app\set-language.js" />
     <Content Include="Scripts\app\toggle-profile-edit.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -489,17 +491,17 @@
     <Content Include="Views\Shared\_NotificationPartial.cshtml" />
     <Content Include="Content\templates\solve-question-template.html" />
     <Content Include="Views\Shared\_StandardLayout.cshtml" />
-    <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Shared\_PagerPartial.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Profile\_EditAvatarModalPartial.cshtml" />
     <Content Include="Views\Profile\_ProfileInfoWidgetPartial.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Globalization\es\About\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

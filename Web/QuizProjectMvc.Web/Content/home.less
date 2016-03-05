@@ -83,6 +83,15 @@
                 width: 40px;
                 height: 39px;
             }
+
+            a {
+                color: @medium-dark;
+
+                &:hover {
+                    color:@background;
+                    font-weight: bold;
+                }
+            }
         }
 
         .offer {
@@ -102,21 +111,13 @@
                 text-shadow: none;
             }
 
-            a {
-                color: @medium-dark;
-
-                &:hover {
-                    color:@background;
-                    font-weight: bold;
-                }
-            }
             &::before {
                 background: url("/Content/images/content-icons.png") 0 0;
             }
         }
     }
 
-    .quote {
+    .about {
         font-family: @font-thin;
         position: relative;
         color: #5c5c5c;
@@ -137,7 +138,7 @@
             line-height: 1.25;
         }
 
-        &::before {
+        &.quote::before {
             position: absolute;
             top: -15px;
             left: 0;

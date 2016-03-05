@@ -54,6 +54,10 @@
 
             bundles.Add(new ScriptBundle("~/bundles/google").Include(
                 "~/Scripts/google-analytics.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/default").Include(
+                "~/Scripts/app/confirm-submit.js",
+                "~/Scripts/app/set-language.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)

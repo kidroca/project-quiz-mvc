@@ -8,7 +8,7 @@
     	questions: []
     };
 
-	function CreateQuizController($scope, $controller,$http, $location, $localStorage, errorHandler) {
+	function CreateQuizController($scope, $controller, $http, $location, $localStorage, errorHandler) {
 		var self = this;
 		var parent = $controller('ManageQuizController', { $scope: $scope });
 		angular.extend(self, parent);

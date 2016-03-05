@@ -14,6 +14,7 @@
 /// <reference path="app/filters/paging-filter.js" />
 /// <reference path="app/select-avatar.js" />
 /// <reference path="app/services/error-handler.js" />
+/// <reference path="app/set-language.js" />
 /// <reference path="app/toggle-profile-edit.js" />
 /// <reference path="bootstrap.min.js" />
 /// <reference path="google-analytics.js" />

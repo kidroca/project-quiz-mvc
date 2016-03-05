@@ -47,6 +47,13 @@
                     <li>
                         @(Html.ActionLink<AboutController>("About", c => c.Index()))
                     </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle">Language</a>
+                        <ul role="menu" class="dropdown-menu drop-shadow language">
+                            <li><a data-lang="en">English</a></li>
+                            <li><a data-lang="es">Español</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
                 @Html.Partial("_LoginPartial")
