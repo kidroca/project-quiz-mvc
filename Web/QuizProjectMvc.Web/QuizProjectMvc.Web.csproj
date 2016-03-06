@@ -411,6 +411,7 @@
     <None Include="Properties\PublishProfiles\QuizProjectMvc - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\app\confirm-submit.js" />
+    <Content Include="Scripts\app\controllers\about.js" />
     <Content Include="Scripts\app\controllers\manage-quiz\add-question.js" />
     <Content Include="Scripts\app\controllers\manage-quiz\base-controller.js" />
     <Content Include="Scripts\app\controllers\manage-quiz\create-quiz.js" />

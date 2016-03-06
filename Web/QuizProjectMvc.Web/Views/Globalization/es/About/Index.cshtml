@@ -3,20 +3,31 @@
     ViewBag.Title = "About";
 }
 
-<div class="content">
-    <section class="about row">
+<div class="about wrapper" ng-app="about" ng-controller="AboutController as ctrl">
+    <div class="dropdown language">
+        <a href="#" class="dropdown-toggle btn btn-primary"
+           data-toggle="dropdown" role="button"
+           aria-expanded="false"><i class="fa fa-language"></i> Idioma <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#" data-lang="en">English</a></li>
+            <li><a href="#" data-lang="es">Español</a></li>
+        </ul>
+    </div>
+
+    <button class="btn btn-round btn-primary btn-next"> <i class="fa fa-chevron-circle-right"></i></button>
+    <section class="about-carousel nav-container" slick settings="ctrl.slickConfig">
         <article class="intro">
             <h2>Aprendemos, practicamos, jugamos…</h2>
             <p>
                 Hola a todos. Eres estudiante o profesional, trabajador activo o parado, ama de casa o
-                jubilado, no importa. Si te gusta aprender cosas nuevas de forma divertida, ¡bienvenido 
-                en el Quiz Project!
+                jubilado, no importa. Si te gusta aprender cosas nuevas de forma divertida, ¡bienvenido
+                en el <strong>Quiz Project!</strong>
             </p>
             <p>
                 Es un lugar positivo para la gente con diferente experiencia, ideas y opiniones.
             </p>
             <p>
-                ¿Has soñado alguna vez con hacer tus propias preguntas? ¿Quieres crear tu propio test? 
+                ¿Has soñado alguna vez con hacer tus propias preguntas? ¿Quieres crear tu propio test?
                 Aquí tienes esta posibilidad. Elige los temas que te inquietan y da voluntad a tu creatividad.
             </p>
         </article>
@@ -27,17 +38,21 @@
                 puedes entrar con tu cuenta de Google. Luego vas a Features y del menú desplegado haces
                 click sobre Create New Quiz. Rellena tus preguntas y respuestas. Para fijar la respuesta
                 correcta haz click sobre la letra al inicio (a,b,c,d…) Necesitas por lo menos 3 preguntas
-                para que puedas guardar tu test con el botón Save Quiz. Tienes la opción para editar si 
+                para que puedas guardar tu test con el botón <em>Save Quiz</em>. Tienes la opción para editar si
                 algo no te ha salido bien o si quieres añadir más preguntas. Eso es todo.
             </p>
             <p>
                 Sin contenido ofensivo y malintencionado, por favor. Pon tus conocimientos en práctica y se bueno.
             </p>
-            <p class="outro">
-                ¡Que lo pases bien! Diviértete.
+            <p class="outro text-right">
+                <em>¡Que lo pases bien! Diviértete.</em>
             </p>
         </article>
     </section>
+</div>
+
+    <div class="content">
+        <div class="illumination"></div>
         <section class="description row">
             <article class="col-md-4 offer">
                 <h3>About this site</h3>
@@ -52,7 +67,7 @@
                 <h3>Contact</h3>
                 <input type="checkbox" id="cb-we-are" class="read-more-state" />
                 <p class="read-more-wrap">
-                    My name is Peter Velkov you can reach me at 
+                    My name is Peter Velkov you can reach me at
                     <a href="mailto:kidroca@gmail.com">kidroca@gmail.com</a>
                 </p>
             </article>
@@ -86,4 +101,13 @@
             </p>
             <label for="cb-quote" class="read-more-trigger btn-default"></label>
         </section>
-</div>
+    </div>
+
+
+@section styles {
+    @Styles.Render("~/Content/slick-carousel")
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/about")
+}

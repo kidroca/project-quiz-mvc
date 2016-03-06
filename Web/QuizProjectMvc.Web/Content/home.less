@@ -88,7 +88,7 @@
                 color: @medium-dark;
 
                 &:hover {
-                    color:@background;
+                    color: @background;
                     font-weight: bold;
                 }
             }
@@ -127,7 +127,6 @@
         border-right: 0;
         background-color: #fff;
         margin-bottom: 4rem;
-
         .linear-grad(@colors: #fff 5%, #f4f4f4 95%; @dir: 180deg);
         .box-shadow-double(@y: -1px; @blur: 1rem; @color: lighten(@shadow, 80%));
 
@@ -169,6 +168,54 @@
             content: 'Less Info';
         }
     }
+}
 
-    
+.about {
+    position: relative;
+    color: white;
+
+    h2, h3 {
+        font-family: @font-thin;
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 1px @shadow;
+    }
+
+    .language, .btn-next {
+        position: absolute;
+        z-index: 10;
+        right: 5px;
+    }
+
+    .language {
+        top: 5px;
+    }
+
+    .btn-next {
+        bottom: 5px;
+        font-size: 1.5em;
+        padding: 0 5px;
+    }
+
+    .about-carousel {
+
+        .slick-slide {
+            &:focus {
+                outline: none;
+            }
+
+            p {
+                text-shadow: 1px 1px 1px @shadow;
+            }
+
+            .outro {
+                margin-right: 5%;
+            }
+        }
+
+        .slick-dots {
+            button {
+                color: white;
+            }
+        }
+    }
 }

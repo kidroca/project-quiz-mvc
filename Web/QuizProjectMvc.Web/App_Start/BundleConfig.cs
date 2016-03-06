@@ -58,6 +58,13 @@
             bundles.Add(new ScriptBundle("~/bundles/default").Include(
                 "~/Scripts/app/confirm-submit.js",
                 "~/Scripts/app/set-language.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/about").Include(
+                "~/Scripts/angular.js",
+                "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
+                "~/Scripts/Slick/slick.js",
+                "~/Scripts/Slick/angular-slick.js",
+                "~/Scripts/app/controllers/about.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)

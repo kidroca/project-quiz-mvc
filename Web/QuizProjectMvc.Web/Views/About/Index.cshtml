@@ -3,14 +3,25 @@
     ViewBag.Title = "About";
 }
 
-<div class="content">
-    <section class="about row">
+<div class="about wrapper" ng-app="about" ng-controller="AboutController as ctrl">
+    <div class="dropdown language">
+        <a href="#" class="dropdown-toggle btn btn-primary"
+           data-toggle="dropdown" role="button"
+           aria-expanded="false"><i class="fa fa-language"></i> Language <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#" data-lang="en">English</a></li>
+            <li><a href="#" data-lang="es">Español</a></li>
+        </ul>
+    </div>
+
+    <button class="btn btn-round btn-primary btn-next"> <i class="fa fa-chevron-circle-right"></i></button>
+    <section class="about-carousel nav-container" slick settings="ctrl.slickConfig">
         <article class="intro">
             <h2>We learn, we practice, we play …</h2>
             <p>
                 Hello everybody! You are a student or professional, active worker or unemployed, housewife or
                 retiree, it doesn’t matter. If you enjoy learning new things in a funny way, welcome to the
-                Quiz Project!
+                <strong>Quiz Project!</strong>
             </p>
             <p>
                 This is a positive place for people of different experience, ideas and opinions.
@@ -26,18 +37,22 @@
                 It's very simple being guided by the page. First you have to register as a user or you can also
                 enter with your Google account. Then you go to Features and from deployed menu click on Create
                 New Quiz. Fill in your questions and answers. To set the correct answer click on the letter at
-                the beginning (a, b, c, d ...) You need at least 3 questions so you can keep your test with
-                Quiz Save button. You have the option to edit if something has not gone well or if you want
+                the beginning (a, b, c, d ...) You need at least 3 questions so you can keep your test with the
+                <em>Quiz Save</em> button. You have the option to edit if something has not gone well or if you want
                 to add more questions. That is all.
             </p>
             <p>
                 No offensive and malicious content, please! Put your knowledge in practice and be nice.
             </p>
-            <p class="outro">
-                Have a nice time! Enjoy yourself.
+            <p class="outro text-right">
+                <em>Have a nice time! Enjoy yourself.</em>
             </p>
         </article>
     </section>
+</div>
+
+    <div class="content">
+        <div class="illumination"></div>
         <section class="description row">
             <article class="col-md-4 offer">
                 <h3>About this site</h3>
@@ -52,7 +67,7 @@
                 <h3>Contact</h3>
                 <input type="checkbox" id="cb-we-are" class="read-more-state" />
                 <p class="read-more-wrap">
-                    My name is Peter Velkov you can reach me at 
+                    My name is Peter Velkov you can reach me at
                     <a href="mailto:kidroca@gmail.com">kidroca@gmail.com</a>
                 </p>
             </article>
@@ -86,4 +101,13 @@
             </p>
             <label for="cb-quote" class="read-more-trigger btn-default"></label>
         </section>
-</div>
+    </div>
+
+
+@section styles {
+    @Styles.Render("~/Content/slick-carousel")
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/about")
+}

@@ -62,18 +62,6 @@ a.home-link {
   color: #8d96a0;
   background: inherit;
 }
-#main-wrapper header > nav.navbar.navbar-inverse .container-fluid {
-  background-color: #323b44;
-  background-image: -webkit-linear-gradient(180deg, #3e4852, #323b44);
-  background-image: -moz-linear-gradient(180deg, #3e4852, #323b44);
-  background-image: -ms-linear-gradient(180deg, #3e4852, #323b44);
-  background-image: -o-linear-gradient(180deg, #3e4852, #323b44);
-  background-image: linear-gradient(180deg, #3e4852, #323b44);
-  border-radius: 10px;
-  border-top: 1px solid #4e5c6a;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
-  padding: 0 2.5rem;
-}
 #main-wrapper header > nav.navbar.navbar-inverse .container-fluid li.dropdown:hover .dropdown-menu {
   display: block;
 }
@@ -127,7 +115,7 @@ a.home-link {
 }
 #main-illumination {
   width: 100%;
-  height: 50rem;
+  height: 52rem;
   top: 0;
   left: 0;
 }
@@ -223,6 +211,9 @@ a.home-link {
 }
 .pager .pagination-page a {
   border-radius: 5px;
+}
+.language {
+  z-index: 10;
 }
 @media only screen and (max-width: 700px) {
   .side-content {
@@ -358,6 +349,18 @@ a.home-link {
   background-image: -ms-linear-gradient(180deg, #3e4852, #323b44);
   background-image: -o-linear-gradient(180deg, #3e4852, #323b44);
   background-image: linear-gradient(180deg, #3e4852, #323b44);
+}
+.nav-container {
+  background-color: #323b44;
+  background-image: -webkit-linear-gradient(180deg, #3e4852, #323b44);
+  background-image: -moz-linear-gradient(180deg, #3e4852, #323b44);
+  background-image: -ms-linear-gradient(180deg, #3e4852, #323b44);
+  background-image: -o-linear-gradient(180deg, #3e4852, #323b44);
+  background-image: linear-gradient(180deg, #3e4852, #323b44);
+  border-radius: 10px;
+  border-top: 1px solid #4e5c6a;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+  padding: 0 2.5rem;
 }
 .form-horizontal legend {
   font-weight: normal;
@@ -696,4 +699,40 @@ a.home-link {
 }
 .content .about .read-more-state:checked ~ .read-more-trigger:before {
   content: 'Less Info';
+}
+.about {
+  position: relative;
+  color: white;
+}
+.about h2,
+.about h3 {
+  font-family: "Colaborate Thin", monospace;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.62);
+}
+.about .language,
+.about .btn-next {
+  position: absolute;
+  z-index: 10;
+  right: 5px;
+}
+.about .language {
+  top: 5px;
+}
+.about .btn-next {
+  bottom: 5px;
+  font-size: 1.5em;
+  padding: 0 5px;
+}
+.about .about-carousel .slick-slide:focus {
+  outline: none;
+}
+.about .about-carousel .slick-slide p {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.62);
+}
+.about .about-carousel .slick-slide .outro {
+  margin-right: 5%;
+}
+.about .about-carousel .slick-dots button {
+  color: white;
 }
