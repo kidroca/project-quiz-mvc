@@ -1,0 +1,6 @@
+﻿@model IEnumerable<QuizProjectMvc.Web.ViewModels.Quiz.QuizBasicViewModel>
+    
+@foreach (var quiz in Model)
+{
+    @Html.DisplayFor(m => quiz)
+}

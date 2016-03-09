@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNet.Identity
+@using QuizProjectMvc.Common
+@using QuizProjectMvc.Web.Controllers
+@model QuizProjectMvc.Web.ViewModels.Quiz.QuizBasicViewModel
+
+<div class="quiz-item">
+
+    <h2>
+        @*Todo fix the Id*@
+        @(Html.ActionLink<SolveQuizController>(Model.Title, c => c.Solve(Model.Id)))
+    </h2>
+
+    <article class="single-article">
+
+        @{
+            string author = string.IsNullOrEmpty(Model.CreatedBy.FirstName)
+                ? Model.CreatedBy.UserName
+                : string.Format("{0} {1}", Model.CreatedBy.FirstName, Model.CreatedBy.LastName);
+        }
+
+        <div class="article-header">
+            <h4 class="sub-title">
+                Created by @author on
+                <span class="article-date">@Model.CreatedOn.ToShortDateString()</span>
+            </h4>
+        </div>
+
+        <div class="article-body clearfix">
+
+            <div class="article-image pull-left">
+                @{
+                    // Fix quiz-thumb.png to be a quiz avatar (currently a user is showing)
+                    string imageUrl = string.IsNullOrEmpty(Model.CreatedBy.AvatarUrl)
+                                        ? "~/Content/images/quiz-thumb.png"
+                                        : Model.CreatedBy.AvatarUrl;
+                }
+
+                <img src="@Url.Content(imageUrl)" alt="article image" class="img-responsive">
+            </div>
+
+            <div class="article-content pull-left">
+                <div class="quiz-details">
+                    <div class="basic-info">
+                        <p>
+                            <label>Category:</label> <span>@Model.Category.Name</span>
+                        </p>
+                        <p>
+                            @*Todo: AJAX Rating*@
+                            <label>Rating:</label>
+                            @for (int i = ModelConstraints.MinRating; i <= ModelConstraints.MaxRating; i++)
+                            {
+                                string icon = Model.Rating >= i
+                                    ? "glyphicon-ok-sign"
+                                    : "glyphicon-ok-circle";
+
+                                @*Todo: Wrap in ancor ? *@
+                                <i title="@i" class="glyphicon @icon"></i>
+                            }
+                        </p>
+                        <p>
+                            <label>Question:</label> <span>@Model.QuestionsCount</span>
+                        </p>
+                        <p>
+                            <label>Times Completed:</label> <span>@Model.TimesCompleted</span>
+                        </p>
+                    </div>
+                    <div class="description">
+                        <label>Description:</label>
+                        <p class="hide-overflow">
+                            @Model.Description
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <div class="clearfix quiz-controls">
+        @(Html.ActionLink<SolveQuizController>("Check It Out", c => c.Solve(Model.Id), null, new
+    {
+        @class = "btn btn-primary btn-round pull-right",
+    }))
+        @if (User.IsInRole(GlobalConstants.AdministratorRoleName) ||
+                                 User.Identity.GetUserId() == Model.CreatedBy.Id)
+        {
+            @(Html.ActionLink<ManageQuizController>("Edit", c => c.Edit(Model.Id), null, new
+                                {
+                                    @class = "btn btn-info btn-round pull-right"
+                                }))
+            using (Html.BeginForm<ManageQuizController>(c => c.Delete(Model.Id), FormMethod.Post))
+             {
+                @Html.AntiForgeryToken()
+                @Html.HttpMethodOverride(HttpVerbs.Delete)
+                @Html.HiddenFor(m => m.Id)
+
+                 <input type="submit" value="Delete" class = "btn btn-danger btn-round pull-right"
+                        data-confirm="Are you sure you want to delete the quiz?"/>
+            }
+
+        }
+    </div>
+</div>

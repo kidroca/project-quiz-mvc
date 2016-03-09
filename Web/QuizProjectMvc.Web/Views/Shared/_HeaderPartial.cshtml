@@ -31,6 +31,9 @@
                             <li>
                                 @Html.ActionLink("Home", "Index", "Home", null, new {@class = "home-link"})
                             </li>
+                            <li>
+                                @(Html.ActionLink<QuizzesController>("Search", c => c.Search(null)))
+                            </li>
                             @if (Request.IsAuthenticated)
                             {
                                 <li>

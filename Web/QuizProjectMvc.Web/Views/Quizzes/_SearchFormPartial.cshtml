@@ -1,0 +1,50 @@
+﻿@using QuizProjectMvc.Services.Data.Models.Search
+
+@model QuizSearchModel
+
+@{
+    var labelAttributes = new { @class = "control-label" };
+    var inputAttributes = new { @class = "form-control" };
+    var validationAttributes = new { @class = "text-danger" };
+}
+
+@using (Ajax.BeginForm("Query", new AjaxOptions
+{
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "search-results"
+}))
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <div class="form-group col-md-4">
+            @Html.LabelFor(m => m.Category, labelAttributes)
+            <div>
+                @Html.TextBoxFor(m => m.Category, inputAttributes)
+                @Html.ValidationMessageFor(m => m.Category, string.Empty, validationAttributes)
+            </div>
+        </div>
+
+        <div class="form-group col-md-4">
+            @Html.LabelFor(m => m.KeyPhrase, labelAttributes)
+            <div>
+                @Html.TextBoxFor(m => m.KeyPhrase, inputAttributes)
+                @Html.ValidationMessageFor(m => m.KeyPhrase, string.Empty, validationAttributes)
+            </div>
+        </div>
+
+        <div class="form-group col-md-4">
+            @Html.LabelFor(m => m.OrderBy, labelAttributes)
+            <div>
+                @Html.DropDownListFor(m => m.OrderBy, QuizSearchModel.GetOrderByDropDownValues(), inputAttributes)
+                @Html.ValidationMessageFor(m => m.OrderBy, string.Empty, validationAttributes)
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="form-group col-md-3">
+            <input type="submit" value="Search" class="btn btn-primary col-md-12" />
+        </div>
+    </fieldset>
+}

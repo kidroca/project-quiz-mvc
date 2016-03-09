@@ -1,0 +1,19 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Quiz Search";
+    Layout = "~/Views/Shared/_StandardLayout.cshtml";
+}
+
+<section id="search-filter">
+    @Html.Partial("_SearchFormPartial")
+</section>
+
+<section id="search-results">
+
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery-ajax")
+}
