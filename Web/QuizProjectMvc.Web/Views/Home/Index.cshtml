@@ -1,9 +1,8 @@
-﻿@using QuizProjectMvc.Web.Controllers
-@using QuizProjectMvc.Web.Helpers
+﻿@using QuizProjectMvc.Web.Helpers
 @using QuizProjectMvc.Web.ViewModels
 @model QuizProjectMvc.Web.ViewModels.Home.IndexViewModel
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Top Quizzes";
     Notification notification = null;
 
     if (TempData["error"] != null)

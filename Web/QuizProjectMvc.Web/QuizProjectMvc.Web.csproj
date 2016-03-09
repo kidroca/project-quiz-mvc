@@ -253,6 +253,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
+    <Compile Include="Controllers\QuizzesController.cs" />
     <Compile Include="Controllers\SolveQuizController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -475,7 +476,7 @@
     <Content Include="Views\Shared\_HeaderPartial.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\DisplayTemplates\QuizBasicViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\QuizBasicViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\BasicAccountInfoViewModel.cshtml" />
     <Content Include="Views\SolveQuiz\Solve.cshtml" />
     <Content Include="Views\ManageQuiz\Create.cshtml" />
@@ -498,6 +499,10 @@
     <Content Include="Views\Profile\_ProfileInfoWidgetPartial.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Globalization\es\About\Index.cshtml" />
+    <Content Include="Views\Quizzes\Search.cshtml" />
+    <Content Include="Views\Quizzes\_SearchFormPartial.cshtml" />
+    <Content Include="Views\Quizzes\_QueryResultPartial.cshtml" />
+    <Content Include="Views\Quizzes\_NoResultsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
