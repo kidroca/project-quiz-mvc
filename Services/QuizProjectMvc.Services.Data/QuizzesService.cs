@@ -130,8 +130,8 @@
         public IQueryable<Quiz> SearchQuizzes(QuizSearchModel queryParameters)
         {
             var result = this.quizzes.All();
-            this.ApplyFiltering(result, queryParameters);
-            this.ApplyOrdering(result, queryParameters);
+            result = this.ApplyFiltering(result, queryParameters);
+            result = this.ApplyOrdering(result, queryParameters);
 
             return result;
         }
@@ -197,7 +197,7 @@
             return this;
         }
 
-        private void ApplyFiltering(IQueryable<Quiz> result, QuizSearchModel queryParameters)
+        private IQueryable<Quiz> ApplyFiltering(IQueryable<Quiz> result, QuizSearchModel queryParameters)
         {
             if (queryParameters.Category != null)
             {
@@ -241,9 +241,11 @@
             {
                 result = result.Where(q => q.Ratings.Average(r => r.Value) <= queryParameters.MaxRating);
             }
+
+            return result;
         }
 
-        private void ApplyOrdering(IQueryable<Quiz> result, QuizSearchModel queryParameters)
+        private IQueryable<Quiz> ApplyOrdering(IQueryable<Quiz> result, QuizSearchModel queryParameters)
         {
             if (queryParameters.OrderBy == null)
             {
@@ -273,6 +275,8 @@
                         : result.OrderBy(q => q.Solutions.Count);
                     break;
             }
+
+            return result;
         }
 
         private List<Answer> ExtractSelectedAnswers(Quiz quiz, SolutionForEvaluationModel quizSolution)
