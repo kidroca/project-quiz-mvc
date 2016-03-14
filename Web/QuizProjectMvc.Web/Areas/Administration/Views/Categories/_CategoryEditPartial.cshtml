@@ -1,0 +1,19 @@
+﻿@using QuizProjectMvc.Common
+<td>
+    <input type="text" ng-model="category.name"
+           class="form-control" name="categoryName"
+           required ng-minlength="@ModelConstraints.NameMinLength"
+           placeholder="Name">
+</td>
+<td>
+    <input type="text" ng-model="category.avatarUrl"
+           class="form-control" name="categoryAvatar"
+           required ng-minlength="@ModelConstraints.UrlMinLength"
+           placeholder="Avatar Url">
+</td>
+<td>
+    {{category.quizzesCount}}
+</td>
+<td class="btn-group">
+    <button class="btn btn-primary" ng-click="ctrl.addNew(category)">Save</button>
+</td>

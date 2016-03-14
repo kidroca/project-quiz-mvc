@@ -8,5 +8,9 @@
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class AdministrationController : BaseController
     {
+        public ActionResult AdminMenu()
+        {
+            return this.RedirectToAction("Edit", "Categories");
+        }
     }
 }

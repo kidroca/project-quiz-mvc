@@ -9,7 +9,9 @@
 		EDIT_QUIZ: 'Something went wroung updating the quiz...' +
 		'Please try agian after you make sure everithing is ok',
 
-		SOLVE_QUIZ: 'Something is wrong with the received data, please try again'
+		SOLVE_QUIZ: 'Something is wrong with the received data, please try again',
+
+        EDIT_CATEGORY: 'Category save failed'
 	}
 
 	function errorHandler() {
@@ -43,10 +45,18 @@
 		alert(message);
 	};
 
+	errorHandler.prototype.handleEditCategoryError = function (response) {
+	    var message = extractModelStateErrors(response.data.modelState) ||
+	                                                response.data.message ||
+	                                                DEFFAULT_ERRORS.EDIT_CATEGORY;
+
+	    alert(message);
+	};
+
 	function extractModelStateErrors(modelState) {
 		if (!modelState) return null;
 
-		var message = "";
+		var message = '';
 
 		for (var prop in modelState) {
 			if (modelState.hasOwnProperty(prop)) {

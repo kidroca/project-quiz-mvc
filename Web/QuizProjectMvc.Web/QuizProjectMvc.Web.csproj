@@ -237,6 +237,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
+    <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\AdvancedCategoryModel.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\AccountController.cs" />
     <Compile Include="Areas\Api\Controllers\BaseController.cs" />
@@ -300,6 +302,12 @@
     <Compile Include="ViewModels\Users\IndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin\admin.css">
+      <DependentUpon>admin.less</DependentUpon>
+    </Content>
+    <Content Include="Content\admin\admin.min.css">
+      <DependentUpon>admin.css</DependentUpon>
+    </Content>
     <Content Include="Content\angular-toggle-switch-bootstrap.css" />
     <Content Include="Content\angular-toggle-switch.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -366,6 +374,11 @@
     <Content Include="Content\helpers\mix-ins.less" />
     <Content Include="Content\helpers\sizes.less" />
     <Content Include="AppSettingsSecret.config" />
+    <Content Include="Areas\Administration\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_HeaderPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\_CategoryDisplayPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\_CategoryEditPartial.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -407,10 +420,12 @@
     <Content Include="Content\Slick\fonts\slick.ttf" />
     <Content Include="Content\Slick\fonts\slick.eot" />
     <Content Include="Content\solve.less" />
+    <Content Include="Content\admin\admin.less" />
     <None Include="Properties\PublishProfiles\ProjectQuiz - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ProjectQuiz - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\QuizProjectMvc - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\app\admin\categoriesManager.js" />
     <Content Include="Scripts\app\confirm-submit.js" />
     <Content Include="Scripts\app\controllers\about.js" />
     <Content Include="Scripts\app\controllers\manage-quiz\add-question.js" />
@@ -507,7 +522,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Administration\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

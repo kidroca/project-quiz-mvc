@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Admin - QuizProjectMvc</title>
+    @Styles.Render("~/Content/css")
+    @RenderSection("styles", required: false)
+</head>
+
+<body>
+    <div id="main-illumination" class="illumination"></div>
+    <div id="main-wrapper">
+
+        @Html.Partial("_HeaderPartial")
+
+        @RenderSection("notification", required: false)
+
+        <div id="content-wrapper" class="container-fluid body-content">
+            @RenderBody()
+        </div>
+
+
+    </div>
+
+    @Html.Partial("_FooterPartial")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/google")
+    @Scripts.Render("~/bundles/default")
+    @RenderSection("scripts", required: false)
+
+</body>
+
+</html>

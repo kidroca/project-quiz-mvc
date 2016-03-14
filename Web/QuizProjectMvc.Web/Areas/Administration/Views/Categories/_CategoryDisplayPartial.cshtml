@@ -1,0 +1,33 @@
+﻿@using QuizProjectMvc.Common
+
+<tr>
+    <td ng-hide="category.editMode">{{category.name}}</td>
+    <td ng-show="category.editMode">
+        <input type="text" ng-model="category.name"
+               class="form-control" name="categoryName"
+               required ng-minlength="@ModelConstraints.NameMinLength"
+               placeholder="Name">
+    </td>
+
+    <td ng-hide="category.editMode"><a href="{{category.avatarUrl}}">{{category.avatarUrl}}</a></td>
+    <td ng-show="category.editMode">
+        <input type="text" ng-model="category.avatarUrl"
+               class="form-control" name="categoryAvatar"
+               required ng-minlength="@ModelConstraints.UrlMinLength"
+               placeholder="Avatar Url">
+    </td>
+
+    <td>{{category.quizzesCount}}</td>
+    <td class="btn-group">
+        <div ng-hide="category.editMode">
+            <button class="btn btn-primary" ng-click="ctrl.toggleMode(category)">Edit</button>
+            <button class="btn btn-danger" ng-click="ctrl.destroy(category)">×</button>
+        </div>
+
+        <div ng-show="category.editMode">
+            <button class="btn btn-primary" ng-click="ctrl.save(category)">Save</button>
+            <button class="btn btn-danger" ng-click="ctrl.toggleMode(category)">Cancel</button>
+        </div> 
+    </td>
+</tr>
+

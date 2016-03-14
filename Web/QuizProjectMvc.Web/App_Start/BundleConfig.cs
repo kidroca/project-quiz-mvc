@@ -65,6 +65,9 @@
                 "~/Scripts/Slick/slick.js",
                 "~/Scripts/Slick/angular-slick.js",
                 "~/Scripts/app/controllers/about.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/admin").Include(
+                "~/Scripts/app/admin/categoriesManager.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)
@@ -85,6 +88,9 @@
 
             bundles.Add(new StyleBundle("~/Content/solve").Include(
                "~/Content/solve.css"));
+
+            bundles.Add(new StyleBundle("~/Content/admin").Include(
+                "~/Content/admin/admin.css"));
         }
     }
 }

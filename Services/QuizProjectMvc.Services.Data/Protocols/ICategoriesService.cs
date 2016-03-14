@@ -12,5 +12,13 @@
         IQueryable<QuizCategory> GetTop(int count);
 
         IQueryable<QuizCategory> FilterByPattern(string pattern, int count);
+
+        QuizCategory GetById(int id);
+
+        void Save();
+
+        bool Delete(int id);
+
+        void Create(QuizCategory category);
     }
 }

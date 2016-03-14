@@ -1,0 +1,34 @@
+﻿<header class="wrapper">
+
+    <div id="logo">
+        <img src="~/Content/images/logo.png" alt="logo">
+    </div>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid nav-container">
+            <div class="navbar-header">
+                <button data-toggle="collapse" data-target="#main-nav" aria-expanded="false" class="navbar-toggle collapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="main-nav" aria-expanded="false" style="height: 0.8px;" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                    <li>
+                        @Html.ActionLink(
+                             "Home", "Index", "Home",
+                             new { area = string.Empty },
+                             new { @class = "home-link" })
+                    </li>
+                    <li>
+                        @(Html.ActionLink<CategoriesController>("ManageCategories", c => c.Edit()))
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
