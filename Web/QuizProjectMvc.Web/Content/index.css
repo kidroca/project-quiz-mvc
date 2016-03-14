@@ -118,6 +118,7 @@ a.home-link {
   height: 52rem;
   top: 0;
   left: 0;
+  z-index: -1;
 }
 .action-notification {
   position: fixed;

@@ -1,4 +1,4 @@
-namespace QuizProjectMvc.Web.ViewModels.Quiz.Manage
+﻿namespace QuizProjectMvc.Web.ViewModels.Quiz.Manage
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
