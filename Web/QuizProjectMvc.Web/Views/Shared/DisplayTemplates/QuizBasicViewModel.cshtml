@@ -30,9 +30,9 @@
             <div class="article-image pull-left">
                 @{
                     // Fix quiz-thumb.png to be a quiz avatar (currently a user is showing)
-                    string imageUrl = string.IsNullOrEmpty(Model.CreatedBy.AvatarUrl)
+                    string imageUrl = string.IsNullOrEmpty(Model.Category.AvatarUrl)
                                         ? "~/Content/images/quiz-thumb.png"
-                                        : Model.CreatedBy.AvatarUrl;
+                                        : Model.Category.AvatarUrl;
                 }
 
                 <img src="@Url.Content(imageUrl)" alt="article image" class="img-responsive">

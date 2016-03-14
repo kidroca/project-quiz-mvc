@@ -32,5 +32,11 @@
         {
             return this.PartialView("_CategoryDisplayPartial");
         }
+
+        [HttpGet]
+        public ActionResult GetImagesModalTemplate()
+        {
+            return this.PartialView("_SelectImageModalPartial");
+        }
     }
 }

@@ -67,6 +67,8 @@
                 "~/Scripts/app/controllers/about.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
+                "~/Scripts/ng-crop/ng-img-crop.js",
+                "~/Scripts/ng-file-upload-all.js",
                 "~/Scripts/app/admin/categoriesManager.js"));
         }
 

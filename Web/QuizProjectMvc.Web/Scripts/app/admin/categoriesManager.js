@@ -6,7 +6,7 @@
     /**
      * Controller
     */
-    function CategoriesController($http, errorHandler) {
+    function CategoriesController($http, $uibModal, errorHandler) {
         var self = this;
 
         self.toggleMode = function toggleMode(category) {
@@ -44,7 +44,88 @@
                 }, errorHandler.handleEditCategoryError);
         }
 
+        self.openImagesMenu = function openImagesMenu(category) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                appendTo: $('#categories-menu'),
+                templateUrl: '/Administration/Categories/GetImagesModalTemplate',
+                controller: 'ImagesModalController',
+                controllerAs: 'ctrl'
+            });
+
+            modalInstance.result.then(function (imageSrc) {
+                if (imageSrc !== null) {
+                    category.avatarUrl = imageSrc;
+                }
+
+            }, function () {
+                console.log('Modal dismissed at: ' + new Date());
+            });
+
+            modalInstance.closed.then(function () {
+                console.log('close');
+            });
+        };
+
         initCategories(self, $http);
+    }
+
+    /**
+     * Controller
+    */
+    function ImagesController($scope, $timeout, Upload) {
+        var self = this;
+
+        $scope.upload = function (dataUrl, name) {
+            Upload.upload({
+                url: '/api/categories/uploadImage',
+                data: {
+                    file: Upload.dataUrltoBlob(dataUrl, name)
+                }
+            }).then(function (response) {
+                $timeout(function () {
+                    $scope.result = response.data;
+                });
+            }, function (response) {
+                if (response.status > 0) $scope.errorMsg = response.status
+                    + ': ' + response.data;
+            }, function (evt) {
+                $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+            });
+        }
+    }
+
+    /**
+     * Controller
+    */
+    function ImagesModalController($uibModalInstance, $http) {
+        var self = this;
+
+        self.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+
+        self.select = function select(imgSrc) {
+            console.log(imgSrc);
+            $uibModalInstance.close(imgSrc);
+        }
+
+        self.deleteImage = function deleteImage(src, index) {
+            $http.delete(BASE_PATH + 'deleteImage?name=' + src)
+                .then(function() {
+                    self.categoryImages.splice(index, 1);
+                });
+        }
+
+        $http.get(BASE_PATH + 'getAvailableImages')
+            .then(function (res) {
+                console.log(res);
+                self.categoryImages = [];
+
+                res.data.forEach(function (name) {
+                    self.categoryImages.push('/Content/images/categories/' + name);
+                });
+            });
     }
 
     /**
@@ -93,7 +174,9 @@
 
     // =======================================================
 
-    angular.module('categoriesManager', ['errorHandler', 'ui.bootstrap'])
-        .controller('CategoriesController', ['$http', 'errorHandler', CategoriesController])
+    angular.module('categoriesManager', ['ngFileUpload', 'ngImgCrop', 'errorHandler', 'ui.bootstrap'])
+        .controller('CategoriesController', ['$http', '$uibModal', 'errorHandler', CategoriesController])
+        .controller('ImagesController', ['$scope', '$timeout', 'Upload', ImagesController])
+        .controller('ImagesModalController', ['$uibModalInstance', '$http', ImagesModalController])
         .directive('editCategory', [editCategory]);
 })();

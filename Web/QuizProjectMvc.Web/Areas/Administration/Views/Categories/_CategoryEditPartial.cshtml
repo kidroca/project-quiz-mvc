@@ -6,10 +6,10 @@
            placeholder="Name">
 </td>
 <td>
-    <input type="text" ng-model="category.avatarUrl"
-           class="form-control" name="categoryAvatar"
-           required ng-minlength="@ModelConstraints.UrlMinLength"
-           placeholder="Avatar Url">
+    <button class="btn btn-primary" ng-click="ctrl.openImagesMenu(category)">
+        Select Image
+    </button>
+    <a href="{{category.avatarUrl}}" class="hide-overflow">{{category.avatarUrl}}</a>
 </td>
 <td>
     {{category.quizzesCount}}

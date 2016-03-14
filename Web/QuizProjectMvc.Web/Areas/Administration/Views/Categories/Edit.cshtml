@@ -4,31 +4,86 @@
     ViewBag.Title = "Manage Categories";
 }
 
-<section class="wrapper widget" ng-app="categoriesManager" ng-controller="CategoriesController as ctrl">
-    <div class="well">
-        <table class="table table-striped table-hover">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Avatar Url</th>
-                <th>Quizzes</th>
-                <th class="controls-header">Controls</th>
-            </tr>
-            </thead>
+<div ng-app="categoriesManager" id="categories-menu">
+    <section class="wrapper widget" ng-controller="CategoriesController as ctrl">
+        <div class="well">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="name-header">Name</th>
+                        <th>Avatar Url</th>
+                        <th>Quizzes</th>
+                        <th class="controls-header">Controls</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-            <tr ng-repeat="category in ctrl.categories" edit-category>
-            </tr>
-            </tbody>
+                <tbody>
+                    <tr ng-repeat="category in ctrl.categories" edit-category></tr>
+                </tbody>
 
-            <tfoot>
-            <tr>
-                @Html.Partial("_CategoryEditPartial")
-            </tr>
-            </tfoot>
-        </table>
-    </div>
-</section>
+                <tfoot>
+                    <tr>
+                        @Html.Partial("_CategoryEditPartial")
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+
+    <section class="wrapper widget clearfix" ng-controller="ImagesController as ctrl">
+        <div class="well">
+            <form class="form-horizontal image-form" name="imageForm">
+                <fieldset>
+                    <legend>Upload Category Images</legend>
+
+                    <div class="row clearfix">
+                        <button class="btn btn-primary pull-left" ngf-select
+                                ng-model="picFile" accept="image/*">
+                            Select Picture
+                        </button>
+                    </div>
+
+                    <div class="image-containers clearfix">
+                        <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
+                             class="well crop-area">
+                            
+                            <h3 class="text-center">Edit Image</h3>
+                            <img-crop image="picFile  | ngfDataUrl"
+                                      result-image="croppedDataUrl"
+                                      change-on-fly="true"
+                                      area-type="square"
+                                      result-image-size="200"
+                                      ng-init="croppedDataUrl=''">
+                            </img-crop>
+                        </div>
+
+                        <div class="well image-result">
+                            <h3 class="text-center">Result</h3>
+                            <img ng-src="{{croppedDataUrl}}"/>
+                        </div>
+
+                    </div>
+
+                    <div class="row clearfix">
+
+                        <div class="progress" ng-show="progress >= 0">
+                            <div class="progress-bar" style="width: {{progress}}%;" ng-bind="progress + '%'"></div>
+                        </div>
+
+                        <span ng-show="result">Upload Successful</span>
+                        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+
+                        <button class="btn btn-success pull-right"
+                                ng-click="upload(croppedDataUrl, picFile.name)">
+                            Upload Image
+                        </button>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </section>
+</div>
 
 @section styles
 {

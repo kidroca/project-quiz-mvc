@@ -1,0 +1,12 @@
+﻿@model string
+
+@{
+    string imgClass = "img-preview";
+
+    if (string.IsNullOrEmpty(Model))
+    {
+        imgClass += " hide";
+    }
+}
+
+<img id="selected-img" src="/" alt="selected image" class="img-preview" />

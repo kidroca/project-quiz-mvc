@@ -1,8 +1,9 @@
 ﻿namespace QuizProjectMvc.Web.Areas.Api.Controllers
 {
+    using System.IO;
     using System.Linq;
+    using System.Web;
     using System.Web.Http;
-    using System.Web.Mvc;
     using Administration.ViewModels;
     using Common;
     using Data.Models;
@@ -10,7 +11,7 @@
     using Services.Data.Exceptions;
     using Services.Data.Protocols;
 
-    [System.Web.Mvc.Authorize(Roles = GlobalConstants.AdministratorRoleName)]
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class CategoriesController : BaseController
     {
         private readonly ICategoriesService categories;
@@ -20,8 +21,8 @@
             this.categories = categories;
         }
 
-        [OutputCache(Duration = 10 * 60)]
-        [System.Web.Mvc.AllowAnonymous]
+        [System.Web.Mvc.OutputCache(Duration = 10 * 60)]
+        [AllowAnonymous]
         public IHttpActionResult GetByPattern(string pattern, int take = 10)
         {
             var result = this.categories.FilterByPattern(pattern, take)
@@ -40,7 +41,7 @@
             return this.Ok(result);
         }
 
-        [System.Web.Mvc.HttpPost]
+        [HttpPost]
         public IHttpActionResult Edit(AdvancedCategoryModel model)
         {
             if (!this.ModelState.IsValid)
@@ -60,7 +61,7 @@
             return this.Ok();
         }
 
-        [System.Web.Mvc.HttpPost]
+        [HttpPost]
         public IHttpActionResult AddNew(AdvancedCategoryModel model)
         {
             if (!this.ModelState.IsValid)
@@ -81,7 +82,7 @@
             }
         }
 
-        [System.Web.Mvc.HttpDelete]
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             try
@@ -95,6 +96,56 @@
             {
                 return this.BadRequest(ex.Message);
             }
+        }
+
+        [HttpPost]
+        public IHttpActionResult UploadImage()
+        {
+            var httpRequest = HttpContext.Current.Request;
+            if (httpRequest.Files.Count > 0)
+            {
+                foreach (string file in httpRequest.Files)
+                {
+                    var postedFile = httpRequest.Files[file];
+                    var filePath = HttpContext.Current.Server
+                        .MapPath("~/Content/images/categories/" + postedFile.FileName);
+
+                    postedFile.SaveAs(filePath);
+                    // NOTE: To store in memory use postedFile.InputStream
+                }
+
+                return this.Created("/Content/images/categories/", string.Empty);
+            }
+
+            return this.BadRequest("Could not upload image");
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetAvailableImages()
+        {
+            var directory = new DirectoryInfo(HttpContext.Current.Server
+                .MapPath("~/Content/images/categories/"));
+
+            var files = directory.EnumerateFiles()
+                .Select(f => f.Name);
+
+            return this.Ok(files);
+        }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteImage(string name)
+        {
+            if (!name.StartsWith("/Content/images/categories/"))
+            {
+                return this.BadRequest();
+            }
+
+            var file = new FileInfo(HttpContext.Current.Server
+                .MapPath($"~{name}"));
+
+            file.Delete();
+
+            return this.Ok();
         }
     }
 }

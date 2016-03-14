@@ -379,6 +379,8 @@
     <Content Include="Areas\Administration\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\_CategoryDisplayPartial.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\_CategoryEditPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\_ImagePreviwPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\_SelectImageModalPartial.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -440,6 +442,9 @@
     <Content Include="Scripts\app\toggle-profile-edit.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\FileAPI.flash.swf" />
+    <Content Include="Scripts\FileAPI.js" />
+    <Content Include="Scripts\FileAPI.min.js" />
     <Content Include="Scripts\google-analytics.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -450,6 +455,13 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ng-crop\ng-img-crop.js" />
+    <Content Include="Scripts\ng-file-upload-all.js" />
+    <Content Include="Scripts\ng-file-upload-all.min.js" />
+    <Content Include="Scripts\ng-file-upload-shim.js" />
+    <Content Include="Scripts\ng-file-upload-shim.min.js" />
+    <Content Include="Scripts\ng-file-upload.js" />
+    <Content Include="Scripts\ng-file-upload.min.js" />
     <Content Include="Scripts\ngStorage.js" />
     <Content Include="Scripts\ngStorage.min.js" />
     <Content Include="Scripts\Slick\angular-slick.js" />
@@ -522,6 +534,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Content\images\categories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
