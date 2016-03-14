@@ -91,7 +91,7 @@
             bundles.Add(new StyleBundle("~/Content/solve").Include(
                "~/Content/solve.css"));
 
-            bundles.Add(new StyleBundle("~/Content/admin").Include(
+            bundles.Add(new StyleBundle("~/Content/adminStyle").Include(
                 "~/Content/admin/admin.css"));
         }
     }

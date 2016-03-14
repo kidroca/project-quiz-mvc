@@ -324,6 +324,7 @@
     <Content Include="Content\images\avatars\VaultBoy.png" />
     <Content Include="Content\images\border-right-shadow-lighter.png" />
     <Content Include="Content\images\border-right-shadow.png" />
+    <Content Include="Content\images\categories\EricCartman.png" />
     <Content Include="Content\images\google-btn.jpg" />
     <Content Include="Content\index.css">
       <DependentUpon>index.less</DependentUpon>
@@ -534,7 +535,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Content\images\categories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
