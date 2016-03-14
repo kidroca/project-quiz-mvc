@@ -1,5 +1,6 @@
 ﻿namespace QuizProjectMvc.Data.Migrations
 {
+    using System.Configuration;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using Microsoft.AspNet.Identity;
@@ -18,8 +19,8 @@
 
         protected override void Seed(ApplicationDbContext context)
         {
-            const string AdministratorUserName = "admin@admin.com";
-            const string AdministratorPassword = AdministratorUserName;
+            string administratorUserName = ConfigurationManager.AppSettings["adminName"];
+            string administratorPassword = ConfigurationManager.AppSettings["adminPassword"];
 
             if (!context.Roles.Any())
             {
@@ -34,13 +35,13 @@
                 var userManager = new UserManager<User>(userStore);
                 var user = new User
                 {
-                    UserName = AdministratorUserName,
-                    Email = AdministratorUserName,
+                    UserName = administratorUserName,
+                    Email = administratorUserName,
                     FirstName = "Admin",
                     LastName = "Adminov"
                 };
 
-                userManager.Create(user, AdministratorPassword);
+                userManager.Create(user, administratorPassword);
 
                 // Assign user to admin role
                 userManager.AddToRole(user.Id, GlobalConstants.AdministratorRoleName);
