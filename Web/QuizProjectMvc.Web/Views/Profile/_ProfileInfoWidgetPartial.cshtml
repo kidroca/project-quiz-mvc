@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
 @using QuizProjectMvc.Common
+@using QuizProjectMvc.Web.Controllers
 @model QuizProjectMvc.Web.ViewModels.ProfileInformation.PublicProfileDetailed
 
 @{
@@ -76,7 +77,15 @@
                             {
                                 @Html.AntiForgeryToken()
                                 @Html.EditorForModel()
-                                <button class="btn btn-success pull-right" type="submit">Save</button>
+
+                                <div class="row clearfix">
+                                    <button class="btn btn-success pull-right" type="submit">Save</button>
+                                    @(Html.ActionLink<ManageController>(
+                                "Change Password", c => c.ChangePassword(), null, new
+                                {
+                                    @class = "btn btn-danger pull-right"
+                                }))
+                                </div>
                             }
                         </div>
                     }
