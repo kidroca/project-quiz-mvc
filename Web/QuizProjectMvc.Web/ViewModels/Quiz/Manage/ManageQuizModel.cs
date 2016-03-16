@@ -2,12 +2,11 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using AutoMapper;
     using Common;
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class ManageQuizModel : IMapFrom<Quiz>, IMapTo<Quiz>, IHaveCustomMappings, IValidatableObject
+    public class ManageQuizModel : IMapFrom<Quiz>, IMapTo<Quiz>, IValidatableObject
     {
         public int Id { get; set; }
 
@@ -24,23 +23,10 @@
         public bool IsPrivate { get; set; }
 
         [Required]
-        [MinLength(ModelConstraints.NameMinLength)]
-        [MaxLength(ModelConstraints.NameMaxLength)]
-        public string Category { get; set; }
+        public QuizCategoryViewModel Category { get; set; }
 
         [Required]
         public ICollection<ManageQuestionModel> Questions { get; set; }
-
-        public void CreateMappings(IMapperConfiguration configuration)
-        {
-            configuration.CreateMap<ManageQuizModel, Quiz>()
-                .ForMember(self => self.Category, opt => opt.Ignore());
-
-            configuration.CreateMap<Quiz, ManageQuizModel>()
-                .ForMember(
-                    self => self.Category,
-                    opt => opt.MapFrom(model => model.Category.Name));
-        }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

@@ -4,7 +4,7 @@
     var EMPTY_QUIZ = {
     	title: '',
     	description: '',
-    	category: '',
+    	category: {},
     	questions: []
     };
 

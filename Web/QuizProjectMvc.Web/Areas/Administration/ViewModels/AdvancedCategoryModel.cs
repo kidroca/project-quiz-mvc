@@ -9,8 +9,6 @@
     {
         public int QuizzesCount { get; set; }
 
-        public bool IsDeleted { get; set; }
-
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<QuizCategory, AdvancedCategoryModel>()

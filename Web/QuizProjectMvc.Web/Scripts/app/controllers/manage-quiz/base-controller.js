@@ -1,69 +1,68 @@
 ﻿(function () {
-	'use strict';
+    'use strict';
 
-	function ManageQuizController($scope, $http, $localStorage, $uibModal) {
-		var self = this;
+    function ManageQuizController($scope, $http, $localStorage, $uibModal) {
+        var self = this;
 
-		console.log('Hello from BaseController');
+        $http.get('/api/categories/getCategories')
+            .then(function (res) {
+                console.log(res.data);
+                $scope.categories = res.data;
+            });
 
-		self.setQuiz = function setQuiz(quiz) {
-		    console.log('setting quiz --> ', quiz);
-			$scope.quiz = quiz;
-		}
+        console.log('Hello from BaseController');
 
-		self.resetForm = function resetForm(form) {
-			var check = confirm('Are you sure you want to reset, all fields and questions will be reset.');
+        self.setQuiz = function setQuiz(quiz) {
+            console.log('setting quiz --> ', quiz);
+            $scope.quiz = quiz;
+        }
 
-			if (!check) {
-				return false;
-			}
+        self.resetForm = function resetForm(form) {
+            var check = confirm('Are you sure you want to reset, all fields and questions will be reset.');
 
-			form.$setPristine();
-			form.$setUntouched();
+            if (!check) {
+                return false;
+            }
 
-		    return true;
-		};
+            form.$setPristine();
+            form.$setUntouched();
 
-		self.removeQuestion = function removeQuestion(index) {
-			$scope.quiz.questions.splice(index, 1);
-		};
+            return true;
+        };
 
-		self.getCategories = function getCategories(pattern) {
-			return $http.get('/api/categories/getByPattern?pattern=' + pattern)
-				.then(function (res) {
-					return res.data;
-				});
-		};
+        self.removeQuestion = function removeQuestion(index) {
+            $scope.quiz.questions.splice(index, 1);
+        };
 
-	    $scope.modalIsOpen = false;
+        $scope.modalIsOpen = false;
 
-	    self.openQuesitonMenu = function openQuesitonMenu(question) {
-	        $scope.modalIsOpen = true;
+        self.openQuesitonMenu = function openQuesitonMenu(question) {
+            $scope.modalIsOpen = true;
 
-			var modalInstance = $uibModal.open({
-			    animation: true,
-			    appendTo: $('#manage-quiz'),
-			    templateUrl: '/Content/templates/add-question-template.html',
-				controller: 'AddQuestionController',
-				controllerAs: 'ctrl',
-				resolve: {
-					items: question
-				}
-			});
+            var modalInstance = $uibModal.open({
+                animation: true,
+                appendTo: $('#manage-quiz'),
+                templateUrl: '/Content/templates/add-question-template.html',
+                controller: 'AddQuestionController',
+                controllerAs: 'ctrl',
+                resolve: {
+                    items: question
+                }
+            });
 
-			modalInstance.result.then(function (question) {
-				if (question !== null) {
-					$scope.quiz.questions.push(question);
-				}
-			}, function () {
-				console.log('Modal dismissed at: ' + new Date());
-			});
+            modalInstance.result.then(function (question) {
+                if (question !== null) {
+                    $scope.quiz.questions.push(question);
+                }
+            }, function () {
+                console.log('Modal dismissed at: ' + new Date());
+            });
 
-			modalInstance.closed.then(function () {
+            modalInstance.closed.then(function () {
                 console.log('close');
                 $scope.modalIsOpen = false;
-	        });
-	    };
+            });
+        };
 
         self.saveIsAvailable = function saveIsAvailable(quiz, form) {
             var result = form.$valid &&
@@ -71,15 +70,15 @@
 
             return result;
         }
-	}
+    }
 
-	angular.module('manageQuiz', [
-		'ngStorage', 'paging', 'toggle-switch', 'errorHandler', 'ui.bootstrap'])
-		.controller('ManageQuizController', [
-			'$scope',
-			'$http',
-			'$localStorage',
-			'$uibModal',
-			ManageQuizController
-		]);
+    angular.module('manageQuiz', [
+        'ngStorage', 'paging', 'toggle-switch', 'errorHandler', 'ui.bootstrap'])
+        .controller('ManageQuizController', [
+            '$scope',
+            '$http',
+            '$localStorage',
+            '$uibModal',
+            ManageQuizController
+        ]);
 })()

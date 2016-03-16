@@ -6,7 +6,7 @@
     using Infrastructure.Mapping;
 
     // Todo: Add Constraints
-    public class QuizCategoryViewModel : IMapFrom<QuizCategory>
+    public class QuizCategoryViewModel : IMapFrom<QuizCategory>, IMapTo<QuizCategory>
     {
         [Range(0, int.MaxValue)]
         public int Id { get; set; }

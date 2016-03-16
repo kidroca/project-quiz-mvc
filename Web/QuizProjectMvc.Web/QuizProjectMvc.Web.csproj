@@ -531,6 +531,8 @@
     <Content Include="Views\Quizzes\_SearchFormPartial.cshtml" />
     <Content Include="Views\Quizzes\_QueryResultPartial.cshtml" />
     <Content Include="Views\Quizzes\_NoResultsPartial.cshtml" />
+    <Content Include="Views\Home\DisplayTemplates\QuizBasicViewModel.cshtml" />
+    <Content Include="Views\ManageQuiz\_CategoryTemplatePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

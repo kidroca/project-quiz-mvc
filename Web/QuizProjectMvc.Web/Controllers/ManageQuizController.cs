@@ -1,6 +1,7 @@
 ﻿namespace QuizProjectMvc.Web.Controllers
 {
     using System.Web.Mvc;
+    using Common;
     using Data.Models;
     using Services.Data.Protocols;
     using ViewModels.Quiz.Manage;
@@ -55,6 +56,12 @@
             return result;
         }
 
+        [HttpGet]
+        public ActionResult GetCategoryTemplate()
+        {
+            return this.PartialView("_CategoryTemplatePartial");
+        }
+
         private ActionResult EnsureQuiz(Quiz quiz)
         {
             if (quiz == null)
@@ -62,7 +69,9 @@
                 return this.HttpNotFound("The specified quiz has disappeared without a trace");
             }
 
-            if (this.UserId != quiz.CreatedById)
+            bool isAdmin = this.User.IsInRole(GlobalConstants.AdministratorRoleName);
+
+            if (!isAdmin && this.UserId != quiz.CreatedById)
             {
                 this.TempData["error"] = "You are not allowed to modify this quiz as you are not it's creator";
                 return this.RedirectToAction("Index", "Home");

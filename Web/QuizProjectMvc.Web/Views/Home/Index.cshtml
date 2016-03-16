@@ -1,4 +1,6 @@
-﻿@using QuizProjectMvc.Web.Helpers
+﻿@using QuizProjectMvc.Services.Data.Models.Search
+@using QuizProjectMvc.Web.Controllers
+@using QuizProjectMvc.Web.Helpers
 @using QuizProjectMvc.Web.ViewModels
 @model QuizProjectMvc.Web.ViewModels.Home.IndexViewModel
 @{
@@ -8,7 +10,8 @@
     if (TempData["error"] != null)
     {
         notification = new Notification { Message = (string)TempData["error"], CssClass = "alert-danger" };
-    } else if (TempData["notification"] != null)
+    }
+    else if (TempData["notification"] != null)
     {
         notification = new Notification { Message = (string)TempData["notification"], CssClass = "alert-info" };
     }
@@ -38,12 +41,19 @@
 @section aside {
     <div class="widget">
         <h1>Categories</h1>
-        <div class="well">
+        <div class="well categories">
             <ul>
                 @foreach (var category in Model.Categories)
                 {
                     <li>
-                        @category.Name
+                        <h4>
+                            <a href="/Quizzes/Search?category=@category.Name">
+                                <img width="48" src="@category.AvatarUrl" alt="category avatar" />
+
+                                @category.Name
+
+                            </a>
+                        </h4>
                     </li>
                 }
             </ul>

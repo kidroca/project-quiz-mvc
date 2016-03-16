@@ -69,8 +69,8 @@
   display: block;
 }
 .carousel-container .question-slide .slide-title {
+  position: relative;
   width: 100%;
-  height: 55px;
   margin: 0;
   text-align: center;
   color: #fff;
@@ -107,7 +107,7 @@
 }
 .carousel-container .question-slide .slide-title::after {
   right: 0;
-  top: 55px;
+  bottom: 0;
 }
 .carousel-container .question-slide .slide-controls {
   display: none;

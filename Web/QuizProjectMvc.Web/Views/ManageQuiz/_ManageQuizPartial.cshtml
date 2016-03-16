@@ -40,15 +40,18 @@
                     <label for="quizCategory" class="col-lg-2 control-label">Category</label>
                     <div class="col-lg-10">
                         <input type="text" ng-model="quiz.category" id="quizCategory"
-                               required ng-minlength="3"
-                               uib-typeahead="category for category in ctrl.getCategories($viewValue)"
-                               typeahead-loading="loadingCategories"
+                               required
+                               uib-typeahead="category as category.name for category in categories | filter:{name:$viewValue}"
+                               typeahead-template-url="/manageQuiz/getCategoryTemplate"
+                               typeahead-editable="false"
+                               typeahead-show-hint="true"
+                               typeahead-min-length="0"
                                class="form-control" name="category" placeholder="Quiz Category"
                                ng-focus="categoryFocus=true" ng-blur="categoryFocus=false">
                         <i ng-show="loadingCategories" class="glyphicon glyphicon-refresh"></i>
                         <div ng-show="quizForm.category.$invalid && (quizForm.category.$dirty || categoryFocus)"
                              class="alert alert-info">
-                            <p>Enter a quiz category of at least 3 characters.</p>
+                            <p>Select a quiz category.</p>
                         </div>
                     </div>
                 </div>

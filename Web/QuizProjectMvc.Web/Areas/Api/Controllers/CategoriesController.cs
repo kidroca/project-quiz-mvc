@@ -10,6 +10,7 @@
     using Infrastructure.Mapping;
     using Services.Data.Exceptions;
     using Services.Data.Protocols;
+    using ViewModels.Quiz;
 
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class CategoriesController : BaseController
@@ -23,13 +24,19 @@
 
         [System.Web.Mvc.OutputCache(Duration = 10 * 60)]
         [AllowAnonymous]
-        public IHttpActionResult GetByPattern(string pattern, int take = 10)
+        public IHttpActionResult GetByPattern(string pattern)
         {
-            var result = this.categories.FilterByPattern(pattern, take)
-                .Select(c => c.Name)
+            var result = this.categories.FilterByPattern(pattern)
+                .To<QuizCategoryViewModel>()
                 .ToList();
 
             return this.Ok(result);
+        }
+
+        [AllowAnonymous]
+        public IHttpActionResult GetCategories()
+        {
+            return this.GetByPattern(null);
         }
 
         public IHttpActionResult GetAll()

@@ -28,9 +28,15 @@
                 return this.BadRequest(this.ModelState);
             }
 
+            var category = this.categories.GetById(model.Category.Id);
+            if (category == null)
+            {
+                return this.BadRequest(this.ModelState);
+            }
+
             var quiz = this.Mapper.Map<Quiz>(model);
+            quiz.Category = category;
             quiz.CreatedById = this.UserId;
-            quiz.Category = this.categories.EnsureCategory(model.Category);
 
             try
             {
@@ -61,11 +67,17 @@
                 return this.NotFound();
             }
 
+            var category = this.categories.GetById(model.Category.Id);
+            if (category == null)
+            {
+                return this.BadRequest(this.ModelState);
+            }
+
             this.Mapper.Map(model, dataQuiz);
-            dataQuiz.Category = this.categories.EnsureCategory(model.Category);
 
             try
             {
+                dataQuiz.Category = category;
                 this.quizzes.Save();
                 return this.Ok(new { message = "Quiz updated successfully" });
             }

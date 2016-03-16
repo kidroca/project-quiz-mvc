@@ -150,6 +150,7 @@
         {
             bool alreadyExists = this.quizzes.AllWithDeleted()
                 .Any(q => q.Title.Equals(quiz.Title, StringComparison.CurrentCultureIgnoreCase));
+
             if (alreadyExists)
             {
                 throw new QuizCreationException("Sorry there is already a quiz by that name in our database");

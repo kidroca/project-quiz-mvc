@@ -517,6 +517,9 @@ a.home-link {
 .quiz-details .quiz-rating {
   color: #323a43;
 }
+.category-dropdown {
+  cursor: pointer;
+}
 .answer-mark {
   cursor: pointer;
 }
@@ -547,6 +550,17 @@ a.home-link {
 .quiz-controls a,
 .quiz-controls input {
   margin-left: 1rem;
+}
+.widget .categories ul {
+  list-style: none;
+  width: auto;
+}
+.widget .categories ul li {
+  position: relative;
+  margin: 0.5rem 0;
+}
+.widget .categories ul li img {
+  margin-right: 0.5rem;
 }
 .read-more-state {
   display: none;
