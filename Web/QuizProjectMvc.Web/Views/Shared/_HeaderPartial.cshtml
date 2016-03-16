@@ -21,18 +21,18 @@
             <div id="main-nav" aria-expanded="false" style="height: 0.8px;" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                    <li>
                         @Html.ActionLink(
-                             "Home", "Index", "Home",
-                             new { area = string.Empty },
-                             new { @class = "home-link" })
+                            "Home", "Index", "Home",
+                            new {area = string.Empty},
+                            new {@class = "home-link"})
                     </li>
+
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-expanded="false">Features</a>
                         <ul role="menu" class="dropdown-menu drop-shadow">
                             <li>
-                                @Html.ActionLink("Home", "Index", "Home", null, new {@class = "home-link"})
+                                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "home-link" })
                             </li>
                             <li>
                                 @(Html.ActionLink<QuizzesController>("Search", c => c.Search(null)))
@@ -48,25 +48,32 @@
                             }
                         </ul>
                     </li>
-                    <li>
-                        @(Html.ActionLink<UsersController>("Users", c => c.Index(null)))
-                    </li>
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>
+                            @(Html.ActionLink<UsersController>("Users", c => c.Index(null)))
+                        </li>
+                    }
+
                     <li>
                         @(Html.ActionLink<AboutController>("About", c => c.Index()))
                     </li>
+
                     @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
                     {
                         <li>
                             @(Html.ActionLink<AdministrationController>("Admin Panel", c => c.AdminMenu()))
                         </li>
                     }
+
                     @*<li class="dropdown">
-                        <a href="" class="dropdown-toggle">Language</a>
-                        <ul role="menu" class="dropdown-menu drop-shadow language">
-                            <li><a data-lang="en">English</a></li>
-                            <li><a data-lang="es">Español</a></li>
-                        </ul>
-                    </li>*@
+                            <a href="" class="dropdown-toggle">Language</a>
+                            <ul role="menu" class="dropdown-menu drop-shadow language">
+                                <li><a data-lang="en">English</a></li>
+                                <li><a data-lang="es">Español</a></li>
+                            </ul>
+                        </li>*@
                 </ul>
 
                 @Html.Partial("_LoginPartial")

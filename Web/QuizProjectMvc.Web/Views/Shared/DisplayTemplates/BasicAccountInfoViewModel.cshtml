@@ -33,14 +33,3 @@
         @Html.DisplayFor(m => m.Bio)
     }
 </p>
-<p>
-    <label>Email:</label>
-    @if (string.IsNullOrEmpty(Model.Email))
-    {
-        <text>No Information</text>
-    }
-    else
-    {
-        <a href="mailto:@Model.Email">@Model.Email</a>
-    }
-</p>
