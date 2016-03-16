@@ -11,7 +11,10 @@
                 @foreach (var quiz in Model.QuizzesCreated)
                 {
                     <li>
-                        @(Html.ActionLink<SolveQuizController>(quiz.Title, c => c.Solve(quiz.Id)))
+                        <h4>
+                            @(Html.ActionLink<SolveQuizController>(quiz.Title, c => c.Solve(quiz.Id)))
+                            - @quiz.CreatedOn.ToShortDateString()
+                        </h4>
                     </li>
                 }
             </ul>
@@ -32,8 +35,11 @@
                 @foreach (var solution in Model.QuizzesTaken)
                 {
                     <li>
-                        @(Html.ActionLink<SolveQuizController>(
-                                    solution.Title, c => c.Result(solution.Id)))
+                        <h4>
+                            @(Html.ActionLink<SolveQuizController>(
+                                  solution.Title, c => c.Result(solution.Id)))
+                            - @solution.CreatedOn.ToShortDateString()
+                        </h4>
                     </li>
                 }
             </ul>

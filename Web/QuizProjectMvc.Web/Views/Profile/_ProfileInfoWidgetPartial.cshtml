@@ -12,8 +12,15 @@
 
     <div class="article-header">
         <h4 class="sub-title">
-            <label>Username:</label>
-            <span class="article-username">@Model.UserName</span>
+            @if (enableEdit)
+            {
+                <label>Username:</label>
+                <span class="article-username">@Model.UserName</span>
+            }
+            else
+            {
+                <span>@Model.FirstName @Model.LastName</span>
+            }
         </h4>
     </div>
 

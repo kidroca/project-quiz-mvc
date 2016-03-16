@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
 @using QuizProjectMvc.Common
+@using QuizProjectMvc.Web.Controllers
 @model QuizProjectMvc.Web.ViewModels.ProfileInformation.PublicProfileDetailed
 
 @{
@@ -12,7 +13,8 @@
     <div class="article-header">
         <h4 class="sub-title">
             <label>
-                <span class="article-username">@Model.FirstName @Model.LastName</span>
+                @(Html.ActionLink<ProfileController>(
+                $"{Model.FirstName} {Model.LastName}", c => c.UserProfile(Model.Id)))
             </label>
         </h4>
     </div>

@@ -512,7 +512,7 @@
     <Content Include="Views\Account\_RegisterFormPartial.cshtml" />
     <Content Include="Views\ManageQuiz\Edit.cshtml" />
     <Content Include="Views\ManageQuiz\_ManageQuizPartial.cshtml" />
-    <Content Include="Views\Profile\My.cshtml" />
+    <Content Include="Views\Profile\UserProfile.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\BasicAccountInfoViewModel.cshtml" />
     <Content Include="Views\Profile\_AsidePartial.cshtml" />
     <Content Include="Views\Shared\_MainWithSideLayout.cshtml" />

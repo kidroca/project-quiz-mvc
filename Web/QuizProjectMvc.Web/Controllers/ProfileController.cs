@@ -19,19 +19,7 @@
 
         public ActionResult My()
         {
-            var user = this.users.ById(this.UserId);
-            var profileInfo = this.Mapper.Map<PublicProfileDetailed>(user);
-            var lastQuizzes = this.Mapper.Map<List<CreatedQuizInfo>>(user.QuizzesCreated.Take(5));
-            var lastSolutions = this.Mapper.Map<List<TakenQuizInfo>>(user.SolutionsSubmited.Take(5));
-
-            var pageModel = new ProfilePageViewModel
-            {
-                PublicProfile = profileInfo,
-                QuizzesCreated = lastQuizzes,
-                QuizzesTaken = lastSolutions
-            };
-
-            return this.View(pageModel);
+            return this.RedirectToAction("UserProfile", new { id = this.UserId });
         }
 
         [HttpPost]
@@ -48,6 +36,23 @@
             }
 
             return this.PartialView("DisplayTemplates/BasicAccountInfoViewModel", model);
+        }
+
+        public ActionResult UserProfile(string id)
+        {
+            var user = this.users.ById(id);
+            var profileInfo = this.Mapper.Map<PublicProfileDetailed>(user);
+            var lastQuizzes = this.Mapper.Map<List<CreatedQuizInfo>>(user.QuizzesCreated.Take(5));
+            var lastSolutions = this.Mapper.Map<List<TakenQuizInfo>>(user.SolutionsSubmited.Take(5));
+
+            var pageModel = new ProfilePageViewModel
+            {
+                PublicProfile = profileInfo,
+                QuizzesCreated = lastQuizzes,
+                QuizzesTaken = lastSolutions
+            };
+
+            return this.View(pageModel);
         }
     }
 }
