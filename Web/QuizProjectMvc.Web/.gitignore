@@ -7,6 +7,6 @@ Content/*
 !Content/*.less
 
 ## Ignore Scritps
-Scripts
+Scripts/*
 !Scripts/app
 !Scripts/ng-crop
