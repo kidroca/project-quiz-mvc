@@ -290,6 +290,7 @@
     <Compile Include="ViewModels\Quiz\QuestionModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizBasicViewModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizCategoryViewModel.cs" />
+    <Compile Include="ViewModels\Quiz\SearchPageViewModel.cs" />
     <Compile Include="ViewModels\Quiz\Solve\QuizForSolvingModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />

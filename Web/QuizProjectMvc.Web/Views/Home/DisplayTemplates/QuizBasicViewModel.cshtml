@@ -42,7 +42,10 @@
                 <div class="quiz-details">
                     <div class="basic-info">
                         <p>
-                            <label>Category:</label> <span>@Model.Category.Name</span>
+                            <label>Category:</label>
+                            <a href="/Quizzes/Search?category=@Model.Category.Name">
+                                @Model.Category.Name
+                            </a>
                         </p>
                         <p>
                             @*Todo: AJAX Rating*@
@@ -81,20 +84,20 @@
         @class = "btn btn-primary btn-round pull-right",
     }))
         @if (User.IsInRole(GlobalConstants.AdministratorRoleName) ||
-                                 User.Identity.GetUserId() == Model.CreatedBy.Id)
+                                         User.Identity.GetUserId() == Model.CreatedBy.Id)
         {
             @(Html.ActionLink<ManageQuizController>("Edit", c => c.Edit(Model.Id), null, new
-                                {
-                                    @class = "btn btn-info btn-round pull-right"
-                                }))
+        {
+            @class = "btn btn-info btn-round pull-right"
+        }))
             using (Html.BeginForm<ManageQuizController>(c => c.Delete(Model.Id), FormMethod.Post))
-             {
+            {
                 @Html.AntiForgeryToken()
                 @Html.HttpMethodOverride(HttpVerbs.Delete)
                 @Html.HiddenFor(m => m.Id)
 
-                 <input type="submit" value="Delete" class = "btn btn-danger btn-round pull-right"
-                        data-confirm="Are you sure you want to delete the quiz?"/>
+                <input type="submit" value="Delete" class="btn btn-danger btn-round pull-right"
+                       data-confirm="Are you sure you want to delete the quiz?" />
             }
 
         }

@@ -20,7 +20,7 @@
 
         <div class="article-header">
             <h4 class="sub-title">
-                Created by @author on
+                Created by @(Html.ActionLink<ProfileController>(author, c => c.UserProfile(Model.CreatedBy.Id))) on
                 <span class="article-date">@Model.CreatedOn.ToShortDateString()</span>
             </h4>
         </div>
@@ -42,7 +42,10 @@
                 <div class="quiz-details">
                     <div class="basic-info">
                         <p>
-                            <label>Category:</label> <span>@Model.Category.Name</span>
+                            <label>Category:</label>
+                            <a href="/Quizzes/Search?category=@Model.Category.Name">
+                                @Model.Category.Name
+                            </a>
                         </p>
                         <p>
                             @*Todo: AJAX Rating*@

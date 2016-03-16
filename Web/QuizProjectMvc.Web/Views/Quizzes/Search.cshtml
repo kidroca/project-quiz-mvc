@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model QuizProjectMvc.Web.ViewModels.Quiz.SearchPageViewModel
 
 @{
     ViewBag.Title = "Quiz Search";
@@ -6,11 +6,14 @@
 }
 
 <section id="search-filter">
-    @Html.Partial("_SearchFormPartial")
+    @Html.Partial("_SearchFormPartial", Model.QuizSearchModel)
 </section>
 
 <section id="search-results">
-
+    @foreach (var quiz in Model.Quizzes)
+    {
+        @Html.Partial("DisplayTemplates/QuizBasicViewModel", quiz);
+    }
 </section>
 
 @section Scripts {

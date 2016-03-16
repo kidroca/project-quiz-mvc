@@ -41,9 +41,16 @@
         public ActionResult UserProfile(string id)
         {
             var user = this.users.ById(id);
+            if (user == null)
+            {
+                return this.View("Error");
+            }
+
             var profileInfo = this.Mapper.Map<PublicProfileDetailed>(user);
-            var lastQuizzes = this.Mapper.Map<List<CreatedQuizInfo>>(user.QuizzesCreated.Take(5));
-            var lastSolutions = this.Mapper.Map<List<TakenQuizInfo>>(user.SolutionsSubmited.Take(5));
+            var lastQuizzes = this.Mapper.Map<List<CreatedQuizInfo>>(
+                user.QuizzesCreated.OrderByDescending(q => q.CreatedOn).Take(5));
+            var lastSolutions = this.Mapper.Map<List<TakenQuizInfo>>(
+                user.SolutionsSubmited.OrderByDescending(s => s.CreatedOn).Take(5));
 
             var pageModel = new ProfilePageViewModel
             {

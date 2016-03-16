@@ -19,7 +19,17 @@
         [HttpGet]
         public ActionResult Search(QuizSearchModel query)
         {
-            return this.View();
+            var results = this.quizzes.SearchQuizzes(query)
+                .To<QuizBasicViewModel>()
+                .ToList();
+
+            var page = new SearchPageViewModel
+            {
+                QuizSearchModel = query,
+                Quizzes = results
+            };
+
+            return this.View(page);
         }
 
         [HttpPost]
