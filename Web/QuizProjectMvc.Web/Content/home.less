@@ -1,0 +1,221 @@
+// ======== Imports =============
+@import "helpers/index";
+
+// ======== Main ================
+.read-more-state {
+    display: none;
+}
+
+.read-more-target {
+    opacity: 0;
+    max-height: 0;
+    font-size: 0;
+    transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+    opacity: 1;
+    font-size: inherit;
+    max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+    content: 'Read More';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+    content: 'Read Less';
+}
+
+.read-more-trigger {
+    float: right;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0.25em 1.25em;
+    color: #111;
+    border: 1px solid #ebeaea;
+    border-radius: 1em;
+    font-weight: normal;
+    text-shadow: 0 0 1px #fff;
+    .linear-grad(@colors: #fff 5%, #f4f4f4 95%; @dir: 180deg);
+}
+
+.content {
+    margin: 6rem 0;
+
+    .illumination {
+        .transform(@property: rotate; @value: 180deg;);
+        width: 40%;
+        height: 20rem;
+        z-index: -1;
+        top: -13rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    .row {
+        margin: 4rem auto 0;
+    }
+
+    .description {
+        max-width: @base-width;
+        text-shadow: 1px 1px 0 #fff;
+
+        h3 {
+            font-family: @font-thin;
+        }
+
+        p {
+            font-family: @font-droid;
+            color: @contentArticleColor;
+        }
+
+        article {
+            position: relative;
+            padding-left: 80px;
+
+            &::before {
+                position: absolute;
+                left: 30px;
+                top: 21px;
+                content: "";
+                width: 40px;
+                height: 39px;
+            }
+
+            a {
+                color: @medium-dark;
+
+                &:hover {
+                    color: @background;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .offer {
+            &::before {
+                background: url("/Content/images/content-icons.png") 0 76px;
+            }
+        }
+
+        .we-are {
+            &::before {
+                background: url("/Content/images/content-icons.png") 0 116px;
+            }
+        }
+
+        .mission {
+            span {
+                text-shadow: none;
+            }
+
+            &::before {
+                background: url("/Content/images/content-icons.png") 0 0;
+            }
+        }
+    }
+
+    .about {
+        font-family: @font-thin;
+        position: relative;
+        color: #5c5c5c;
+        text-align: center;
+        border: 1px solid #d8d8d8;
+        border-left: 0;
+        border-right: 0;
+        background-color: #fff;
+        margin-bottom: 4rem;
+        .linear-grad(@colors: #fff 5%, #f4f4f4 95%; @dir: 180deg);
+        .box-shadow-double(@y: -1px; @blur: 1rem; @color: lighten(@shadow, 80%));
+
+        p {
+            max-width: @base-width;
+            margin: 4rem auto;
+            font-size: 1.5em;
+            line-height: 1.25;
+        }
+
+        &.quote::before {
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            width: 36px;
+            height: 36px;
+            margin: auto;
+            content: "";
+            background: url("/Content/images/content-icons.png") -3px 196px;
+        }
+
+        .read-more-trigger {
+            float: none;
+            position: absolute;
+            bottom: -17px;
+            width: 100px;
+            padding: .25em;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+
+        .read-more-state ~ .read-more-trigger:before {
+            content: "Additional Info";
+        }
+
+        .read-more-state:checked ~ .read-more-trigger:before {
+            content: 'Less Info';
+        }
+    }
+}
+
+.about {
+    position: relative;
+    color: white;
+
+    h2, h3 {
+        font-family: @font-thin;
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 1px @shadow;
+    }
+
+    .language, .btn-next {
+        position: absolute;
+        z-index: 10;
+        right: 5px;
+    }
+
+    .language {
+        top: 5px;
+    }
+
+    .btn-next {
+        bottom: 5px;
+        font-size: 1.5em;
+        padding: 0 5px;
+    }
+
+    .about-carousel {
+
+        .slick-slide {
+            &:focus {
+                outline: none;
+            }
+
+            p {
+                text-shadow: 1px 1px 1px @shadow;
+            }
+
+            .outro {
+                margin-right: 5%;
+            }
+        }
+
+        .slick-dots {
+            button {
+                color: white;
+            }
+        }
+    }
+}
