@@ -3,8 +3,8 @@ AppSettingsSecret.config
 
 ## Ignore Content
 Content
-!Content/*.css
-!Content/*.less
+!*.css
+!*.less
 
 ## Ignore Scritps
 Scripts
