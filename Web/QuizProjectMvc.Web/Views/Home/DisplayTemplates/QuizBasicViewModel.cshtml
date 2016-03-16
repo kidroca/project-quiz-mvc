@@ -15,12 +15,12 @@
         @{
             string author = string.IsNullOrEmpty(Model.CreatedBy.FirstName)
                 ? Model.CreatedBy.UserName
-                : string.Format("{0} {1}", Model.CreatedBy.FirstName, Model.CreatedBy.LastName);
+                : $"{Model.CreatedBy.FirstName} {Model.CreatedBy.LastName}";
         }
 
         <div class="article-header">
             <h4 class="sub-title">
-                Created by @author on
+                Created by @(Html.ActionLink<ProfileController>(author, c => c.UserProfile(Model.CreatedBy.Id))) on
                 <span class="article-date">@Model.CreatedOn.ToShortDateString()</span>
             </h4>
         </div>

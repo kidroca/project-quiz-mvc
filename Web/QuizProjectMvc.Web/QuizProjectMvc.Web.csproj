@@ -282,6 +282,8 @@
     <Compile Include="ViewModels\ProfileInformation\CreatedQuizInfo.cs" />
     <Compile Include="ViewModels\ProfileInformation\TakenQuizInfo.cs" />
     <Compile Include="ViewModels\Quiz\AnswerModel.cs" />
+    <Compile Include="ViewModels\Quiz\Create\CreateQuizModel.cs" />
+    <Compile Include="ViewModels\Quiz\Edit\EditQuizModel.cs" />
     <Compile Include="ViewModels\Quiz\Manage\ManageAnswerModel.cs" />
     <Compile Include="ViewModels\Quiz\Manage\ManageQuestionModel.cs" />
     <Compile Include="ViewModels\Quiz\Manage\ManageQuizModel.cs" />

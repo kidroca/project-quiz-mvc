@@ -1,15 +1,25 @@
 ﻿namespace QuizProjectMvc.Web.ViewModels.Quiz.Solve
 {
     using System.Collections.Generic;
+    using System.Linq;
+    using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class QuizForSolvingModel : IMapFrom<Quiz>
+    public class QuizForSolvingModel : IMapFrom<Quiz>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
         public string Title { get; set; }
 
         public ICollection<QuestionModel> Questions { get; set; }
+
+        public void CreateMappings(IMapperConfiguration configuration)
+        {
+            configuration.CreateMap<Quiz, QuizForSolvingModel>()
+                .ForMember(
+                    self => self.Questions,
+                    opt => opt.MapFrom(model => model.Questions.OrderBy(q => q.CreatedOn)));
+        }
     }
 }

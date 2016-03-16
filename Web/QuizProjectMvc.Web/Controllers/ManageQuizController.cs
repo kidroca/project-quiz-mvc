@@ -4,7 +4,7 @@
     using Common;
     using Data.Models;
     using Services.Data.Protocols;
-    using ViewModels.Quiz.Manage;
+    using ViewModels.Quiz.Edit;
 
     [Authorize]
     public class ManageQuizController : BaseController
@@ -32,7 +32,7 @@
 
             if (result == null)
             {
-                var model = this.Mapper.Map<ManageQuizModel>(quiz);
+                var model = this.Mapper.Map<EditQuizModel>(quiz);
 
                 result = this.View(model);
             }

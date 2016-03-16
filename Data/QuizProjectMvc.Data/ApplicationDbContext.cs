@@ -90,6 +90,12 @@
                 .Where(q => q.Quiz == null)
                 .ToList()
                 .ForEach(q => this.Questions.Remove(q));
+
+            this.Answers
+                .Local
+                .Where(a => a.ForQuestion == null)
+                .ToList()
+                .ForEach(a => this.Answers.Remove(a));
         }
 
         private int DecorateValidationExceptionIfAny()

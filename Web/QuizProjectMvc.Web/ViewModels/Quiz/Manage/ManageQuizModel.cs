@@ -3,11 +3,14 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using Common;
-    using Data.Models;
-    using Infrastructure.Mapping;
 
-    public class ManageQuizModel : IMapFrom<Quiz>, IMapTo<Quiz>, IValidatableObject
+    public abstract class ManageQuizModel : IValidatableObject
     {
+        protected ManageQuizModel()
+        {
+            this.Questions = new List<ManageQuestionModel>();
+        }
+
         public int Id { get; set; }
 
         [Required]

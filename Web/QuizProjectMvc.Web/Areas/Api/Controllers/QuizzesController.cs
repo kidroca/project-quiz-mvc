@@ -1,12 +1,15 @@
 ﻿namespace QuizProjectMvc.Web.Areas.Api.Controllers
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Http;
     using Common;
     using Data.Models;
     using Services.Data.Exceptions;
     using Services.Data.Models.Evaluation;
     using Services.Data.Protocols;
-    using ViewModels.Quiz.Manage;
+    using ViewModels.Quiz.Create;
+    using ViewModels.Quiz.Edit;
 
     public class QuizzesController : BaseController
     {
@@ -21,7 +24,7 @@
 
         [HttpPost]
         [Authorize]
-        public IHttpActionResult Create(ManageQuizModel model)
+        public IHttpActionResult Create(CreateQuizModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -52,7 +55,7 @@
 
         [HttpPut]
         [Authorize]
-        public IHttpActionResult Update(int id, ManageQuizModel model)
+        public IHttpActionResult Update(int id, EditQuizModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -74,16 +77,56 @@
             }
 
             this.Mapper.Map(model, dataQuiz);
+            this.MapQuestions(model, dataQuiz);
+            dataQuiz.Category = category;
 
             try
             {
-                dataQuiz.Category = category;
                 this.quizzes.Save();
                 return this.Ok(new { message = "Quiz updated successfully" });
             }
             catch (QuizCreationException ex)
             {
                 return this.BadRequest(ex.Message);
+            }
+        }
+
+        private void MapQuestions(EditQuizModel source, Quiz destination)
+        {
+            var existingQuestions = new List<Question>(destination.Questions);
+            destination.Questions.Clear();
+
+            foreach (var question in source.Questions)
+            {
+                var existingQuestion = existingQuestions.FirstOrDefault(q => q.Id == question.Id);
+                if (existingQuestion == null)
+                {
+                    destination.Questions.Add(this.Mapper.Map<Question>(question));
+                }
+                else
+                {
+                    destination.Questions.Add(existingQuestion);
+
+                    this.Mapper.Map(question, existingQuestion);
+                    var existingAnswers = new List<Answer>(existingQuestion.Answers);
+                    existingQuestion.Answers.Clear();
+
+                    foreach (var answer in question.Answers)
+                    {
+                        var existingAnswer = existingAnswers.FirstOrDefault(a => a.Id == answer.Id);
+                        if (existingAnswer == null)
+                        {
+                            existingQuestion.Answers.Add(this.Mapper.Map<Answer>(answer));
+                        }
+                        else
+                        {
+                            this.Mapper.Map(answer, existingAnswer);
+                            existingQuestion.Answers.Add(existingAnswer);
+                        }
+                    }
+
+                    this.Mapper.Map(question, existingQuestion);
+                }
             }
         }
 
