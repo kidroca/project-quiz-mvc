@@ -1,2 +1,10 @@
 ## Ignore Secret Keys And Ids file
 AppSettingsSecret.config
+
+## Ignore Content
+Content
+
+## Ignore Scritps
+Scripts
+!Scripts/app
+!Scripts/ng-crop
