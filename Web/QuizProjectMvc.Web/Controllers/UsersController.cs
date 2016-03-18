@@ -37,6 +37,9 @@
                 .To<PublicProfileDetailed>()
                 .ToList();
 
+            var maxQuizzesCreated = this.users.GetMaxCreatedQuizzesCount();
+            PublicProfileDetailed.MaxQuizzesCreated = maxQuizzesCreated;
+
             var viewModel = new IndexViewModel
             {
                 Pager = pager,

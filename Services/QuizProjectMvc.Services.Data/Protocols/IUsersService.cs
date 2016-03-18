@@ -17,5 +17,7 @@
         int GetTotalPages(int pageSize);
 
         IQueryable<User> GetPage(Pager pager);
+
+        int GetMaxCreatedQuizzesCount();
     }
 }

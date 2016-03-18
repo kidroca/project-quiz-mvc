@@ -1,28 +1,23 @@
 ﻿namespace QuizProjectMvc.Web.ViewModels.ProfileInformation
 {
-    using System.Linq;
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
 
     public class PublicProfileDetailed : PublicProfile, IMapFrom<User>, IHaveCustomMappings
     {
+        public static int MaxQuizzesCreated { get; set; }
+
         public int QuizzesCreated { get; set; }
 
-        public double Rating { get; set; }
+        public double Rating => (this.QuizzesCreated / (double)MaxQuizzesCreated) * 10;
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<User, PublicProfileDetailed>()
                 .ForMember(
                     self => self.QuizzesCreated,
-                    opt => opt.MapFrom(model => model.QuizzesCreated.Count))
-                .ForMember(
-                    self => self.Rating,
-                    opt => opt.MapFrom(
-                        model => model.QuizzesCreated.SelectMany(q => q.Ratings).Any()
-                            ? model.QuizzesCreated.SelectMany(q => q.Ratings).Average(r => r.Value)
-                            : 0));
+                    opt => opt.MapFrom(model => model.QuizzesCreated.Count));
         }
     }
 }

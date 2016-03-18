@@ -1,21 +1,23 @@
 ﻿@using QuizProjectMvc.Web.ViewModels
+
 <section id="manage-quiz" ng-app="manageQuiz" ng-controller="@ViewBag.NgController as ctrl">
+    
     @if (TempData["error"] != null)
     {
-        var notification = new Notification { Message = (string)TempData["error"], CssClass = "alert-danger" };
+        var notification = new Notification {Message = (string) TempData["error"], CssClass = "alert-danger"};
         @Html.Partial("_NotificationPartial", notification)
     }
 
     <div class="col-md-10 col-md-offset-1">
 
         @using (Html.BeginForm(
-                                "Create", "ManageQuiz", FormMethod.Post, new
-                                {
-                                    name = "quizForm",
-                                    @class = "form-horizontal",
-                                    novalidate = "novalidate",
-                                    autocomplete = "off"
-                                }))
+            "Create", "ManageQuiz", FormMethod.Post, new
+            {
+                name = "quizForm",
+                @class = "form-horizontal",
+                novalidate = "novalidate",
+                autocomplete = "off"
+            }))
         {
             <fieldset>
                 <legend>@ViewBag.Action Quiz</legend>
@@ -130,7 +132,7 @@
                     <div class="col-lg-10 col-lg-offset-2">
                         <input type="button" class="btn btn-primary"
                                ng-disabled="!ctrl.saveIsAvailable(quiz, quizForm)"
-                               ng-click="ctrl.addQuiz(quiz, quizForm)" value="Save Quiz" />
+                               ng-click="ctrl.addQuiz(quiz, quizForm)" value="Save Quiz"/>
 
                         <button type="button" ng-click="resetForm(quizForm)" class="btn btn-danger">Reset</button>
                     </div>

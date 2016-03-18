@@ -2,7 +2,6 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
@@ -10,6 +9,8 @@
 
     public class QuizBasicViewModel : IMapFrom<Quiz>, IHaveCustomMappings
     {
+        public static int MaxTimesCompleted { get; set; }
+
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -32,15 +33,11 @@
 
         public bool IsPrivate { get; set; }
 
-        public double Rating { get; set; }
+        public double Rating => (this.TimesCompleted / (double)MaxTimesCompleted) * 10;
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Quiz, QuizBasicViewModel>()
-                .ForMember(
-                    self => self.Rating,
-                    opt => opt.MapFrom(
-                        dest => dest.Ratings.Count > 0 ? dest.Ratings.Average(r => r.Value) : 0))
                 .ForMember(
                     self => self.QuestionsCount,
                     opt => opt.MapFrom(

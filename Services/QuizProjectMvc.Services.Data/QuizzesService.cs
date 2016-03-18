@@ -20,15 +20,18 @@
         private readonly IDbRepository<Quiz> quizzes;
         private readonly IDbRepository<QuizSolution> solutions;
         private readonly IIdentifierProvider identifierProvider;
+        private readonly ICacheService cache;
 
         public QuizzesService(
             IDbRepository<Quiz> quizzes,
             IIdentifierProvider identifierProviders,
-            IDbRepository<QuizSolution> solutions)
+            IDbRepository<QuizSolution> solutions,
+            ICacheService cache)
         {
             this.quizzes = quizzes;
             this.identifierProvider = identifierProviders;
             this.solutions = solutions;
+            this.cache = cache;
         }
 
         public QuizEvaluationResult EvaluateSolution(QuizSolution quizSolution)
@@ -179,9 +182,24 @@
             this.Save();
         }
 
+        public int GetMaxSolutionsCount()
+        {
+            int result = this.cache.Get(
+                "MaxSolutions",
+                () => this.quizzes.All()
+                    .Max(q => q.Solutions.Count),
+                    durationInSeconds: 5 * 60);
+
+            return result;
+        }
+
         /// <summary>
         /// Returns QuizzesService to be fluent and chain expressions
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="target"></param>
+        /// <param name="expression"></param>
+        /// <param name="value"></param>
         /// <returns>Returns Class instance to support chaining</returns>
         private QuizzesService UpdatePropertyValue<T>(T target, Expression<Func<T, object>> expression, object value)
         {
@@ -233,16 +251,6 @@
                 result = result.Where(q => q.Questions.Count <= queryParameters.MaxQuestions);
             }
 
-            if (queryParameters.MinRating != null)
-            {
-                result = result.Where(q => q.Ratings.Average(r => r.Value) >= queryParameters.MinRating);
-            }
-
-            if (queryParameters.MaxRating != null)
-            {
-                result = result.Where(q => q.Ratings.Average(r => r.Value) <= queryParameters.MaxRating);
-            }
-
             return result;
         }
 
@@ -259,11 +267,6 @@
                     result = queryParameters.OrderDescending
                         ? result.OrderByDescending(q => q.CreatedOn)
                         : result.OrderBy(q => q.CreatedOn);
-                    break;
-                case ResultOrder.ByRating:
-                    result = queryParameters.OrderDescending
-                        ? result.OrderByDescending(q => q.Ratings.Average(r => r.Value))
-                        : result.OrderBy(q => q.Ratings.Average(r => r.Value));
                     break;
                 case ResultOrder.ByNumberOfQuestions:
                     result = queryParameters.OrderDescending

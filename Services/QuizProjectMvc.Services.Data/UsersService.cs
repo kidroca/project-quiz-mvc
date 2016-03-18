@@ -7,14 +7,17 @@
     using Models.Account;
     using Protocols;
     using QuizProjectMvc.Data.Models;
+    using Web;
 
     public class UsersService : IUsersService
     {
         private readonly UserManager<User> manager;
+        private readonly ICacheService cache;
 
-        public UsersService(UserManager<User> manager)
+        public UsersService(UserManager<User> manager, ICacheService cache)
         {
             this.manager = manager;
+            this.cache = cache;
         }
 
         public User ById(string id)
@@ -50,6 +53,16 @@
                 .OrderBy(u => u.CreatedOn)
                 .Skip(pager.GetSkipCount())
                 .Take(pager.PageSize);
+
+            return result;
+        }
+
+        public int GetMaxCreatedQuizzesCount()
+        {
+            var result = this.cache.Get(
+                "MaxQuizzesCreated",
+                () => this.AllUsers().Max(u => u.QuizzesCreated.Count),
+                durationInSeconds: 5 * 60);
 
             return result;
         }

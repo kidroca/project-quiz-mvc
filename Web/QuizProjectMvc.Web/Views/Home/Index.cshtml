@@ -1,6 +1,4 @@
-﻿@using QuizProjectMvc.Services.Data.Models.Search
-@using QuizProjectMvc.Web.Controllers
-@using QuizProjectMvc.Web.Helpers
+﻿@using QuizProjectMvc.Web.Helpers
 @using QuizProjectMvc.Web.ViewModels
 @model QuizProjectMvc.Web.ViewModels.Home.IndexViewModel
 @{
@@ -15,7 +13,6 @@
     {
         notification = new Notification { Message = (string)TempData["notification"], CssClass = "alert-info" };
     }
-< a href = "~/Views/Home/Index.cshtml" > ~/ Views / Home / Index.cshtml </ a >
 
     if (notification != null)
     {

@@ -41,6 +41,9 @@
                 .To<QuizBasicViewModel>()
                 .ToList();
 
+            var maxQuizzesSolved = this.quizzes.GetMaxSolutionsCount();
+            QuizBasicViewModel.MaxTimesCompleted = maxQuizzesSolved;
+
             var categories =
                 this.Cache.Get(
                     "categories",

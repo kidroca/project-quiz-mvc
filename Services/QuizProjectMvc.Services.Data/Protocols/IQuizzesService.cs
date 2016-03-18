@@ -31,5 +31,7 @@
         int GetTotalPages(int pageSize);
 
         void Delete(Quiz quiz);
+
+        int GetMaxSolutionsCount();
     }
 }

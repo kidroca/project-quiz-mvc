@@ -23,6 +23,8 @@
                 .To<QuizBasicViewModel>()
                 .ToList();
 
+            this.SetQuizMaxSolutions();
+
             var page = new SearchPageViewModel
             {
                 QuizSearchModel = query,
@@ -46,12 +48,20 @@
                 .To<QuizBasicViewModel>()
                 .ToList();
 
+            this.SetQuizMaxSolutions();
+
             if (models.Count == 0)
             {
                 return this.PartialView("_NoResultsPartial");
             }
 
             return this.PartialView("_QueryResultPartial", models);
+        }
+
+        private void SetQuizMaxSolutions()
+        {
+            var maxQuizzesSolved = this.quizzes.GetMaxSolutionsCount();
+            QuizBasicViewModel.MaxTimesCompleted = maxQuizzesSolved;
         }
     }
 }

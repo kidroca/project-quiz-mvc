@@ -59,6 +59,9 @@
                 QuizzesTaken = lastSolutions
             };
 
+            var maxQuizzesCreated = this.users.GetMaxCreatedQuizzesCount();
+            PublicProfileDetailed.MaxQuizzesCreated = maxQuizzesCreated;
+
             return this.View(pageModel);
         }
     }
