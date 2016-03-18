@@ -8,6 +8,7 @@
     using ViewModels.ProfileInformation;
     using ViewModels.Users;
 
+    [Authorize]
     public class UsersController : BaseController
     {
         public const int ProfilesPerPage = 6;
