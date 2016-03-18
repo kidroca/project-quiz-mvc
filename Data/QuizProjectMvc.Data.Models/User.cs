@@ -13,13 +13,11 @@
     public class User : IdentityUser, IHavePrimaryKey<string>, IAuditInfo, IDeletableEntity
     {
         private ICollection<Quiz> quizzesCreated;
-        private ICollection<QuizRating> ratingsGiven;
         private ICollection<QuizSolution> solutionsSubmited;
         private ICollection<Comment> comments;
 
         public User()
         {
-            this.ratingsGiven = new HashSet<QuizRating>();
             this.quizzesCreated = new HashSet<Quiz>();
             this.solutionsSubmited = new HashSet<QuizSolution>();
             this.comments = new HashSet<Comment>();
@@ -60,12 +58,6 @@
         {
             get { return this.solutionsSubmited; }
             set { this.solutionsSubmited = value; }
-        }
-
-        public virtual ICollection<QuizRating> RatingsGiven
-        {
-            get { return this.ratingsGiven; }
-            set { this.ratingsGiven = value; }
         }
 
         public DateTime CreatedOn { get; set; }

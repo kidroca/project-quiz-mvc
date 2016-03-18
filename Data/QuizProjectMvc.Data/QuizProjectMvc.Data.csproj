@@ -73,6 +73,10 @@
     <Compile Include="Migrations\201603021246487_QuizSolutionAnonimous.Designer.cs">
       <DependentUpon>201603021246487_QuizSolutionAnonimous.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603180924268_RemovedRatingsTable.cs" />
+    <Compile Include="Migrations\201603180924268_RemovedRatingsTable.Designer.cs">
+      <DependentUpon>201603180924268_RemovedRatingsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603021246487_QuizSolutionAnonimous.resx">
       <DependentUpon>201603021246487_QuizSolutionAnonimous.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603180924268_RemovedRatingsTable.resx">
+      <DependentUpon>201603180924268_RemovedRatingsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

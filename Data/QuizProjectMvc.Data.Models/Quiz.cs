@@ -8,14 +8,12 @@
 
     public class Quiz : BaseModel<int>
     {
-        private ICollection<QuizRating> rattings;
         private ICollection<Question> questions;
         private ICollection<QuizSolution> solutions;
         private ICollection<Comment> comments;
 
         public Quiz()
         {
-            this.rattings = new HashSet<QuizRating>();
             this.questions = new HashSet<Question>();
             this.solutions = new HashSet<QuizSolution>();
             this.comments = new HashSet<Comment>();
@@ -41,13 +39,6 @@
         public virtual User CreatedBy { get; set; }
 
         public bool IsPrivate { get; set; }
-
-        public virtual ICollection<QuizRating> Ratings
-        {
-            get { return this.rattings; }
-
-            set { this.rattings = value; }
-        }
 
         public virtual ICollection<Question> Questions
         {

@@ -27,8 +27,6 @@
 
         public IDbSet<Answer> Answers { get; set; }
 
-        public IDbSet<QuizRating> QuizRatings { get; set; }
-
         public IDbSet<QuizSolution> QuizSolutions { get; set; }
 
         public IDbSet<Comment> Comments { get; set; }

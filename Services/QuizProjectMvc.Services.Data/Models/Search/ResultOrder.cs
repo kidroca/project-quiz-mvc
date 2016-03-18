@@ -3,8 +3,7 @@
     public enum ResultOrder
     {
         ByDate = 0,
-        ByRating = 1,
-        ByNumberOfQuestions = 2,
-        ByTimesTaken = 3
+        ByNumberOfQuestions = 1,
+        ByTimesTaken = 2
     }
 }

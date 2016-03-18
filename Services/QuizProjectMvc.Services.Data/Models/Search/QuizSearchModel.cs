@@ -20,12 +20,6 @@
         [MinLength(ModelConstraints.NameMinLength)]
         public string Author { get; set; }
 
-        [Range(ModelConstraints.MinRating, ModelConstraints.MaxRating)]
-        public double? MinRating { get; set; }
-
-        [Range(ModelConstraints.MinRating, ModelConstraints.MaxRating)]
-        public double? MaxRating { get; set; }
-
         [Range(0, int.MaxValue)]
         public int? MinQuestions { get; set; }
 
