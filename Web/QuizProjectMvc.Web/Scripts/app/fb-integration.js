@@ -15,18 +15,20 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
-    $('.fb-share').on('click', function() {
-        var $this = $(this);
-        console.log($this);
+    $(document).ready(function() {
+        $('.fb-share').on('click', function() {
+            var $this = $(this);
+            console.log($this);
 
-        var shareLink = window.location.origin + $this.attr('data-share-url');
-        console.log(shareLink);
+            var shareLink = window.location.origin + $this.attr('data-share-url');
+            console.log(shareLink);
 
-        FB.ui({
-            method: 'share',
-            href: shareLink
-        }, function(response) {
-            console.log(response);
+            FB.ui({
+                method: 'share',
+                href: shareLink
+            }, function(response) {
+                console.log('fb response --> ', response);
+            });
         });
     });
 })();
