@@ -319,6 +319,9 @@ a.home-link {
   width: 134px;
   height: 62px;
 }
+.fb-share {
+  background-color: #395b9b;
+}
 .content {
   position: relative;
   padding: 0 1rem;

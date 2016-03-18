@@ -6,6 +6,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section meta {
+    <meta property="og:url" content="https://projectquiz.azurewebsites.net/Quizzes/Solve?id=@Model.Id" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="@Model.Title" />
+    <meta property="og:description" content="@Model.Description" />
+    <meta property="og:image" content="@Model.AvatarUrl"/>
+    <meta property="fb:app_id" content="461214147401172"/>
+}
+
 <div ng-app="solveQuiz"
      ng-controller="SolveQuizController as ctrl"
      class="carousel-container">
@@ -29,7 +38,7 @@
             Ready
         </button>
     </div>
-    
+
 </div>
 
 @section styles
@@ -51,4 +60,5 @@
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/slick-carousel")
     @Scripts.Render("~/bundles/solve-quiz")
+    @Scripts.Render("~/bundles/fb")
 }

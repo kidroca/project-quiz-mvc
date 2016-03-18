@@ -439,6 +439,7 @@
     <Content Include="Scripts\app\controllers\manage-quiz\create-quiz.js" />
     <Content Include="Scripts\app\controllers\manage-quiz\edit-quiz.js" />
     <Content Include="Scripts\app\controllers\solve-quiz.js" />
+    <Content Include="Scripts\app\fb-integration.js" />
     <Content Include="Scripts\app\filters\paging-filter.js" />
     <Content Include="Scripts\app\select-avatar.js" />
     <Content Include="Scripts\app\services\error-handler.js" />

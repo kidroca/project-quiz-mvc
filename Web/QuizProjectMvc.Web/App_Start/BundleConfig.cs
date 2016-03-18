@@ -70,6 +70,9 @@
                 "~/Scripts/ng-crop/ng-img-crop.js",
                 "~/Scripts/ng-file-upload-all.js",
                 "~/Scripts/app/admin/categoriesManager.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/fb").Include(
+                "~/Scripts/app/fb-integration.js"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)

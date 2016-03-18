@@ -14,12 +14,19 @@
 
         public ICollection<QuestionModel> Questions { get; set; }
 
+        public string Description { get; set; }
+
+        public string AvatarUrl { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Quiz, QuizForSolvingModel>()
                 .ForMember(
                     self => self.Questions,
-                    opt => opt.MapFrom(model => model.Questions.OrderBy(q => q.CreatedOn)));
+                    opt => opt.MapFrom(model => model.Questions.OrderBy(q => q.CreatedOn)))
+                .ForMember(
+                    self => self.AvatarUrl,
+                    opt => opt.MapFrom(model => model.Category.AvatarUrl));
         }
     }
 }
