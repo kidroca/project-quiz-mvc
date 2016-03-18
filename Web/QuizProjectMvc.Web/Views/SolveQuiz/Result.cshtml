@@ -10,7 +10,7 @@
     <h1 class="text-center">Overall: @string.Format("{0:F}%", Model.GetSuccessPercentage())</h1>
 
     <div class="col-md-6">
-        
+
         <h2 class="text-center">You Answered Correctly</h2>
         @foreach (var question in Model.CorrectlyAnswered)
         {
@@ -30,7 +30,7 @@
     </div>
 
     <div class="col-md-6">
-        
+
         <h2 class="text-center">You Answered Incorrectly</h2>
         @foreach (var question in Model.IncorrectlyAnswered)
         {
@@ -63,3 +63,7 @@
     </div>
 
 </div>
+
+@section Styles {
+    @Styles.Render("~/Content/solve")
+}

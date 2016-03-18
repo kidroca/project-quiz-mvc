@@ -20,6 +20,11 @@
 .pageTitleShadow {
   text-shadow: 1px 1px 1px black;
 }
+.container-fluid h1,
+.container-fluid h2 {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
 .carousel-container {
   position: relative;
   font-family: "Colaborate Thin", monospace;
@@ -39,6 +44,7 @@
 }
 .carousel-container .progress {
   margin-bottom: 2rem;
+  width: 70%;
 }
 .carousel-container .progress .progress-bar {
   background-color: #323a43;

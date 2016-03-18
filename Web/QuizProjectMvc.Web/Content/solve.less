@@ -1,5 +1,12 @@
 ﻿@import "helpers/index";
 
+.container-fluid {
+    h1, h2 {
+        color: white;
+        .pageTitleShadow();
+    }
+}
+
 .carousel-container {
     position: relative;
     font-family: @font-thin;
@@ -9,24 +16,21 @@
         bottom: 2%;
         left: 0;
         right: 0;
-
         margin: 0 auto;
         width: 30%;
-
         animation-name: fadeInDownBig;
         animation-duration: 1s;
-
         .box-shadow(@x: 7px; @y: 10px; @blur: 7px);
     }
 
     .progress {
         margin-bottom: 2rem;
+        width: 70%;
 
         .progress-bar {
             background-color: @btnStartGradient;
         }
     }
-
     // Todo: hover states
     .question-slide {
         position: relative;
@@ -150,6 +154,13 @@
 }
 
 @keyframes fadeInDownBig {
-  0% { opacity: 0;transform: translateY(-1000px);}
-  100% { opacity: 1;transform: translateY(0); }
+    0% {
+        opacity: 0;
+        transform: translateY(-1000px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
