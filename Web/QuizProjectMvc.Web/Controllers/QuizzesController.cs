@@ -1,5 +1,6 @@
 ﻿namespace QuizProjectMvc.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
     using Infrastructure.Mapping;
@@ -10,25 +11,42 @@
     public class QuizzesController : BaseController
     {
         private readonly IQuizzesService quizzes;
+        private readonly ICategoriesService categories;
 
-        public QuizzesController(IQuizzesService quizzes)
+        public QuizzesController(IQuizzesService quizzes, ICategoriesService categories)
         {
             this.quizzes = quizzes;
+            this.categories = categories;
         }
 
         [HttpGet]
         public ActionResult Search(QuizSearchModel query)
         {
-            var results = this.quizzes.SearchQuizzes(query)
-                .To<QuizBasicViewModel>()
-                .ToList();
+            var results = new List<QuizBasicViewModel>();
+
+            if (query != null && (query.Category != null || query.KeyPhrase != null))
+            {
+                results = this.quizzes.SearchQuizzes(query)
+               .To<QuizBasicViewModel>()
+               .ToList();
+            }
 
             this.SetQuizMaxSolutions();
+
+            var categoryItems = this.Cache.Get(
+                "allCategories",
+                () => this.categories.GetAll().Select(c => new SelectListItem
+                {
+                    Text = c.Name,
+                    Value = c.Name
+                }).ToList(),
+                durationInSeconds: 20 * 60);
 
             var page = new SearchPageViewModel
             {
                 QuizSearchModel = query,
-                Quizzes = results
+                Quizzes = results,
+                Categories = categoryItems
             };
 
             return this.View(page);

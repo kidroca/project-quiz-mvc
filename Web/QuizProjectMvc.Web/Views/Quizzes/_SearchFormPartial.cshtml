@@ -6,6 +6,8 @@
     var labelAttributes = new { @class = "control-label" };
     var inputAttributes = new { @class = "form-control" };
     var validationAttributes = new { @class = "text-danger" };
+
+    IEnumerable<SelectListItem> categories = ViewBag.AvailableCategories;
 }
 
 @using (Ajax.BeginForm("Query", new AjaxOptions
@@ -21,8 +23,7 @@
         <div class="form-group col-md-4">
             @Html.LabelFor(m => m.Category, labelAttributes)
             <div>
-                @Html.TextBoxFor(m => m.Category, inputAttributes)
-                @Html.ValidationMessageFor(m => m.Category, string.Empty, validationAttributes)
+                @Html.DropDownListFor(m => m.Category, categories, inputAttributes)
             </div>
         </div>
 

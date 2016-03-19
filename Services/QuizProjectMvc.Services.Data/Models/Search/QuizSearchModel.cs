@@ -10,7 +10,6 @@
     // Todo: Add Constraints
     public class QuizSearchModel
     {
-        [MinLength(ModelConstraints.NameMinLength)]
         public string Category { get; set; }
 
         [MinLength(ModelConstraints.TitleMinLength)]
@@ -20,10 +19,10 @@
         [MinLength(ModelConstraints.NameMinLength)]
         public string Author { get; set; }
 
-        [Range(0, int.MaxValue)]
+        [Range(1, int.MaxValue)]
         public int? MinQuestions { get; set; }
 
-        [Range(0, int.MaxValue)]
+        [Range(1, int.MaxValue)]
         public int? MaxQuestions { get; set; }
 
         public DateTime? FromDate { get; set; }

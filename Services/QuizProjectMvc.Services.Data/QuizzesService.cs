@@ -132,6 +132,11 @@
 
         public IQueryable<Quiz> SearchQuizzes(QuizSearchModel queryParameters)
         {
+            if (queryParameters == null)
+            {
+                throw new ArgumentNullException(nameof(queryParameters), "No query parameters!");
+            }
+
             var result = this.quizzes.All();
             result = this.ApplyFiltering(result, queryParameters);
             result = this.ApplyOrdering(result, queryParameters);
