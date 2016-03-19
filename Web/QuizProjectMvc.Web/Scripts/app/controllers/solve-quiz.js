@@ -30,13 +30,14 @@
             nextArrow: '.control-right',
             centerMode: true,
             centerPadding: '250px 35px',
+            slidesToShow: 1,
             method: {},
             responsive: [{
                     breakpoint: 740,
                     settings: {
                         arrows: false,
                         centerMode: true,
-                        centerPadding: '50px 35px',
+                        centerPadding: '0',
                         slidesToShow: 1
                     }
                     }]
