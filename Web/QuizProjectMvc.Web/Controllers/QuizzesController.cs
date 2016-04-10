@@ -34,7 +34,7 @@
             this.SetQuizMaxSolutions();
 
             var categoryItems = this.Cache.Get(
-                "allCategories",
+                "categoriesSelect",
                 () => this.categories.GetAll().Select(c => new SelectListItem
                 {
                     Text = c.Name,
