@@ -1,8 +1,12 @@
-﻿@using QuizProjectMvc.Web.Helpers
+﻿@using QuizProjectMvc.Services.Data.Models
+@using QuizProjectMvc.Web.Controllers
 @using QuizProjectMvc.Web.ViewModels
 @model QuizProjectMvc.Web.ViewModels.Home.IndexViewModel
+    
 @{
-    ViewBag.Title = "Top Quizzes";
+    ViewBag.Title = "Quiz Categories";
+    Layout = "~/Views/Shared/_StandardLayout.cshtml";
+
     Notification notification = null;
 
     if (TempData["error"] != null)
@@ -20,56 +24,32 @@
     }
 }
 
-@*Main Content*@
-@foreach (var quiz in Model.Quizzes)
-{
-    @Html.DisplayFor(m => quiz)
-}
+<ul class="categories-gallery clearfix">
+    @{
+        int counter = 1;
+    }
 
-<div class="pager">
+    @foreach (var category in Model.Categories)
+    {
+        <li class="pic-@counter">
+            <a href="/Home/DisplayPage?CategoryName=@category.Name&TotalPages=0&Page=1&PageSize=3">
+                <h3>
+                    @category.Name
+                </h3>
 
-    @Html.Partial("_PagerPartial", Model.Pager, new ViewDataDictionary {
-    { "Controller", Html.ControllerName()},
-    { "Action", Html.ActionName()}
-    })
+                <div class="pic">
+                    <img src="@category.AvatarUrl"/>
+                </div>
+            </a>
 
-</div>
+        </li>
 
-@*Side Content*@
-@section aside {
-    <div class="widget">
-        <h1>Categories</h1>
-        <div class="well categories">
-            <ul>
-                @foreach (var category in Model.Categories)
-                {
-                    <li>
-                        <h4>
-                            <a href="/Quizzes/Search?category=@category.Name">
-                                <img width="48" src="@category.AvatarUrl" alt="category avatar" />
+        counter++;
+        if (counter > 4)
+        {
+            counter = 1;
+        }
+    }
+</ul>
 
-                                @category.Name
 
-                            </a>
-                        </h4>
-                    </li>
-                }
-            </ul>
-        </div>
-    </div>
-
-    <div class="widget">    
-        <div class="well">
-            <div class="fb-like"
-                 data-share="true"
-                 data-width="200"
-                 data-show-faces="true">
-            </div>
-        </div>
-    </div>
-
-}
-
-@section scripts {
-    @Scripts.Render("~/bundles/fb")
-}

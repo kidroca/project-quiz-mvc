@@ -1,0 +1,75 @@
+﻿@using QuizProjectMvc.Web.Helpers
+@using QuizProjectMvc.Web.ViewModels
+@model QuizProjectMvc.Web.ViewModels.Home.DisplayPageViewModel
+@{
+    ViewBag.Title = Model.Pager.CategoryName;
+    Notification notification = null;
+
+    if (TempData["error"] != null)
+    {
+        notification = new Notification { Message = (string)TempData["error"], CssClass = "alert-danger" };
+    }
+    else if (TempData["notification"] != null)
+    {
+        notification = new Notification { Message = (string)TempData["notification"], CssClass = "alert-info" };
+    }
+
+    if (notification != null)
+    {
+        Html.RenderPartial("_NotificationPartial", notification);
+    }
+}
+
+@*Main Content*@
+@foreach (var quiz in Model.Quizzes)
+{
+    @Html.DisplayFor(m => quiz)
+}
+
+<div class="pager">
+
+    @Html.Partial("_PagerPartial", Model.Pager, new ViewDataDictionary {
+    { "Controller", Html.ControllerName()},
+    { "Action", Html.ActionName()}
+    })
+
+</div>
+
+@*Side Content*@
+@section aside {
+    <div class="widget">
+        <h1>Categories</h1>
+        <div class="well categories">
+            <ul>
+                @foreach (var category in Model.Categories)
+                {
+                    <li>
+                        <h4>
+                            <a href="/Quizzes/Search?category=@category.Name">
+                                <img width="48" src="@category.AvatarUrl" alt="category avatar" />
+
+                                @category.Name
+
+                            </a>
+                        </h4>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="widget">    
+        <div class="well">
+            <div class="fb-like"
+                 data-share="true"
+                 data-width="200"
+                 data-show-faces="true">
+            </div>
+        </div>
+    </div>
+
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/fb")
+}

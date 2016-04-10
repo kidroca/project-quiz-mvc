@@ -23,18 +23,34 @@
             this.quizCategories = quizCategories;
         }
 
-        public ActionResult Index(Pager pager)
+        public ActionResult Index()
+        {
+            var categories =
+                this.Cache.Get(
+                    "allCategories",
+                    () => this.quizCategories.GetAll()
+                        .To<QuizCategoryViewModel>()
+                        .ToList(),
+                    durationInSeconds: 30 * 60);
+
+            var viewModel = new IndexViewModel
+            {
+                Categories = categories
+            };
+
+            return this.View(viewModel);
+        }
+
+        public ActionResult DisplayPage(Pager pager)
         {
             if (pager == null || !this.ModelState.IsValid)
             {
-                pager = new Pager
-                {
-                    PageSize = QuizzesPerPage,
-                    TotalPages = this.Cache.Get(
-                        "quizPages",
-                        () => this.quizzes.GetTotalPages(QuizzesPerPage),
-                        durationInSeconds: 5 * 60)
-                };
+                return this.HttpNotFound("The specified page has disappeared without a trace");
+            }
+
+            if (pager.TotalPages == 0)
+            {
+                pager.TotalPages = this.quizzes.GetTotalPages(pager.CategoryName, QuizzesPerPage);
             }
 
             var models = this.quizzes.GetPage(pager)
@@ -46,13 +62,13 @@
 
             var categories =
                 this.Cache.Get(
-                    "categories",
+                    "topCategories",
                     () => this.quizCategories.GetTop(10)
                         .To<QuizCategoryViewModel>()
                         .ToList(),
-                    durationInSeconds: 30 * 60);
+                    durationInSeconds: 15 * 60);
 
-            var viewModel = new IndexViewModel
+            var viewModel = new DisplayPageViewModel
             {
                 Quizzes = models,
                 Categories = categories,

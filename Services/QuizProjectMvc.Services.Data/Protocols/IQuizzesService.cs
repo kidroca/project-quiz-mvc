@@ -28,7 +28,7 @@
 
         void Save();
 
-        int GetTotalPages(int pageSize);
+        int GetTotalPages(string categoryName, int pageSize);
 
         void Delete(Quiz quiz);
 

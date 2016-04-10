@@ -147,6 +147,7 @@
         public IQueryable<Quiz> GetPage(Pager pager)
         {
             var result = this.quizzes.All()
+                .Where(q => q.Category.Name.ToLower() == pager.CategoryName.ToLower())
                 .OrderByDescending(q => q.CreatedOn)
                 .Skip(pager.GetSkipCount())
                 .Take(pager.PageSize);
@@ -173,9 +174,11 @@
             this.quizzes.Save();
         }
 
-        public int GetTotalPages(int pageSize)
+        public int GetTotalPages(string categoryName, int pageSize)
         {
-            int quizzesCount = this.quizzes.All().Count();
+            int quizzesCount = this.quizzes
+                .All()
+                .Count(q => q.Category.Name.ToLower() == categoryName.ToLower());
             int result = (int)Math.Ceiling(quizzesCount / (double)pageSize);
 
             return result;

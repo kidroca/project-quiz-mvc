@@ -274,6 +274,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\Home\DisplayPageViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\Notification.cs" />
     <Compile Include="ViewModels\ProfileInformation\ProfilePageViewModel.cs" />
@@ -430,6 +431,8 @@
     <None Include="Properties\PublishProfiles\ProjectQuiz - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ProjectQuiz - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\QuizProjectMvc - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\superquiz - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\superquiz - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\app\admin\categoriesManager.js" />
     <Content Include="Scripts\app\confirm-submit.js" />
@@ -473,7 +476,9 @@
     <Content Include="Scripts\Slick\slick.js" />
     <Content Include="Scripts\Slick\slick.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -484,7 +489,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\DisplayPage.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -521,22 +526,22 @@
     <Content Include="Views\Profile\_AsidePartial.cshtml" />
     <Content Include="Views\Shared\_MainWithSideLayout.cshtml" />
     <Content Include="Views\Shared\_AvatarSelectionPartial.cshtml" />
-    <Content Include="Views\Shared\_ProfileInfoWidgetPartial.cshtml" />
     <Content Include="Views\Shared\_NotificationPartial.cshtml" />
     <Content Include="Content\templates\solve-question-template.html" />
     <Content Include="Views\Shared\_StandardLayout.cshtml" />
     <Content Include="Views\Shared\_PagerPartial.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Profile\_EditAvatarModalPartial.cshtml" />
-    <Content Include="Views\Profile\_ProfileInfoWidgetPartial.cshtml" />
+    <Content Include="Views\Shared\_ProfileInfoWidgetPartial.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Globalization\es\About\Index.cshtml" />
     <Content Include="Views\Quizzes\Search.cshtml" />
     <Content Include="Views\Quizzes\_SearchFormPartial.cshtml" />
     <Content Include="Views\Quizzes\_QueryResultPartial.cshtml" />
     <Content Include="Views\Quizzes\_NoResultsPartial.cshtml" />
-    <Content Include="Views\Home\DisplayTemplates\QuizBasicViewModel.cshtml" />
     <Content Include="Views\ManageQuiz\_CategoryTemplatePartial.cshtml" />
+    <Content Include="Views\Profile\_EditAvatarModalPartial.cshtml" />
+    <Content Include="Views\Profile\_ProfileInfoWidgetPartial.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
