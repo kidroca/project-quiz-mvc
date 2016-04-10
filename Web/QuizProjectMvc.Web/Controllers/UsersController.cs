@@ -26,13 +26,20 @@
             {
                 pager = new Pager
                 {
-                    PageSize = ProfilesPerPage,
-                    TotalPages = this.Cache.Get(
-                        "userPages",
-                        () => this.users.GetTotalPages(ProfilesPerPage),
-                        durationInSeconds: 15 * 60)
+                    PageSize = ProfilesPerPage
                 };
             }
+
+            if (pager.TotalPages == 0)
+            {
+                pager.TotalPages =
+                    this.Cache.Get(
+                        "userPages",
+                        () => this.users.GetTotalPages(ProfilesPerPage),
+                        durationInSeconds: 15 * 60);
+            }
+
+            pager.PageSize = ProfilesPerPage;
 
             var models = this.users.GetPage(pager)
                 .To<PublicProfileDetailed>()

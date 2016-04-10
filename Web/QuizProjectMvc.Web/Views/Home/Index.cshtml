@@ -31,7 +31,7 @@
 
     @foreach (var category in Model.Categories)
     {
-        <li class="pic-@counter">
+        <li class="pic-@(counter%4)">
             <a href="/Home/DisplayPage?CategoryName=@category.Name&TotalPages=0&Page=1&PageSize=3">
                 <h3>
                     @category.Name
@@ -45,10 +45,6 @@
         </li>
 
         counter++;
-        if (counter > 4)
-        {
-            counter = 1;
-        }
     }
 </ul>
 

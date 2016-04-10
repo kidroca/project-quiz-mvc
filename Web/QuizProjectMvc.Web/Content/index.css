@@ -769,7 +769,7 @@ a.home-link {
   transform: rotate(-10deg);
 }
 .categories-gallery .pic-2 {
-  z-index: 5;
+  z-index: 2;
   transform: rotate(4deg);
 }
 .categories-gallery .pic-3 {
@@ -777,8 +777,12 @@ a.home-link {
   transform: rotate(-3deg);
 }
 .categories-gallery .pic-4 {
-  z-index: 2;
+  z-index: 4;
   transform: rotate(7deg);
+}
+.categories-gallery .pic-0 {
+  z-index: 5;
+  transform: rotate(2deg);
 }
 .categories-gallery li {
   position: relative;
