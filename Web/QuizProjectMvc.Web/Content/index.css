@@ -451,6 +451,9 @@ a.home-link {
     padding-right: 6rem;
   }
 }
+.single-article .article-body .basic-info span {
+  color: #1f262d;
+}
 .single-article .article-body .basic-info .btn-danger {
   color: #fff;
   margin-right: 0.5rem;
