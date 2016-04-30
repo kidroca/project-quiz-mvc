@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
-
+    using GravatarHelper;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
@@ -171,6 +171,12 @@
         {
             if (this.ModelState.IsValid)
             {
+                if (string.IsNullOrEmpty(model.AvatarUrl) &&
+                    !string.IsNullOrEmpty(model.Email))
+                {
+                    model.AvatarUrl = GravatarHelper.CreateGravatarUrl(model.Email, 200, GravatarHelper.DefaultImageIdenticon, GravatarRating.G, false, false);
+                }
+
                 var user = this.Mapper.Map<User>(model);
                 var result = await this.UserManager.CreateAsync(user, model.Password);
 

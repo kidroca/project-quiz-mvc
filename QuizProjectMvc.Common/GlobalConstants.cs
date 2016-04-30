@@ -8,7 +8,7 @@
 
         public static readonly string[] DefaultAvatars =
         {
-            "EricCartman", "Homer", "Lisa", "Marge", "MrBurns", "VaultBoy"
+            "EricCartman", "Homer", "Lisa", "Marge", "MrBurns"
         };
     }
 }

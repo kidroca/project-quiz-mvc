@@ -1,5 +1,7 @@
 ﻿@using QuizProjectMvc.Common
-@model string
+@{
+    string email = ViewBag.Email;
+}
 
 <div class="modal fade in" id="select-avatar">
     <div class="modal-dialog modal-md" role="document">
@@ -16,18 +18,18 @@
                     var src = string.Format("/Content/images/avatars/{0}.png", name);
 
                     <div class="user-avatar" data-avatar="@name">
-                        <img src="@src" alt="avatar image"/>
+                        <img src="@src" alt="avatar image" />
                     </div>
                 }
 
-                @if (!string.IsNullOrEmpty(Model))
+                @if (!string.IsNullOrEmpty(email))
                 {
                     <div class="user-avatar" data-avatar="gravatar">
-                        @Html.Gravatar(Model, 200, new
-                        {
-                            Alt = $"gravatar image for {Model}",
-                            Title = $"this is your gravatar for {Model}"
-                        })
+                        @Html.Gravatar(email, 200, GravatarHelper.DefaultImageIdenticon, GravatarRating.G, new
+                   {
+                       Alt = $"gravatar image for {email}",
+                       Title = $"this is your gravatar for {email}"
+                   })
                     </div>
                 }
             </div>
@@ -35,6 +37,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
             </div>
-        </div>        
+        </div>
     </div>
 </div>

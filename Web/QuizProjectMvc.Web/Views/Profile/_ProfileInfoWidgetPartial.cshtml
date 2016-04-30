@@ -46,7 +46,10 @@
                     Change
                 </button>
 
-                @Html.Partial("_EditAvatarModalPartial", Model.Email)
+                @Html.Partial("_EditAvatarModalPartial", new ViewDataDictionary
+                {
+                    {"Email", Model.Email }
+                })
             }
         </div>
 
@@ -110,7 +113,7 @@
                                 ? "glyphicon-ok-sign"
                                 : "glyphicon-ok-circle";
 
-                            <i title="@i" class="glyphicon @icon"></i>
+                        <i title="@i" class="glyphicon @icon"></i>
                         }
                     </p>
                 </div>
