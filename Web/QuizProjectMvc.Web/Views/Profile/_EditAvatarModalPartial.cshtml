@@ -1,4 +1,5 @@
 ﻿@using QuizProjectMvc.Common
+@model string
 
 <div class="modal fade in" id="select-avatar">
     <div class="modal-dialog modal-md" role="document">
@@ -16,6 +17,17 @@
 
                     <div class="user-avatar" data-avatar="@name">
                         <img src="@src" alt="avatar image"/>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(Model))
+                {
+                    <div class="user-avatar" data-avatar="gravatar">
+                        @Html.Gravatar(Model, 200, new
+                        {
+                            Alt = $"gravatar image for {Model}",
+                            Title = $"this is your gravatar for {Model}"
+                        })
                     </div>
                 }
             </div>

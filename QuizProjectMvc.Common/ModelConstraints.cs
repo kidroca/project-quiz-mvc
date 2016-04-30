@@ -22,6 +22,7 @@
 
         public const int MinQuestionsCount = 3;
 
-        public const string AvatarPathPattern = @"^\/Content\/images\/avatars\/[\w-]+\.png$";
+        public const string AvatarPathPattern =
+            @"^\/Content\/images\/avatars\/[\w-]+\.png$|^https:\/\/secure.gravatar.com\/avatar\/.+$";
     }
 }
