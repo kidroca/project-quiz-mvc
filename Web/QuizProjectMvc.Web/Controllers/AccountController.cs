@@ -375,7 +375,7 @@
                     this.ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return this.View(
                         "ExternalLoginConfirmation",
-                        new ExternalLoginConfirmationViewModel { Username = loginInfo.Email });
+                        new ExternalLoginConfirmationViewModel { Username = loginInfo.DefaultUserName });
             }
         }
 
@@ -401,7 +401,18 @@
                     return this.View("ExternalLoginFailure");
                 }
 
-                var user = new User { UserName = model.Username, Email = info.Email };
+                var claimTypeFormat = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/{0}";
+                // surname givenname
+
+                var user = new User
+                {
+                    UserName = model.Username,
+                    Email = info.Email,
+                    FirstName = info.ExternalIdentity.FindFirstValue(
+                        string.Format(claimTypeFormat, "givenname")),
+                    LastName = info.ExternalIdentity.FindFirstValue(
+                        string.Format(claimTypeFormat, "surname"))
+                };
                 var result = await this.UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
