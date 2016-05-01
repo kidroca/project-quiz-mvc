@@ -85,6 +85,24 @@
                     </div>
                 </div>
 
+                <!-- Number Of Questions -->
+                <div class="form-group">
+                    <label for="quizQuestionsCount" class="col-lg-2 control-label">Questions per Solving</label>
+                    <div class="col-lg-2"
+                         uib-popover="Add the number of questions to be available for solving, if you want to see different questions each time the quiz is solved input a smaller number here than the total number of questions you have added. You should add at least 3 questions"
+                                   popover-trigger="mouseover"
+                                   popover-placement="left">
+
+                            <input type="number" ng-model="quiz.numberOfQuestions"
+                                   id="quizQuestionsCount"
+                                   class="form-control" name="quizQuestionsCount"
+                                   required min="3" max="100"
+                                   ng-focus="questionsCountFocus=true"
+                                   ng-blur="questionsCountFocus=false"
+                                   >
+                        </div>
+                </div>
+
                 <!-- Add Question -->
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
