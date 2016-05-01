@@ -41,7 +41,7 @@
                 .ForMember(
                     self => self.QuestionsCount,
                     opt => opt.MapFrom(
-                        dest => dest.Questions.Count))
+                        dest => dest.NumberOfQuestions))
                 .ForMember(
                     self => self.TimesCompleted,
                     opt => opt.MapFrom(model => model.Solutions.Count));

@@ -1,7 +1,6 @@
 ﻿namespace QuizProjectMvc.Web.ViewModels.Quiz.Solve
 {
     using System.Collections.Generic;
-    using System.Linq;
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
@@ -23,7 +22,7 @@
             configuration.CreateMap<Quiz, QuizForSolvingModel>()
                 .ForMember(
                     self => self.Questions,
-                    opt => opt.MapFrom(model => model.Questions.OrderBy(q => q.CreatedOn)))
+                    opt => opt.Ignore())
                 .ForMember(
                     self => self.AvatarUrl,
                     opt => opt.MapFrom(model => model.Category.AvatarUrl));

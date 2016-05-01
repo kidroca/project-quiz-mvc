@@ -40,6 +40,9 @@
 
         public bool IsPrivate { get; set; }
 
+        [Range(ModelConstraints.MinQuestionsCount, int.MaxValue)]
+        public int NumberOfQuestions { get; set; }
+
         public virtual ICollection<Question> Questions
         {
             get { return this.questions; }
