@@ -84,7 +84,8 @@
         {
             var quiz = this.quizzes.GetById(quizSolution.ForQuizId);
 
-            if (quizSolution.SelectedAnswerIds.Count != quiz.Questions.Count)
+            if (quizSolution.SelectedAnswerIds.Count != quiz.NumberOfQuestions &&
+                quizSolution.SelectedAnswerIds.Count != quiz.Questions.Count)
             {
                 throw new QuizEvaluationException("Invalid Solution: Questions count mismatch");
             }
