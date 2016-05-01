@@ -278,8 +278,8 @@
                     break;
                 case ResultOrder.ByNumberOfQuestions:
                     result = queryParameters.OrderDescending
-                        ? result.OrderByDescending(q => q.Questions.Count)
-                        : result.OrderBy(q => q.Questions.Count);
+                        ? result.OrderByDescending(q => q.NumberOfQuestions).ThenByDescending(q => q.Questions.Count)
+                        : result.OrderBy(q => q.NumberOfQuestions).ThenBy(q => q.Questions.Count);
                     break;
                 case ResultOrder.ByTimesTaken:
                     result = queryParameters.OrderDescending
