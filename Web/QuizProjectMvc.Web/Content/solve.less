@@ -128,24 +128,33 @@
             position: relative;
             width: 80%;
             height: auto;
-            margin: 2rem auto 2rem;
+            margin: 2rem auto;
             text-align: center;
+            color: white;
             font-size: 2rem;
             overflow-y: auto;
+            list-style-type: lower-alpha;
 
             .answer {
-                padding: 0.5rem 3rem;
+                display: list-item;
+                padding-left: 0.5rem;
+                cursor: pointer;
+                color: white;
 
-                &.selected {
-                    .btn-grad-lighter(93%);
+                .list-group-item {
+                    color: #333;
 
-                    &:before {
-                        font: normal normal normal 24px/1 FontAwesome;
-                        color: #0B9900;
-                        content: "\f00c ";
-                        position: absolute;
-                        left: 1%;
-                        top: 15%;
+                    &.selected {
+                        .btn-grad-lighter(93%);
+
+                        &:before {
+                            font: normal normal normal 24px/1 FontAwesome;
+                            color: #0B9900;
+                            content: "\f00c ";
+                            position: absolute;
+                            left: 1%;
+                            top: 15%;
+                        }
                     }
                 }
             }

@@ -5,6 +5,7 @@ AppSettingsSecret.config
 Content/*
 !Content/*.css
 !Content/*.less
+!Content/templates
 
 ## Ignore Scritps
 Scripts/*

@@ -167,15 +167,23 @@
   position: relative;
   width: 80%;
   height: auto;
-  margin: 2rem auto 2rem;
+  margin: 2rem auto;
   text-align: center;
+  color: white;
   font-size: 2rem;
   overflow-y: auto;
+  list-style-type: lower-alpha;
 }
 .carousel-container .question-slide .answers .answer {
-  padding: 0.5rem 3rem;
+  display: list-item;
+  padding-left: 0.5rem;
+  cursor: pointer;
+  color: white;
 }
-.carousel-container .question-slide .answers .answer.selected {
+.carousel-container .question-slide .answers .answer .list-group-item {
+  color: #333;
+}
+.carousel-container .question-slide .answers .answer .list-group-item.selected {
   background-color: #ffffff;
   background-image: -webkit-linear-gradient(0deg, #ffffff, #ededed);
   background-image: -moz-linear-gradient(0deg, #ffffff, #ededed);
@@ -183,7 +191,7 @@
   background-image: -o-linear-gradient(0deg, #ffffff, #ededed);
   background-image: linear-gradient(0deg, #ffffff, #ededed);
 }
-.carousel-container .question-slide .answers .answer.selected:before {
+.carousel-container .question-slide .answers .answer .list-group-item.selected:before {
   font: normal normal normal 24px/1 FontAwesome;
   color: #0B9900;
   content: "\f00c ";
