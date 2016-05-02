@@ -167,10 +167,11 @@
   position: relative;
   width: 80%;
   height: auto;
-  margin: 2rem auto;
+  margin: 2rem 6rem;
   text-align: center;
   color: white;
   font-size: 2rem;
+  font-family: "Droid Sans", sans-serif;
   overflow-y: auto;
   list-style-type: lower-alpha;
 }
@@ -182,6 +183,7 @@
 }
 .carousel-container .question-slide .answers .answer .list-group-item {
   color: #333;
+  font-family: "Colaborate Thin", monospace;
 }
 .carousel-container .question-slide .answers .answer .list-group-item.selected {
   background-color: #ffffff;
