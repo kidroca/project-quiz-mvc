@@ -77,11 +77,25 @@
                 <!-- Private/Public -->
                 <div class="form-group">
                     <label for="access" class="col-lg-2 control-label">Quiz Access</label>
-                    <div class="col-lg-10">
+                    <div class="col-lg-2">
                         <toggle-switch name="access" id="access"
                                        ng-model="quiz.isPrivate"
                                        on-label="private"
                                        off-label="public"></toggle-switch>
+                    </div>
+                </div>
+
+                <!-- Answers Shuffle -->
+                <div class="form-group">
+                    <label for="suffle" class="col-lg-2 control-label">Shuffle Answers</label>
+                    <div class="col-lg-2"
+                         uib-popover="If set to shuffle each time the quiz is started each question's answers will be reordered"
+                              popover-trigger="mouseover"
+                              popover-placement="right">
+                        <toggle-switch name="suffle" id="suffle"
+                                       ng-model="quiz.shuffleAnswers"
+                                       on-label="shuffle"
+                                       off-label="off"></toggle-switch>
                     </div>
                 </div>
 
