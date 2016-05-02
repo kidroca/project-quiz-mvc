@@ -40,6 +40,8 @@
 
         public bool IsPrivate { get; set; }
 
+        public bool ShuffleAnswers { get; set; }
+
         [Range(ModelConstraints.MinQuestionsCount, int.MaxValue)]
         public int NumberOfQuestions { get; set; }
 
