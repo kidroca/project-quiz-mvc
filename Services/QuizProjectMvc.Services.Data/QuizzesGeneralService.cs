@@ -88,7 +88,7 @@
 
         public void Save()
         {
-            this.Save();
+            this.quizzes.Save();
         }
 
         public int GetTotalPages(string categoryName, int pageSize)
