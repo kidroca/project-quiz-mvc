@@ -8,11 +8,13 @@
 
     public class SolveQuizController : BaseController
     {
-        private readonly IQuizzesService quizzes;
+        private readonly IQuizzesGeneralService quizzes;
+        private readonly IQuizzesEvalService quizzesEvalService;
 
-        public SolveQuizController(IQuizzesService quizzesService)
+        public SolveQuizController(IQuizzesGeneralService quizzesService, IQuizzesEvalService quizzesEvalService)
         {
             this.quizzes = quizzesService;
+            this.quizzesEvalService = quizzesEvalService;
         }
 
         [HttpGet]
@@ -34,7 +36,7 @@
 
             try
             {
-                var result = this.quizzes.SaveSolution(solution, this.UserId);
+                var result = this.quizzesEvalService.SaveSolution(solution, this.UserId);
                 return this.RedirectToAction("Result", new { solutionId = result.Id });
             }
             catch (QuizEvaluationException ex)
@@ -46,7 +48,7 @@
 
         public ActionResult Result(int solutionId)
         {
-            var solution = this.quizzes.EvaluateSolution(solutionId);
+            var solution = this.quizzesEvalService.EvaluateSolution(solutionId);
             if (solution == null)
             {
                 // Todo: Redirect To Not Found

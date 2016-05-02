@@ -91,9 +91,11 @@
     <Compile Include="Models\Account\BasicAccountInfoViewModel.cs" />
     <Compile Include="Models\Pager.cs" />
     <Compile Include="Protocols\ICategoriesService.cs" />
-    <Compile Include="Protocols\IQuizzesService.cs" />
+    <Compile Include="Protocols\IQuizzesEvalService.cs" />
+    <Compile Include="Protocols\IQuizzesGeneralService.cs" />
     <Compile Include="Protocols\IUsersService.cs" />
-    <Compile Include="QuizzesService.cs" />
+    <Compile Include="QuizzesEvalService.cs" />
+    <Compile Include="QuizzesGeneralService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Evaluation\QuestionResultModel.cs" />
     <Compile Include="Models\Evaluation\QuizEvaluationResult.cs" />

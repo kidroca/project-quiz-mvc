@@ -12,11 +12,11 @@
     {
         public const int QuizzesPerPage = 3;
 
-        private readonly IQuizzesService quizzes;
+        private readonly IQuizzesGeneralService quizzes;
         private readonly ICategoriesService quizCategories;
 
         public HomeController(
-            IQuizzesService quizzes,
+            IQuizzesGeneralService quizzes,
             ICategoriesService quizCategories)
         {
             this.quizzes = quizzes;

@@ -1,13 +1,11 @@
 ﻿namespace QuizProjectMvc.Services.Data
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
     using Exceptions;
     using Models;
-    using Models.Evaluation;
     using Models.Search;
     using Protocols;
     using QuizProjectMvc.Data.Common;
@@ -15,102 +13,20 @@
     using Web;
 
     // Todo: use quizzes creation exception with save quiz
-    public class QuizzesService : IQuizzesService
+    public class QuizzesGeneralService : IQuizzesGeneralService
     {
-        private readonly IDbRepository<Quiz> quizzes;
-        private readonly IDbRepository<QuizSolution> solutions;
         private readonly IIdentifierProvider identifierProvider;
         private readonly ICacheService cache;
+        private readonly IDbRepository<Quiz> quizzes;
 
-        public QuizzesService(
+        public QuizzesGeneralService(
             IDbRepository<Quiz> quizzes,
             IIdentifierProvider identifierProviders,
-            IDbRepository<QuizSolution> solutions,
             ICacheService cache)
         {
             this.quizzes = quizzes;
             this.identifierProvider = identifierProviders;
-            this.solutions = solutions;
             this.cache = cache;
-        }
-
-        public QuizEvaluationResult EvaluateSolution(QuizSolution quizSolution)
-        {
-            var result = new QuizEvaluationResult
-            {
-                ForQuizId = quizSolution.ForQuizId,
-                Title = quizSolution.ForQuiz.Title,
-                CorrectlyAnswered = new List<QuestionResultModel>(),
-                IncorrectlyAnswered = new List<QuestionResultModel>()
-            };
-
-            foreach (Answer answer in quizSolution.SelectedAnswers)
-            {
-                var questionResult = new QuestionResultModel
-                {
-                    Question = answer.ForQuestion.Title,
-                    IsCorrect = answer.IsCorrect,
-                    ResultDescription = answer.ForQuestion.ResultDescription,
-                    SelectedAnswer = answer.Text,
-                    CorrectAnswer = answer.ForQuestion
-                            .Answers.First(a => a.IsCorrect).Text
-                };
-
-                if (answer.IsCorrect)
-                {
-                    result.CorrectlyAnswered.Add(questionResult);
-                }
-                else
-                {
-                    result.IncorrectlyAnswered.Add(questionResult);
-                }
-            }
-
-            return result;
-        }
-
-        public QuizEvaluationResult EvaluateSolution(int solutionId)
-        {
-            var solution = this.solutions.GetById(solutionId);
-            if (solution == null)
-            {
-                return null;
-            }
-
-            return this.EvaluateSolution(solution);
-        }
-
-        public QuizSolution SaveSolution(SolutionForEvaluationModel quizSolution, string userId)
-        {
-            var quiz = this.quizzes.GetById(quizSolution.ForQuizId);
-
-            if (quizSolution.SelectedAnswerIds.Count != quiz.NumberOfQuestions &&
-                quizSolution.SelectedAnswerIds.Count != quiz.Questions.Count)
-            {
-                throw new QuizEvaluationException("Invalid Solution: Questions count mismatch");
-            }
-
-            List<Answer> selectedAnswers = this.ExtractSelectedAnswers(quiz, quizSolution);
-
-            var newSolution = new QuizSolution
-            {
-                ByUserId = userId,
-                ForQuiz = quiz,
-                SelectedAnswers = selectedAnswers
-            };
-
-            try
-            {
-                this.solutions.Add(newSolution);
-                this.solutions.Save();
-            }
-            catch (Exception ex)
-            {
-                // Todo: Implement concrete exception cases
-                throw new QuizEvaluationException("Something went wrong while saving your solution.", ex);
-            }
-
-            return newSolution;
         }
 
         public Quiz GetById(string id)
@@ -172,7 +88,7 @@
 
         public void Save()
         {
-            this.quizzes.Save();
+            this.Save();
         }
 
         public int GetTotalPages(string categoryName, int pageSize)
@@ -210,7 +126,7 @@
         /// <param name="expression"></param>
         /// <param name="value"></param>
         /// <returns>Returns Class instance to support chaining</returns>
-        private QuizzesService UpdatePropertyValue<T>(T target, Expression<Func<T, object>> expression, object value)
+        private QuizzesGeneralService UpdatePropertyValue<T>(T target, Expression<Func<T, object>> expression, object value)
         {
             var memberSelectorExpression = expression.Body as MemberExpression;
             if (memberSelectorExpression != null)
@@ -288,16 +204,6 @@
                         : result.OrderBy(q => q.Solutions.Count);
                     break;
             }
-
-            return result;
-        }
-
-        private List<Answer> ExtractSelectedAnswers(Quiz quiz, SolutionForEvaluationModel quizSolution)
-        {
-            var result = quiz.Questions
-                .SelectMany(q => q.Answers)
-                .Where(a => quizSolution.SelectedAnswerIds.Any(id => id == a.Id))
-                .ToList();
 
             return result;
         }

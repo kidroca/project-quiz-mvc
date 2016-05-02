@@ -9,9 +9,9 @@
     [Authorize]
     public class ManageQuizController : BaseController
     {
-        private readonly IQuizzesService quizzes;
+        private readonly IQuizzesGeneralService quizzes;
 
-        public ManageQuizController(IQuizzesService quizzes)
+        public ManageQuizController(IQuizzesGeneralService quizzes)
         {
             this.quizzes = quizzes;
         }

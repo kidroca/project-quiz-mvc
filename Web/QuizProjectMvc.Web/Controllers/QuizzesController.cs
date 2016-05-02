@@ -10,10 +10,10 @@
 
     public class QuizzesController : BaseController
     {
-        private readonly IQuizzesService quizzes;
+        private readonly IQuizzesGeneralService quizzes;
         private readonly ICategoriesService categories;
 
-        public QuizzesController(IQuizzesService quizzes, ICategoriesService categories)
+        public QuizzesController(IQuizzesGeneralService quizzes, ICategoriesService categories)
         {
             this.quizzes = quizzes;
             this.categories = categories;

@@ -2,19 +2,12 @@
 {
     using System.Linq;
     using Models;
-    using Models.Evaluation;
     using Models.Search;
     using QuizProjectMvc.Data.Models;
 
-    public interface IQuizzesService
+    public interface IQuizzesGeneralService
     {
         IQueryable<Quiz> GetRandomQuizzes(int count);
-
-        QuizEvaluationResult EvaluateSolution(QuizSolution quizSolution);
-
-        QuizEvaluationResult EvaluateSolution(int solutionId);
-
-        QuizSolution SaveSolution(SolutionForEvaluationModel quizSolution, string userId);
 
         Quiz GetById(string id);
 

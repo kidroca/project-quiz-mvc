@@ -13,13 +13,18 @@
 
     public class QuizzesController : BaseController
     {
-        private readonly IQuizzesService quizzes;
+        private readonly IQuizzesGeneralService quizzes;
         private readonly ICategoriesService categories;
+        private readonly IQuizzesEvalService quizzesEvalService;
 
-        public QuizzesController(IQuizzesService quizzes, ICategoriesService categories)
+        public QuizzesController(
+            IQuizzesGeneralService quizzes,
+            ICategoriesService categories,
+            IQuizzesEvalService quizzesEvalService)
         {
             this.quizzes = quizzes;
             this.categories = categories;
+            this.quizzesEvalService = quizzesEvalService;
         }
 
         [HttpPost]
@@ -140,8 +145,8 @@
 
             try
             {
-                var result = this.quizzes.SaveSolution(model, this.UserId);
-                return this.Ok(this.quizzes.EvaluateSolution(result));
+                var result = this.quizzesEvalService.SaveSolution(model, this.UserId);
+                return this.Ok(this.quizzesEvalService.EvaluateSolution(result));
             }
             catch (QuizEvaluationException ex)
             {
