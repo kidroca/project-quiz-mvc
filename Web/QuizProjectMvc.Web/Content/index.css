@@ -181,7 +181,7 @@ a.home-link {
   color: #5e5e5e;
   font-size: 1.2rem;
 }
-.pager::before {
+.end-line::before {
   content: "";
   width: 100%;
   height: 20px;
@@ -515,6 +515,12 @@ a.home-link {
 .quiz-item {
   margin-bottom: 4rem;
 }
+.quiz-item h1 {
+  font-size: 2em;
+}
+.quiz-item h2 {
+  font-size: 1.6em;
+}
 .quiz-item a.btn {
   color: white;
 }
@@ -822,4 +828,7 @@ a.home-link {
   display: block;
   width: 100%;
   height: 100%;
+}
+.ranking-controls {
+  padding-bottom: 5rem;
 }
