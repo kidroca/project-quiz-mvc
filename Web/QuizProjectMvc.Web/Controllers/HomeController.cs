@@ -1,14 +1,18 @@
 ﻿namespace QuizProjectMvc.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
+    using Helpers;
     using Infrastructure.Mapping;
     using Services.Data.Models;
+    using Services.Data.Models.DateRanges;
     using Services.Data.Protocols;
     using ViewModels.Home;
     using ViewModels.Quiz;
+    using ViewModels.Quiz.Ranking;
 
-    public class HomeController : BaseController
+    public class HomeController : BaseQuizController
     {
         public const int QuizzesPerPage = 3;
 
@@ -17,7 +21,9 @@
 
         public HomeController(
             IQuizzesGeneralService quizzes,
-            ICategoriesService quizCategories)
+            ICategoriesService quizCategories,
+            IQuizzesRankingService ranking)
+            : base(ranking)
         {
             this.quizzes = quizzes;
             this.quizCategories = quizCategories;
@@ -25,17 +31,9 @@
 
         public ActionResult Index()
         {
-            var categories =
-                this.Cache.Get(
-                    "allCategories",
-                    () => this.quizCategories.GetAll()
-                        .To<QuizCategoryViewModel>()
-                        .ToList(),
-                    durationInSeconds: 30 * 60);
-
             var viewModel = new IndexViewModel
             {
-                Categories = categories
+                Categories = this.GetAllCategories()
             };
 
             return this.View(viewModel);
@@ -53,13 +51,38 @@
                 pager.TotalPages = this.quizzes.GetTotalPages(pager.CategoryName, QuizzesPerPage);
             }
 
-            var models = this.quizzes.GetPage(pager)
-                .To<QuizBasicViewModel>()
-                .ToList();
+            var rankingPeriod = new WeeklyRange();
+            var maxSolutions = this.GetMaxSolutions(rankingPeriod);
 
-            var maxQuizzesSolved = this.quizzes.GetMaxSolutionsCount();
-            QuizBasicViewModel.MaxTimesCompleted = maxQuizzesSolved;
+            var models = this.Ranking.GetQuizzesOrderedBySolutions(rankingPeriod)
+                .ApplyPaging(pager)
+                .To<QuizRankedModel>()
+                .ToArray();
 
+            var viewModel = new HomePageViewModel(maxSolutions, rankingPeriod, pager)
+            {
+                Quizzes = models,
+                Categories = this.GetTopCategories(),
+            };
+
+            return this.View(viewModel);
+        }
+
+        private IList<QuizCategoryViewModel> GetAllCategories()
+        {
+            var categories =
+                this.Cache.Get(
+                    "allCategories",
+                    () => this.quizCategories.GetAll()
+                        .To<QuizCategoryViewModel>()
+                        .ToList(),
+                    durationInSeconds: 30 * 60);
+
+            return categories;
+        }
+
+        private IList<QuizCategoryViewModel> GetTopCategories()
+        {
             var categories =
                 this.Cache.Get(
                     "topCategories",
@@ -68,14 +91,7 @@
                         .ToList(),
                     durationInSeconds: 15 * 60);
 
-            var viewModel = new DisplayPageViewModel
-            {
-                Quizzes = models,
-                Categories = categories,
-                Pager = pager
-            };
-
-            return this.View(viewModel);
+            return categories;
         }
     }
 }

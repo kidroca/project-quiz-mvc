@@ -4,16 +4,19 @@
     using System.Linq;
     using System.Web.Mvc;
     using Infrastructure.Mapping;
+    using Services.Data.Models.DateRanges;
     using Services.Data.Models.Search;
     using Services.Data.Protocols;
     using ViewModels.Quiz;
+    using ViewModels.Quiz.Ranking;
 
-    public class QuizzesController : BaseController
+    public class QuizzesController : BaseQuizController
     {
         private readonly IQuizzesGeneralService quizzes;
         private readonly ICategoriesService categories;
 
-        public QuizzesController(IQuizzesGeneralService quizzes, ICategoriesService categories)
+        public QuizzesController(IQuizzesGeneralService quizzes, IQuizzesRankingService ranking, ICategoriesService categories)
+            : base(ranking)
         {
             this.quizzes = quizzes;
             this.categories = categories;
@@ -22,31 +25,24 @@
         [HttpGet]
         public ActionResult Search(QuizSearchModel query)
         {
-            var results = new List<QuizBasicViewModel>();
+            var results = new List<QuizRankedModel>();
+            var range = new MonthlyRange();
 
             if (query != null && (query.Category != null || query.KeyPhrase != null))
             {
-                results = this.quizzes.SearchQuizzes(query)
-               .To<QuizBasicViewModel>()
-               .ToList();
+                results = this.Ranking
+                   .OrderByRanking(this.quizzes.SearchQuizzes(query), range)
+                   .To<QuizRankedModel>()
+                   .ToList();
             }
 
-            this.SetQuizMaxSolutions();
+            var maxSolutions = this.GetMaxSolutions(range);
 
-            var categoryItems = this.Cache.Get(
-                "categoriesSelect",
-                () => this.categories.GetAll().Select(c => new SelectListItem
-                {
-                    Text = c.Name,
-                    Value = c.Name
-                }).ToList(),
-                durationInSeconds: 20 * 60);
-
-            var page = new SearchPageViewModel
+            var page = new SearchPageViewModel(maxSolutions, range)
             {
                 QuizSearchModel = query,
                 Quizzes = results,
-                Categories = categoryItems
+                Categories = this.categories.GetCategoryOptions()
             };
 
             return this.View(page);
@@ -66,20 +62,12 @@
                 .To<QuizBasicViewModel>()
                 .ToList();
 
-            this.SetQuizMaxSolutions();
-
             if (models.Count == 0)
             {
                 return this.PartialView("_NoResultsPartial");
             }
 
             return this.PartialView("_QueryResultPartial", models);
-        }
-
-        private void SetQuizMaxSolutions()
-        {
-            var maxQuizzesSolved = this.quizzes.GetMaxSolutionsCount();
-            QuizBasicViewModel.MaxTimesCompleted = maxQuizzesSolved;
         }
     }
 }
