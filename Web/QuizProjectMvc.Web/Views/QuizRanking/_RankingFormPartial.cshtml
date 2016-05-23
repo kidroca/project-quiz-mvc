@@ -1,0 +1,25 @@
+﻿@{
+    var htmlAttributes = new {@class = "btn btn-default"};
+
+    var ajaxOptions = new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "ranking-results"
+    };
+}
+
+<div class="ranking-controls">
+    <div class="form-group col-md-3">
+        @Ajax.ActionLink("Today's Ranking", "Daily", null, ajaxOptions, htmlAttributes)
+    </div>
+    <div class="form-group col-md-3">
+        @Ajax.ActionLink("Weekly Ranking", "Weekly", null, ajaxOptions, htmlAttributes)
+    </div>
+    <div class="form-group col-md-3">
+        @Ajax.ActionLink($"{DateTime.Today.ToString("MMM")}'s Ranking", "Monthly", null, ajaxOptions, htmlAttributes)
+    </div>
+    <div class="form-group col-md-3">
+        @Ajax.ActionLink("All Time Ranking", "AllTIme", null, ajaxOptions, htmlAttributes)
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@model QuizProjectMvc.Web.ViewModels.PageModels.RankingPageViewModel
+
+@{
+    ViewBag.Title = "Quiz Rankings";
+    Layout = "~/Views/Shared/_StandardLayout.cshtml";
+}
+
+<section id="ranking-filter">
+    @Html.Partial("_RankingFormPartial")
+</section>
+
+<section id="ranking-results">
+
+    @*Todo: Add category ranking*@
+    @Html.Partial("_RankingResultsPartial", Model)
+    
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery-ajax")
+    @Scripts.Render("~/bundles/fb")
+}

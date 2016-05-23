@@ -254,11 +254,13 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BaseQuizController.cs" />
     <Compile Include="Controllers\ManageQuizController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
+    <Compile Include="Controllers\QuizRankingController.cs" />
     <Compile Include="Controllers\QuizzesController.cs" />
     <Compile Include="Controllers\SolveQuizController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -267,6 +269,7 @@
     </Compile>
     <Compile Include="Helpers\Filters\AjaxOnlyAction.cs" />
     <Compile Include="Helpers\HtmlExtensions.cs" />
+    <Compile Include="Helpers\QueryableExtensions.cs" />
     <Compile Include="Helpers\RazorEngineExtension.cs" />
     <Compile Include="ViewModels\Account\AccountEditableDetailsViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
@@ -278,10 +281,12 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
-    <Compile Include="ViewModels\Home\DisplayPageViewModel.cs" />
+    <Compile Include="ViewModels\PageModels\BaseQuizPageModel.cs" />
+    <Compile Include="ViewModels\PageModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\Notification.cs" />
-    <Compile Include="ViewModels\ProfileInformation\ProfilePageViewModel.cs" />
+    <Compile Include="ViewModels\PageModels\ProfilePageViewModel.cs" />
+    <Compile Include="ViewModels\PageModels\RankingPageViewModel.cs" />
     <Compile Include="ViewModels\ProfileInformation\PublicProfile.cs" />
     <Compile Include="ViewModels\ProfileInformation\PublicProfileDetailed.cs" />
     <Compile Include="ViewModels\ProfileInformation\CreatedQuizInfo.cs" />
@@ -295,7 +300,9 @@
     <Compile Include="ViewModels\Quiz\QuestionModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizBasicViewModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizCategoryViewModel.cs" />
-    <Compile Include="ViewModels\Quiz\SearchPageViewModel.cs" />
+    <Compile Include="ViewModels\Quiz\Ranking\QuizRankedCollection.cs" />
+    <Compile Include="ViewModels\Quiz\Ranking\QuizRankedModel.cs" />
+    <Compile Include="ViewModels\PageModels\SearchPageViewModel.cs" />
     <Compile Include="ViewModels\Quiz\Solve\QuizForSolvingModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
@@ -431,6 +438,7 @@
     <Content Include="Content\Slick\fonts\slick.eot" />
     <Content Include="Content\solve.less" />
     <Content Include="Content\admin\admin.less" />
+    <Content Include="Content\less\modules\_ranking-controls.less" />
     <None Include="Properties\PublishProfiles\ProjectQuiz - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ProjectQuiz - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\QuizProjectMvc - Web Deploy.pubxml" />
@@ -516,7 +524,7 @@
     <Content Include="Views\Shared\_HeaderPartial.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\QuizBasicViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\BaseQuizPageModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\BasicAccountInfoViewModel.cshtml" />
     <Content Include="Views\SolveQuiz\Solve.cshtml" />
     <Content Include="Views\ManageQuiz\Create.cshtml" />
@@ -545,10 +553,14 @@
     <Content Include="Views\Profile\_EditAvatarModalPartial.cshtml" />
     <Content Include="Views\Profile\_ProfileInfoWidgetPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\QuizRanking\_RankingResultsPartial.cshtml" />
+    <Content Include="Views\QuizRanking\_RankingFormPartial.cshtml" />
+    <Content Include="Views\QuizRanking\Classification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Views\BaseQuiz\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

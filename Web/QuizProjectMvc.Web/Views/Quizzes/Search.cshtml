@@ -11,10 +11,9 @@
 </section>
 
 <section id="search-results">
-    @foreach (var quiz in Model.Quizzes)
-    {
-        @Html.Partial("DisplayTemplates/QuizBasicViewModel", quiz);
-    }
+
+@Html.DisplayForModel("BaseQuizPageModel", Model)
+
 </section>
 
 @section Scripts {

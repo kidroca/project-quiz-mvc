@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheConstants.cs" />
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="ModelConstraints.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

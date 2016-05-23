@@ -88,11 +88,18 @@
     <Compile Include="Exceptions\CategoryManagementException.cs" />
     <Compile Include="Exceptions\QuizCreationException.cs" />
     <Compile Include="Exceptions\QuizEvaluationException.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\Account\BasicAccountInfoViewModel.cs" />
+    <Compile Include="Models\DateRanges\AllTime.cs" />
+    <Compile Include="Models\DateRanges\DateRange.cs" />
+    <Compile Include="Models\DateRanges\DailyRange.cs" />
+    <Compile Include="Models\DateRanges\MonthlyRange.cs" />
+    <Compile Include="Models\DateRanges\WeeklyRange.cs" />
     <Compile Include="Models\Pager.cs" />
     <Compile Include="Protocols\ICategoriesService.cs" />
     <Compile Include="Protocols\IQuizzesEvalService.cs" />
     <Compile Include="Protocols\IQuizzesGeneralService.cs" />
+    <Compile Include="Protocols\IQuizzesRankingService.cs" />
     <Compile Include="Protocols\IUsersService.cs" />
     <Compile Include="QuizzesEvalService.cs" />
     <Compile Include="QuizzesGeneralService.cs" />
@@ -103,6 +110,7 @@
     <Compile Include="Models\Evaluation\SolutionForEvaluationModel.cs" />
     <Compile Include="Models\Search\QuizSearchModel.cs" />
     <Compile Include="Models\Search\ResultOrder.cs" />
+    <Compile Include="QuizzesRankingService.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>
   <ItemGroup>

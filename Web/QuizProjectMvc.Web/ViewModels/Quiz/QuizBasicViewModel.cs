@@ -9,8 +9,6 @@
 
     public class QuizBasicViewModel : IMapFrom<Quiz>, IHaveCustomMappings
     {
-        public static int MaxTimesCompleted { get; set; }
-
         public int Id { get; set; }
 
         public string Title { get; set; }
@@ -29,11 +27,11 @@
         public virtual int QuestionsCount { get; set; }
 
         [Display(Name = "Times Completed")]
-        public virtual int TimesCompleted { get; set; }
+        public virtual int TotalTimesCompleted { get; set; }
 
         public bool IsPrivate { get; set; }
 
-        public double Rating => (this.TimesCompleted / (double)MaxTimesCompleted) * 10;
+        public bool HasMultipleSolutions { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
@@ -43,7 +41,11 @@
                     opt => opt.MapFrom(
                         dest => dest.NumberOfQuestions > 0 ? dest.NumberOfQuestions : dest.Questions.Count))
                 .ForMember(
-                    self => self.TimesCompleted,
+                    self => self.HasMultipleSolutions,
+                    opt => opt.MapFrom(
+                        dest => dest.NumberOfQuestions > 0 && dest.NumberOfQuestions + 10 < dest.Questions.Count))
+                .ForMember(
+                    self => self.TotalTimesCompleted,
                     opt => opt.MapFrom(model => model.Solutions.Count));
         }
     }

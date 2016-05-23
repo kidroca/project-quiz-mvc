@@ -1,6 +1,6 @@
 ﻿@using QuizProjectMvc.Web.Helpers
 @using QuizProjectMvc.Web.ViewModels
-@model QuizProjectMvc.Web.ViewModels.Home.DisplayPageViewModel
+@model QuizProjectMvc.Web.ViewModels.Home.HomePageViewModel
 @{
     ViewBag.Title = Model.Pager.CategoryName;
     Notification notification = null;
@@ -21,12 +21,8 @@
 }
 
 @*Main Content*@
-@foreach (var quiz in Model.Quizzes)
-{
-    @Html.DisplayFor(m => quiz)
-}
-
-<div class="pager">
+@Html.DisplayForModel("BaseQuizPageModel")
+<div class="pager end-line">
 
     @Html.Partial("_PagerPartial", Model.Pager, new ViewDataDictionary {
     { "Controller", Html.ControllerName()},

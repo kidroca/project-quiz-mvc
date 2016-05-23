@@ -67,7 +67,8 @@
                         from i in t.GetInterfaces()
                         where typeof(IHaveCustomMappings).IsAssignableFrom(t) &&
                               !t.IsAbstract &&
-                              !t.IsInterface
+                              !t.IsInterface &&
+                              t.GetConstructor(Type.EmptyTypes) != null
                         select (IHaveCustomMappings)Activator.CreateInstance(t)).ToArray();
 
             foreach (var map in maps)

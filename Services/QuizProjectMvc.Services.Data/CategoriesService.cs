@@ -1,19 +1,24 @@
 ﻿namespace QuizProjectMvc.Services.Data
 {
+    using System.Collections.Generic;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
+    using System.Web.Mvc;
     using Exceptions;
     using Protocols;
     using QuizProjectMvc.Data.Common;
     using QuizProjectMvc.Data.Models;
+    using Web;
 
     public class CategoriesService : ICategoriesService
     {
         private readonly IDbRepository<QuizCategory> categories;
+        private readonly ICacheService cache;
 
-        public CategoriesService(IDbRepository<QuizCategory> categories)
+        public CategoriesService(IDbRepository<QuizCategory> categories, ICacheService cache)
         {
             this.categories = categories;
+            this.cache = cache;
         }
 
         public IQueryable<QuizCategory> GetTop(int count)
@@ -80,6 +85,20 @@
         public IQueryable<QuizCategory> GetAll()
         {
             return this.categories.All().OrderBy(x => x.Name);
+        }
+
+        public IEnumerable<SelectListItem> GetCategoryOptions()
+        {
+            var categoryItems = this.cache.Get(
+                "categoriesSelect",
+                () => this.GetAll().Select(c => new SelectListItem
+                {
+                    Text = c.Name,
+                    Value = c.Name
+                }).ToList(),
+                durationInSeconds: 20 * 60);
+
+            return categoryItems;
         }
     }
 }
