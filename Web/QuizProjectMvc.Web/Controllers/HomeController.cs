@@ -55,6 +55,7 @@
             var maxSolutions = this.GetMaxSolutions(rankingPeriod);
 
             var models = this.Ranking.GetQuizzesOrderedBySolutions(rankingPeriod)
+                .Where(q => q.Category.Name == pager.CategoryName)
                 .ApplyPaging(pager)
                 .To<QuizRankedModel>()
                 .ToArray();

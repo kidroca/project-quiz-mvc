@@ -88,7 +88,6 @@
     <Compile Include="Exceptions\CategoryManagementException.cs" />
     <Compile Include="Exceptions\QuizCreationException.cs" />
     <Compile Include="Exceptions\QuizEvaluationException.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\Account\BasicAccountInfoViewModel.cs" />
     <Compile Include="Models\DateRanges\AllTime.cs" />
     <Compile Include="Models\DateRanges\DateRange.cs" />
