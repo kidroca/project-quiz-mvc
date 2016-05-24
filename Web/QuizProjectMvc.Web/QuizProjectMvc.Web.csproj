@@ -323,14 +323,14 @@
     <Content Include="Content\admin\admin.min.css">
       <DependentUpon>admin.css</DependentUpon>
     </Content>
-    <Content Include="Content\angular-toggle-switch-bootstrap.css" />
-    <Content Include="Content\angular-toggle-switch.css" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\styles\angular-toggle-switch\angular-toggle-switch-bootstrap.css" />
+    <Content Include="Content\styles\angular-toggle-switch\angular-toggle-switch.css" />
+    <Content Include="Content\styles\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\styles\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\styles\bootstrap\bootstrap.css" />
+    <Content Include="Content\styles\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\styles\font-awesome\font-awesome.css" />
+    <Content Include="Content\styles\font-awesome\font-awesome.min.css" />
     <Content Include="Content\images\avatars\EricCartman.png" />
     <Content Include="Content\images\avatars\Homer.png" />
     <Content Include="Content\images\avatars\Lisa.png" />
@@ -340,24 +340,24 @@
     <Content Include="Content\images\border-right-shadow.png" />
     <Content Include="Content\images\categories\EricCartman.png" />
     <Content Include="Content\images\google-btn.jpg" />
-    <Content Include="Content\index.css">
+    <Content Include="Content\styles\less\index.css">
       <DependentUpon>index.less</DependentUpon>
     </Content>
-    <Content Include="Content\index.min.css">
+    <Content Include="Content\styles\less\index.min.css">
       <DependentUpon>index.css</DependentUpon>
     </Content>
-    <Content Include="Content\Slick\ajax-loader.gif" />
-    <Content Include="Content\Slick\fonts\slick.svg" />
-    <Content Include="Content\Slick\slick-theme.css" />
-    <Content Include="Content\Slick\slick.css" />
-    <Content Include="Content\solve.css">
+    <Content Include="Content\styles\slick-carousel\ajax-loader.gif" />
+    <Content Include="Content\styles\slick-carousel\fonts\slick.svg" />
+    <Content Include="Content\styles\slick-carousel\slick-theme.css" />
+    <Content Include="Content\styles\slick-carousel\slick.css" />
+    <Content Include="Content\styles\less\pages\solve.css">
       <DependentUpon>solve.less</DependentUpon>
     </Content>
-    <Content Include="Content\solve.min.css">
+    <Content Include="Content\styles\less\pages\solve.min.css">
       <DependentUpon>solve.css</DependentUpon>
     </Content>
     <Content Include="Content\templates\add-question-template.html" />
-    <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="Content\styles\bootstrap\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -373,21 +373,20 @@
     <Content Include="Content\images\quiz-thumb.png" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
-    <Content Include="Content\buttons.less" />
-    <Content Include="Content\containers.less" />
-    <Content Include="Content\forms.less" />
-    <Content Include="Content\home.less" />
-    <Content Include="Content\index.less" />
-    <Content Include="Content\main.less" />
-    <Content Include="Content\quizzes.less" />
-    <Content Include="Content\shared.less" />
-    <Content Include="Content\widgets-blocks.less" />
-    <Content Include="Content\helpers\color-schemes\original.less" />
-    <Content Include="Content\helpers\colors-scheme.less" />
-    <Content Include="Content\helpers\fonts.less" />
-    <Content Include="Content\helpers\index.less" />
-    <Content Include="Content\helpers\mix-ins.less" />
-    <Content Include="Content\helpers\sizes.less" />
+    <Content Include="Content\styles\less\modules\buttons.less" />
+    <Content Include="Content\styles\less\modules\containers.less" />
+    <Content Include="Content\styles\less\modules\forms.less" />
+    <Content Include="Content\styles\less\pages\home.less" />
+    <Content Include="Content\styles\less\pages\main.less" />
+    <Content Include="Content\styles\less\modules\quizzes.less" />
+    <Content Include="Content\styles\less\pages\shared.less" />
+    <Content Include="Content\styles\less\modules\widgets-blocks.less" />
+    <Content Include="Content\styles\less\helpers\color-schemes\original.less" />
+    <Content Include="Content\styles\less\helpers\colors-scheme.less" />
+    <Content Include="Content\styles\less\helpers\fonts.less" />
+    <Content Include="Content\styles\less\helpers\index.less" />
+    <Content Include="Content\styles\less\helpers\mix-ins.less" />
+    <Content Include="Content\styles\less\helpers\sizes.less" />
     <Content Include="AppSettingsSecret.config" />
     <Content Include="Areas\Administration\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_HeaderPartial.cshtml" />
@@ -412,10 +411,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\styles\bootstrap\bootstrap.min.css.map" />
+    <Content Include="Content\styles\bootstrap\bootstrap.css.map" />
+    <Content Include="Content\styles\bootstrap\bootstrap-theme.min.css.map" />
+    <Content Include="Content\styles\bootstrap\bootstrap-theme.css.map" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -431,14 +430,15 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Content\Slick\slick.scss" />
-    <Content Include="Content\Slick\slick-theme.scss" />
-    <Content Include="Content\Slick\fonts\slick.woff" />
-    <Content Include="Content\Slick\fonts\slick.ttf" />
-    <Content Include="Content\Slick\fonts\slick.eot" />
-    <Content Include="Content\solve.less" />
+    <Content Include="Content\styles\slick-carousel\slick.scss" />
+    <Content Include="Content\styles\slick-carousel\slick-theme.scss" />
+    <Content Include="Content\styles\slick-carousel\fonts\slick.woff" />
+    <Content Include="Content\styles\slick-carousel\fonts\slick.ttf" />
+    <Content Include="Content\styles\slick-carousel\fonts\slick.eot" />
+    <Content Include="Content\styles\less\pages\solve.less" />
     <Content Include="Content\admin\admin.less" />
-    <Content Include="Content\less\modules\_ranking-controls.less" />
+    <Content Include="Content\styles\less\modules\ranking-controls.less" />
+    <Content Include="Content\styles\less\index.less" />
     <None Include="Properties\PublishProfiles\ProjectQuiz - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ProjectQuiz - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\QuizProjectMvc - Web Deploy.pubxml" />

@@ -1,0 +1,38 @@
+// ======== Imports =============
+@import "../helpers/index";
+
+.form-horizontal {
+    legend {
+        font-weight: normal;
+    }
+}
+
+.form-group {
+
+    .toggle-switch, a {
+        text-shadow: none;
+    }
+
+    .toggle-switch {
+        .switch-left {
+            background-color: @btnEndGradient;
+        }
+    }
+
+    .dropdown .dropdown-menu li a {
+        background: @btnStartGradient;
+        color: darken(@btnText, 35%);
+
+        &:hover, &:focus {
+            color: darken(@btnText, 20%);
+            .btn-grad-lighter();
+        }
+    }
+
+    &.required .control-label {
+        &:after {
+            content: "*";
+            color: #ff4d00;
+        }
+    }
+}

@@ -1,0 +1,177 @@
+﻿@import "../helpers/index";
+
+.container-fluid {
+    h1, h2 {
+        color: white;
+        .pageTitleShadow();
+    }
+}
+
+.carousel-container {
+    position: relative;
+    font-family: @font-thin;
+
+    #solve-quiz {
+        position: absolute;
+        bottom: 2%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 30%;
+        animation-name: fadeInDownBig;
+        animation-duration: 1s;
+        .box-shadow(@x: 7px; @y: 10px; @blur: 7px);
+    }
+
+    .progress {
+        margin-bottom: 2rem;
+        width: 70%;
+
+        .progress-bar {
+            background-color: @btnStartGradient;
+        }
+    }
+    // Todo: hover states
+    .question-slide {
+        position: relative;
+        background-color: @carousel-container-bg;
+        .box-shadow(@x: 0; @y: 0px; @blur: 8px; @color: @shadow);
+        margin: 0 5rem;
+
+        &::before, &::after {
+            z-index: -1;
+            position: absolute;
+            content: "";
+            bottom: 20px;
+            left: 8px;
+            width: 50%;
+            top: 70%;
+            background: @shadow;
+            .box-shadow(@x: 0; @y: 30px; @blur: 10px);
+            .transform(@property: skewY; @value: 175deg)
+        }
+
+        &::after {
+            .transform(@property: skewY; @value: 5deg);
+            right: 8px;
+            left: auto;
+        }
+
+        &:hover .slide-controls {
+            display: block;
+        }
+
+        .slide-title {
+            position: relative;
+            width: 100%;
+            margin: 0;
+            text-align: center;
+            color: @layout-headings-links;
+            border-left: 1px solid #fff;
+            padding: 1.5rem 1rem;
+            .linear-grad(@colors: @shadow, rgba(0, 0, 0, 0.1) 90%; @dir: 90deg);
+
+            &::before, &::after {
+                z-index: 5;
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 1px;
+                .linear-grad(@colors: transparent, rgba(255, 255, 255, 0.5); @dir: right);
+            }
+
+            &::before {
+                top: 0;
+                width: 100%;
+                .linear-grad(@colors: transparent, rgba(255, 255, 255, 0.5); @dir: right);
+            }
+
+            &::after {
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        .slide-controls {
+            display: none;
+            .absolute-center;
+            width: 97%;
+            height: 10%;
+
+            a {
+                display: inline-block;
+                height: 41px;
+                width: 41px;
+                color: transparent;
+            }
+
+            .control-left {
+                background: url('/Content/images/Carousel-icons.png') 0 0;
+            }
+
+            .control-right {
+                .transform(@property: rotate; @value: 180deg);
+                background: url('/Content/images/Carousel-icons.png') 0 0;
+            }
+
+            .control-search {
+                background: url('/Content/images/Carousel-icons.png') 0 81px;
+            }
+
+            .control-open {
+                background: url('/Content/images/Carousel-icons.png') 0 40px;
+            }
+        }
+
+        .answers {
+            position: relative;
+            width: 80%;
+            height: auto;
+            margin: 2rem 6rem;
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            font-family: @font-droid;
+            overflow-y: auto;
+            list-style-type: lower-alpha;
+
+            .answer {
+                display: list-item;
+                padding-left: 0.5rem;
+                cursor: pointer;
+                color: white;
+
+                .list-group-item {
+                    color: #333;
+                    font-family: @font-thin;
+
+                    &.selected {
+                        .btn-grad-lighter(93%);
+
+                        &:before {
+                            font: normal normal normal 24px/1 FontAwesome;
+                            color: #0B9900;
+                            content: "\f00c ";
+                            position: absolute;
+                            left: 1%;
+                            top: 15%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeInDownBig {
+    0% {
+        opacity: 0;
+        transform: translateY(-1000px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

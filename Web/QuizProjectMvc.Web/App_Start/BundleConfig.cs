@@ -78,21 +78,21 @@
         private static void RegisterStyles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/bootstrap.css",
-                "~/Content/ui-bootstrap-csp.css",
-                "~/Content/font-awesome.css",
-                "~/Content/index.css"));
+                "~/Content/styles/bootstrap/bootstrap.css",
+                "~/Content/styles/bootstrap/ui-bootstrap-csp.css",
+                "~/Content/styles/font-awesome/font-awesome.css",
+                "~/Content/styles/less/index.css"));
 
             bundles.Add(new StyleBundle("~/Content/toggle-switch").Include(
-                "~/Content/angular-toggle-switch-bootstrap.css",
-                "~/Content/angular-toggle-switch.css"));
+                "~/Content/styles/angular-toggle-switch/angular-toggle-switch-bootstrap.css",
+                "~/Content/styles/angular-toggle-switch/angular-toggle-switch.css"));
 
             bundles.Add(new StyleBundle("~/Content/slick-carousel").Include(
-                "~/Content/Slick/slick.css",
-                "~/Content/Slick/slick-theme.css"));
+                "~/Content/styles/slick-carousel/slick.css",
+                "~/Content/styles/slick-carousel/slick-theme.css"));
 
             bundles.Add(new StyleBundle("~/Content/solve").Include(
-               "~/Content/solve.css"));
+               "~/Content/styles/less/pages/solve.css"));
 
             bundles.Add(new StyleBundle("~/Content/adminStyle").Include(
                 "~/Content/admin/admin.css"));

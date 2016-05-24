@@ -10,5 +10,9 @@
   {
     "outputFile": "Content/admin/admin.css",
     "inputFile": "Content/admin/admin.less"
+  },
+  {
+    "outputFile": "Content/styles/less/index.css",
+    "inputFile": "Content/styles/less/index.less"
   }
 ]

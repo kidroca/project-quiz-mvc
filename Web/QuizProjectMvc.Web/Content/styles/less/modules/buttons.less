@@ -1,0 +1,92 @@
+// ======== Imports =============
+@import "../helpers/index";
+
+.btn {
+  color: @btnText;
+  border: 1px solid #000 !important;
+  border-radius: 5px;
+  .box-shadow(@y: 1px; @blur: 2px);
+  text-shadow: none;
+  transition: 0.25s;
+
+  &:focus {
+    background-position: 0;
+    color: inherit;
+  }
+
+  &:hover {
+    border-color: lighten(#000, 20%) !important;
+//    color: darken(@btnText, 20%);
+    background-position: 0;
+  }
+}
+
+.btn-primary, .btn-quiz {
+  .btn-grad();
+
+  &:hover {
+    .btn-grad-lighter();
+  }
+
+  &[disabled] {
+    .btn-grad-lighter(25%);
+
+    &:hover {
+      background: #888;
+    }
+  }
+}
+
+.btn-round {
+  border-radius: 20px;
+  .box-shadow(@x: 0; @y: 2px; @blur: 3px);
+
+  &:hover {
+    color:@btnText;
+  }
+}
+
+.btn-danger {
+   background-color: @btnDanger;
+
+   &:hover {
+//     background-color: lighten(@btnDanger, 15%);
+   }
+ }
+
+.btn-success {
+  background-color: @btnSuccess;
+
+  &:hover {
+//    background-color: lighten(@btnSuccess, 15%);
+  }
+}
+
+.btn-info {
+  background-color: @btnInfo;
+
+  &:hover, &:focus, &:active, &:target {
+    background-color: lighten(@btnInfo, 17%) !important;
+  }
+
+  &[disabled] {
+    background-color: lighten(@btnInfo, 35%);
+
+    &:hover {
+      background: #888;
+    }
+  }
+}
+
+.btn-google {
+    background-image: url("/Content/images/google-btn.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: -7px;
+    width: 134px;
+    height: 62px;
+}
+
+.fb-share {
+    background-color: rgb(57, 91, 155);
+}
