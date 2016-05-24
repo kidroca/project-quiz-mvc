@@ -16,15 +16,20 @@
 
         private static void RegisterScripts(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.js"));
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.validate*"));
-            bundles.Add(new ScriptBundle("~/bundles/jquery-ajax").Include("~/Scripts/jquery.unobtrusive-ajax.js"));
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap.js"));
+            // Enables es6 import/export modules
+            // bundles.Add(new ScriptBundle("~/bundles/module-loader").Include(
+            //    "~/Scripts/libs/transpilers/traceur.js",
+            //    "~/Scripts/libs/transpilers/es6-module-loader-dev.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/libs/jquery/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/libs/jquery/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery-ajax").Include("~/Scripts/libs/jquery/jquery.unobtrusive-ajax.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/libs/bootstrap/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                "~/Scripts/angular.js",
-                "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
-                "~/Scripts/ngStorage.js",
+                "~/Scripts/libs/angularjs/angular.js",
+                "~/Scripts/libs/angular-ui/ui-bootstrap-tpls.js",
+                "~/Scripts/libs/ng-storage/ngStorage.js",
                 "~/Scripts/app/filters/paging-filter.js",
                 "~/Scripts/app/services/error-handler.js"));
 
@@ -32,7 +37,7 @@
                 "~/Scripts/app/controllers/solve-quiz.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/manage-quiz").Include(
-                "~/Scripts/angular-toggle-switch.js",
+                "~/Scripts/libs/toggle-switch/angular-toggle-switch.js",
                 "~/Scripts/app/controllers/manage-quiz/base-controller.js",
                 "~/Scripts/app/controllers/manage-quiz/add-question.js"));
 
@@ -49,8 +54,8 @@
                 "~/Scripts/app/toggle-profile-edit.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/slick-carousel").Include(
-                "~/Scripts/Slick/slick.js",
-                "~/Scripts/Slick/angular-slick.js"));
+                "~/Scripts/libs/slick/slick.js",
+                "~/Scripts/libs/slick/angular-slick.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/google").Include(
                 "~/Scripts/google-analytics.js"));
@@ -60,15 +65,15 @@
                 "~/Scripts/app/set-language.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/about").Include(
-                "~/Scripts/angular.js",
-                "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
-                "~/Scripts/Slick/slick.js",
-                "~/Scripts/Slick/angular-slick.js",
+                "~/Scripts/libs/angularjs/angular.js",
+                "~/Scripts/libs/angular-ui/ui-bootstrap-tpls.js",
+                "~/Scripts/libs/slick/slick.js",
+                "~/Scripts/libs/slick/angular-slick.js",
                 "~/Scripts/app/controllers/about.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
-                "~/Scripts/ng-crop/ng-img-crop.js",
-                "~/Scripts/ng-file-upload-all.js",
+                "~/Scripts/libs/ng-crop/ng-img-crop.js",
+                "~/Scripts/libs/ng-file-upload/ng-file-upload-all.js",
                 "~/Scripts/app/admin/categoriesManager.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/fb").Include(

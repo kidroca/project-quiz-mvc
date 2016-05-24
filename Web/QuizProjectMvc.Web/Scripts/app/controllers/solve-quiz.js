@@ -1,4 +1,4 @@
-﻿(function () {
+﻿(function (angular, quiz) {
     'use strict';
 
     function SolveQuizController($http, errorHandler) {
@@ -66,4 +66,4 @@
 
     angular.module('solveQuiz', ['ui.bootstrap', 'slickCarousel', 'paging', 'errorHandler'])
 		.controller('SolveQuizController', ['$http', 'errorHandler', SolveQuizController]);
-})()
+})(window.angular, window.quiz)

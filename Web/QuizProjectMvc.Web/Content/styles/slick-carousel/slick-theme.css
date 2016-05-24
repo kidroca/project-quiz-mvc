@@ -2,7 +2,7 @@
 /* Slider */
 .slick-loading .slick-list
 {
-    background: #fff url('/Content/Slick/ajax-loader.gif') center center no-repeat;
+    background: #fff url('/Content/styles/slick-carousel/ajax-loader.gif') center center no-repeat;
 }
 
 /* Icons */
@@ -12,8 +12,8 @@
     font-weight: normal;
     font-style: normal;
 
-    src: url('/Content/Slick/fonts/slick.eot');
-    src: url('/Content/Slick/fonts/slick.eot?#iefix') format('embedded-opentype'), url('/Content/Slick/fonts/slick.woff') format('woff'), url('/Content/Slick/fonts/slick.ttf') format('truetype'), url('/Content/Slick/fonts/slick.svg#slick') format('svg');
+    src: url('/Content/styles/slick-carousel/fonts/slick.eot');
+    src: url('/Content/styles/slick-carousel/fonts/slick.eot?#iefix') format('embedded-opentype'), url('/Content/styles/slick-carousel/fonts/slick.woff') format('woff'), url('/Content/styles/slick-carousel/fonts/slick.ttf') format('truetype'), url('/Content/styles/slick-carousel/fonts/slick.svg#slick') format('svg');
 }
 /* Arrows */
 .slick-prev,

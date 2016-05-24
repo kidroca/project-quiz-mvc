@@ -54,7 +54,7 @@
     }
 
     <script>
-        var quiz = @Html.Raw(quizJson);
+        window.quiz = @Html.Raw(quizJson);
     </script>
 
     @Scripts.Render("~/bundles/angular")
