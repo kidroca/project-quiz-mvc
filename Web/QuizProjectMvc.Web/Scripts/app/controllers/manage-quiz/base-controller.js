@@ -1,5 +1,9 @@
-﻿(function () {
+﻿(function (angular) {
     'use strict';
+
+    if (!angular) {
+        throw new Error('Module base-controller.js is missing angular dependency');
+    }
 
     function ManageQuizController($scope, $http, $localStorage, $uibModal) {
         var self = this;
@@ -81,4 +85,4 @@
             '$uibModal',
             ManageQuizController
         ]);
-})()
+})(window.angular)

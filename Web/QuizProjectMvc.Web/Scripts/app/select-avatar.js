@@ -1,4 +1,10 @@
-﻿(function () {
+﻿(function ($) {
+    'use strict';
+
+    if (!$) {
+        throw new Error('Moudle select-avatar.js is missing jQuery');
+    }
+
     $(document).ready(function () {
         var selectedAvatarPlaceholder = $('#selected-avatar');
         var selectedAvatarFormField = $('#AvatarUrl');
@@ -18,4 +24,4 @@
             }
         });
     });
-})();
+})(window.jQuery);

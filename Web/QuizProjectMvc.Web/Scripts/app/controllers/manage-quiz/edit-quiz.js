@@ -1,5 +1,9 @@
-﻿(function () {
+﻿(function (angular) {
     'use strict';
+
+    if (!angular) {
+        throw new Error('Module edit-quiz.js is missing angular dependency');
+    }
 
     var EMPTY_QUIZ = {
         id: 0,
@@ -50,4 +54,4 @@
 			'errorHandler',
 			EditQuizController
 		]);
-})()
+})(window.angular)

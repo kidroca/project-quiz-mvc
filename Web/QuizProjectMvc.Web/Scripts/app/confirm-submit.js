@@ -1,5 +1,9 @@
-﻿(function() {
+﻿(function($) {
     'use strict';
+
+    if (!$) {
+        throw new Error('Moudle confirm-submit.js is missing jQuery');
+    }
 
     $(document).ready(function() {
         $('[data-confirm]').click(function(e) {
@@ -8,4 +12,4 @@
             }
         });
     });
-})();
+})(window.jQuery);

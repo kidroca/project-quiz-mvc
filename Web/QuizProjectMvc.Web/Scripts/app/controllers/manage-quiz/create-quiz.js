@@ -1,5 +1,9 @@
-﻿(function () {
+﻿(function (anuglar) {
     'use strict';
+
+    if (!angular) {
+        throw new Error('Module create-quiz.js is missing angular dependency');
+    }
 
     var EMPTY_QUIZ = {
     	title: '',
@@ -52,4 +56,4 @@
 			'errorHandler',
 			CreateQuizController
 		]);
-})()
+})(window.angular)

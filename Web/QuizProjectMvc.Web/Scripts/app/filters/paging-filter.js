@@ -1,5 +1,9 @@
-﻿(function () {
-	'use strict';
+﻿(function (angular) {
+    'use strict';
+
+    if (!angular) {
+        throw new Error('Module paging-filter.js is missing angular dependency');
+    }
 
 	function paging() {
 		return function (collection, page, size) {
@@ -14,4 +18,4 @@
 
 	angular.module('paging', [])
 		.filter('paging', [paging]);
-}());
+}(window.angular));

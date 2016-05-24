@@ -1,6 +1,10 @@
 ﻿(function (angular, quiz) {
     'use strict';
 
+    if (!angular || !quiz) {
+        throw new Error('Solve quiz module has missing dependencies');
+    }
+
     function SolveQuizController($http, errorHandler) {
         var self = this;
         console.log('Hello from Solve Quiz Controller');

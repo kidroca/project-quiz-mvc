@@ -1,4 +1,4 @@
-﻿(function () {
+﻿(function ($, window) {
     window.fbAsyncInit = function () {
         FB.init({
             appId: '461214147401172',
@@ -31,4 +31,4 @@
             });
         });
     });
-})();
+})(window.jQuery, window);

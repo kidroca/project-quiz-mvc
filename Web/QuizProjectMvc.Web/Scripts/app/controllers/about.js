@@ -1,5 +1,9 @@
-﻿(function () {
-	'use strict';
+﻿(function (angular) {
+    'use strict';
+
+    if (!angular) {
+        throw new Error('Module about.js is missing angular dependency');
+    }
 
 	function AboutController($http) {
 		var self = this;
@@ -19,4 +23,4 @@
 
 	angular.module('about', ['ui.bootstrap', 'slickCarousel'])
 		.controller('AboutController', [AboutController]);
-})()
+})(window.angular)
