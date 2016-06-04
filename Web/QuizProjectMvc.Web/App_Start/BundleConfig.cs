@@ -18,9 +18,8 @@
         {
             // Enables es6 import/export modules
             // bundles.Add(new ScriptBundle("~/bundles/module-loader").Include(
-            //    "~/Scripts/libs/transpilers/traceur.js",
-            //    "~/Scripts/libs/transpilers/es6-module-loader-dev.js"));
-
+            // "~/Scripts/libs/transpilers/traceur.js",
+            // "~/Scripts/libs/transpilers/es6-module-loader-dev.js"));
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/libs/jquery/jquery-{version}.js"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/libs/jquery/jquery.validate*"));
             bundles.Add(new ScriptBundle("~/bundles/jquery-ajax").Include("~/Scripts/libs/jquery/jquery.unobtrusive-ajax.js"));

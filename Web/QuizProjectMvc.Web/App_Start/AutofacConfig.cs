@@ -43,16 +43,18 @@
             // OPTIONAL: Enable property injection into action filters.
             builder.RegisterFilterProvider();
 
+            // Register SiteMap
+            builder.RegisterModule(new MvcSiteMapProviderModule());
+
             // Register services
             RegisterServices(builder);
-            RegisterSiteMap(builder);
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver =
-                new AutofacWebApiDependencyResolver((IContainer)container);
+                new AutofacWebApiDependencyResolver(container);
 
             // Setup global sitemap loader (required)
             MvcSiteMapProvider.SiteMaps.Loader = container.Resolve<ISiteMapLoader>();
@@ -84,13 +86,6 @@
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();
-        }
-
-        private static void RegisterSiteMap(ContainerBuilder builder)
-        {
-            // Register modules
-            builder.RegisterModule(new MvcSiteMapProviderModule()); // Required
-            //builder.RegisterModule(new MvcModule()); // Required by MVC. Typically already part of your setup (double check the contents of the module).
         }
     }
 }
