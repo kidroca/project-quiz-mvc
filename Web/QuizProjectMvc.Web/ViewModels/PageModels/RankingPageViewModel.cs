@@ -1,5 +1,7 @@
 ﻿namespace QuizProjectMvc.Web.ViewModels.PageModels
 {
+    using System.Collections.Generic;
+    using Quiz.Ranking;
     using Services.Data.Models.DateRanges;
 
     public class RankingPageViewModel : BaseQuizPageModel
@@ -8,5 +10,7 @@
             : base(maxSolutionsForRankingPeriod, dateRange)
         {
         }
+
+        public IEnumerable<CategoryRankedBySolutions> Categories { get; set; }
     }
 }

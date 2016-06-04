@@ -38,7 +38,7 @@
                                 @(Html.ActionLink<QuizzesController>("Search", c => c.Search(null)))
                             </li>
                             <li>
-                                @(Html.ActionLink<QuizRankingController>("Ranking", c => c.Classification()))
+                                @(Html.ActionLink<RankingController>("Ranking", c => c.Classification()))
                             </li>
                             @if (Request.IsAuthenticated)
                             {

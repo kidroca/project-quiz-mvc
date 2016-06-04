@@ -31,7 +31,7 @@
             if (query != null && (query.Category != null || query.KeyPhrase != null))
             {
                 results = this.Ranking
-                   .OrderByRanking(this.quizzes.SearchQuizzes(query), range)
+                   .OrderBySolutions(this.quizzes.SearchQuizzes(query), range)
                    .To<QuizRankedModel>()
                    .ToList();
             }

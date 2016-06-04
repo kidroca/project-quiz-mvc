@@ -9,6 +9,11 @@
     {
         IQueryable<QuizCategory> GetAll();
 
+        /// <summary>
+        /// Returns the top <see cref="count"/> of solutions ordered by solutions count descending
+        /// </summary>
+        /// <param name="count">The number of solutions to return</param>
+        /// <returns>Returns a queryable that can be additionally filtered before materializing</returns>
         IQueryable<QuizCategory> GetTop(int count);
 
         IQueryable<QuizCategory> FilterByPattern(string pattern);

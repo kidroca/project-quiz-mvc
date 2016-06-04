@@ -12,6 +12,12 @@
 
         IOrderedQueryable<Quiz> GetQuizzesOrderedBySolutions(DateRange range);
 
-        IOrderedQueryable<Quiz> OrderByRanking(IQueryable<Quiz> quizzes, DateRange range);
+        IOrderedQueryable<QuizCategory> GetCategoriesOrderedBySolutions(DateRange range);
+
+        IOrderedQueryable<Quiz> OrderBySolutions(IQueryable<Quiz> quizzesQuery, DateRange range);
+
+        IOrderedQueryable<QuizCategory> OrderBySolutions(
+            IQueryable<QuizCategory> categoriesQuery,
+            DateRange range);
     }
 }

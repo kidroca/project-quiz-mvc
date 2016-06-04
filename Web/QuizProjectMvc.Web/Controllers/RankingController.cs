@@ -1,5 +1,6 @@
 ﻿namespace QuizProjectMvc.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
     using Infrastructure.Mapping;
     using Services.Data.Models.DateRanges;
@@ -7,9 +8,9 @@
     using ViewModels.PageModels;
     using ViewModels.Quiz.Ranking;
 
-    public class QuizRankingController : BaseQuizController
+    public class RankingController : BaseQuizController
     {
-        public QuizRankingController(IQuizzesRankingService ranking)
+        public RankingController(IQuizzesRankingService ranking)
             : base(ranking)
         {
         }
@@ -55,7 +56,12 @@
             {
                 Quizzes = this.Ranking
                     .GetQuizzesOrderedBySolutions(range)
-                    .To<QuizRankedModel>()
+                    .To<QuizRankedBySolutions>()
+                    .ToList(),
+                Categories = this.Ranking
+                    .GetCategoriesOrderedBySolutions(range)
+                    .To<CategoryRankedBySolutions>()
+                    .ToList()
             };
 
             return pageModel;
