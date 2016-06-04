@@ -35,6 +35,7 @@ it will be associated with his account
 ## Todos:
 
 * Picture upload and review window - quiz avatar image
+* My Quizzes Page
 * Customized notifications
 * Activity indicators
 * Facebook external login
