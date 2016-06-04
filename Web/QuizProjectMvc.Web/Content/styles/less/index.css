@@ -32,6 +32,17 @@
 .pageTitleShadow {
   text-shadow: 1px 1px 1px black;
 }
+@keyframes neon-glow {
+  0% {
+    text-shadow: 0 0 0 #242f3c;
+  }
+  50% {
+    text-shadow: 0 0 3px #242f3c;
+  }
+  100% {
+    text-shadow: 0 0 0 #242f3c;
+  }
+}
 .btn {
   color: white;
   border: 1px solid #000 !important;
@@ -389,6 +400,24 @@
 .modal-avatar-container .user-avatar > img.selected {
   background: rgba(0, 0, 0, 0.05);
 }
+.page .current-route {
+  margin: 2.5rem 0 4rem;
+  font-size: 12px;
+}
+.page .current-route a {
+  color: #516375;
+  transition: color linear 0.3s;
+}
+.page .current-route a:hover {
+  color: #337ab7;
+}
+.page .current-route .sub-title {
+  padding: 1rem 0 0;
+  margin-bottom: 0;
+  color: #1f262d;
+  font-weight: normal;
+  text-shadow: 1px 1px 1px white;
+}
 body {
   position: relative;
   font-family: "Droid Sans", sans-serif;
@@ -526,10 +555,6 @@ a.home-link {
   color: #1f262d;
   font-weight: normal;
   text-shadow: 1px 1px 1px white;
-}
-.page .current-route {
-  margin: 2.5rem 0 4rem;
-  font-size: 12px;
 }
 .page .main-content {
   float: left;

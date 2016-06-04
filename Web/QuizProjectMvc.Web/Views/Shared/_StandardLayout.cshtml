@@ -10,9 +10,8 @@
     <div class="content">
         <div class="wrapper">
 
-            @*Todo Page Rout*@
             <div class="current-route">
-                <span>Current » <strong class="sub-title">Rout</strong></span>
+                <span>@Html.MvcSiteMap().SiteMapPath()</span>
             </div>
             <div class="container-fluid clearfix">
                 @RenderBody()

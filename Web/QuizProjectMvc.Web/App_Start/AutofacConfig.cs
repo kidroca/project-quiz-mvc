@@ -13,8 +13,10 @@
     using Data;
     using Data.Common;
     using Data.Models;
+    using DI.Autofac.Modules;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using MvcSiteMapProvider.Loader;
     using Services.Data.Protocols;
     using Services.Web;
 
@@ -43,12 +45,17 @@
 
             // Register services
             RegisterServices(builder);
+            RegisterSiteMap(builder);
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
+
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver =
                 new AutofacWebApiDependencyResolver((IContainer)container);
+
+            // Setup global sitemap loader (required)
+            MvcSiteMapProvider.SiteMaps.Loader = container.Resolve<ISiteMapLoader>();
         }
 
         private static void RegisterServices(ContainerBuilder builder)
@@ -77,6 +84,13 @@
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();
+        }
+
+        private static void RegisterSiteMap(ContainerBuilder builder)
+        {
+            // Register modules
+            builder.RegisterModule(new MvcSiteMapProviderModule()); // Required
+            //builder.RegisterModule(new MvcModule()); // Required by MVC. Typically already part of your setup (double check the contents of the module).
         }
     }
 }
