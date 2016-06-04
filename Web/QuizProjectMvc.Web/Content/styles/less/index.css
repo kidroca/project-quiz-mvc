@@ -235,15 +235,11 @@
 .questions-paging .pagination-page a {
   border-radius: 5px;
 }
+.question-list {
+  margin-bottom: 1rem;
+}
 .question-list .text-info {
   cursor: pointer;
-}
-.quiz-controls {
-  margin-top: 2rem;
-}
-.quiz-controls a,
-.quiz-controls input {
-  margin-left: 1rem;
 }
 .widget .categories ul {
   list-style: none;

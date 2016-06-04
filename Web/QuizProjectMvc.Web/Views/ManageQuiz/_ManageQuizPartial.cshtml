@@ -67,8 +67,8 @@
                                   ng-minlength="5"
                                   ng-focus="descFocus=true" ng-blur="descFocus=false"></textarea>
                         <div ng-show="(quizForm.description.$invalid && quizForm.description.$dirty) ||
-              (descFocus && !quiz.description)"
-                             class="alert alert-info">
+                                                                    (descFocus && !quiz.description)"
+                                                                            class="alert alert-info">
                             <p>Write a short description for the quiz.</p>
                         </div>
                     </div>
@@ -88,14 +88,15 @@
                 <!-- Answers Shuffle -->
                 <div class="form-group">
                     <label for="suffle" class="col-lg-2 control-label">Shuffle Answers</label>
-                    <div class="col-lg-2"
-                         uib-popover="If set to shuffle each time the quiz is started each question's answers will be reordered"
-                              popover-trigger="mouseover"
-                              popover-placement="right">
+                    <div class="col-lg-2" ng-mouseover="answersPopover=true" ng-mouseleave="answersPopover=false">
                         <toggle-switch name="suffle" id="suffle"
                                        ng-model="quiz.shuffleAnswers"
                                        on-label="shuffle"
-                                       off-label="off"></toggle-switch>
+                                       off-label="off"
+                                       uib-popover="{{ctrl.popups.ANSWERS_SHUFFLE}}"
+                                       popover-trigger="none"
+                                       popover-is-open="answersPopover"
+                                       popover-placement="right"></toggle-switch>
                     </div>
                 </div>
 
@@ -103,26 +104,27 @@
                 <div class="form-group">
                     <label for="quizQuestionsCount" class="col-lg-2 control-label">Questions per Solving</label>
                     <div class="col-lg-2"
-                         uib-popover="Add the number of questions to be available for solving, if you want to see different questions each time the quiz is solved input a smaller number here than the total number of questions you have added. You should add at least 3 questions"
-                                   popover-trigger="mouseover"
-                                   popover-placement="left">
+                        ng-mouseover="questionCount=true" ng-mouseleave="questionCount=false"
+                        uib-popover="{{ctrl.popups.NUMBER_OF_QUESTIONS}}"
+                        popover-trigger="none"
+                        popover-is-open="questionCount"
+                        popover-placement="top">
 
                             <input type="number" ng-model="quiz.numberOfQuestions"
                                    id="quizQuestionsCount"
                                    class="form-control" name="quizQuestionsCount"
                                    required min="3" max="100"
                                    ng-focus="questionsCountFocus=true"
-                                   ng-blur="questionsCountFocus=false"
-                                   >
+                                   ng-blur="questionsCountFocus=false">
                         </div>
                 </div>
 
                 <!-- Add Question -->
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <span uib-popover="Please add at least 3 questions!"
+                        <span uib-popover="{{ctrl.popups.ADD_QUESTIONS}}"
                               popover-trigger="none"
-                              popover-is-open="!ctrl.saveIsAvailable(quiz, quizForm) && !modalIsOpen"
+                              popover-is-open="quiz.questions.length < 3 && !modalIsOpen"
                               popover-placement="right">
                             <button class="btn btn-success" type="button"
                                     ng-click="ctrl.openQuesitonMenu()">
@@ -137,7 +139,9 @@
                     <label class="col-lg-2 control-label">Questions</label>
                     <div class="col-lg-10">
                         <ul class="list-group question-list" name="questions">
-                            <li class="list-group-item clearfix" ng-repeat="question in quiz.questions">
+                            <li class="list-group-item clearfix"
+                                ng-repeat="question in quiz.questions | paging:ctrl.pager.currentPage:ctrl.pager.pageSize">
+
                                 <em class="text-info hide-overflow" ng-bind="question.title"
                                     ng-click="ctrl.openQuesitonMenu(question)"
                                     uib-popover="This question has {{question.answers.length}} answers available"
@@ -154,8 +158,16 @@
                                         <span class="glyphicon glyphicon-remove"></span> Delete
                                     </button>
                                 </span>
+
                             </li>
                         </ul>
+
+                        <uib-pagination ng-show="quiz.questions.length > ctrl.pager.pageSize"
+                                        class="pull-right"
+                                        total-items="quiz.questions.length"
+                                        ng-model="ctrl.pager.currentPage"
+                                        items-per-page="ctrl.pager.pageSize"
+                                        max-size="10"></uib-pagination>
                     </div>
                 </div>
 

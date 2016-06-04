@@ -8,6 +8,12 @@
     function ManageQuizController($scope, $http, $localStorage, $uibModal) {
         var self = this;
 
+        self.popups = {
+            ANSWERS_SHUFFLE: 'If set to shuffle each time the quiz is started each question\'s answers will be reordered',
+            NUMBER_OF_QUESTIONS: 'Add the number of questions to be available for solving, if you want to see different questions each time the quiz is solved input a smaller number here than the total number of questions you have added. You should add at least 3 questions',
+            ADD_QUESTIONS: 'Please add at least 3 questions!'
+        };
+
         $http.get('/api/categories/getCategories')
             .then(function (res) {
                 console.log(res.data);
@@ -73,7 +79,12 @@
                 quiz.questions.length >= 3;
 
             return result;
-        }
+        };
+
+        self.pager = {
+            currentPage: 1,
+            pageSize: 5
+        };
     }
 
     angular.module('manageQuiz', [
