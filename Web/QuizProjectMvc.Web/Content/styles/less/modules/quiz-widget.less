@@ -1,0 +1,50 @@
+﻿@import "../helpers/index";
+
+.quiz-item {
+    margin-bottom: 4rem;
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    a {
+        &.btn {
+            color: white;
+        }
+    }
+
+    .quiz-controls {
+        margin-top: 2rem;
+
+        a, input {
+            margin-left: 1rem;
+        }
+    }
+
+    .quiz-details {
+        p {
+        }
+
+        .basic-info {
+
+            .text-left, .text-right {
+                width: 50%;
+            }
+        }
+
+        .additional-info {
+        }
+
+        .rating {
+            color: fade(@btnStartGradient, 50%);
+
+            .glyphicon-ok-sign {
+                color: @btnStartGradient;
+            }
+        }
+    }
+}

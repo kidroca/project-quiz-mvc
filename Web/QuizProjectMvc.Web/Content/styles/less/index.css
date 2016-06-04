@@ -205,27 +205,8 @@
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
   padding: 0 2.5rem;
 }
-.quiz-item {
-  margin-bottom: 4rem;
-}
-.quiz-item h1 {
-  font-size: 2em;
-}
-.quiz-item h2 {
-  font-size: 1.6em;
-}
-.quiz-item a.btn {
-  color: white;
-}
 .quiz-tooltip {
   color: #838383;
-}
-.quiz-details .basic-info .text-left,
-.quiz-details .basic-info .text-right {
-  width: 50%;
-}
-.quiz-details .quiz-rating {
-  color: #323a43;
 }
 .category-dropdown {
   cursor: pointer;
@@ -417,6 +398,35 @@
   color: #1f262d;
   font-weight: normal;
   text-shadow: 1px 1px 1px white;
+}
+.quiz-item {
+  margin-bottom: 4rem;
+}
+.quiz-item h1 {
+  font-size: 2em;
+}
+.quiz-item h2 {
+  font-size: 1.6em;
+}
+.quiz-item a.btn {
+  color: white;
+}
+.quiz-item .quiz-controls {
+  margin-top: 2rem;
+}
+.quiz-item .quiz-controls a,
+.quiz-item .quiz-controls input {
+  margin-left: 1rem;
+}
+.quiz-item .quiz-details .basic-info .text-left,
+.quiz-item .quiz-details .basic-info .text-right {
+  width: 50%;
+}
+.quiz-item .quiz-details .rating {
+  color: rgba(50, 58, 67, 0.5);
+}
+.quiz-item .quiz-details .rating .glyphicon-ok-sign {
+  color: #323a43;
 }
 body {
   position: relative;

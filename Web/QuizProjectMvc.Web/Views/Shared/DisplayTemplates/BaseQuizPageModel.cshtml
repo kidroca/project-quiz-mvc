@@ -49,7 +49,8 @@
                                     @quiz.Category.Name
                                 </a>
                             </p>
-                            <p title="Solved @quiz.GetRank(Model.DateRange) times during this week">
+                            <p title="Solved @quiz.GetRank(Model.DateRange) times during this week"
+                               class="rating">
                                 <label>Rating:</label>
 
                                 @{
@@ -61,8 +62,10 @@
 
                                     var maxSolutions = Model.MaxSolutionsForRankingPeriod;
                                     var rating = Math.Ceiling(
-                                        (double)score) / 
-                                        (maxSolutions > 0 ? maxSolutions : 1 * 10);
+                                        ((double)score) /
+                                        (maxSolutions > 0 ? maxSolutions : 1)
+                                        * 10);
+
 
                                     for (int i = ModelConstraints.MinRating; i <= rating; i++)
                                     {
