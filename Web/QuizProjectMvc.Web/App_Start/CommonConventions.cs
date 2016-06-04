@@ -1,34 +1,34 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
-
-namespace QuizProjectMvc.Web.DI
+namespace QuizProjectMvc.Web
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text.RegularExpressions;
+
     internal class CommonConventions
     {
-/// <summary>
-/// Registers all single types in a set of assemblies that meet the following criteria:
-/// 1) The name of the type matches the interface name (I[TypeName] = [TypeName]) or 
-/// 2) The name of the type matches the interface name + the suffix "Adapter" (I[TypeName] = [TypeName]Adapter)
-/// 3) The class does not have a string parameter in the constructor
-/// 4) The class is not decorated with the [ExcludeFromAutoRegistrationAttribute]
-/// </summary>
-/// <param name="registerMethod">The method on the DI container used to register a type to an abstraction. 
-/// Should be in the format (interfaceType, implementationType) => SomeMethod(interfaceType, implementationType) 
-/// or similar.</param>
-/// <param name="interfaceAssemblies">An array of assemblies to scan for the interface types. These assemblies 
-/// must be referenced within this project. Typically, you will just want to use the MvcSiteMapProvider 
-/// assembly unless you decide to use <see cref="CommonConventions"/> throughout your project.</param>
-/// <param name="implementationAssemblies">An array of assemblies to scan for the implementation types. 
-/// This array should contain all of the assemblies where you have defined types that will be injected 
-/// into MvcSiteMapProvider.</param>
-/// <param name="excludeTypes">An array of <see cref="System.Type"/> used to manually exclude types if 
-/// you intend to register them manually. Use this parameter if you want to inject your own implementation
-/// and therefore don't want the default type automatically registered.</param>
-/// <param name="excludeRegEx">A regular expression that can be used to exclude types based on the type 
-/// name (excluding the namespace name). All types that match the regular expression will be excluded.</param>
+        /// <summary>
+        /// Registers all single types in a set of assemblies that meet the following criteria:
+        /// 1) The name of the type matches the interface name (I[TypeName] = [TypeName]) or 
+        /// 2) The name of the type matches the interface name + the suffix "Adapter" (I[TypeName] = [TypeName]Adapter)
+        /// 3) The class does not have a string parameter in the constructor
+        /// 4) The class is not decorated with the [ExcludeFromAutoRegistrationAttribute]
+        /// </summary>
+        /// <param name="registerMethod">The method on the DI container used to register a type to an abstraction. 
+        /// Should be in the format (interfaceType, implementationType) => SomeMethod(interfaceType, implementationType) 
+        /// or similar.</param>
+        /// <param name="interfaceAssemblies">An array of assemblies to scan for the interface types. These assemblies 
+        /// must be referenced within this project. Typically, you will just want to use the MvcSiteMapProvider 
+        /// assembly unless you decide to use <see cref="CommonConventions"/> throughout your project.</param>
+        /// <param name="implementationAssemblies">An array of assemblies to scan for the implementation types. 
+        /// This array should contain all of the assemblies where you have defined types that will be injected 
+        /// into MvcSiteMapProvider.</param>
+        /// <param name="excludeTypes">An array of <see cref="System.Type"/> used to manually exclude types if 
+        /// you intend to register them manually. Use this parameter if you want to inject your own implementation
+        /// and therefore don't want the default type automatically registered.</param>
+        /// <param name="excludeRegEx">A regular expression that can be used to exclude types based on the type 
+        /// name (excluding the namespace name). All types that match the regular expression will be excluded.</param>
         public static void RegisterDefaultConventions(
             Action<Type, Type> registerMethod,
             Assembly[] interfaceAssemblies,
@@ -50,12 +50,12 @@ namespace QuizProjectMvc.Web.DI
                     foreach (var assembly in implementationAssemblies)
                         implementations.AddRange(GetImplementationsOfInterface(assembly, interfaceType).Where(implementation => !IsExcludedType(implementation, excludeTypes, excludeRegEx)).ToArray());
 
-// Prefer the default name ITypeName = TypeName
+                    // Prefer the default name ITypeName = TypeName
                     Type implementationType = implementations.Where(implementation => IsDefaultType(interfaceType, implementation)).FirstOrDefault();
 
                     if (implementationType == null)
                     {
-// Fall back on ITypeName = ITypeNameAdapter
+                        // Fall back on ITypeName = ITypeNameAdapter
                         implementationType = implementations.Where(implementation => IsAdapterType(interfaceType, implementation)).FirstOrDefault();
                     }
 
@@ -68,27 +68,27 @@ namespace QuizProjectMvc.Web.DI
             }
         }
 
-// For DI containers that allow the use of a multiple registration method calls for individual implementations of a given interface
+        // For DI containers that allow the use of a multiple registration method calls for individual implementations of a given interface
 
-/// <summary>
-/// Registers all of the types that implement the passed in interfaceTypes with the DI container so they can be 
-/// resolved as an <see cref="IEnumerable{T}"/> of values (where T is the interface type).
-/// 
-/// This overload is for DI containers that allow the use of multiple registration method calls, one for 
-/// each implementation of the interface.
-/// </summary>
-/// <param name="registerMethod">The method of the DI container used to register a single implementation, which will be 
-/// called one time per implementation found to register each implementation of the type. Should be in the format 
-/// (interfaceType, implementationType) => SomeMethod(interfaceType, implementationType) or similar.</param>
-/// <param name="interfaceTypes">The interfaces to limit the registration to. If empty, no types will be registered.</param>
-/// <param name="implementationAssemblies">An array of assemblies to scan for the implementation types. 
-/// This array should contain all of the assemblies where you have defined types that will be injected 
-/// into MvcSiteMapProvider.</param>
-/// <param name="excludeTypes">An array of <see cref="System.Type"/> used to manually exclude types if 
-/// you intend to register them manually. Use this parameter if you want to inject your own implementation
-/// and therefore don't want the default type automatically registered.</param>
-/// <param name="excludeRegEx">A regular expression that can be used to exclude types based on the type 
-/// name (excluding the namespace name). All types that match the regular expression will be excluded.</param>
+        /// <summary>
+        /// Registers all of the types that implement the passed in interfaceTypes with the DI container so they can be 
+        /// resolved as an <see cref="IEnumerable{T}"/> of values (where T is the interface type).
+        /// 
+        /// This overload is for DI containers that allow the use of multiple registration method calls, one for 
+        /// each implementation of the interface.
+        /// </summary>
+        /// <param name="registerMethod">The method of the DI container used to register a single implementation, which will be 
+        /// called one time per implementation found to register each implementation of the type. Should be in the format 
+        /// (interfaceType, implementationType) => SomeMethod(interfaceType, implementationType) or similar.</param>
+        /// <param name="interfaceTypes">The interfaces to limit the registration to. If empty, no types will be registered.</param>
+        /// <param name="implementationAssemblies">An array of assemblies to scan for the implementation types. 
+        /// This array should contain all of the assemblies where you have defined types that will be injected 
+        /// into MvcSiteMapProvider.</param>
+        /// <param name="excludeTypes">An array of <see cref="System.Type"/> used to manually exclude types if 
+        /// you intend to register them manually. Use this parameter if you want to inject your own implementation
+        /// and therefore don't want the default type automatically registered.</param>
+        /// <param name="excludeRegEx">A regular expression that can be used to exclude types based on the type 
+        /// name (excluding the namespace name). All types that match the regular expression will be excluded.</param>
         public static void RegisterAllImplementationsOfInterface(
             Action<Type, Type> registerMethod,
             Type[] interfaceTypes,
@@ -114,26 +114,26 @@ namespace QuizProjectMvc.Web.DI
             }
         }
 
-/// <summary>
-/// Registers all of the types that implement the passed in interfaceTypes with the DI container so they can be 
-/// resolved as an <see cref="IEnumerable{T}"/> of values (where T is the interface type).
-/// 
-/// This overload is for DI containers that require the use of a multiple registration method call for 
-/// all implementations a given interface.
-/// </summary>
-/// <param name="registerMethod">The method of the DI container used to register an array of implementations, which will be 
-/// called only one time to register all of the implementations of the type. Should be in the format 
-/// (interfaceType, implementationTypes) => SomeMethod(interfaceType, implementationTypes) or similar, where
-/// implementationTypes is a <see cref="System.Collections.Generic.IEnumerable{System.Type}"/>.</param>
-/// <param name="interfaceTypes">The interfaces to limit the registration to. If empty, no types will be registered.</param>
-/// <param name="implementationAssemblies">An array of assemblies to scan for the implementation types. 
-/// This array should contain all of the assemblies where you have defined types that will be injected 
-/// into MvcSiteMapProvider.</param>
-/// <param name="excludeTypes">An array of <see cref="System.Type"/> used to manually exclude types if 
-/// you intend to register them manually. Use this parameter if you want to inject your own implementation
-/// and therefore don't want the default type automatically registered.</param>
-/// <param name="excludeRegEx">A regular expression that can be used to exclude types based on the type 
-/// name (excluding the namespace name). All types that match the regular expression will be excluded.</param>
+        /// <summary>
+        /// Registers all of the types that implement the passed in interfaceTypes with the DI container so they can be 
+        /// resolved as an <see cref="IEnumerable{T}"/> of values (where T is the interface type).
+        /// 
+        /// This overload is for DI containers that require the use of a multiple registration method call for 
+        /// all implementations a given interface.
+        /// </summary>
+        /// <param name="registerMethod">The method of the DI container used to register an array of implementations, which will be 
+        /// called only one time to register all of the implementations of the type. Should be in the format 
+        /// (interfaceType, implementationTypes) => SomeMethod(interfaceType, implementationTypes) or similar, where
+        /// implementationTypes is a <see cref="System.Collections.Generic.IEnumerable{System.Type}"/>.</param>
+        /// <param name="interfaceTypes">The interfaces to limit the registration to. If empty, no types will be registered.</param>
+        /// <param name="implementationAssemblies">An array of assemblies to scan for the implementation types. 
+        /// This array should contain all of the assemblies where you have defined types that will be injected 
+        /// into MvcSiteMapProvider.</param>
+        /// <param name="excludeTypes">An array of <see cref="System.Type"/> used to manually exclude types if 
+        /// you intend to register them manually. Use this parameter if you want to inject your own implementation
+        /// and therefore don't want the default type automatically registered.</param>
+        /// <param name="excludeRegEx">A regular expression that can be used to exclude types based on the type 
+        /// name (excluding the namespace name). All types that match the regular expression will be excluded.</param>
         public static void RegisterAllImplementationsOfInterfaceSingle(
             Action<Type, IEnumerable<Type>> registerMethod,
             Type[] interfaceTypes,

@@ -12,7 +12,7 @@
             this.MaxSolutionsForRankingPeriod = maxSolutionsForRankingPeriod;
         }
 
-        public int MaxSolutionsForRankingPeriod { get; }
+        public int MaxSolutionsForRankingPeriod { get; set; }
 
         public DateRange DateRange { get; }
 

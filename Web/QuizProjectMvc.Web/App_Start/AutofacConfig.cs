@@ -13,7 +13,6 @@
     using Data;
     using Data.Common;
     using Data.Models;
-    using DI.Autofac.Modules;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using MvcSiteMapProvider.Loader;

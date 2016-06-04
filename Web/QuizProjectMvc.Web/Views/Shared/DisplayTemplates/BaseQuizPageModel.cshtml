@@ -53,8 +53,16 @@
                                 <label>Rating:</label>
 
                                 @{
-                                    var rating = Math.Ceiling((double) quiz.GetRank(Model.DateRange)/
-                                                              (Model.MaxSolutionsForRankingPeriod > 0 ? Model.MaxSolutionsForRankingPeriod : 1)*10);
+                                    var score = quiz.GetRank(Model.DateRange);
+                                    if (score > Model.MaxSolutionsForRankingPeriod)
+                                    {
+                                        Model.MaxSolutionsForRankingPeriod = score;
+                                    }
+
+                                    var maxSolutions = Model.MaxSolutionsForRankingPeriod;
+                                    var rating = Math.Ceiling(
+                                        (double)score) / 
+                                        (maxSolutions > 0 ? maxSolutions : 1 * 10);
 
                                     for (int i = ModelConstraints.MinRating; i <= rating; i++)
                                     {

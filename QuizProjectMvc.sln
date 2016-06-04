@@ -1,11 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{99FC36D3-D963-4263-BF69-8BD11F801E2B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0C12FAF3-85BC-43E1-ABB2-6799213942CB}"
+	ProjectSection(SolutionItems) = preProject
+		Web\QuizProjectMvc.Web\DI\CommonConventions.cs = Web\QuizProjectMvc.Web\DI\CommonConventions.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{8103CD5B-2A92-401C-A854-A31E0FD44DE6}"
 EndProject

@@ -1,20 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
-using System.Web.Hosting;
-using System.Reflection;
-using Autofac;
-using MvcSiteMapProvider;
-using MvcSiteMapProvider.Builder;
-using MvcSiteMapProvider.Caching;
-using MvcSiteMapProvider.Security;
-using MvcSiteMapProvider.Visitor;
-using MvcSiteMapProvider.Web.Mvc;
-using MvcSiteMapProvider.Web.UrlResolver;
-using MvcSiteMapProvider.Xml;
-
-namespace QuizProjectMvc.Web.DI.Autofac.Modules
+namespace QuizProjectMvc.Web
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using System.Web.Hosting;
+    using System.Web.Mvc;
+    using global::Autofac;
+    using MvcSiteMapProvider;
+    using MvcSiteMapProvider.Builder;
+    using MvcSiteMapProvider.Caching;
+    using MvcSiteMapProvider.Security;
+    using MvcSiteMapProvider.Visitor;
+    using MvcSiteMapProvider.Web.Mvc;
+    using MvcSiteMapProvider.Web.UrlResolver;
+    using MvcSiteMapProvider.Xml;
+
     public class MvcSiteMapProviderModule
         : global::Autofac.Module
     {
@@ -58,8 +58,8 @@ namespace QuizProjectMvc.Web.DI.Autofac.Modules
                 typeof(IDynamicNodeProvider)
             };
 
-// Matching type name (I[TypeName] = [TypeName]) or matching type name + suffix Adapter (I[TypeName] = [TypeName]Adapter)
-// and not decorated with the [ExcludeFromAutoRegistrationAttribute].
+            // Matching type name (I[TypeName] = [TypeName]) or matching type name + suffix Adapter (I[TypeName] = [TypeName]Adapter)
+            // and not decorated with the [ExcludeFromAutoRegistrationAttribute].
             CommonConventions.RegisterDefaultConventions(
                 (interfaceType, implementationType) => builder.RegisterType(implementationType).As(interfaceType).SingleInstance(),
                 new Assembly[] { siteMapProviderAssembly },
@@ -67,7 +67,7 @@ namespace QuizProjectMvc.Web.DI.Autofac.Modules
                 excludeTypes,
                 string.Empty);
 
-// Multiple implementations of strategy based extension points (and not decorated with [ExcludeFromAutoRegistrationAttribute]).
+            // Multiple implementations of strategy based extension points (and not decorated with [ExcludeFromAutoRegistrationAttribute]).
             CommonConventions.RegisterAllImplementationsOfInterface(
                 (interfaceType, implementationType) => builder.RegisterType(implementationType).As(interfaceType).SingleInstance(),
                 multipleImplementationTypes,
@@ -75,7 +75,7 @@ namespace QuizProjectMvc.Web.DI.Autofac.Modules
                 excludeTypes,
                 string.Empty);
 
-// Registration of internal controllers
+            // Registration of internal controllers
             CommonConventions.RegisterAllImplementationsOfInterface(
                 (interfaceType, implementationType) => builder.RegisterType(implementationType).As(interfaceType).AsSelf().InstancePerDependency(),
                 new Type[] { typeof(IController) },
@@ -83,12 +83,12 @@ namespace QuizProjectMvc.Web.DI.Autofac.Modules
                 new Type[0],
                 string.Empty);
 
-// Visibility Providers
+            // Visibility Providers
             builder.RegisterType<SiteMapNodeVisibilityProviderStrategy>()
                 .As<ISiteMapNodeVisibilityProviderStrategy>()
                 .WithParameter("defaultProviderName", string.Empty);
 
-// Pass in the global controllerBuilder reference
+            // Pass in the global controllerBuilder reference
             builder.RegisterInstance(ControllerBuilder.Current)
                    .As<ControllerBuilder>();
 
@@ -96,7 +96,7 @@ namespace QuizProjectMvc.Web.DI.Autofac.Modules
                 .As<IControllerTypeResolverFactory>()
                 .WithParameter("areaNamespacesToIgnore", new string[0]);
 
-// Configure Security
+            // Configure Security
             builder.RegisterType<AuthorizeAttributeAclModule>()
                 .Named<IAclModule>("authorizeAttributeAclModule");
             builder.RegisterType<XmlRolesAclModule>()
@@ -137,11 +137,11 @@ namespace QuizProjectMvc.Web.DI.Autofac.Modules
                     (p, c) => p.Name == "cacheDependency",
                     (p, c) => c.ResolveNamed<ICacheDependency>("cacheDependency1"));
 
-// Configure the visitors
+            // Configure the visitors
             builder.RegisterType<UrlResolvingSiteMapNodeVisitor>()
                    .As<ISiteMapNodeVisitor>();
 
-// Prepare for our node providers
+            // Prepare for our node providers
             builder.RegisterType<FileXmlSource>()
                 .Named<IXmlSource>("xmlSource1")
                 .WithParameter("fileName", absoluteFileName);
@@ -151,7 +151,7 @@ namespace QuizProjectMvc.Web.DI.Autofac.Modules
                 .WithParameter("attributesToIgnore", new string[0]);
 
 
-// Register the sitemap node providers
+            // Register the sitemap node providers
             builder.RegisterType<XmlSiteMapNodeProvider>()
                 .Named<ISiteMapNodeProvider>("xmlSiteMapNodeProvider1")
                 .WithParameter("includeRootNode", true)
@@ -175,14 +175,14 @@ namespace QuizProjectMvc.Web.DI.Autofac.Modules
                             c.ResolveNamed<ISiteMapNodeProvider>("reflectionSiteMapNodeProvider1")
                         });
 
-// Register the sitemap builders
+            // Register the sitemap builders
             builder.RegisterType<SiteMapBuilder>()
                 .Named<ISiteMapBuilder>("siteMapBuilder1")
                 .WithParameter(
                     (p, c) => p.Name == "siteMapNodeProvider",
                     (p, c) => c.ResolveNamed<ISiteMapNodeProvider>("siteMapNodeProvider1"));
 
-// Configure the builder sets
+            // Configure the builder sets
             builder.RegisterType<SiteMapBuilderSet>()
                    .Named<ISiteMapBuilderSet>("builderSet1")
                    .WithParameter("instanceName", "default")
