@@ -11,8 +11,8 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="@Model.Title" />
     <meta property="og:description" content="@Model.Description" />
-    <meta property="og:image" content="@Model.AvatarUrl"/>
-    <meta property="fb:app_id" content="461214147401172"/>
+    <meta property="og:image" content="@Model.AvatarUrl" />
+    <meta property="fb:app_id" content="461214147401172" />
 }
 
 <div ng-app="solveQuiz"
@@ -20,26 +20,39 @@
      class="carousel-container">
 
     <div class="progress progress-striped wrapper">
-        <div class="progress-bar" style="{{'width:' + ctrl.progress()+'%'}}"></div>
+        <div class="progress-bar" style="{{'width:'+ctrl.progress()+'%'}}"></div>
     </div>
 
-    <div slick settings="ctrl.slickConfig">
+    @*<div slick settings="ctrl.slickConfig">
         <div class="question-slide" ng-repeat="question in ctrl.quiz.Questions">
             <div ng-include="ctrl.questionTemplate">
             </div>
         </div>
-    </div>
+    </div>*@
 
-    <div class="wrapper">
-        <button id="solve-quiz"
-                ng-show="ctrl.progress() === 100"
-                ng-click="ctrl.submit(ctrl.quiz)"
-                class="btn btn-lg btn-info col-md-offset-3 col-md-6">
-            Ready
-        </button>
-    </div>
+    <div class="bb-custom-wrapper">
+        <div id="bb-blockbook" class="bb-bookblock">
+            <div class="bb-item" ng-repeat="question in ctrl.quiz.Questions">
+                <article class="quiz-question" ng-include="ctrl.questionTemplate">
+                </article>
+            </div>
+            @*<nav>
+                    <a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First page</a>
+                    <a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Previous</a>
+                    <a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Next</a>
+                    <a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Last page</a>
+                </nav>*@
+        </div>
 
-</div>
+        <div class="wrapper">
+            <button id="solve-quiz"
+                    ng-show="ctrl.progress() === 100"
+                    ng-click="ctrl.submit(ctrl.quiz)"
+                    class="btn btn-lg btn-info col-md-offset-3 col-md-6">
+                Ready
+            </button>
+        </div>
+    </div>
 
 @section styles
 {

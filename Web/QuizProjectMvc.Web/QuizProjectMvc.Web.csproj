@@ -343,6 +343,7 @@
     </Content>
     <Content Include="Content\styles\angular-toggle-switch\angular-toggle-switch-bootstrap.css" />
     <Content Include="Content\styles\angular-toggle-switch\angular-toggle-switch.css" />
+    <Content Include="Content\styles\bookblock\bookblock.css" />
     <Content Include="Content\styles\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\styles\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\styles\bootstrap\bootstrap.css" />
@@ -439,6 +440,8 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Scripts\libs\angularjs\angular-mocks.js" />
+    <Content Include="Scripts\libs\bookblock\bookblock.js" />
+    <Content Include="Scripts\libs\bookblock\modernizer-custom.js" />
     <Content Include="Scripts\libs\toggle-switch\angular-toggle-switch.js" />
     <Content Include="Scripts\libs\toggle-switch\angular-toggle-switch.min.js" />
     <Content Include="Scripts\libs\angular-ui\ui-bootstrap-tpls.js" />
@@ -462,6 +465,7 @@
     <Content Include="Content\styles\less\helpers\animations.less" />
     <Content Include="Content\styles\less\modules\quiz-widget.less" />
     <Content Include="Content\styles\less\modules\navigation.less" />
+    <Content Include="Content\styles\less\modules\question-widget.less" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
