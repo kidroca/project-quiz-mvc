@@ -117,8 +117,8 @@
                     var filePath = HttpContext.Current.Server
                         .MapPath("~/Content/images/categories/" + postedFile.FileName);
 
-                    postedFile.SaveAs(filePath);
                     // NOTE: To store in memory use postedFile.InputStream
+                    postedFile.SaveAs(filePath);
                 }
 
                 return this.Created("/Content/images/categories/", string.Empty);

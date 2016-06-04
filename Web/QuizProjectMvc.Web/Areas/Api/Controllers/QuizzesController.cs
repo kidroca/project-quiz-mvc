@@ -96,6 +96,25 @@
             }
         }
 
+        [HttpPost]
+        public IHttpActionResult Solve(SolutionForEvaluationModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest(this.ModelState);
+            }
+
+            try
+            {
+                var result = this.quizzesEvalService.SaveSolution(model, this.UserId);
+                return this.Ok(this.quizzesEvalService.EvaluateSolution(result));
+            }
+            catch (QuizEvaluationException ex)
+            {
+                return this.BadRequest(ex.Message);
+            }
+        }
+
         private void MapQuestions(EditQuizModel source, Quiz destination)
         {
             var existingQuestions = new List<Question>(destination.Questions);
@@ -132,25 +151,6 @@
 
                     this.Mapper.Map(question, existingQuestion);
                 }
-            }
-        }
-
-        [HttpPost]
-        public IHttpActionResult Solve(SolutionForEvaluationModel model)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest(this.ModelState);
-            }
-
-            try
-            {
-                var result = this.quizzesEvalService.SaveSolution(model, this.UserId);
-                return this.Ok(this.quizzesEvalService.EvaluateSolution(result));
-            }
-            catch (QuizEvaluationException ex)
-            {
-                return this.BadRequest(ex.Message);
             }
         }
     }

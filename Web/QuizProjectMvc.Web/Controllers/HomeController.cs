@@ -57,7 +57,7 @@
             var models = this.Ranking.GetQuizzesOrderedBySolutions(rankingPeriod)
                 .Where(q => q.Category.Name == pager.CategoryName)
                 .ApplyPaging(pager)
-                .To<QuizRankedModel>()
+                .To<QuizRankedBySolutions>()
                 .ToArray();
 
             var viewModel = new HomePageViewModel(maxSolutions, rankingPeriod, pager)

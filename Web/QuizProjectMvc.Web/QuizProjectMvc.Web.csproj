@@ -260,7 +260,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
-    <Compile Include="Controllers\QuizRankingController.cs" />
+    <Compile Include="Controllers\RankingController.cs" />
     <Compile Include="Controllers\QuizzesController.cs" />
     <Compile Include="Controllers\SolveQuizController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -300,7 +300,10 @@
     <Compile Include="ViewModels\Quiz\QuestionModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizBasicViewModel.cs" />
     <Compile Include="ViewModels\Quiz\QuizCategoryViewModel.cs" />
-    <Compile Include="ViewModels\Quiz\Ranking\QuizRankedCollection.cs" />
+    <Compile Include="ViewModels\Quiz\Ranking\IRankedObject.cs" />
+    <Compile Include="ViewModels\Quiz\Ranking\RankBySolutionsComparator.cs" />
+    <Compile Include="ViewModels\Quiz\Ranking\QuizRankedBySolutions.cs" />
+    <Compile Include="ViewModels\Quiz\Ranking\CategoryRankedBySolutions.cs" />
     <Compile Include="ViewModels\Quiz\Ranking\QuizRankedModel.cs" />
     <Compile Include="ViewModels\PageModels\SearchPageViewModel.cs" />
     <Compile Include="ViewModels\Quiz\Solve\QuizForSolvingModel.cs" />
@@ -555,9 +558,9 @@
     <Content Include="Views\Profile\_EditAvatarModalPartial.cshtml" />
     <Content Include="Views\Profile\_ProfileInfoWidgetPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\QuizRanking\_RankingResultsPartial.cshtml" />
-    <Content Include="Views\QuizRanking\_RankingFormPartial.cshtml" />
-    <Content Include="Views\QuizRanking\Classification.cshtml" />
+    <Content Include="Views\Ranking\_RankingResultsPartial.cshtml" />
+    <Content Include="Views\Ranking\_RankingFormPartial.cshtml" />
+    <Content Include="Views\Ranking\Classification.cshtml" />
     <Content Include="Scripts\libs\transpilers\es6-module-loader-dev.js.map" />
     <Content Include="Scripts\libs\transpilers\traceur.js.map" />
   </ItemGroup>
