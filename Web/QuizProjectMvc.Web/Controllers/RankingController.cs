@@ -61,6 +61,7 @@
                 Categories = this.Ranking
                     .GetCategoriesOrderedBySolutions(range)
                     .To<CategoryRankedBySolutions>()
+                    .Take(10)
                     .ToList()
             };
 

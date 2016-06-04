@@ -246,6 +246,9 @@
 .question-list .text-info {
   cursor: pointer;
 }
+.quiz-controls {
+  margin-top: 2rem;
+}
 .quiz-controls a,
 .quiz-controls input {
   margin-left: 1rem;
@@ -284,6 +287,13 @@
 }
 .widget .well > ul li {
   margin-top: 2rem;
+}
+.widget .well > ul li h4 {
+  text-shadow: none;
+  font-weight: bold;
+}
+.widget .well .solutions-counter {
+  color: #3e4c5a;
 }
 .single-article {
   position: relative;

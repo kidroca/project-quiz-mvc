@@ -4,110 +4,118 @@
 @using QuizProjectMvc.Web.ViewModels.Quiz.Ranking
 @model QuizProjectMvc.Web.ViewModels.PageModels.RankingPageViewModel
 
+<section class="main-content">
+    <h1>@Model.DateRange.RangeName Ranking</h1>
 
-<h1>@Model.DateRange.RangeName Ranking</h1>
 
+    @foreach (var quiz in Model.Quizzes)
+    {
+        <article class="quiz-item">
 
-@foreach (var quiz in Model.Quizzes)
-{
-    <article class="quiz-item">
+            <h1>
+                @(Html.ActionLink<SolveQuizController>(quiz.Title, c => c.Solve(quiz.Id)))
+            </h1>
 
-        <h1>
-            @(Html.ActionLink<SolveQuizController>(quiz.Title, c => c.Solve(quiz.Id)))
-        </h1>
+            <div class="single-article">
 
-        <div class="single-article">
+                @{
+                    string author = string.IsNullOrEmpty(quiz.CreatedBy.FirstName)
+                        ? quiz.CreatedBy.UserName
+                        : $"{quiz.CreatedBy.FirstName} {quiz.CreatedBy.LastName}";
+                }
 
-            @{
-                string author = string.IsNullOrEmpty(quiz.CreatedBy.FirstName)
-                    ? quiz.CreatedBy.UserName
-                    : $"{quiz.CreatedBy.FirstName} {quiz.CreatedBy.LastName}";
-            }
+                <section class="article-header">
+                    <h2 class="sub-title">
+                        Created by @(Html.ActionLink<ProfileController>(author, c => c.UserProfile(quiz.CreatedBy.Id))) on
+                        <time datetime="@quiz.CreatedOn.ToString("YYYY-MM-DD")" class="article-date">@quiz.CreatedOn.ToShortDateString()</time>
+                    </h2>
+                </section>
 
-            <section class="article-header">
-                <h2 class="sub-title">
-                    Created by @(Html.ActionLink<ProfileController>(author, c => c.UserProfile(quiz.CreatedBy.Id))) on
-                    <time datetime="@quiz.CreatedOn.ToString("YYYY-MM-DD")" class="article-date">@quiz.CreatedOn.ToShortDateString()</time>
-                </h2>
-            </section>
+                <section class="article-body clearfix">
 
-            <section class="article-body clearfix">
+                    <div class="article-image pull-left">
+                        @{
+                            // Todo: Change when quizzes can have their own avatars
+                            string imageUrl = string.IsNullOrEmpty(quiz.Category.AvatarUrl)
+                                ? "~/Content/images/quiz-thumb.png"
+                                : quiz.Category.AvatarUrl;
+                        }
 
-                <div class="article-image pull-left">
-                    @{
-                        // Todo: Change when quizzes can have their own avatars
-                        string imageUrl = string.IsNullOrEmpty(quiz.Category.AvatarUrl)
-                            ? "~/Content/images/quiz-thumb.png"
-                            : quiz.Category.AvatarUrl;
-                    }
+                        <img src="@Url.Content(imageUrl)" alt="article image" class="img-responsive">
+                    </div>
 
-                    <img src="@Url.Content(imageUrl)" alt="article image" class="img-responsive">
-                </div>
+                    <div class="article-content pull-left">
+                        <div class="quiz-details">
+                            <div class="basic-info">
+                                <p>
+                                    <label>Category:</label>
+                                    <a href="/Quizzes/Search?category=@quiz.Category.Name">
+                                        @quiz.Category.Name
+                                    </a>
+                                </p>
+                                <p title="Solved @quiz.GetRank(Model.DateRange) times during this period">
+                                    <label>Rating:</label>
 
-                <div class="article-content pull-left">
-                    <div class="quiz-details">
-                        <div class="basic-info">
-                            <p>
-                                <label>Category:</label>
-                                <a href="/Quizzes/Search?category=@quiz.Category.Name">
-                                    @quiz.Category.Name
-                                </a>
-                            </p>
-                            <p title="Solved @quiz.GetRank(Model.DateRange) times during this period">
-                                <label>Rating:</label>
+                                    @{
+                                        var rating = Math.Ceiling((double)quiz.GetRank(Model.DateRange) /
+                                                                  (Model.MaxSolutionsForRankingPeriod > 0 ? Model.MaxSolutionsForRankingPeriod : 1) * 10);
 
-                                @{
-                                    var rating = Math.Ceiling((double)quiz.GetRank(Model.DateRange) /
-                                                              (Model.MaxSolutionsForRankingPeriod > 0 ? Model.MaxSolutionsForRankingPeriod : 1) * 10);
+                                        for (int i = ModelConstraints.MinRating; i <= rating; i++)
+                                        {
+                                            <i title="@i" class="glyphicon glyphicon-ok-sign"></i>
+                                        }
 
-                                    for (int i = ModelConstraints.MinRating; i <= rating; i++)
-                                    {
-                                        <i title="@i" class="glyphicon glyphicon-ok-sign"></i>
+                                        for (int i = (int)rating + 1; i <= ModelConstraints.MaxRating; i++)
+                                        {
+                                            <i title="@i" class="glyphicon glyphicon-ok-circle"></i>
+                                        }
                                     }
-
-                                    for (int i = (int)rating + 1; i <= ModelConstraints.MaxRating; i++)
-                                    {
-                                        <i title="@i" class="glyphicon glyphicon-ok-circle"></i>
-                                    }
-                                }
-                            </p>
-                            <p>
-                                <label>@Model.DateRange.RangeName Times Completed:</label> 
-                                <span>@quiz.GetRank(Model.DateRange)</span>
-                            </p>
+                                </p>
+                                <p>
+                                    <label>@Model.DateRange.RangeName Times Completed:</label>
+                                    <span>@quiz.GetRank(Model.DateRange)</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </div>
+                </section>
+            </div>
 
-        <div class="clearfix quiz-controls">
-            @(Html.ActionLink<SolveQuizController>("Check It Out", c => c.Solve(quiz.Id), null, new
+            <div class="clearfix quiz-controls">
+                @(Html.ActionLink<SolveQuizController>("Check It Out", c => c.Solve(quiz.Id), null, new
         {
             @class = "btn btn-primary btn-round pull-right",
         }))
-            @if (User.IsInRole(GlobalConstants.AdministratorRoleName) ||
+                @if (User.IsInRole(GlobalConstants.AdministratorRoleName) ||
                      User.Identity.GetUserId() == quiz.CreatedBy.Id)
-            {
-                @(Html.ActionLink<ManageQuizController>("Edit", c => c.Edit(quiz.Id), null, new
+                {
+                    @(Html.ActionLink<ManageQuizController>("Edit", c => c.Edit(quiz.Id), null, new
             {
                 @class = "btn btn-info btn-round pull-right"
             }))
-                using (Html.BeginForm<ManageQuizController>(c => c.Delete(quiz.Id), FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.HttpMethodOverride(HttpVerbs.Delete)
-                    @Html.HiddenFor(m => quiz.Id)
+                    using (Html.BeginForm<ManageQuizController>(c => c.Delete(quiz.Id), FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                        @Html.HiddenFor(m => quiz.Id)
 
-                    <input type="submit" value="Delete" class="btn btn-danger btn-round pull-right"
-                           data-confirm="Are you sure you want to delete the quiz?" />
+                        <input type="submit" value="Delete" class="btn btn-danger btn-round pull-right"
+                               data-confirm="Are you sure you want to delete the quiz?" />
+                    }
+
                 }
 
-            }
+                <button class="btn btn-round pull-right fb-share" data-share-url="/Quizzes/Solve?id=@quiz.Id">
+                    <i class="fa fa-facebook"></i> Share
+                </button>
+            </div>
+        </article>
+    }
+</section>
 
-            <button class="btn btn-round pull-right fb-share" data-share-url="/Quizzes/Solve?id=@quiz.Id">
-                <i class="fa fa-facebook"></i> Share
-            </button>
-        </div>
-    </article>
-}
+<!-- Side Content-->
+<section class="sidebar side-content">
+    <aside>
+        @Html.Partial("_RankingCategoriesPartial", Model)
+    </aside>
+</section>

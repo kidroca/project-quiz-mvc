@@ -1,0 +1,24 @@
+﻿@model QuizProjectMvc.Web.ViewModels.PageModels.RankingPageViewModel
+
+<div class="widget">
+    <h1>Categories</h1>
+    <div class="well categories">
+        <ul>
+            @foreach (var category in Model.Categories)
+            {
+                var solutions = @category.GetRank(Model.DateRange);
+                var quizzes = solutions > 1 ? "quizzes": "quiz";
+                <li>
+                    <h4 title="People sovled @solutions @quizzes in this category">
+                        <a href="/Quizzes/Search?category=@category.Name">
+                            <img width="48" src="@category.AvatarUrl" alt="category avatar"/>
+                            @category.Name:
+                        </a>
+                        
+                        <span class="solutions-counter">@solutions</span>
+                    </h4>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

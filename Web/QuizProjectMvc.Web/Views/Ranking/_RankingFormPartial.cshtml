@@ -10,16 +10,20 @@
 }
 
 <div class="ranking-controls">
-    <div class="form-group col-md-3">
-        @Ajax.ActionLink("Today's Ranking", "Daily", null, ajaxOptions, htmlAttributes)
+    <div class="col-md-6">
+        <div class="form-group col-sm-6">
+            @Ajax.ActionLink("Today's Ranking", "Daily", null, ajaxOptions, htmlAttributes)
+        </div>
+        <div class="form-group col-sm-6">
+            @Ajax.ActionLink("Weekly Ranking", "Weekly", null, ajaxOptions, htmlAttributes)
+        </div>
     </div>
-    <div class="form-group col-md-3">
-        @Ajax.ActionLink("Weekly Ranking", "Weekly", null, ajaxOptions, htmlAttributes)
-    </div>
-    <div class="form-group col-md-3">
-        @Ajax.ActionLink($"{DateTime.Today.ToString("MMM")}'s Ranking", "Monthly", null, ajaxOptions, htmlAttributes)
-    </div>
-    <div class="form-group col-md-3">
-        @Ajax.ActionLink("All Time Ranking", "AllTIme", null, ajaxOptions, htmlAttributes)
+    <div class="col-md-6">
+        <div class="form-group col-sm-6">
+            @Ajax.ActionLink($"{DateTime.Today.ToString("MMM")}'s Ranking", "Monthly", null, ajaxOptions, htmlAttributes)
+        </div>
+        <div class="form-group col-sm-6">
+            @Ajax.ActionLink("All Time Ranking", "AllTIme", null, ajaxOptions, htmlAttributes)
+        </div>
     </div>
 </div>
