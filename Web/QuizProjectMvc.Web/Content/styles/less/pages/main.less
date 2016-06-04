@@ -31,49 +31,6 @@ a {
     #logo {
       margin-bottom: 3rem;
     }
-
-    // Todo: fix hover effect on open dropdowns
-    > nav.navbar.navbar-inverse {
-      border: 0;
-      background: inherit;
-
-      a {
-        color: @layout-headings-links;
-        padding: 1.5rem 1rem;
-
-        &:hover, a.selected {
-          color: @nav-link-hovered;
-          background: inherit;
-        }
-      }
-
-      .container-fluid {
-
-        li.dropdown {
-          &:hover .dropdown-menu {
-            display: block;
-          }
-
-          .dropdown-menu {
-            display: none;
-            background-color: @panel-gradient-end;
-
-            margin-top: 0;
-            padding: 0 3rem 2rem;
-            width: 22rem;
-
-            border: 0;
-            border-left: 1px solid lighten(@panel-gradient-end, 10%);
-            border-radius: 0 0 15px 15px;
-            .box-shadow(@y: 1px, @blur: 1px, @color:@shadow);
-
-            a {
-              padding: 1rem 0;
-            }
-          }
-        }
-      }
-    }
   }
 }
 

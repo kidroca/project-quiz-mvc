@@ -461,6 +461,7 @@
     <Content Include="Content\styles\less\modules\current-route.less" />
     <Content Include="Content\styles\less\helpers\animations.less" />
     <Content Include="Content\styles\less\modules\quiz-widget.less" />
+    <Content Include="Content\styles\less\modules\navigation.less" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
