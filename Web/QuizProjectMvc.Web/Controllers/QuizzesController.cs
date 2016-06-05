@@ -25,14 +25,14 @@
         [HttpGet]
         public ActionResult Search(QuizSearchModel query)
         {
-            var results = new List<QuizRankedModel>();
+            var results = new List<QuizRankedBySolutions>();
             var range = new MonthlyRange();
 
             if (query != null && (query.Category != null || query.KeyPhrase != null))
             {
                 results = this.Ranking
                    .OrderBySolutions(this.quizzes.SearchQuizzes(query), range)
-                   .To<QuizRankedModel>()
+                   .To<QuizRankedBySolutions>()
                    .ToList();
             }
 
