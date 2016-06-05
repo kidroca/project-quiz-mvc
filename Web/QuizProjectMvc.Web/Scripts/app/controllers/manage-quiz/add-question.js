@@ -52,6 +52,16 @@
             }
 
             self.question.answers.push(answer);
+            var last = self.question.answers.length - 1;
+
+            setTimeout(function () {
+                try {
+                    document.getElementsByClassName('answer-field')[last].focus();
+                } catch (e) {
+                    
+                }
+                
+            }, 100);
         };
 
         self.removeAnswer = function removeAnswer(index) {

@@ -113,7 +113,7 @@
                             <input type="number" ng-model="quiz.numberOfQuestions"
                                    id="quizQuestionsCount"
                                    class="form-control" name="quizQuestionsCount"
-                                   required min="3" max="100"
+                                   required min="3" max="{{quiz.questions.length}}"
                                    ng-focus="questionsCountFocus=true"
                                    ng-blur="questionsCountFocus=false">
                         </div>

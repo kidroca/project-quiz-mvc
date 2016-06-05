@@ -6,9 +6,11 @@
 <div class="modal-body">
     <ng-form name="questionForm" class="form-horizontal" novalidate>
         <fieldset>
+
+            <!-- Title -->
             <div class="form-group">
-                <label for="title" class="col-lg-2 control-label">Question</label>
-                <div class="col-lg-10">
+                <label for="title" class="col-md-2 control-label">Question</label>
+                <div class="col-md-10">
                     <textarea ng-model="ctrl.question.title" id="title"
                               class="form-control" name="title" placeholder="Enter the question"
                               required ng-minlength="5"
@@ -21,19 +23,20 @@
                 </div>
             </div>
 
+            <!-- Answers -->
             <div ng-repeat="answer in ctrl.question.answers" class="form-group">
                 <label for="answerText{{$index}}"
                        ng-click="ctrl.markCorrect($index)"
-                       class="col-lg-2 control-label answer-mark"
+                       class="col-md-2 control-label answer-mark"
                        ng-class="{correct: answer.isCorrect}">
                     <i class="fa fa-check" ng-if="answer.isCorrect"></i>
                     <a href ng-bind="ctrl.letters[$index]">
                     </a>
                 </label>
-                <div ng-form name="answerForm" class="col-lg-10">
+                <div ng-form name="answerForm" class="col-md-10">
                     <div class="input-group">
                         <input type="text" ng-model="answer.text" id="answerText{{$index}}"
-                               class="form-control" name="answerText{{$index}}" placeholder="Answer"
+                               class="form-control answer-field" name="answerText{{$index}}" placeholder="Answer"
                                required ng-minlength="2"
                                ng-focus="answer.focus=true" ng-blur="answer.focus=false">
                         <span class="input-group-btn">
@@ -50,8 +53,10 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Add Answer Button -->
             <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
+                <div class="col-md-10 col-md-offset-2">
                     <span uib-popover="Please, assign at least 2 answers and mark the correct answer!"
                           popover-trigger="none"
                           popover-is-open="!ctrl.saveIsAvailable(questionForm)"
