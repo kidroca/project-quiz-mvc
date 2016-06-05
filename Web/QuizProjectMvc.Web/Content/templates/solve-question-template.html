@@ -1,14 +1,8 @@
 ﻿<h3 class="slide-title">{{question.Title}}</h3>
 
-<ol class="answers">
-    <li ng-repeat="answer in question.Answers" class="answer"
-        ng-click="question.selected=$index; ctrl.next()">
-        <span class="list-group-item"
-              ng-class="{selected: question.selected === $index}">{{answer.Text}}</span>
+<ol class="answers paper list-group">
+    <li ng-repeat="answer in question.Answers" class="answer list-group-item"
+        ng-click="ctrl.select(question, $index)">
+        <span ng-class="{selected: question.selected === $index}">{{answer.Text}}</span>
     </li>
 </ol>
-
-<div class="slide-controls clearfix">
-    <a href="#" class="control-left" ng-click="ctrl.prev()">left</a>
-    <a href="#" class="control-right pull-right" ng-click="ctrl.next()">right</a>
-</div>

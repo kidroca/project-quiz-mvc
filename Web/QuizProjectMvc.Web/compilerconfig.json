@@ -14,5 +14,9 @@
   {
     "outputFile": "Content/styles/less/index.css",
     "inputFile": "Content/styles/less/index.less"
+  },
+  {
+    "outputFile": "Content/styles/less/pages/solve.css",
+    "inputFile": "Content/styles/less/pages/solve.less"
   }
 ]

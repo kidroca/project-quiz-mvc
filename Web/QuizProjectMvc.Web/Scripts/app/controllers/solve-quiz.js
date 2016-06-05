@@ -8,48 +8,41 @@
     function SolveQuizController($http, errorHandler) {
         var self = this;
 
-        console.log('Hello from Solve Quiz Controller');
-        console.log(quiz);
+        self._init = _init;
 
-        self.questionTemplate = '/Content/templates/solve-question-template.html';
-        self.quiz = quiz;
-        self.questionsCount = quiz.Questions.length;
-        self.page = 1;
-        self.questionsPerPage = 2;
+        /**
+         * Mark the selected answer of quiz a question
+         * @param {object} question 
+         * @param {int} selectedAnswerIndex 
+         * @returns {void} 
+         */
+        self.select = function (question, selectedAnswerIndex) {
+            self.progress();
 
+            question.selected = selectedAnswerIndex;
+
+            self.$questionsPaging.find('.active').addClass('answered');
+
+            self.pager.currentPage++;
+            self.flip(self.pager.currentPage);
+        }
+
+        /**
+         * Updates the progressbar position
+         * @returns {number} progress percentage 
+         */
         self.progress = function progress() {
-            var total = self.quiz.Questions.length,
-                selected = self.quiz.Questions.filter(function(question) {
-                    return question.selected !== undefined;
-                }).length;
+            var total = self.questionsCount;
+            var answered = self.quiz.Questions.filter(function(q) {
+                return q.selected >= 0;
+            }).length;
 
-            var completedInPercent = (selected / total) * 100;
+            var completedInPercent = (answered / total) * 100;
+
+            self.$progressBar.style = `width:${completedInPercent}%;`;
 
             return completedInPercent;
         };
-
-        self.slickConfig = {
-            infinite: false,
-            arrows: true,
-            appendArrows: '.slide-controls',
-            prevArrow: '.control-left',
-            nextArrow: '.control-right',
-            centerMode: true,
-            centerPadding: '250px 35px',
-            slidesToShow: 1,
-            method: {},
-            responsive: [
-                {
-                    breakpoint: 740,
-                    settings: {
-                        arrows: false,
-                        centerMode: true,
-                        centerPadding: '0',
-                        slidesToShow: 1
-                    }
-                }
-            ]
-        }
 
         self.submit = function submit() {
             var data = {
@@ -71,31 +64,52 @@
                 }, errorHandler.handleSoveQuizError);
         }
 
-        self.next = function next() {
-            if (self.page < self.questionsCount - 1) self.page++;
-            else return;
+        self.flip = function (toPageNumber) {
 
-            flip(self.bookBlock.next.bind(self.bookBlock));
+            setTimeout(function() {
+                self.bookBlock.jump(toPageNumber);
+            }, 60);
         }
 
-        self.prev = function prev() {
-            if (self.page > 1) self.page--;
-            else return;
+        self._init();
+    }
 
-            flip(self.bookBlock.prev.bind(self.bookBlock));
-        }
+    /**
+     * Initializes the properties of the SolveQuizController
+     * @private
+     */
+    function _init() {
+        var self = this;
 
-        var $book = document.getElementById('bb-blockbook');
-        setTimeout(function() {
-            self.bookBlock = new BookBlock($book, {
+        console.log('Hello from Solve Quiz Controller');
+        console.log(quiz);
+
+        self.questionTemplate = '/Content/templates/solve-question-template.html';
+        self.quiz = quiz;
+        self.questionsCount = quiz.Questions.length;
+        self.pager = {
+            currentPage: 1,
+            pageSize: 1,
+            totalPages: self.questionsCount
+        };
+
+        self.$progressBar = document.getElementById('progress');
+        self.answeredQuestionsCount = 0;
+
+        // This is delayed becouse appearanlty the html hasn't been loaded yet
+        self.$book = document.getElementById('bb-blockbook');
+        $(document).ready(function() {
+            self.bookBlock = new BookBlock(self.$book, {
                 speed: 500,
                 shadowSides: 0.8,
                 shadowFlip: 0.7
-            }, 1000);
+            });
+
+            self.$questionsPaging = $('.pagination');
         });
     }
 
-    function flip(callback) {
+    function flipBooklet(callback) {
         setTimeout(callback, 60);
     }
 

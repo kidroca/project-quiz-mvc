@@ -12,6 +12,7 @@
     font-family: @font-thin;
 
     #solve-quiz {
+        z-index: 200;
         position: absolute;
         bottom: 2%;
         left: 0;
@@ -23,12 +24,43 @@
         .box-shadow(@x: 7px; @y: 10px; @blur: 7px);
     }
 
-    .progress {
-        margin-bottom: 2rem;
-        width: 70%;
+    .indicators {
+        position: relative;
+        height: 10rem;
 
-        .progress-bar {
-            background-color: @btnStartGradient;
+        .progress {
+            width: 70%;
+
+            .progress-bar {
+                background-color: @btnStartGradient;
+            }
+        }
+
+        .questions-paging {
+            font-family: @font-droid;
+            margin: 0;
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+
+            li {
+                & > {
+                    float: left;
+                }
+
+                a:first-child, a:last-child {
+                    border-radius: 4px;
+                }
+            }
+
+            .answered {
+                a {
+                    color: white;
+                    background-color: #1C232B;
+                }
+            }
         }
     }
 }
