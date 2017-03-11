@@ -1,4 +1,4 @@
-﻿(function(angular, Bookblock, quiz) {
+﻿(function(angular, quiz) {
     'use strict';
 
     if (!angular || !quiz) {
@@ -21,14 +21,16 @@
          * @returns {void} 
          */
         self.select = function (question, selectedAnswerIndex) {
-            self.progress();
+
+            var hasPrevSelected = angular.isDefined(question.selected);
 
             question.selected = selectedAnswerIndex;
 
             self.$questionsPaging.find('.active').addClass('answered');
 
-            self.pager.currentPage++;
-            self.flip(self.pager.currentPage);
+            if (!hasPrevSelected) self.next();
+
+            self.progress();
         };
 
         /**
@@ -41,11 +43,9 @@
                 return q.selected >= 0;
             }).length;
 
-            var completedInPercent = (answered / total) * 100;
+            self.completedPercent = (answered / total) * 100;
 
-            self.$progressBar.style.width = completedInPercent + '%';
-
-            return completedInPercent;
+            return self.completedPercent;
         };
 
         self.submit = function submit() {
@@ -58,7 +58,6 @@
                 })
             };
 
-            console.log("posting data....", data);
             $http.post('/SolveQuiz/solve', data)
                 .then(function(response) {
                     console.log(response);
@@ -66,13 +65,6 @@
                     document.write(response.data);
                     document.close();
                 }, errorHandler.handleSoveQuizError);
-        };
-
-        self.flip = function (toPageNumber) {
-
-            $timeout(function () {
-                self.bookBlock.jump(toPageNumber);
-            }, 60);
         };
 
         self._init();
@@ -83,10 +75,10 @@
      * @private
      */
     SolveQuizController.prototype._init = function _init() {
+
         var self = this;
 
         console.log('Hello from Solve Quiz Controller');
-        console.log(quiz);
 
         self.questionTemplate = '/Content/templates/solve-question-template.html';
         self.quiz = quiz;
@@ -100,23 +92,31 @@
 
         self.answeredQuestionsCount = 0;
 
-        $(document).ready(function() {
+        self.$questionsPaging = self.$document.find('.pagination');
+    };
 
-            self.$progressBar = document.getElementById('progress');
+    SolveQuizController.prototype.next = function () {
 
-            // This is delayed because apparently the html hasn't been loaded yet
-            self.$book = document.getElementById('bb-blockbook');
+        if (!this.isLastPage()) {
+            this.pager.currentPage++;
+        }
+    };
 
-            self.bookBlock = new BookBlock(self.$book, {
-                speed: 500,
-                shadowSides: 0.8,
-                shadowFlip: 0.7
-            });
+    SolveQuizController.prototype.prev = function () {
 
-            self.$questionsPaging = $('.pagination');
-        });
+        if (!this.isFirstPage()) {
+            this.pager.currentPage--;
+        }
+    };
+
+    SolveQuizController.prototype.isLastPage = function () {
+        return this.pager.currentPage === this.pager.totalPages;
+    };
+
+    SolveQuizController.prototype.isFirstPage = function () {
+        return this.pager.currentPage === 1;
     };
 
     angular.module('solveQuiz', ['ui.bootstrap', 'slickCarousel', 'paging', 'errorHandler'])
-        .controller('SolveQuizController', ['$http', '$timeout', 'errorHandler', SolveQuizController]);
-})(window.angular, window.BookBlock, window.quiz);
+        .controller('SolveQuizController', ['$http', '$timeout', '$document', 'errorHandler', SolveQuizController]);
+})(window.angular, window.quiz);

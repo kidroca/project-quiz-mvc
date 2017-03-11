@@ -1,12 +1,15 @@
 ﻿<h3 class="slide-title">{{question.Title}}</h3>
+
 <div class="slide-controls clearfix">
-    <a href="#" class="control-left">left</a>
-    <a href="#" class="control-right pull-right">right</a>
+    <a href="#" class="control-left" ng-click="ctrl.prev()">left</a>
+    <a href="#" class="control-right pull-right" ng-click="ctrl.next()">right</a>
 </div>
+
 <ol class="answers">
+
     <li ng-repeat="answer in question.Answers" class="answer"
-       ng-click="question.selected=$index; ctrl.slickConfig.method.slickNext()"
-       >
+        ng-click="ctrl.select(question, $index)">
+
         <span class="list-group-item"
               ng-class="{selected: question.selected === $index}">{{answer.Text}}</span>
     </li>

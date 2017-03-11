@@ -19,11 +19,19 @@
      ng-controller="SolveQuizController as ctrl"
      class="carousel-container">
 
-    <div class="indicators">
-        <div class="progress progress-striped wrapper">
-            <div id="progress" class="progress-bar"></div>
+    <div class="back-track"></div>
+
+    <section class="question-wrap">
+
+        <div class="question-slide" ng-repeat="question in ctrl.quiz.Questions">
+            <div ng-include="ctrl.questionTemplate"
+                 ng-show="ctrl.pager.currentPage === $index + 1">
+            </div>
         </div>
 
+    </section>
+
+    <div class="indicators">
 
         <uib-pagination class="questions-paging"
                         direction-links="false"
@@ -32,18 +40,16 @@
                         total-items="ctrl.questionsCount"
                         max-size="7"
                         ng-model="ctrl.pager.currentPage"></uib-pagination>
-    </div>
 
-    <div slick settings="ctrl.slickConfig">
-        <div class="question-slide" ng-repeat="question in ctrl.quiz.Questions">
-            <div ng-include="ctrl.questionTemplate">
-            </div>
+        <div class="progress progress-striped wrapper">
+            <div id="progress" class="progress-bar"
+                 ng-style="{width: ctrl.completedPercent + '%'}"></div>
         </div>
     </div>
 
     <div class="wrapper">
         <button id="solve-quiz"
-                ng-show="ctrl.progress() === 100"
+                ng-show="ctrl.completedPercent === 100"
                 ng-click="ctrl.submit(ctrl.quiz)"
                 class="btn btn-lg btn-info col-md-offset-3 col-md-6">
             Ready
