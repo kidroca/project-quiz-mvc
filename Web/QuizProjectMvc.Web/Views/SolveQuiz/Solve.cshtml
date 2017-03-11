@@ -31,26 +31,23 @@
                         items-per-page="ctrl.pager.pageSize"
                         total-items="ctrl.questionsCount"
                         max-size="7"
-                        ng-model="ctrl.pager.currentPage"
-                        ng-change="ctrl.flip(ctrl.pager.currentPage)"></uib-pagination>
+                        ng-model="ctrl.pager.currentPage"></uib-pagination>
     </div>
 
-    <div class="bb-custom-wrapper">
-
-        <div id="bb-blockbook" class="bb-bookblock">
-            <div class="bb-item" ng-repeat="question in ctrl.quiz.Questions">
-                <article class="quiz-question" ng-include="ctrl.questionTemplate"></article>
+    <div slick settings="ctrl.slickConfig">
+        <div class="question-slide" ng-repeat="question in ctrl.quiz.Questions">
+            <div ng-include="ctrl.questionTemplate">
             </div>
         </div>
+    </div>
 
-        <div class="wrapper">
-            <button id="solve-quiz"
-                    ng-show="ctrl.progress() === 100"
-                    ng-click="ctrl.submit(ctrl.quiz)"
-                    class="btn btn-lg btn-info col-md-offset-3 col-md-6">
-                Ready
-            </button>
-        </div>
+    <div class="wrapper">
+        <button id="solve-quiz"
+                ng-show="ctrl.progress() === 100"
+                ng-click="ctrl.submit(ctrl.quiz)"
+                class="btn btn-lg btn-info col-md-offset-3 col-md-6">
+            Ready
+        </button>
     </div>
 </div>
 
