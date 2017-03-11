@@ -5,10 +5,14 @@
         throw new Error('Solve quiz module has missing dependencies');
     }
 
-    function SolveQuizController($http, errorHandler) {
+    function SolveQuizController($http, $timeout, $document, errorHandler) {
+
         var self = this;
 
-        self._init = _init;
+        self.$http = $http;
+        self.$timeout = $timeout;
+        self.$document = $document;
+        self.errorHandler = errorHandler;
 
         /**
          * Mark the selected answer of quiz a question
@@ -25,7 +29,7 @@
 
             self.pager.currentPage++;
             self.flip(self.pager.currentPage);
-        }
+        };
 
         /**
          * Updates the progressbar position
@@ -39,7 +43,7 @@
 
             var completedInPercent = (answered / total) * 100;
 
-            self.$progressBar.style = `width:${completedInPercent}%;`;
+            self.$progressBar.style.width = completedInPercent + '%';
 
             return completedInPercent;
         };
@@ -62,14 +66,14 @@
                     document.write(response.data);
                     document.close();
                 }, errorHandler.handleSoveQuizError);
-        }
+        };
 
         self.flip = function (toPageNumber) {
 
-            setTimeout(function() {
+            $timeout(function () {
                 self.bookBlock.jump(toPageNumber);
             }, 60);
-        }
+        };
 
         self._init();
     }
@@ -78,7 +82,7 @@
      * Initializes the properties of the SolveQuizController
      * @private
      */
-    function _init() {
+    SolveQuizController.prototype._init = function _init() {
         var self = this;
 
         console.log('Hello from Solve Quiz Controller');
@@ -87,18 +91,22 @@
         self.questionTemplate = '/Content/templates/solve-question-template.html';
         self.quiz = quiz;
         self.questionsCount = quiz.Questions.length;
+
         self.pager = {
             currentPage: 1,
             pageSize: 1,
             totalPages: self.questionsCount
         };
 
-        self.$progressBar = document.getElementById('progress');
         self.answeredQuestionsCount = 0;
 
-        // This is delayed becouse appearanlty the html hasn't been loaded yet
-        self.$book = document.getElementById('bb-blockbook');
         $(document).ready(function() {
+
+            self.$progressBar = document.getElementById('progress');
+
+            // This is delayed because apparently the html hasn't been loaded yet
+            self.$book = document.getElementById('bb-blockbook');
+
             self.bookBlock = new BookBlock(self.$book, {
                 speed: 500,
                 shadowSides: 0.8,
@@ -107,12 +115,8 @@
 
             self.$questionsPaging = $('.pagination');
         });
-    }
-
-    function flipBooklet(callback) {
-        setTimeout(callback, 60);
-    }
+    };
 
     angular.module('solveQuiz', ['ui.bootstrap', 'slickCarousel', 'paging', 'errorHandler'])
-        .controller('SolveQuizController', ['$http', 'errorHandler', SolveQuizController]);
+        .controller('SolveQuizController', ['$http', '$timeout', 'errorHandler', SolveQuizController]);
 })(window.angular, window.BookBlock, window.quiz);
