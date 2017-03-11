@@ -3,10 +3,19 @@
 
 // Todo: hover states
 .question-slide {
+    width: 100%;
     position: relative;
     background-color: @carousel-container-bg;
     .box-shadow(@x: 0; @y: 0px; @blur: 8px; @color: @shadow);
-    margin: 0 5rem;
+    margin: 0 34vw;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
 
     &::before, &::after {
         z-index: -1;
@@ -29,6 +38,10 @@
 
     &:hover .slide-controls {
         display: block;
+    }
+
+    > div {
+      height: 100%;
     }
 
     .slide-title {
@@ -95,16 +108,20 @@
     }
 
     .answers {
-        position: relative;
-        width: 80%;
-        height: auto;
-        margin: 2rem 6rem;
-        text-align: center;
-        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 85%;
+        padding: 3rem 0 1rem;
         font-size: 2rem;
-        font-family: @font-droid;
-        overflow-y: auto;
-        list-style-type: lower-alpha;
+        font-family: "Droid Sans", sans-serif;
+
+        > ol {
+            list-style-type: lower-alpha;
+            width: 80%;
+            margin-left: -5%;
+            text-align: center;
+        }
 
         .answer {
             display: list-item;
@@ -115,20 +132,79 @@
             .list-group-item {
                 color: #333;
                 font-family: @font-thin;
-
-                &.selected {
-                    .btn-grad-lighter(93%);
-
-                    &:before {
-                        font: normal normal normal 24px/1 FontAwesome;
-                        color: #0B9900;
-                        content: "\f00c ";
-                        position: absolute;
-                        left: 1%;
-                        top: 15%;
-                    }
-                }
+                border-radius: 0;
             }
+        }
+    }
+
+    @brand-success: #5cb85c;
+    @loader-size: 6rem;
+    @check-height: @loader-size/2;
+    @check-width: @check-height/2;
+    @check-left: (@loader-size/6 + @loader-size/12);
+    @check-thickness: 2px;
+    @check-color: @brand-success;
+
+    .circle-loader {
+        margin: 0 0 30px 10px;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .circle-loader,
+    .circle-loader:after {
+        width: @loader-size;
+        height: @loader-size;
+    }
+
+    .load-complete {
+        border-color: @check-color;
+        transition: border 500ms ease-out;
+    }
+
+    .answer .list-group-item {
+
+        &.selected:after {
+            position: absolute;
+            left: 2%;
+            top: 50%;
+            content: '';
+
+            opacity: 1;
+            height: @check-height;
+            width: @check-width;
+            transform-origin: left top;
+            border-right: @check-thickness solid @check-color;
+            border-top: @check-thickness solid @check-color;
+
+            animation-duration: 0.8s;
+            animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+            animation-name: checkmark;
+            transform: scaleX(-1) rotate(135deg);
+        }
+    }
+
+    @keyframes checkmark {
+        0% {
+            height: 0;
+            width: 0;
+            opacity: 1;
+        }
+        20% {
+            height: 0;
+            width: @check-width;
+            opacity: 1;
+        }
+        40% {
+            height: @check-height;
+            width: @check-width;
+            opacity: 1;
+        }
+        100% {
+            height: @check-height;
+            width: @check-width;
+            opacity: 1;
         }
     }
 }
