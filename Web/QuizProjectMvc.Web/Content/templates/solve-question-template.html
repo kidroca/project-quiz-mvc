@@ -7,12 +7,16 @@
 
 <div class="answers" ng-init="questionIndex = $index">
 
-    <ol>
+    <ul>
         <li ng-repeat="answer in question.Answers" class="answer"
             ng-click="ctrl.select(questionIndex, $index)">
 
-        <span class="list-group-item"
-              ng-class="{selected: question.selected === $index}">{{answer.Text}}</span>
+            <div class="flex-box">
+                <span class="answer-checkbox list-group-item"
+                      ng-class="{selected: question.selected === $index}">&nbsp;</span>
+
+                <span class="list-group-item">{{answer.Text}}</span>
+            </div>
         </li>
-    </ol>
+    </ul>
 </div>

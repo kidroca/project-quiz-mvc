@@ -3,11 +3,11 @@
 
 // Todo: hover states
 .question-slide {
-    width: 100%;
+    width: 70vw;
     position: relative;
     background-color: @carousel-container-bg;
     .box-shadow(@x: 0; @y: 0px; @blur: 8px; @color: @shadow);
-    margin: 0 34vw;
+    margin: 0 15vw;
 
     &:first-child {
         margin-left: 0;
@@ -37,7 +37,8 @@
     }
 
     &:hover .slide-controls {
-        display: block;
+        opacity: 1;
+        transform: scale(1);
     }
 
     > div {
@@ -77,10 +78,15 @@
     }
 
     .slide-controls {
-        display: none;
+        transition: all 0.3s;
+        display: block;
+        opacity: 0;
+        transform: scale(0.95);
         .absolute-center;
-        width: 97%;
         height: 10%;
+        top: 0;
+        left: 7px;
+        right: 7px;
 
         a {
             display: inline-block;
@@ -116,11 +122,16 @@
         font-size: 2rem;
         font-family: "Droid Sans", sans-serif;
 
-        > ol {
-            list-style-type: lower-alpha;
-            width: 80%;
-            margin-left: -5%;
+        .flex-box {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        > ul {
+            width: 90%;
+            padding: 0;
             text-align: center;
+            list-style: none;
         }
 
         .answer {
@@ -128,22 +139,33 @@
             padding-left: 0.5rem;
             cursor: pointer;
             color: white;
+            margin-bottom: 2px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
 
             .list-group-item {
+                display: inline-block;
+                width: 94%;
                 color: #333;
                 font-family: @font-thin;
                 border-radius: 0;
             }
+
+            .answer-checkbox {
+                width: 5%;
+                color: transparent;
+                margin-right: 2px;
+            }
         }
     }
 
-    @brand-success: #5cb85c;
     @loader-size: 6rem;
     @check-height: @loader-size/2;
     @check-width: @check-height/2;
-    @check-left: (@loader-size/6 + @loader-size/12);
     @check-thickness: 2px;
-    @check-color: @brand-success;
+    @check-color: @contentArticleColor;
 
     .circle-loader {
         margin: 0 0 30px 10px;
@@ -167,7 +189,7 @@
 
         &.selected:after {
             position: absolute;
-            left: 2%;
+            left: 14%;
             top: 50%;
             content: '';
 

@@ -1,8 +1,8 @@
 ﻿(function(angular, quiz) {
     'use strict';
 
-    var INITIAL_TRANSLATE = 16.5;
-    var TRANSLATE_STEP = 133.45;
+    var INITIAL_TRANSLATE = 14.5;
+    var TRANSLATE_STEP = 100;
 
     if (!angular || !quiz) {
         throw new Error('Solve quiz module has missing dependencies');
@@ -117,7 +117,7 @@
 
         self.currentPage = 1;
 
-        self.sliderWidth = ((self.questionsCount * 2) - 2) * 70 + 'vw';
+        self.sliderWidth = self.questionsCount * 100 + 'vw';
     };
 
     SolveQuizController.prototype.next = function () {
