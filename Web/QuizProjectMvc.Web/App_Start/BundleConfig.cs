@@ -33,8 +33,6 @@
                 "~/Scripts/app/services/error-handler.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/solve-quiz").Include(
-                "~/Scripts/libs/bookblock/modernizer-custom.js",
-                "~/Scripts/libs/bookblock/bookblock.js",
                 "~/Scripts/app/controllers/solve-quiz.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/manage-quiz").Include(
@@ -98,7 +96,6 @@
                 "~/Content/styles/slick-carousel/slick-theme.css"));
 
             bundles.Add(new StyleBundle("~/Content/solve").Include(
-                "~/Content/styles/bookblock/bookblock.css",
                "~/Content/styles/less/pages/solve.css"));
 
             bundles.Add(new StyleBundle("~/Content/adminStyle").Include(
