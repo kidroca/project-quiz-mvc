@@ -19,27 +19,34 @@
      ng-controller="SolveQuizController as ctrl"
      class="carousel-container">
 
-    <div class="back-track"></div>
-
     <section class="question-wrap">
 
-        <div class="question-slide" ng-repeat="question in ctrl.quiz.Questions">
-            <div ng-include="ctrl.questionTemplate"
-                 ng-show="ctrl.pager.currentPage === $index + 1">
+        <div class="back-track"></div>
+
+        <div class="question-slider-box" ng-style="{
+             width: ctrl.sliderWidth,
+             transition: ctrl.transformTransition,
+             transform: ctrl.getCurrentTranslate()
+        }">
+
+            <div class="question-slide"
+                 ng-repeat="question in ctrl.quiz.Questions">
+                
+                <div ng-include="ctrl.questionTemplate"></div>
             </div>
         </div>
-
     </section>
 
     <div class="indicators">
 
-        <uib-pagination class="questions-paging"
+        <kid-question-pagination class="questions-paging"
                         direction-links="false"
                         boundary-links="true"
                         items-per-page="ctrl.pager.pageSize"
                         total-items="ctrl.questionsCount"
                         max-size="7"
-                        ng-model="ctrl.pager.currentPage"></uib-pagination>
+                        toggle-answered="ctrl.pager.toggleAnswered"
+                        ng-model="ctrl.currentPage"></kid-question-pagination>
 
         <div class="progress progress-striped wrapper">
             <div id="progress" class="progress-bar"

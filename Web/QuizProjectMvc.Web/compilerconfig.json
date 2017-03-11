@@ -18,5 +18,9 @@
   {
     "outputFile": "Content/styles/less/pages/solve.css",
     "inputFile": "Content/styles/less/pages/solve.less"
+  },
+  {
+    "outputFile": "Content/styles/less/modules/question-widget.css",
+    "inputFile": "Content/styles/less/modules/question-widget.less"
   }
 ]

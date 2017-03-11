@@ -377,6 +377,7 @@
     </Content>
     <Content Include="Content\templates\add-question-template.html" />
     <Content Include="Content\styles\bootstrap\ui-bootstrap-csp.css" />
+    <Content Include="Content\templates\kid-question-paging.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

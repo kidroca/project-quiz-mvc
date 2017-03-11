@@ -5,12 +5,14 @@
     <a href="#" class="control-right pull-right" ng-click="ctrl.next()">right</a>
 </div>
 
-<ol class="answers">
+<div class="answers" ng-init="questionIndex = $index">
 
-    <li ng-repeat="answer in question.Answers" class="answer"
-        ng-click="ctrl.select(question, $index)">
+    <ol>
+        <li ng-repeat="answer in question.Answers" class="answer"
+            ng-click="ctrl.select(questionIndex, $index)">
 
         <span class="list-group-item"
               ng-class="{selected: question.selected === $index}">{{answer.Text}}</span>
-    </li>
-</ol>
+        </li>
+    </ol>
+</div>
