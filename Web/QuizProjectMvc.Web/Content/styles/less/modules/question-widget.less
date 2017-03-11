@@ -1,140 +1,134 @@
 ﻿// ======== Imports =============
 @import "../helpers/index";
 
-.bb-custom-wrapper {
-    .bb-bookblock {
+// Todo: hover states
+.question-slide {
+    position: relative;
+    background-color: @carousel-container-bg;
+    .box-shadow(@x: 0; @y: 0px; @blur: 8px; @color: @shadow);
+    margin: 0 5rem;
 
-        .bb-item {
-            .box-shadow(@x: 0; @y: 0px; @blur: 8px; @color: @shadow);
-            height: auto;
+    &::before, &::after {
+        z-index: -1;
+        position: absolute;
+        content: "";
+        bottom: 20px;
+        left: 8px;
+        width: 50%;
+        top: 70%;
+        background: @shadow;
+        .box-shadow(@x: 0; @y: 30px; @blur: 10px);
+        .transform(@property: skewY; @value: 175deg)
+    }
 
-            &::before, &::after {
-                z-index: -1;
-                position: absolute;
-                content: "";
-                bottom: 20px;
-                left: 8px;
-                width: 50%;
-                top: 70%;
-                background: @shadow;
-                .box-shadow(@x: 0; @y: 30px; @blur: 10px);
-                .transform(@property: skewY; @value: 175deg)
-            }
+    &::after {
+        .transform(@property: skewY; @value: 5deg);
+        right: 8px;
+        left: auto;
+    }
 
-            &::after {
-                .transform(@property: skewY; @value: 5deg);
-                right: 8px;
-                left: auto;
-            }
+    &:hover .slide-controls {
+        display: block;
+    }
+
+    .slide-title {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        color: @layout-headings-links;
+        border-left: 1px solid #fff;
+        padding: 1.5rem 1rem;
+        .linear-grad(@colors: @shadow, rgba(0, 0, 0, 0.1) 90%; @dir: 90deg);
+
+        &::before, &::after {
+            z-index: 5;
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            .linear-grad(@colors: transparent, rgba(255, 255, 255, 0.5); @dir: right);
         }
 
-        .quiz-question {
+        &::before {
+            top: 0;
+            width: 100%;
+            .linear-grad(@colors: transparent, rgba(255, 255, 255, 0.5); @dir: right);
+        }
 
+        &::after {
+            right: 0;
+            bottom: 0;
+        }
+    }
 
-            .slide-title {
-                z-index: 10;
-                position: relative;
-                width: 100%;
-                max-height: 8rem;
-                margin: 0;
-                text-align: center;
-                color: @layout-headings-links;
-                border-left: 1px solid #fff;
-                padding: 1.5rem 1rem;
-                .linear-grad(@colors: @shadow, #1F272F 90%; @dir: 90deg);
+    .slide-controls {
+        display: none;
+        .absolute-center;
+        width: 97%;
+        height: 10%;
 
-                &::before, &::after {
-                    z-index: 5;
-                    content: "";
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    height: 1px;
-                    .linear-grad(@colors: transparent, rgba(255, 255, 255, 0.5); @dir: right);
-                }
+        a {
+            display: inline-block;
+            height: 41px;
+            width: 41px;
+            color: transparent;
+        }
 
-                &::before {
-                    top: 0;
-                    width: 100%;
-                    .linear-grad(@colors: transparent, rgba(255, 255, 255, 0.5); @dir: right);
-                }
+        .control-left {
+            background: url('/Content/images/Carousel-icons.png') 0 0;
+        }
 
-                &::after {
-                    right: 0;
-                    bottom: 0;
-                }
-            }
+        .control-right {
+            .transform(@property: rotate; @value: 180deg);
+            background: url('/Content/images/Carousel-icons.png') 0 0;
+        }
 
-            .paper {
-                position: relative;
+        .control-search {
+            background: url('/Content/images/Carousel-icons.png') 0 81px;
+        }
 
-                &:before {
-                    content: '';
-                    position: absolute;
-                    width: 0px;
-                    top: 0;
-                    left: 4.5rem;
-                    bottom: 0;
-                    border-left: 1px solid #F8D3D3;
-                }
-            }
+        .control-open {
+            background: url('/Content/images/Carousel-icons.png') 0 40px;
+        }
+    }
 
-            .answers {
-                font-family: @font-droid;
-                position: relative;
-                width: 98%;
-                margin: 0.5rem auto;
-                font-size: 2rem;
-                list-style: none;
-                font-size: 2rem;
-                list-style: none;
+    .answers {
+        position: relative;
+        width: 80%;
+        height: auto;
+        margin: 2rem 6rem;
+        text-align: center;
+        color: white;
+        font-size: 2rem;
+        font-family: @font-droid;
+        overflow-y: auto;
+        list-style-type: lower-alpha;
 
-                .answer {
-                    display: list-item;
-                    padding-left: 5rem;
-                    cursor: pointer;
-                    background-color: white;
-                    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-                    color: #333;
-                    font-family: @font-thin;
-                    .linear-grad(@colors: transparent, rgba(255, 255, 255, 0.5); @dir: top);
-                    position: relative;
+        .answer {
+            display: list-item;
+            padding-left: 0.5rem;
+            cursor: pointer;
+            color: white;
+
+            .list-group-item {
+                color: #333;
+                font-family: @font-thin;
+
+                &.selected {
+                    .btn-grad-lighter(93%);
 
                     &:before {
-                        content: '';
+                        font: normal normal normal 24px/1 FontAwesome;
+                        color: #0B9900;
+                        content: "\f00c ";
                         position: absolute;
-                        top: 0;
-                        left: 4.5rem;
-                        bottom: 0;
-                        border-left: 1px solid #F8D3D3;
-                    }
-
-                    & span.selected {
-                        text-decoration: underline;
-
-                        &:before {
-                            font: normal normal normal 24px/1 FontAwesome;
-                            color: #0B9900;
-                            content: "\f00c ";
-                            position: absolute;
-                            left: 1rem;
-                            top: 1rem;
-                        }
+                        left: 1%;
+                        top: 15%;
                     }
                 }
             }
         }
-    }
-}
-
-@media (max-width: 660px) {
-    .bb-bookblock {
-        width: 98% !important;
-    }
-}
-
-@media (min-width: 661px) {
-    .bb-bookblock {
-        width: 71% !important;
     }
 }
