@@ -26,54 +26,6 @@ namespace QuizProjectMvc.Services.Data
             this.mapper = mapper;
         }
 
-        public QuizEvaluationResult2 EvaluateSolution(QuizSolution quizSolution)
-        {
-            var result = new QuizEvaluationResult2
-            {
-                ForQuizId = quizSolution.ForQuizId,
-                Title = quizSolution.ForQuiz.Title,
-                CorrectlyAnswered = new List<QuestionResultModel>(),
-                IncorrectlyAnswered = new List<QuestionResultModel>()
-            };
-
-            var test = this.Evaluate(quizSolution);
-
-            foreach (Answer answer in quizSolution.SelectedAnswers)
-            {
-                var questionResult = new QuestionResultModel
-                {
-                    Question = answer.ForQuestion.Title,
-                    IsCorrect = answer.IsCorrect,
-                    ResultDescription = answer.ForQuestion.ResultDescription,
-                    SelectedAnswer = answer.Text,
-                    CorrectAnswer = answer.ForQuestion
-                        .Answers.First(a => a.IsCorrect).Text
-                };
-
-                if (answer.IsCorrect)
-                {
-                    result.CorrectlyAnswered.Add(questionResult);
-                }
-                else
-                {
-                    result.IncorrectlyAnswered.Add(questionResult);
-                }
-            }
-
-            return result;
-        }
-
-        public QuizEvaluationResult2 EvaluateSolution(int solutionId)
-        {
-            var solution = this.solutions.GetById(solutionId);
-            if (solution == null)
-            {
-                return null;
-            }
-
-            return this.EvaluateSolution(solution);
-        }
-
         public QuizSolution SaveSolution(SolutionForEvaluationModel quizSolution, string userId)
         {
             var quiz = this.quizzes.GetById(quizSolution.ForQuizId);

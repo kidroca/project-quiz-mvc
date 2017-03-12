@@ -107,7 +107,7 @@
             try
             {
                 var result = this.quizzesEvalService.SaveSolution(model, this.UserId);
-                return this.Ok(this.quizzesEvalService.EvaluateSolution(result));
+                return this.Ok(this.quizzesEvalService.Evaluate(result));
             }
             catch (QuizEvaluationException ex)
             {

@@ -113,9 +113,6 @@
     <Compile Include="QuizzesEvalService.cs" />
     <Compile Include="QuizzesGeneralService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Evaluation\QuestionResultModel.cs" />
-    <Compile Include="Models\Evaluation\QuizEvaluationResult2.cs" />
-    <Compile Include="Models\Evaluation\SelectedAnswerModel.cs" />
     <Compile Include="Models\Evaluation\SolutionForEvaluationModel.cs" />
     <Compile Include="Models\Search\QuizSearchModel.cs" />
     <Compile Include="Models\Search\ResultOrder.cs" />
