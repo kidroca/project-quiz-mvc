@@ -90,6 +90,13 @@
 .question-slide > div {
   height: 100%;
 }
+.question-slide .flex-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem 1rem;
+  height: 85%;
+}
 .question-slide .slide-title {
   position: relative;
   width: 100%;
@@ -133,18 +140,8 @@
 }
 .question-slide .slide-controls {
   transition: all 0.3s;
-  display: block;
   opacity: 0;
-  transform: scale(0.95);
-  margin: auto;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 10%;
-  top: 0;
-  left: 7px;
-  right: 7px;
+  transform: scale(0.4);
 }
 .question-slide .slide-controls a {
   display: inline-block;
@@ -173,14 +170,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 85%;
-  padding: 3rem 0 1rem;
+  width: 100%;
   font-size: 2rem;
   font-family: "Droid Sans", sans-serif;
 }
 .question-slide .answers .flex-box {
-  display: flex;
   align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  height: inherit;
 }
 .question-slide .answers > ul {
   width: 90%;
@@ -200,13 +198,13 @@
 }
 .question-slide .answers .answer .list-group-item {
   display: inline-block;
-  width: 94%;
+  width: calc(95%);
   color: #333;
   font-family: "Colaborate Thin", monospace;
   border-radius: 0;
 }
 .question-slide .answers .answer .answer-checkbox {
-  width: 5%;
+  width: 5rem;
   color: transparent;
   margin-right: 2px;
 }
@@ -227,7 +225,7 @@
 }
 .question-slide .answer .list-group-item.selected:after {
   position: absolute;
-  left: 14%;
+  left: 18%;
   top: 50%;
   content: '';
   opacity: 1;
@@ -321,4 +319,24 @@
   transform: translateX(0vw);
   display: flex;
   margin-bottom: 4rem;
+}
+@media screen and (max-width: 767px) {
+  .carousel-container .question-slider-box {
+    transition: transform 0s !important;
+  }
+  .carousel-container .question-slide {
+    width: 100%;
+    margin: 0;
+  }
+  .carousel-container .indicators {
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .carousel-container #solve-quiz {
+    width: inherit;
+  }
+  .carousel-container .slide-controls {
+    display: none;
+  }
 }

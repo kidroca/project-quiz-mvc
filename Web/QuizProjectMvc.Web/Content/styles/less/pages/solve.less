@@ -76,4 +76,31 @@
         display: flex;
         margin-bottom: 4rem;
     }
+
+
+    @media screen and (max-width: 767px) {
+
+        .question-slider-box {
+            transition: transform 0s !important;
+        }
+
+        .question-slide {
+            width: 100%;
+            margin: 0;
+        }
+
+        .indicators {
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #solve-quiz {
+            width: inherit;
+        }
+
+        .slide-controls {
+            display: none;
+        }
+    }
 }

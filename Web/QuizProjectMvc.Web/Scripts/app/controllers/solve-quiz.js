@@ -9,15 +9,15 @@
     }
 
     angular.module('solveQuiz', ['ui.bootstrap', 'slickCarousel', 'paging', 'errorHandler'])
-           .controller('SolveQuizController', ['$http', '$timeout', 'errorHandler', SolveQuizController])
+           .controller('SolveQuizController', ['$http', '$window', 'errorHandler', SolveQuizController])
            .directive('kidQuestionPagination', ['uibPaginationDirective', questionPagination]);
 
-    function SolveQuizController($http, $timeout, errorHandler) {
+    function SolveQuizController($http, $window, errorHandler) {
 
         var self = this;
 
         self.$http = $http;
-        self.$timeout = $timeout;
+        self.$window = $window;
         self.errorHandler = errorHandler;
 
         /**
@@ -34,13 +34,8 @@
 
             question.selected = selectedAnswerIndex;
 
-            $timeout(function () {
-
-                self.pager.toggleAnswered(questionIndex + 1, true);
-                self.progress();
-
-                if (!hasPrevSelected) self.next();
-            }, 500);
+            self.pager.toggleAnswered(questionIndex + 1, true);
+            self.progress();
         };
 
         /**
@@ -105,6 +100,12 @@
         var self = this;
 
         console.log('Hello from Solve Quiz Controller');
+
+        var mq = self.$window && self.$window.matchMedia( '(max-width: 767px)' );
+
+        if (mq.matches) {
+            INITIAL_TRANSLATE = 0;
+        }
 
         self.questionTemplate = '/Content/templates/solve-question-template.html';
         self.quiz = quiz;

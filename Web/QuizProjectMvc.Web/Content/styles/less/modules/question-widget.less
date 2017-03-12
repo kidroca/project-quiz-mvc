@@ -45,6 +45,14 @@
       height: 100%;
     }
 
+    .flex-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 1rem 1rem;
+        height: 85%;
+    }
+
     .slide-title {
         position: relative;
         width: 100%;
@@ -79,14 +87,8 @@
 
     .slide-controls {
         transition: all 0.3s;
-        display: block;
         opacity: 0;
-        transform: scale(0.95);
-        .absolute-center;
-        height: 10%;
-        top: 0;
-        left: 7px;
-        right: 7px;
+        transform: scale(0.4);
 
         a {
             display: inline-block;
@@ -117,14 +119,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 85%;
-        padding: 3rem 0 1rem;
+        width: 100%;
         font-size: 2rem;
         font-family: "Droid Sans", sans-serif;
 
         .flex-box {
-            display: flex;
             align-items: flex-start;
+            justify-content: flex-start;
+            padding: 0;
+            height: inherit;
         }
 
         > ul {
@@ -147,14 +150,14 @@
 
             .list-group-item {
                 display: inline-block;
-                width: 94%;
+                width: calc(100% - 5rem);
                 color: #333;
                 font-family: @font-thin;
                 border-radius: 0;
             }
 
             .answer-checkbox {
-                width: 5%;
+                width: 5rem;
                 color: transparent;
                 margin-right: 2px;
             }
@@ -189,7 +192,7 @@
 
         &.selected:after {
             position: absolute;
-            left: 14%;
+            left: 18%;
             top: 50%;
             content: '';
 

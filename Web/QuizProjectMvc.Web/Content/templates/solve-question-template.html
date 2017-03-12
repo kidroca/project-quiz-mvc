@@ -1,22 +1,30 @@
 ﻿<h3 class="slide-title">{{question.Title}}</h3>
 
-<div class="slide-controls clearfix">
-    <a href="#" class="control-left" ng-click="ctrl.prev()">left</a>
-    <a href="#" class="control-right pull-right" ng-click="ctrl.next()">right</a>
-</div>
+<div class="flex-box">
 
-<div class="answers" ng-init="questionIndex = $index">
+    <div class="slide-controls" ng-style="{opacity: ctrl.isFirstPage() ? 0: ''}">
+        <a href="#" class="control-left" ng-click="ctrl.prev()">left</a>
+    </div>
 
-    <ul>
-        <li ng-repeat="answer in question.Answers" class="answer"
-            ng-click="ctrl.select(questionIndex, $index)">
+    <div class="answers" ng-init="questionIndex = $index">
 
-            <div class="flex-box">
+        <ul>
+            <li ng-repeat="answer in question.Answers" class="answer"
+                ng-click="ctrl.select(questionIndex, $index)">
+
+                <div class="flex-box">
                 <span class="answer-checkbox list-group-item"
                       ng-class="{selected: question.selected === $index}">&nbsp;</span>
 
-                <span class="list-group-item">{{answer.Text}}</span>
-            </div>
-        </li>
-    </ul>
+                    <span class="list-group-item">{{answer.Text}}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="slide-controls" ng-style="{opacity: ctrl.isLastPage() ? 0: ''}">
+        <a href="#" class="control-right pull-right" ng-click="ctrl.next()">right</a>
+    </div>
+
 </div>
+
