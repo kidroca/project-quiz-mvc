@@ -4,6 +4,7 @@ namespace QuizProjectMvc.Services.Data
     using System.Collections.Generic;
     using System.Data.Entity.Core;
     using System.Linq;
+    using AutoMapper;
     using Exceptions;
     using Models.Evaluation;
     using Models.Evaluation.Contracts;
@@ -15,11 +16,14 @@ namespace QuizProjectMvc.Services.Data
     {
         private readonly IDbRepository<Quiz> quizzes;
         private readonly IDbRepository<QuizSolution> solutions;
+        private readonly IMapper mapper;
 
-        public QuizzesEvalService(IDbRepository<Quiz> quizzes, IDbRepository<QuizSolution> solutions)
+        public QuizzesEvalService(
+            IDbRepository<Quiz> quizzes, IDbRepository<QuizSolution> solutions, IMapper mapper)
         {
             this.quizzes = quizzes;
             this.solutions = solutions;
+            this.mapper = mapper;
         }
 
         public QuizEvaluationResult2 EvaluateSolution(QuizSolution quizSolution)
@@ -31,6 +35,8 @@ namespace QuizProjectMvc.Services.Data
                 CorrectlyAnswered = new List<QuestionResultModel>(),
                 IncorrectlyAnswered = new List<QuestionResultModel>()
             };
+
+            var test = this.Evaluate(quizSolution);
 
             foreach (Answer answer in quizSolution.SelectedAnswers)
             {
@@ -106,7 +112,6 @@ namespace QuizProjectMvc.Services.Data
             this.quizzes.Save();
         }
 
-
         public IQuizEvaluationResult Evaluate(int solutionId)
         {
             var solution = this.solutions.GetById(solutionId);
@@ -138,7 +143,7 @@ namespace QuizProjectMvc.Services.Data
 
         private IQuizEvaluationResult CreateEvaluation(QuizSolution solution)
         {
-            var result = new QuizEvaluationResult(solution.ForQuiz);
+            var result = this.mapper.Map<QuizEvaluationResult>(solution.ForQuiz);
 
             return result;
         }

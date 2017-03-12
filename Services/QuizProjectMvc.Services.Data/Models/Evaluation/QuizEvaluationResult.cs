@@ -2,23 +2,18 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using AutoMapper;
     using Contracts;
     using QuizProjectMvc.Data.Models;
+    using QuizProjectMvc.Web.Infrastructure.Mapping;
 
-    public class QuizEvaluationResult : IQuizEvaluationResult
+    public class QuizEvaluationResult : IQuizEvaluationResult, IHaveCustomMappings
     {
-        public QuizEvaluationResult(Quiz quiz)
-        {
-            this.ForQuizId = quiz.Id;
-            this.Title = quiz.Title;
-            this.QuestionResults = new HashSet<IQuestionResult>();
-        }
+        public int ForQuizId { get; set; }
 
-        public int ForQuizId { get; }
+        public string Title { get; set; }
 
-        public string Title { get; }
-
-        public ICollection<IQuestionResult> QuestionResults { get; }
+        public ICollection<IQuestionResult> QuestionResults { get; set; }
 
         public int TotalQuestions => this.QuestionResults.Count;
 
@@ -26,6 +21,19 @@
         {
             var correctlyAnsweredCount = (double)this.QuestionResults.Count(q => q.AnsweredCorrectly);
             return (correctlyAnsweredCount / this.TotalQuestions) * 100;
+        }
+
+        public void CreateMappings(IMapperConfiguration configuration)
+        {
+            configuration.CreateMap<Question, IQuestionResult>().As<QuestionResult>();
+
+            configuration.CreateMap<Quiz, QuizEvaluationResult>()
+                .ForMember(
+                    self => self.ForQuizId,
+                    opt => opt.MapFrom(m => m.Id))
+                .ForMember(
+                    self => self.QuestionResults,
+                    opt => opt.MapFrom(m => m.Questions));
         }
     }
 }

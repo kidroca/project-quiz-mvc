@@ -2,7 +2,7 @@
 {
     public interface IAvailableAnswer
     {
-        int AnswerId { get; }
+        int Id { get; }
 
         string Text { get; }
 
