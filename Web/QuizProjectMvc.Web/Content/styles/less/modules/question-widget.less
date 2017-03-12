@@ -1,140 +1,232 @@
 ﻿// ======== Imports =============
 @import "../helpers/index";
 
-.bb-custom-wrapper {
-    .bb-bookblock {
+// Todo: hover states
+.question-slide {
+    width: 70vw;
+    position: relative;
+    background-color: @carousel-container-bg;
+    .box-shadow(@x: 0; @y: 0px; @blur: 8px; @color: @shadow);
+    margin: 0 15vw;
 
-        .bb-item {
-            .box-shadow(@x: 0; @y: 0px; @blur: 8px; @color: @shadow);
-            height: auto;
+    &:first-child {
+        margin-left: 0;
+    }
 
-            &::before, &::after {
-                z-index: -1;
-                position: absolute;
-                content: "";
-                bottom: 20px;
-                left: 8px;
-                width: 50%;
-                top: 70%;
-                background: @shadow;
-                .box-shadow(@x: 0; @y: 30px; @blur: 10px);
-                .transform(@property: skewY; @value: 175deg)
-            }
+    &:last-child {
+        margin-right: 0;
+    }
 
-            &::after {
-                .transform(@property: skewY; @value: 5deg);
-                right: 8px;
-                left: auto;
-            }
+    &::before, &::after {
+        z-index: -1;
+        position: absolute;
+        content: "";
+        bottom: 20px;
+        left: 8px;
+        width: 50%;
+        top: 70%;
+        background: @shadow;
+        .box-shadow(@x: 0; @y: 30px; @blur: 10px);
+        .transform(@property: skewY; @value: 175deg)
+    }
+
+    &::after {
+        .transform(@property: skewY; @value: 5deg);
+        right: 8px;
+        left: auto;
+    }
+
+    &:hover .slide-controls {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    > div {
+      height: 100%;
+    }
+
+    .slide-title {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        color: @layout-headings-links;
+        border-left: 1px solid #fff;
+        padding: 1.5rem 1rem;
+        .linear-grad(@colors: @shadow, rgba(0, 0, 0, 0.1) 90%; @dir: 90deg);
+
+        &::before, &::after {
+            z-index: 5;
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            .linear-grad(@colors: transparent, rgba(255, 255, 255, 0.5); @dir: right);
         }
 
-        .quiz-question {
+        &::before {
+            top: 0;
+            width: 100%;
+            .linear-grad(@colors: transparent, rgba(255, 255, 255, 0.5); @dir: right);
+        }
 
+        &::after {
+            right: 0;
+            bottom: 0;
+        }
+    }
 
-            .slide-title {
-                z-index: 10;
-                position: relative;
-                width: 100%;
-                max-height: 8rem;
-                margin: 0;
-                text-align: center;
-                color: @layout-headings-links;
-                border-left: 1px solid #fff;
-                padding: 1.5rem 1rem;
-                .linear-grad(@colors: @shadow, #1F272F 90%; @dir: 90deg);
+    .slide-controls {
+        transition: all 0.3s;
+        display: block;
+        opacity: 0;
+        transform: scale(0.95);
+        .absolute-center;
+        height: 10%;
+        top: 0;
+        left: 7px;
+        right: 7px;
 
-                &::before, &::after {
-                    z-index: 5;
-                    content: "";
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    height: 1px;
-                    .linear-grad(@colors: transparent, rgba(255, 255, 255, 0.5); @dir: right);
-                }
+        a {
+            display: inline-block;
+            height: 41px;
+            width: 41px;
+            color: transparent;
+        }
 
-                &::before {
-                    top: 0;
-                    width: 100%;
-                    .linear-grad(@colors: transparent, rgba(255, 255, 255, 0.5); @dir: right);
-                }
+        .control-left {
+            background: url('/Content/images/Carousel-icons.png') 0 0;
+        }
 
-                &::after {
-                    right: 0;
-                    bottom: 0;
-                }
+        .control-right {
+            .transform(@property: rotate; @value: 180deg);
+            background: url('/Content/images/Carousel-icons.png') 0 0;
+        }
+
+        .control-search {
+            background: url('/Content/images/Carousel-icons.png') 0 81px;
+        }
+
+        .control-open {
+            background: url('/Content/images/Carousel-icons.png') 0 40px;
+        }
+    }
+
+    .answers {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 85%;
+        padding: 3rem 0 1rem;
+        font-size: 2rem;
+        font-family: "Droid Sans", sans-serif;
+
+        .flex-box {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        > ul {
+            width: 90%;
+            padding: 0;
+            text-align: center;
+            list-style: none;
+        }
+
+        .answer {
+            display: list-item;
+            padding-left: 0.5rem;
+            cursor: pointer;
+            color: white;
+            margin-bottom: 2px;
+
+            &:last-child {
+                margin-bottom: 0;
             }
 
-            .paper {
-                position: relative;
-
-                &:before {
-                    content: '';
-                    position: absolute;
-                    width: 0px;
-                    top: 0;
-                    left: 4.5rem;
-                    bottom: 0;
-                    border-left: 1px solid #F8D3D3;
-                }
+            .list-group-item {
+                display: inline-block;
+                width: 94%;
+                color: #333;
+                font-family: @font-thin;
+                border-radius: 0;
             }
 
-            .answers {
-                font-family: @font-droid;
-                position: relative;
-                width: 98%;
-                margin: 0.5rem auto;
-                font-size: 2rem;
-                list-style: none;
-                font-size: 2rem;
-                list-style: none;
-
-                .answer {
-                    display: list-item;
-                    padding-left: 5rem;
-                    cursor: pointer;
-                    background-color: white;
-                    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-                    color: #333;
-                    font-family: @font-thin;
-                    .linear-grad(@colors: transparent, rgba(255, 255, 255, 0.5); @dir: top);
-                    position: relative;
-
-                    &:before {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 4.5rem;
-                        bottom: 0;
-                        border-left: 1px solid #F8D3D3;
-                    }
-
-                    & span.selected {
-                        text-decoration: underline;
-
-                        &:before {
-                            font: normal normal normal 24px/1 FontAwesome;
-                            color: #0B9900;
-                            content: "\f00c ";
-                            position: absolute;
-                            left: 1rem;
-                            top: 1rem;
-                        }
-                    }
-                }
+            .answer-checkbox {
+                width: 5%;
+                color: transparent;
+                margin-right: 2px;
             }
         }
     }
-}
 
-@media (max-width: 660px) {
-    .bb-bookblock {
-        width: 98% !important;
+    @loader-size: 6rem;
+    @check-height: @loader-size/2;
+    @check-width: @check-height/2;
+    @check-thickness: 2px;
+    @check-color: @contentArticleColor;
+
+    .circle-loader {
+        margin: 0 0 30px 10px;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
     }
-}
 
-@media (min-width: 661px) {
-    .bb-bookblock {
-        width: 71% !important;
+    .circle-loader,
+    .circle-loader:after {
+        width: @loader-size;
+        height: @loader-size;
+    }
+
+    .load-complete {
+        border-color: @check-color;
+        transition: border 500ms ease-out;
+    }
+
+    .answer .list-group-item {
+
+        &.selected:after {
+            position: absolute;
+            left: 14%;
+            top: 50%;
+            content: '';
+
+            opacity: 1;
+            height: @check-height;
+            width: @check-width;
+            transform-origin: left top;
+            border-right: @check-thickness solid @check-color;
+            border-top: @check-thickness solid @check-color;
+
+            animation-duration: 0.8s;
+            animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+            animation-name: checkmark;
+            transform: scaleX(-1) rotate(135deg);
+        }
+    }
+
+    @keyframes checkmark {
+        0% {
+            height: 0;
+            width: 0;
+            opacity: 1;
+        }
+        20% {
+            height: 0;
+            width: @check-width;
+            opacity: 1;
+        }
+        40% {
+            height: @check-height;
+            width: @check-width;
+            opacity: 1;
+        }
+        100% {
+            height: @check-height;
+            width: @check-width;
+            opacity: 1;
+        }
     }
 }
