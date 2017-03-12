@@ -8,11 +8,13 @@
     using Autofac;
     using Autofac.Integration.Mvc;
     using Autofac.Integration.WebApi;
+    using AutoMapper;
     using Controllers;
 
     using Data;
     using Data.Common;
     using Data.Models;
+    using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using MvcSiteMapProvider.Loader;
@@ -47,6 +49,10 @@
 
             // Register services
             RegisterServices(builder);
+
+            // Register IMapper
+            builder.Register(x => AutoMapperConfig.Configuration.CreateMapper())
+                .As<IMapper>();
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
