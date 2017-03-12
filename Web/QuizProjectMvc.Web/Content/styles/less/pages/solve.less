@@ -6,6 +6,39 @@
         color: white;
         .pageTitleShadow();
     }
+
+    .questions-container {
+
+        .panel {
+
+            .panel-heading {
+                color: @articleImageBackground;
+            }
+
+            &-success .panel-heading {
+                background-color: @carousel-container-bg;
+            }
+
+            &-danger .panel-heading {
+                background-color: @btnDanger;
+            }
+        }
+
+        .alert {
+
+            &-success {
+                color: @carousel-container-bg;
+            }
+
+            &-danger {
+                color: @btnDanger;
+            }
+        }
+
+        .selected {
+            background-color: antiquewhite;
+        }
+    }
 }
 
 .carousel-container {

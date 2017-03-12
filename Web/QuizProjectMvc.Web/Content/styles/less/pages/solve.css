@@ -260,6 +260,24 @@
   color: white;
   text-shadow: 1px 1px 1px black;
 }
+.container-fluid .questions-container .panel .panel-heading {
+  color: #c4c4c4;
+}
+.container-fluid .questions-container .panel-success .panel-heading {
+  background-color: #25575e;
+}
+.container-fluid .questions-container .panel-danger .panel-heading {
+  background-color: #362e27;
+}
+.container-fluid .questions-container .alert-success {
+  color: #25575e;
+}
+.container-fluid .questions-container .alert-danger {
+  color: #362e27;
+}
+.container-fluid .questions-container .selected {
+  background-color: whitesmoke;
+}
 .carousel-container {
   position: relative;
   font-family: "Colaborate Thin", monospace;

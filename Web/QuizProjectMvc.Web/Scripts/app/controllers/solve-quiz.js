@@ -6,14 +6,15 @@
     }
 
     angular.module('solveQuiz', ['ui.bootstrap', 'slickCarousel', 'paging', 'errorHandler'])
-           .controller('SolveQuizController', ['$http', '$window', 'errorHandler', SolveQuizController])
+           .controller('SolveQuizController', ['$http', '$timeout', '$window', 'errorHandler', SolveQuizController])
            .directive('kidQuestionPagination', ['uibPaginationDirective', questionPagination]);
 
-    function SolveQuizController($http, $window, errorHandler) {
+    function SolveQuizController($http, $timeout, $window, errorHandler) {
 
         var self = this;
 
         self.$http = $http;
+        self.$timeout = $timeout;
         self.$window = $window;
         self.errorHandler = errorHandler;
 
@@ -31,8 +32,13 @@
 
             question.selected = selectedAnswerIndex;
 
-            self.pager.toggleAnswered(questionIndex + 1, true);
-            self.progress();
+            $timeout(function () {
+
+                self.pager.toggleAnswered(questionIndex + 1, true);
+                self.progress();
+
+                if (!hasPrevSelected) self.next();
+            }, 750);
         };
 
         /**

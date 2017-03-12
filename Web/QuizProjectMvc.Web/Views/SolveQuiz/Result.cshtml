@@ -45,13 +45,13 @@
 
                             if (answer.Id == question.SelectedAnswerId)
                             {
-                                classes.Add("selected");
-                                title += "You selected this answer";
-
                                 if (!answer.IsCorrect)
                                 {
                                     classes.Add("danger incorrect");
                                 }
+
+                                classes.Add("selected");
+                                title += "You selected this answer";
                             }
 
                             <li href="javascript:;"
