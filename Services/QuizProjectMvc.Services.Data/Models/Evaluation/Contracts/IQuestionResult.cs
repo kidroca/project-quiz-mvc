@@ -4,13 +4,15 @@
 
     public interface IQuestionResult
     {
-        string Question { get; }
+        string Title { get; }
 
-        int QuestionId { get; }
+        int Id { get; }
 
         int CorrentAnswerId { get; }
 
         int SelectedAnswerId { get; set; }
+
+        string ResultDescription { get; }
 
         bool AnsweredCorrectly { get; }
 

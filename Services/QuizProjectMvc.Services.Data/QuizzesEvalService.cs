@@ -138,7 +138,9 @@ namespace QuizProjectMvc.Services.Data
 
         private IQuizEvaluationResult CreateEvaluation(QuizSolution solution)
         {
-            throw new NotImplementedException();
+            var result = new QuizEvaluationResult(solution.ForQuiz);
+
+            return result;
         }
 
         private IDictionary<int, Answer> GetAnswersByQuestionId(QuizSolution solution)
@@ -152,7 +154,7 @@ namespace QuizProjectMvc.Services.Data
         {
             foreach (var question in evaluation.QuestionResults)
             {
-                question.SelectedAnswerId = answersByQuestionId[question.QuestionId].Id;
+                question.SelectedAnswerId = answersByQuestionId[question.Id].Id;
             }
 
             return evaluation;

@@ -1,5 +1,8 @@
 ﻿namespace QuizProjectMvc.Services.Data.Models.Evaluation
 {
+    using System;
+
+    [Obsolete]
     public class QuestionResultModel
     {
         public string Question { get; set; }
