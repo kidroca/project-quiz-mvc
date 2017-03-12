@@ -34,25 +34,30 @@
 
                             if (answer.IsCorrect)
                             {
-                                classes.Add("correct");
+                                classes.Add("success correct");
                                 icon = "fa fa-check";
                                 title = "This is the correct answer. ";
                             }
                             else
                             {
                                 icon = "fa fa-times";
-                                classes.Add("incorrect");
                             }
 
                             if (answer.Id == question.SelectedAnswerId)
                             {
                                 classes.Add("selected");
                                 title += "You selected this answer";
+
+                                if (!answer.IsCorrect)
+                                {
+                                    classes.Add("danger incorrect");
+                                }
                             }
 
                             <li href="javascript:;"
-                                class="list-group-item answer @string.Join(" ", classes)"
+                                class="list-group-item answer alert alert-@string.Join(" ", classes)"
                                 title="@title">
+
                                 <i class="@icon" aria-hidden="true"></i>
                                 <span>@answer.Text</span>
                             </li>

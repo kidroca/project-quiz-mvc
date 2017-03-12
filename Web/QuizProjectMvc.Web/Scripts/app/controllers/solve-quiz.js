@@ -1,9 +1,6 @@
 ﻿(function(angular, quiz) {
     'use strict';
 
-    var INITIAL_TRANSLATE = 14.5;
-    var TRANSLATE_STEP = 100;
-
     if (!angular || !quiz) {
         throw new Error('Solve quiz module has missing dependencies');
     }
@@ -83,9 +80,7 @@
             },
             set: function (pageNumber) {
 
-                var pageDiff = Math.abs(this.currentPage - pageNumber);
-                this.transformTransition = pageDiff < 2 ? 'transform 0.6s' : 'transform 0s';
-
+                this._scrollToPage(pageNumber);
                 this._currentPage = pageNumber;
             }
         }
@@ -101,12 +96,6 @@
 
         console.log('Hello from Solve Quiz Controller');
 
-        var mq = self.$window && self.$window.matchMedia( '(max-width: 767px)' );
-
-        if (mq.matches) {
-            INITIAL_TRANSLATE = 0;
-        }
-
         self.questionTemplate = '/Content/templates/solve-question-template.html';
         self.quiz = quiz;
         self.questionsCount = quiz.Questions.length;
@@ -116,9 +105,33 @@
             totalPages: self.questionsCount
         };
 
+        self._setMeasurements();
         self.currentPage = 1;
+    };
 
-        self.sliderWidth = self.questionsCount * 100 + 'vw';
+    SolveQuizController.prototype._setMeasurements = function () {
+
+        var mq = this.$window && this.$window.matchMedia( '(max-width: 767px)' );
+
+        this.scroller = $('.question-wrap');
+
+        this.SLIDER_WIDTH = this.questionsCount * 100 + 'vw';
+        this.SCROLL_STEP = this.scroller.width();
+
+        if (mq.matches) {
+            this.INITIAL_SCROLL = 0;
+        }
+        else {
+            this.INITIAL_SCROLL = this.SCROLL_STEP * 0.15;
+        }
+    };
+
+    SolveQuizController.prototype._scrollToPage = function (pageNumber) {
+
+        var pageDiff = Math.abs(this.currentPage - pageNumber);
+        var scrollTo = (pageNumber - 1) * (this.SCROLL_STEP);
+
+        this.scroller.animate({scrollLeft: scrollTo}, pageDiff > 2 ? 0 : pageDiff * 300);
     };
 
     SolveQuizController.prototype.next = function () {
@@ -141,12 +154,6 @@
 
     SolveQuizController.prototype.isFirstPage = function () {
         return this.currentPage === 1;
-    };
-
-    SolveQuizController.prototype.getCurrentTranslate = function () {
-
-        var translate = ((this.currentPage - 1) * -TRANSLATE_STEP) + INITIAL_TRANSLATE;
-        return 'translateX(' + translate + 'vw)';
     };
 
     // ### Pagination Extension ###
