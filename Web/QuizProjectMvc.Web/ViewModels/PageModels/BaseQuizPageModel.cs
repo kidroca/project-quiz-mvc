@@ -1,4 +1,4 @@
-﻿namespace QuizProjectMvc.Web.ViewModels
+﻿namespace QuizProjectMvc.Web.ViewModels.PageModels
 {
     using System.Collections.Generic;
     using Quiz.Ranking;

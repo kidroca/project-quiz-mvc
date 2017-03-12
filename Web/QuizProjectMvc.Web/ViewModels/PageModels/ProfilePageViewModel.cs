@@ -1,6 +1,7 @@
-﻿namespace QuizProjectMvc.Web.ViewModels.ProfileInformation
+﻿namespace QuizProjectMvc.Web.ViewModels.PageModels
 {
     using System.Collections.Generic;
+    using ProfileInformation;
 
     public class ProfilePageViewModel
     {
