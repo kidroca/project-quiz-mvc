@@ -1,10 +1,12 @@
 ﻿namespace QuizProjectMvc.Web.Controllers
 {
     using System;
+    using System.Data.Entity.Core;
     using System.Linq;
     using System.Web.Mvc;
     using Services.Data.Exceptions;
     using Services.Data.Models.Evaluation;
+    using Services.Data.Models.Evaluation.Contracts;
     using Services.Data.Protocols;
     using ViewModels.Quiz.Solve;
 
@@ -64,11 +66,15 @@
 
         public ActionResult Result(int solutionId)
         {
-            var solution = this.quizzesEvalService.EvaluateSolution(solutionId);
-            if (solution == null)
+            IQuizEvaluationResult solution;
+
+            try
             {
-                // Todo: Redirect To Not Found
-                return this.RedirectToRoute("Default");
+                solution = this.quizzesEvalService.Evaluate(solutionId);
+            }
+            catch (ObjectNotFoundException)
+            {
+                return this.HttpNotFound();
             }
 
             return this.View(solution);

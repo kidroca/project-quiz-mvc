@@ -1,4 +1,4 @@
-﻿@model QuizProjectMvc.Services.Data.Models.Evaluation.QuizEvaluationResult2
+﻿@model IQuizEvaluationResult
 
 @{
     ViewBag.Title = string.Format("Solution Of {0}", Model.Title);
@@ -9,54 +9,56 @@
 
     <h1 class="text-center">Overall: @string.Format("{0:F}%", Model.GetSuccessPercentage())</h1>
 
-    <div class="col-md-6">
+    <div class="wrapper">
 
-        <h2 class="text-center">You Answered Correctly</h2>
-        @foreach (var question in Model.CorrectlyAnswered)
+        <h2 class="text-center">Results</h2>
+        @foreach (var question in Model.QuestionResults)
         {
-            <div class="questions-container">
-                <div class="panel panel-primary">
+            <div class="questions-container 
+                 @(question.AnsweredCorrectly ? "corrent-answer" : "incorrect-answer")">
+
+                <div class="panel panel-@(question.AnsweredCorrectly ? "success" : "danger")">
+
                     <div class="panel-heading">
-                        <h3 class="panel-title text-center">@question.Question</h3>
+                        <h3 class="panel-title text-center">@question.Title</h3>
                     </div>
-                    <div class="panel-body list-group">
-                        <a href class="list-group-item answer">
-                            <span>@question.CorrectAnswer</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
 
-    <div class="col-md-6">
+                    <ul class="panel-body list-group">
 
-        <h2 class="text-center">You Answered Incorrectly</h2>
-        @foreach (var question in Model.IncorrectlyAnswered)
-        {
-            <div class="questions-container">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title text-center">@question.Question</h3>
-                    </div>
-                    <div class="panel-body list-group">
-                        <a href class="list-group-item answer">
-                            <label>You Selected:</label>
-                            <span>@question.SelectedAnswer</span>
-                        </a>
-
-                        <a href class="list-group-item answer">
-                            <label>Correct Answer Is:</label>
-                            <span>@question.CorrectAnswer</span>
-                        </a>
-
-                        @if (!string.IsNullOrEmpty(question.ResultDescription))
+                        @foreach (var answer in question.Answers)
                         {
-                            <p class="list-group-item description">
-                                @question.ResultDescription
-                            </p>
+
+                            var classes = new List<string>();
+                            string icon = String.Empty;
+                            string title = String.Empty;
+
+                            if (answer.IsCorrect)
+                            {
+                                classes.Add("correct");
+                                icon = "fa fa-check";
+                                title = "This is the correct answer. ";
+                            }
+                            else
+                            {
+                                icon = "fa fa-times";
+                                classes.Add("incorrect");
+                            }
+
+                            if (answer.Id == question.SelectedAnswerId)
+                            {
+                                classes.Add("selected");
+                                title += "You selected this answer";
+                            }
+
+                            <li href="javascript:;"
+                                class="list-group-item answer @string.Join(" ", classes)"
+                                title="@title">
+                                <i class="@icon" aria-hidden="true"></i>
+                                <span>@answer.Text</span>
+                            </li>
                         }
-                    </div>
+                        
+                    </ul>
                 </div>
             </div>
         }

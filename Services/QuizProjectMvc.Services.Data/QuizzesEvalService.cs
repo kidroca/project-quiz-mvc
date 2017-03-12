@@ -98,9 +98,8 @@ namespace QuizProjectMvc.Services.Data
                 this.solutions.Add(newSolution);
                 this.solutions.Save();
             }
-            catch (Exception ex)
+            catch (Exception ex) // Todo: Implement concrete exception cases
             {
-                // Todo: Implement concrete exception cases
                 throw new QuizEvaluationException("Something went wrong while saving your solution.", ex);
             }
 
