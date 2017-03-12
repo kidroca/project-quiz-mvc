@@ -156,9 +156,16 @@ namespace QuizProjectMvc.Services.Data
         private IQuizEvaluationResult AddSelectedAnswers(
             IDictionary<int, Answer> answersByQuestionId, IQuizEvaluationResult evaluation)
         {
-            foreach (var question in evaluation.QuestionResults)
+            var allQuestions = evaluation.QuestionResults.ToArray();
+            evaluation.QuestionResults.Clear();
+
+            foreach (var question in allQuestions)
             {
-                question.SelectedAnswerId = answersByQuestionId[question.Id].Id;
+                if (answersByQuestionId.ContainsKey(question.Id))
+                {
+                    question.SelectedAnswerId = answersByQuestionId[question.Id].Id;
+                    evaluation.QuestionResults.Add(question);
+                }
             }
 
             return evaluation;
