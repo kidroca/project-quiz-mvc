@@ -97,6 +97,7 @@
     <Compile Include="Models\Evaluation\Contracts\IQuestionResult.cs" />
     <Compile Include="Models\Evaluation\Contracts\IAvailableAnswer.cs" />
     <Compile Include="Models\Evaluation\Contracts\IQuizEvaluationResult.cs" />
+    <Compile Include="Models\Evaluation\QuizEvaluationResult.cs" />
     <Compile Include="Models\Pager.cs" />
     <Compile Include="Protocols\ICategoriesService.cs" />
     <Compile Include="Protocols\IQuizzesEvalService.cs" />
@@ -107,7 +108,7 @@
     <Compile Include="QuizzesGeneralService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Evaluation\QuestionResultModel.cs" />
-    <Compile Include="Models\Evaluation\QuizEvaluationResult.cs" />
+    <Compile Include="Models\Evaluation\QuizEvaluationResult2.cs" />
     <Compile Include="Models\Evaluation\SelectedAnswerModel.cs" />
     <Compile Include="Models\Evaluation\SolutionForEvaluationModel.cs" />
     <Compile Include="Models\Search\QuizSearchModel.cs" />

@@ -22,9 +22,9 @@ namespace QuizProjectMvc.Services.Data
             this.solutions = solutions;
         }
 
-        public QuizEvaluationResult EvaluateSolution(QuizSolution quizSolution)
+        public QuizEvaluationResult2 EvaluateSolution(QuizSolution quizSolution)
         {
-            var result = new QuizEvaluationResult
+            var result = new QuizEvaluationResult2
             {
                 ForQuizId = quizSolution.ForQuizId,
                 Title = quizSolution.ForQuiz.Title,
@@ -57,7 +57,7 @@ namespace QuizProjectMvc.Services.Data
             return result;
         }
 
-        public QuizEvaluationResult EvaluateSolution(int solutionId)
+        public QuizEvaluationResult2 EvaluateSolution(int solutionId)
         {
             var solution = this.solutions.GetById(solutionId);
             if (solution == null)

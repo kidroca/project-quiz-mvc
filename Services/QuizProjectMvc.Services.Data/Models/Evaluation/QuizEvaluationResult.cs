@@ -1,25 +1,31 @@
 ﻿namespace QuizProjectMvc.Services.Data.Models.Evaluation
 {
     using System.Collections.Generic;
+    using System.Linq;
+    using Contracts;
+    using QuizProjectMvc.Data.Models;
 
-    public class QuizEvaluationResult
+    public class QuizEvaluationResult : IQuizEvaluationResult
     {
-        public int ForQuizId { get; set; }
-
-        public string Title { get; set; }
-
-        public IList<QuestionResultModel> CorrectlyAnswered { get; set; }
-
-        public IList<QuestionResultModel> IncorrectlyAnswered { get; set; }
-
-        public int TotalQuestions
+        public QuizEvaluationResult(Quiz quiz)
         {
-            get { return this.CorrectlyAnswered.Count + this.IncorrectlyAnswered.Count; }
+            this.ForQuizId = quiz.Id;
+            this.Title = quiz.Title;
+            this.QuestionResults = new HashSet<IQuestionResult>();
         }
+
+        public int ForQuizId { get; }
+
+        public string Title { get; }
+
+        public ICollection<IQuestionResult> QuestionResults { get; }
+
+        public int TotalQuestions => this.QuestionResults.Count;
 
         public double GetSuccessPercentage()
         {
-            return ((double)this.CorrectlyAnswered.Count / this.TotalQuestions) * 100;
+            var correctlyAnsweredCount = (double)this.QuestionResults.Count(q => q.AnsweredCorrectly);
+            return (correctlyAnsweredCount / this.TotalQuestions) * 100;
         }
     }
 }

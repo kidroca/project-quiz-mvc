@@ -8,10 +8,10 @@ namespace QuizProjectMvc.Services.Data.Protocols
     public interface IQuizzesEvalService
     {
         [Obsolete("Please use the new Evaluate method")]
-        QuizEvaluationResult EvaluateSolution(QuizSolution quizSolution);
+        QuizEvaluationResult2 EvaluateSolution(QuizSolution quizSolution);
 
         [Obsolete("Please use the new Evaluate method")]
-        QuizEvaluationResult EvaluateSolution(int solutionId);
+        QuizEvaluationResult2 EvaluateSolution(int solutionId);
 
         IQuizEvaluationResult Evaluate(QuizSolution solution);
 
