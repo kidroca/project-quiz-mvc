@@ -2,9 +2,11 @@ namespace QuizProjectMvc.Services.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity.Core;
     using System.Linq;
     using Exceptions;
     using Models.Evaluation;
+    using Models.Evaluation.Contracts;
     using Protocols;
     using QuizProjectMvc.Data.Common;
     using QuizProjectMvc.Data.Models;
@@ -104,6 +106,26 @@ namespace QuizProjectMvc.Services.Data
             this.quizzes.Save();
         }
 
+
+        public IQuizEvaluationResult Evaluate(int solutionId)
+        {
+            var solution = this.solutions.GetById(solutionId);
+            if (solution == null)
+            {
+                throw new ObjectNotFoundException("Falied to find solution by Id");
+            }
+
+            return this.Evaluate(solution);
+        }
+
+        public IQuizEvaluationResult Evaluate(QuizSolution solution)
+        {
+            var result = this.CreateEvaluation(solution);
+            var answersByQuestionId = this.GetAnswersByQuestionId(solution);
+
+            return this.AddSelectedAnswers(answersByQuestionId, result);
+        }
+
         private List<Answer> ExtractSelectedAnswers(Quiz quiz, SolutionForEvaluationModel quizSolution)
         {
             var result = quiz.Questions
@@ -112,6 +134,28 @@ namespace QuizProjectMvc.Services.Data
                 .ToList();
 
             return result;
+        }
+
+        private IQuizEvaluationResult CreateEvaluation(QuizSolution solution)
+        {
+            throw new NotImplementedException();
+        }
+
+        private IDictionary<int, Answer> GetAnswersByQuestionId(QuizSolution solution)
+        {
+            var result = solution.SelectedAnswers.ToDictionary(key => key.ForQuestionId);
+            return result;
+        }
+
+        private IQuizEvaluationResult AddSelectedAnswers(
+            IDictionary<int, Answer> answersByQuestionId, IQuizEvaluationResult evaluation)
+        {
+            foreach (var question in evaluation.QuestionResults)
+            {
+                question.SelectedAnswerId = answersByQuestionId[question.QuestionId].Id;
+            }
+
+            return evaluation;
         }
     }
 }

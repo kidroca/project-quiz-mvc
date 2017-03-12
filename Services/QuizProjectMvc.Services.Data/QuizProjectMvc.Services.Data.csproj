@@ -96,6 +96,7 @@
     <Compile Include="Models\DateRanges\WeeklyRange.cs" />
     <Compile Include="Models\Evaluation\Contracts\IQuestionResult.cs" />
     <Compile Include="Models\Evaluation\Contracts\IAvailableAnswer.cs" />
+    <Compile Include="Models\Evaluation\Contracts\IQuizEvaluationResult.cs" />
     <Compile Include="Models\Pager.cs" />
     <Compile Include="Protocols\ICategoriesService.cs" />
     <Compile Include="Protocols\IQuizzesEvalService.cs" />

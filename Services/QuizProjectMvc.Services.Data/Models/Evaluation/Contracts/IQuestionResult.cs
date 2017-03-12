@@ -8,9 +8,9 @@
 
         int QuestionId { get; }
 
-        int CorrentAnswer { get; }
+        int CorrentAnswerId { get; }
 
-        int SelectedAnswer { get; }
+        int SelectedAnswerId { get; set; }
 
         bool AnsweredCorrectly { get; }
 
