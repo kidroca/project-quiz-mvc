@@ -31,30 +31,23 @@
 
             <div class="question-slide"
                  ng-repeat="question in ctrl.quiz.Questions">
-                
+
                 <div ng-include="ctrl.questionTemplate"></div>
             </div>
         </div>
     </section>
 
-    <div class="indicators">
+    <div class="indicators wrapper">
 
         <kid-question-pagination class="questions-paging"
-                        direction-links="false"
-                        boundary-links="true"
-                        items-per-page="ctrl.pager.pageSize"
-                        total-items="ctrl.questionsCount"
-                        max-size="7"
-                        toggle-answered="ctrl.pager.toggleAnswered"
-                        ng-model="ctrl.currentPage"></kid-question-pagination>
+                                 direction-links="false"
+                                 boundary-links="true"
+                                 items-per-page="ctrl.pager.pageSize"
+                                 total-items="ctrl.questionsCount"
+                                 max-size="7"
+                                 toggle-answered="ctrl.pager.toggleAnswered"
+                                 ng-model="ctrl.currentPage"></kid-question-pagination>
 
-        <div class="progress progress-striped wrapper">
-            <div id="progress" class="progress-bar"
-                 ng-style="{width: ctrl.completedPercent + '%'}"></div>
-        </div>
-    </div>
-
-    <div class="wrapper">
         <button id="solve-quiz"
                 ng-show="ctrl.completedPercent === 100"
                 ng-click="ctrl.submit(ctrl.quiz)"

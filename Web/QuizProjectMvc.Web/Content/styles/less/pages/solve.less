@@ -13,21 +13,27 @@
     font-family: @font-thin;
 
     #solve-quiz {
-        z-index: 200;
-        position: absolute;
-        bottom: 2%;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        width: 30%;
-        animation-name: fadeInDownBig;
-        animation-duration: 1s;
-        .box-shadow(@x: 7px; @y: 10px; @blur: 7px);
+        transition: all 0.3s;
+        width: 10%;
+
+        &.ng-hide-remove {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        &.ng-hide-remove-active {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 
     .indicators {
+        transition: all 0.3s;
         position: relative;
-        height: 10rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
 
         .progress {
             width: 70%;
@@ -39,12 +45,6 @@
 
         .questions-paging {
             font-family: @font-droid;
-            margin: 0;
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            margin-right: -50%;
-            transform: translate(-50%, -50%);
 
             li {
                 & > {
@@ -75,17 +75,5 @@
         transform: translateX(0vw);
         display: flex;
         margin-bottom: 4rem;
-    }
-}
-
-@keyframes fadeInDownBig {
-    0% {
-        opacity: 0;
-        transform: translateY(-1000px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
     }
 }
