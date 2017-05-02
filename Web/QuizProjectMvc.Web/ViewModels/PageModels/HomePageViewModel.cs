@@ -1,4 +1,4 @@
-﻿namespace QuizProjectMvc.Web.ViewModels.Home
+﻿namespace QuizProjectMvc.Web.ViewModels.PageModels
 {
     using System.Collections.Generic;
     using Quiz;

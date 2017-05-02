@@ -32,6 +32,10 @@
     <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -94,6 +98,12 @@
     <Compile Include="Models\DateRanges\DailyRange.cs" />
     <Compile Include="Models\DateRanges\MonthlyRange.cs" />
     <Compile Include="Models\DateRanges\WeeklyRange.cs" />
+    <Compile Include="Models\Evaluation\AvailableAnswer.cs" />
+    <Compile Include="Models\Evaluation\Contracts\IQuestionResult.cs" />
+    <Compile Include="Models\Evaluation\Contracts\IAvailableAnswer.cs" />
+    <Compile Include="Models\Evaluation\Contracts\IQuizEvaluationResult.cs" />
+    <Compile Include="Models\Evaluation\QuestionResult.cs" />
+    <Compile Include="Models\Evaluation\QuizEvaluationResult.cs" />
     <Compile Include="Models\Pager.cs" />
     <Compile Include="Protocols\ICategoriesService.cs" />
     <Compile Include="Protocols\IQuizzesEvalService.cs" />
@@ -103,9 +113,6 @@
     <Compile Include="QuizzesEvalService.cs" />
     <Compile Include="QuizzesGeneralService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Evaluation\QuestionResultModel.cs" />
-    <Compile Include="Models\Evaluation\QuizEvaluationResult.cs" />
-    <Compile Include="Models\Evaluation\SelectedAnswerModel.cs" />
     <Compile Include="Models\Evaluation\SolutionForEvaluationModel.cs" />
     <Compile Include="Models\Search\QuizSearchModel.cs" />
     <Compile Include="Models\Search\ResultOrder.cs" />

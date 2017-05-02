@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Reflection;
 
     using AutoMapper;
 
@@ -11,12 +10,30 @@
     {
         public static MapperConfiguration Configuration { get; private set; }
 
-        public void Execute(Assembly assembly)
+        public static void Init()
+        {
+            var types = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes().Where(t => t.GetInterfaces().Any(IsMapperConfigInterface)))
+                .ToArray();
+
+            Execute(types);
+        }
+
+        private static bool IsMapperConfigInterface(Type type)
+        {
+            var isGenericMapping = type.IsGenericType &&
+                         (type.GetGenericTypeDefinition() == typeof(IMapFrom<>) || type.GetGenericTypeDefinition() == typeof(IMapTo<>));
+
+            var isCustomMapping = typeof(IHaveCustomMappings).IsAssignableFrom(type);
+
+            return isGenericMapping || isCustomMapping;
+        }
+
+        private static void Execute(Type[] types)
         {
             Configuration = new MapperConfiguration(
                 cfg =>
                 {
-                    var types = assembly.GetExportedTypes();
                     LoadStandardMappings(types, cfg);
                     LoadReverseMappings(types, cfg);
                     LoadCustomMappings(types, cfg);

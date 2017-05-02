@@ -9,6 +9,7 @@
     using Services.Data.Models.DateRanges;
     using Services.Data.Protocols;
     using ViewModels.Home;
+    using ViewModels.PageModels;
     using ViewModels.Quiz;
     using ViewModels.Quiz.Ranking;
 

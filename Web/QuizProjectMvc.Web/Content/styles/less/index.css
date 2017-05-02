@@ -545,14 +545,10 @@ a.home-link {
 .footer-base .description {
   margin-bottom: 6rem;
 }
-.illumination {
-  position: absolute;
-  background-image: -webkit-radial-gradient(circle farthest-corner at top center, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.25) 49%, rgba(255, 255, 255, 0.02) 66%, transparent 70%);
-  background-image: -moz-radial-gradient(circle farthest-corner at top center, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.25) 49%, rgba(255, 255, 255, 0.02) 66%, transparent 70%);
-  background-image: -ms-radial-gradient(circle farthest-corner at top center, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.25) 49%, rgba(255, 255, 255, 0.02) 66%, transparent 70%);
-  background-image: -o-radial-gradient(circle farthest-corner at top center, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.25) 49%, rgba(255, 255, 255, 0.02) 66%, transparent 70%);
-  background-image: radial-gradient(circle farthest-corner at top center, rgba(255, 255, 255, 0.95) 20%, rgba(255, 255, 255, 0.25) 49%, rgba(255, 255, 255, 0.02) 66%, transparent 70%);
-  mix-blend-mode: soft-light;
+body {
+  background-image: url(/Content/images/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #main-illumination {
   width: 100%;

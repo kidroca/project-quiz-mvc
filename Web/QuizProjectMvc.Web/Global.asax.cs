@@ -1,7 +1,6 @@
 ﻿namespace QuizProjectMvc.Web
 {
     using System.Data.Entity;
-    using System.Reflection;
     using System.Web;
     using System.Web.Http;
     using System.Web.Mvc;
@@ -34,8 +33,7 @@
             JsonNetConfig.UseCamelCase(config);
             WebApiConfig.Register(config);
 
-            var autoMapperConfig = new AutoMapperConfig();
-            autoMapperConfig.Execute(Assembly.GetExecutingAssembly());
+            AutoMapperConfig.Init();
         }
     }
 }

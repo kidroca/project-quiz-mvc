@@ -1,13 +1,14 @@
 namespace QuizProjectMvc.Services.Data.Protocols
 {
     using Models.Evaluation;
+    using Models.Evaluation.Contracts;
     using QuizProjectMvc.Data.Models;
 
     public interface IQuizzesEvalService
     {
-        QuizEvaluationResult EvaluateSolution(QuizSolution quizSolution);
+        IQuizEvaluationResult Evaluate(QuizSolution solution);
 
-        QuizEvaluationResult EvaluateSolution(int solutionId);
+        IQuizEvaluationResult Evaluate(int solutionId);
 
         QuizSolution SaveSolution(SolutionForEvaluationModel quizSolution, string userId);
     }

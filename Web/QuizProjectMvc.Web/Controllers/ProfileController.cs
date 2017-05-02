@@ -5,6 +5,7 @@
     using System.Web.Mvc;
     using Services.Data.Models.Account;
     using Services.Data.Protocols;
+    using ViewModels.PageModels;
     using ViewModels.ProfileInformation;
 
     [Authorize]

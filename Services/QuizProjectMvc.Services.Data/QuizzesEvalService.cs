@@ -2,9 +2,12 @@ namespace QuizProjectMvc.Services.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity.Core;
     using System.Linq;
+    using AutoMapper;
     using Exceptions;
     using Models.Evaluation;
+    using Models.Evaluation.Contracts;
     using Protocols;
     using QuizProjectMvc.Data.Common;
     using QuizProjectMvc.Data.Models;
@@ -13,57 +16,14 @@ namespace QuizProjectMvc.Services.Data
     {
         private readonly IDbRepository<Quiz> quizzes;
         private readonly IDbRepository<QuizSolution> solutions;
+        private readonly IMapper mapper;
 
-        public QuizzesEvalService(IDbRepository<Quiz> quizzes, IDbRepository<QuizSolution> solutions)
+        public QuizzesEvalService(
+            IDbRepository<Quiz> quizzes, IDbRepository<QuizSolution> solutions, IMapper mapper)
         {
             this.quizzes = quizzes;
             this.solutions = solutions;
-        }
-
-        public QuizEvaluationResult EvaluateSolution(QuizSolution quizSolution)
-        {
-            var result = new QuizEvaluationResult
-            {
-                ForQuizId = quizSolution.ForQuizId,
-                Title = quizSolution.ForQuiz.Title,
-                CorrectlyAnswered = new List<QuestionResultModel>(),
-                IncorrectlyAnswered = new List<QuestionResultModel>()
-            };
-
-            foreach (Answer answer in quizSolution.SelectedAnswers)
-            {
-                var questionResult = new QuestionResultModel
-                {
-                    Question = answer.ForQuestion.Title,
-                    IsCorrect = answer.IsCorrect,
-                    ResultDescription = answer.ForQuestion.ResultDescription,
-                    SelectedAnswer = answer.Text,
-                    CorrectAnswer = answer.ForQuestion
-                        .Answers.First(a => a.IsCorrect).Text
-                };
-
-                if (answer.IsCorrect)
-                {
-                    result.CorrectlyAnswered.Add(questionResult);
-                }
-                else
-                {
-                    result.IncorrectlyAnswered.Add(questionResult);
-                }
-            }
-
-            return result;
-        }
-
-        public QuizEvaluationResult EvaluateSolution(int solutionId)
-        {
-            var solution = this.solutions.GetById(solutionId);
-            if (solution == null)
-            {
-                return null;
-            }
-
-            return this.EvaluateSolution(solution);
+            this.mapper = mapper;
         }
 
         public QuizSolution SaveSolution(SolutionForEvaluationModel quizSolution, string userId)
@@ -90,9 +50,8 @@ namespace QuizProjectMvc.Services.Data
                 this.solutions.Add(newSolution);
                 this.solutions.Save();
             }
-            catch (Exception ex)
+            catch (Exception ex) // Todo: Implement concrete exception cases
             {
-                // Todo: Implement concrete exception cases
                 throw new QuizEvaluationException("Something went wrong while saving your solution.", ex);
             }
 
@@ -104,6 +63,25 @@ namespace QuizProjectMvc.Services.Data
             this.quizzes.Save();
         }
 
+        public IQuizEvaluationResult Evaluate(int solutionId)
+        {
+            var solution = this.solutions.GetById(solutionId);
+            if (solution == null)
+            {
+                throw new ObjectNotFoundException("Falied to find solution by Id");
+            }
+
+            return this.Evaluate(solution);
+        }
+
+        public IQuizEvaluationResult Evaluate(QuizSolution solution)
+        {
+            var result = this.CreateEvaluation(solution);
+            var answersByQuestionId = this.GetAnswersByQuestionId(solution);
+
+            return this.AddSelectedAnswers(answersByQuestionId, result);
+        }
+
         private List<Answer> ExtractSelectedAnswers(Quiz quiz, SolutionForEvaluationModel quizSolution)
         {
             var result = quiz.Questions
@@ -112,6 +90,37 @@ namespace QuizProjectMvc.Services.Data
                 .ToList();
 
             return result;
+        }
+
+        private IQuizEvaluationResult CreateEvaluation(QuizSolution solution)
+        {
+            var result = this.mapper.Map<QuizEvaluationResult>(solution.ForQuiz);
+
+            return result;
+        }
+
+        private IDictionary<int, Answer> GetAnswersByQuestionId(QuizSolution solution)
+        {
+            var result = solution.SelectedAnswers.ToDictionary(key => key.ForQuestionId);
+            return result;
+        }
+
+        private IQuizEvaluationResult AddSelectedAnswers(
+            IDictionary<int, Answer> answersByQuestionId, IQuizEvaluationResult evaluation)
+        {
+            var allQuestions = evaluation.QuestionResults.ToArray();
+            evaluation.QuestionResults.Clear();
+
+            foreach (var question in allQuestions)
+            {
+                if (answersByQuestionId.ContainsKey(question.Id))
+                {
+                    question.SelectedAnswerId = answersByQuestionId[question.Id].Id;
+                    evaluation.QuestionResults.Add(question);
+                }
+            }
+
+            return evaluation;
         }
     }
 }
