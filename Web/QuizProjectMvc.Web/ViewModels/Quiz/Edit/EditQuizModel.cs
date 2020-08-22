@@ -7,7 +7,7 @@
 
     public class EditQuizModel : ManageQuizModel, IMapFrom<Quiz>, IMapTo<Quiz>, IHaveCustomMappings
     {
-        public void CreateMappings(IMapperConfiguration configuration)
+        public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<EditQuizModel, Quiz>()
                 .ForMember(

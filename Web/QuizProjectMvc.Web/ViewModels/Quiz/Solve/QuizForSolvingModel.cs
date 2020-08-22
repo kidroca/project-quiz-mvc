@@ -19,7 +19,7 @@
 
         public string AvatarUrl { get; set; }
 
-        public void CreateMappings(IMapperConfiguration configuration)
+        public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Quiz, QuizForSolvingModel>()
                 .ForMember(

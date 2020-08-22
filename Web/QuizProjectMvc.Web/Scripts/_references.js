@@ -1,4 +1,5 @@
-﻿/// <autosync enabled="true" />
+﻿/// <reference path="jquery-3.5.1.js" />
+/// <autosync enabled="true" />
 /// <reference path="ap/// <reference path="~/Scripts/app/controllers/manage-quiz/create-quiz.js" />erence path="app/controllers/solve-quiz.js" />
 /// <reference path="app/admin/categoriesmanager.js" />
 /// <reference path="app/confirm-submit.js" />

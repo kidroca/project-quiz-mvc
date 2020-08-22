@@ -5,6 +5,7 @@
     using System.Web;
     using System.Web.Mvc;
     using GravatarHelper;
+    using GravatarHelper.Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
@@ -174,7 +175,7 @@
                 if (string.IsNullOrEmpty(model.AvatarUrl) &&
                     !string.IsNullOrEmpty(model.Email))
                 {
-                    model.AvatarUrl = GravatarHelper.CreateGravatarUrl(model.Email, 200, GravatarHelper.DefaultImageIdenticon, GravatarRating.G, false, false);
+                    model.AvatarUrl = GravatarHelper.CreateGravatarUrl(model.Email, 200, GravatarHelper.DefaultImageIdenticon, GravatarRating.G, false, false, false);
                 }
 
                 var user = this.Mapper.Map<User>(model);

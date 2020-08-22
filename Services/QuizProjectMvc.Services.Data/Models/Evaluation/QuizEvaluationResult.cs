@@ -23,7 +23,7 @@
             return (correctlyAnsweredCount / this.TotalQuestions) * 100;
         }
 
-        public void CreateMappings(IMapperConfiguration configuration)
+        public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Question, IQuestionResult>().As<QuestionResult>();
 
