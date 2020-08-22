@@ -23,7 +23,7 @@
 
         public IList<IAvailableAnswer> Answers { get; set; }
 
-        public void CreateMappings(IMapperConfiguration configuration)
+        public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Answer, IAvailableAnswer>().As<AvailableAnswer>();
         }

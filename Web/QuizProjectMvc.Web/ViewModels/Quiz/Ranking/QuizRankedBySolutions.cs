@@ -29,7 +29,7 @@
             return this.comparator.GetRank(range, this.SolutionDates);
         }
 
-        public new void CreateMappings(IMapperConfiguration configuration)
+        public new void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Quiz, QuizRankedBySolutions>()
                 .IncludeBase<Quiz, QuizBasicViewModel>()

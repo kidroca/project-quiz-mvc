@@ -33,7 +33,7 @@
             return this.comparator.GetRank(range, this.SolutionDates);
         }
 
-        public void CreateMappings(IMapperConfiguration configuration)
+        public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<QuizCategory, CategoryRankedBySolutions>()
                 .ForMember(

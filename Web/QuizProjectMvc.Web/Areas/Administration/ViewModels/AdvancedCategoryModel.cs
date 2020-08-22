@@ -9,7 +9,7 @@
     {
         public int QuizzesCount { get; set; }
 
-        public void CreateMappings(IMapperConfiguration configuration)
+        public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<QuizCategory, AdvancedCategoryModel>()
                 .ForMember(

@@ -12,7 +12,7 @@
 
         public double Rating => (this.QuizzesCreated / (double)MaxQuizzesCreated) * 10;
 
-        public void CreateMappings(IMapperConfiguration configuration)
+        public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<User, PublicProfileDetailed>()
                 .ForMember(
